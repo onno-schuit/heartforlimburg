@@ -1,0 +1,9 @@
+[submodule "public/local/soda"]
+	path = public/local/soda
+	url = git@github.com:solin-repo/soda
+[submodule "public_html/local/soda"]
+	path = public_html/local/soda
+	url = git@github.com:solin-repo/soda
+[submodule "public_html/mod/typinggame"]
+	path = public_html/mod/typinggame
+	url = git@github.com:solin-repo/typinggame

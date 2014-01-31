@@ -1,0 +1,1554 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- repeatcourse designed by Marco Von Ballmoos -->
+			<title>Docs for page class.model.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name">/class.model.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-classes">Classes</a>
+			|													<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">filesource:</span> <a href="../__filesource/fsource_Soda__class.model.php.html">Source Code for this file</a></li>
+			</ul>
+		
+			</div>
+</div>
+		
+	<a name="sec-classes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Classes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Classes</span>
+			|																<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top">
+						<a href="../Soda/model.html">model</a>
+					</td>
+					<td>
+											A model object usually corresponds to exactly one database record. All columns  are made available as object properties pointing to their corresponding database values (if any).
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|															<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionadd_error" id="functionadd_error"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">add_error</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a1034">1034</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds an error to soda_error::$validation_errors, for the given class of the model,  the specific instance of the model (i.e. this object) and the property $field.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			add_error
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$field</span><span class="var-description">: Name of the property which is in error</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: Error message meant for the user</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionadd_rule" id="functionadd_rule"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">add_rule</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a930">930</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds a rule to the validation rules for this model.</p>
+<p class="description"><p>This method is typically called from within model#define_validation_rules.</p><p>Example:</p><p>$this-&gt;add_rule('label', 'Please fill in a label.', function($label) { return ( trim($label) != '' ); });</p><p>If this rule fails, an error will be added to soda_error::$validation_errors, for the given class of the model,  the specific instance of the model (i.e. this object) and the field.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			add_rule
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$message</span>, <span class="var-type">function</span>&nbsp;<span class="var-name">$rule_code</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$field</span><span class="var-description">: Name of the property on which this rule operates</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$message</span><span class="var-description">: Message to display when the validation fails</span>			</li>
+					<li>
+				<span class="var-type">function</span>
+				<span class="var-name">$rule_code</span><span class="var-description">: Validation code to be executed whenever the model is validated</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionassociative_load" id="functionassociative_load"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">associative_load</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a484">484</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads a collection of parent objects by association with a collection of child objects.</p>
+<p class="description"><p>For each child object, this function will attempt to look for the associated  parent object. The child objects are inserted into an appropriately named property  of the parent object.  Each child object will also be endowed with a property named after the class of the parent object.  This property points to the parent object.</p><p>Example:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$authors&nbsp;</span>=&nbsp;<span class="src-id">author</span><span class="src-sym">::</span><span class="src-id">associative_load</span><span class="src-sym">(</span><span class="src-var">$books</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p><p>This will lookup all authors with the id $book-&gt;author_id and load them  as a collection of author objects.</p><p>Each author object will be endowed with the collection of associated book objects:  $author-&gt;books</p><p>And each book object will be endowed with an author property, pointing to the author object:  $book-&gt;author</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			associative_load
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$associated_collection</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$association_name</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$associated_collection</span><span class="var-description">: collection which contains objects with parent_ids</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$association_name</span><span class="var-description">: name for the property where the child objects will reside (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionattach_associations" id="functionattach_associations"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">attach_associations</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a425">425</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Attaches associated child objects to parent objects.</p>
+<p class="description"><p>Example: seat::load_associations($seats, $bookings)</p><p>This will endow each 'seat' object with the property bookings.  If a particular seat has no bookings, the property will be an empty array.  Each booking, in turn, will be endowed with a property 'seat', pointing to the parent object.</p><p>The associations parameter can also be a nested array:</p><p><div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'author'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'book'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'chapter'</span><span class="src-sym">))</span></div></li>
+</ol></div></p><p>This 'include' array will result in an even deeper object hierarchy.</p><p>If don't specify the optional association name, the pluralized name of the child model will be used as  the property name.  Alternatively, if you do specify a name, and the name matches the class name of the child model,  (i.e. is singular), then exactly one associated object will be attached (many-to-one relation will be assumed).</p><p>Example:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-id">book</span><span class="src-sym">::</span><span class="src-id">attach_associations</span><span class="src-sym">(</span><span class="src-var">$books</span><span class="src-sym">,&nbsp;</span><span class="src-var">$authors</span><span class="src-sym">,&nbsp;</span><span class="src-str">'author'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></div></p><p>This will create a property 'author' for each book, containing the associated author object</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			attach_associations
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$children</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$association_name</span> = <span class="var-default">false</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$foreign_key</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Parent objects to attach the associated models to</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$children</span><span class="var-description">: Associated objects</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association_name</span><span class="var-description">: Name of the parent's property for the associated objects (optional)</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$foreign_key</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionattach_properties" id="functionattach_properties"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">attach_properties</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a584">584</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds key - value pairs to objects as properties and their values.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			attach_properties
+		</span>
+					([<span class="var-type">recordset</span>&nbsp;<span class="var-name">$properties</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">recordset</span>
+				<span class="var-name">$properties</span><span class="var-description">: Array of properties and corresponding values</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionbuild_params_clause" id="functionbuild_params_clause"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">build_params_clause</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a798">798</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructs a partial SQL WHERE clause out of an array of column names</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns a string containing a partial WHERE clause</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			build_params_clause
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span><span class="var-description">: Array of column names</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionbuild_where_clause" id="functionbuild_where_clause"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">build_where_clause</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a781">781</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructs an SQL WHERE clause out of an array of column names and an array of corresponding values</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns a string containing a WHERE clause</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			build_where_clause
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$properties</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$args</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$properties</span><span class="var-description">: Array of column names. If the $args parameter is not provided,                                       $properties is assumed to be an associative array: a column                                       name pointing to a value.</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns. If not provided, the parameter                                       $properties must contain the values (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_delete_all" id="functioncall_delete_all"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">call_delete_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a656">656</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Calls delete_all with a sql WHERE clause which is constructed from the name of the calling function $method</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true upon succes, or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			call_delete_all
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns mentioned in the where clause</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_find" id="functioncall_find"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">call_find</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a724">724</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Wrapper for finder method: Calls finder with 'find' as finder_name and 'load' as loader_name.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> object, or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">object Returns</span>
+		<span class="method-name">
+			call_find
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of arguments: the last argument is an optional array of objects to search through,                               the other elements are values which the finder should compare as search criteria</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_find_all" id="functioncall_find_all"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">call_find_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a737">737</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Wrapper for finder method: Calls finder with 'find_all' as finder_name and 'load_all' as loader_name.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array objects, or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			call_find_all
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of arguments: the last argument is an optional array of objects to search through,                               the other elements are values which the finder should compare as search criteria</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_load" id="functioncall_load"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">call_load</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a814">814</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Wrapper for loader: calls method loader with 'load' as the $loader_name</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an object, an array of objects or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			call_load
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_load_all" id="functioncall_load_all"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">call_load_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a826">826</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Wrapper for loader: calls method loader with 'load_all' as the $loader_name</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an object, an array of objects or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			call_load_all
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns used in the dynamically constructed WHERE clause</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_scope" id="functioncall_scope"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">call_scope</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a207">207</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates and executes an sql 'where clause' to restrict the set of associated items.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns array of loaded and attached associated objects</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			call_scope
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$association_model</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$child_model</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of 'parent' objects</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association_model</span><span class="var-description">: Name of the associated model</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$child_model</span><span class="var-description">: Array of 'directives', including the actual scope</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncall_through" id="functioncall_through"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">call_through</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a270">270</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads objects of $child_model if they appear in $association_model together with  an object out of $objects.</p>
+<p class="description"><p>Please note: this is primarily a wrapper function for load_association_through.  TODO: does not seem to be used anywhere. Delete?</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			call_through
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$association_model</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$child_model</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of objects for which to find the associated models</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association_model</span><span class="var-description">: Name of the association model</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$child_model</span><span class="var-description">: Array containing 'directives' and the name of the child model</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncollect" id="functioncollect"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">collect</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a873">873</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns all values for the property $property from $collection</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array of property values or an empty array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			collect
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$property</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$collection</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$property</span><span class="var-description">: Name of the property we are looking for</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$collection</span><span class="var-description">: Array of items to search through</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionconstruct_foreign_key" id="functionconstruct_foreign_key"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">construct_foreign_key</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a249">249</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Looks up the foreign key of the currenct model used in $association_model or  returns the name of the current model affixed with '_id'.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the foreign key</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			construct_foreign_key
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$association_model</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association_model</span><span class="var-description">: Name of the associated model</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionconvert_to_objects" id="functionconvert_to_objects"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">convert_to_objects</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a547">547</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Converts a record set to an array of objects of the called class.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns array of objects</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			convert_to_objects
+		</span>
+					(<span class="var-type">recordset</span>&nbsp;<span class="var-name">$recordset</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$class_name</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">recordset</span>
+				<span class="var-name">$recordset</span><span class="var-description">: Record set</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$class_name</span><span class="var-description">: Name of the class to convert to (optional, defaults to called class)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioncreate_params_array" id="functioncreate_params_array"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">create_params_array</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a847">847</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			create_params_array
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$property_names</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$property_names</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$args</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functiondefine_validation_rules" id="functiondefine_validation_rules"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">define_validation_rules</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a910">910</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method is called from the model's constructor.</p>
+<p class="description"><p>Overwrite this method if you want to specify validation rules for your model.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			define_validation_rules
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiondelete" id="functiondelete"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">delete</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a984">984</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the deleted column to 1 and saves the object to the database.</p>
+<p class="description"><p>Please note: there is a 'plural' version for this method model::delete_all, but this method actually deletes  the objects from the database.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true upon success or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			delete
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiondelete_all" id="functiondelete_all"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">delete_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a671">671</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deletes all objects of this class from the database.</p>
+<p class="description"><p>Please note: there is a 'singular' version for this method model#delete</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true upon success or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			delete_all
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$where_clause</span> = <span class="var-default">false</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$where_clause</span><span class="var-description">: SQL where clause (optional)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span><span class="var-description">: Array of sql parameters (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionextract_properties" id="functionextract_properties"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">extract_properties</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a691">691</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Turns a string of properties into an array  This method is typically used to retrieve the column names used in the method call to dynamically created  loaders and finders. Example: company_id_and_year is turned into array('company_id', 'year').</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array of column names</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			extract_properties
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$properties</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$properties</span><span class="var-description">: String of SQL column names separated by '_and_'</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionfind" id="functionfind"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">find</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a621">621</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an item from a collection which matches whatever criterion is specified in the anonymous function $compare.</p>
+<p class="description"><p>Please note that there is a 'plural' version as well: model::find_all</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns item of mixed type or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			find
+		</span>
+					(<span class="var-type">function</span>&nbsp;<span class="var-name">$compare</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$collection</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">function</span>
+				<span class="var-name">$compare</span><span class="var-description">: Function which returns the item that matches the criterion specified in the function body</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$collection</span><span class="var-description">: Array of items to search through</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionfinder" id="functionfinder"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">finder</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a755">755</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deconstructs a dynamic method call into a call to a finder  The arguments array may optionally contain, as the last element, an array of objects to search through.</p>
+<p class="description"><p>If you do not provide this array searchable objects, the find and find_all will try to retrieve the  searchable objects from the database by calling the method in $loader_name</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array objects, an object, or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			finder
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$finder_name</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$loader_name</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method called dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of arguments: the last argument is an optional array of objects to search through,                                       the other elements are values which the finder should compare as search criteria</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$finder_name</span><span class="var-description">: Finder method to call for finding one or more objects</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$loader_name</span><span class="var-description">: Loader method to use if no array of searchable objects was provided</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionfind_all" id="functionfind_all"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">find_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a861">861</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an array of items which match whatever criterion is specified in the anonymous function $compare.</p>
+<p class="description"><p>Please note this is just a wrapper for array_filter - mainly here for consistency with similarly named methods  'find_all_by_' and model::find.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns item of mixed type or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			find_all
+		</span>
+					(<span class="var-type">function</span>&nbsp;<span class="var-name">$compare</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$collection</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">function</span>
+				<span class="var-name">$compare</span><span class="var-description">: Function which returns the item that matches the criterion specified in the function body</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$collection</span><span class="var-description">: Array of items to search through</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionfind_foreign_key_for" id="functionfind_foreign_key_for"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">find_foreign_key_for</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a230">230</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Looks up the static property table_relations to see if there is a relationship  with $association_model which includes a foreign key specification.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the foreign key or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			find_foreign_key_for
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$association_model</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association_model</span><span class="var-description">: Name of the associated model</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionflatten" id="functionflatten"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">flatten</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a887">887</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Reduces a nested array to a flat array.</p>
+<p class="description"><p>This method is typically used to merge multiple collections of objects into one array.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array of objects or an empty array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			flatten
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$array</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$array</span><span class="var-description">: Array of arrays (typically) and objects</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionget_directive" id="functionget_directive"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">get_directive</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a285">285</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Extracts 'directive' out of $child_model array.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns directive or false if none was found</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			get_directive
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$child_model</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$child_model</span><span class="var-description">: Array containing 'directives' or the name of the child model</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionget_first" id="functionget_first"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">get_first</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a452">452</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns first element of an array</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns first item of array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			get_first
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$collection</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$collection</span><span class="var-description">: Array of items</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionget_first_error" id="functionget_first_error"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">get_first_error</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a1061">1061</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the first error message for this object.</p>
+<p class="description"><p>If you provide a property name $field, only the error stack for this property is checked,  otherwise the stack for the entire object.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the error message or false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			get_first_error
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$field</span><span class="var-description">: Name of the property to check (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionget_properties" id="functionget_properties"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">get_properties</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a940">940</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the public properties and their corresponding values for this object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an associative array of all properties of this model pointing to the corresponding values.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			get_properties
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functioninstantiate_all" id="functioninstantiate_all"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">instantiate_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a601">601</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates objects from a collection of properties.</p>
+<p class="description"><p>This function is typically used to convert form post data into a collection of objects.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns objects</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			instantiate_all
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$properties_collection</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$constants</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$properties_collection</span><span class="var-description">: Array of property arrays (key value pairs)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$constants</span><span class="var-description">: Constants to attach to each object as a property before saving (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionin_error" id="functionin_error"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">in_error</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a1048">1048</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Finds out if this object is &quot;in error&quot; (e.g. is not valid)  If you provide a property name $field, only the status of this property is checked,  otherwise the entire object.</p>
+<p class="description"><p>Please note that an error may also have been added for other reasons than an invalid state.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true if in error, otherwise false.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			in_error
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$field</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$field</span><span class="var-description">: Name of the property to check (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionloader" id="functionloader"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">loader</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a839">839</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Deconstructs a dynamic method call into a call to a loader</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an array objects, an object, or false if an error occured.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			loader
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$loader_name</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method called dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns used in the dynamically constructed WHERE clause</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$loader_name</span><span class="var-description">: Loader method to use</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionload_all" id="functionload_all"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">load_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a525">525</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads all objects of the table specified in model::$table_name</p>
+<p class="description"><p>For example, if your model looks like this:  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><a href="../Soda/user.html">user</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Soda/model.html">model</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-key">static&nbsp;</span><span class="src-var">$table_name&nbsp;</span>=&nbsp;<span class="src-str">'user'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+</ol></div></p><p>then calling $users = user::load_all() will return all users in the database as an array of Soda model objects.</p><p>This method uses an optional array of class names to load associated objects.</p><p>Example: $authors = author::load_all(false, $include = array('book'));</p><p>You can also specify nested relations:</p><p>$publishers = publishers::load_all(false, $include = array('author' =&gt; 'book'));</p><p>This will load all authors and their books as an object hierarchy residing in each publisher object.</p><p>Please note that there's also a 'singular' version of this function: model::load.</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			load_all
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$where_clause</span> = <span class="var-default">false</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$include</span> = <span class="var-default">false</span>], [<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$limitfrom</span> = <span class="var-default">null</span>], [<span class="var-type">int</span>&nbsp;<span class="var-name">$limitnum</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$where_clause</span><span class="var-description">: SQL where clause: use without the WHERE keyword (optional)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$include</span><span class="var-description">: Class names of associated models to include (optional)</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span><span class="var-description">: Array of sql parameters (optional)</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$limitfrom</span><span class="var-description">: Return a subset of records, starting at this point (optional, required if $limitnum is set).</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$limitnum</span><span class="var-description">: Return a subset comprising this many records (optional, required if $limitfrom is set).</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionload_association_through" id="functionload_association_through"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">load_association_through</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a305">305</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads associated models by if they appear in an association table together with  an object out of $objects.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			load_association_through
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$association</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$through</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of objects for which to find the associated models</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$association</span><span class="var-description">: Name of the association model</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$through</span><span class="var-description">: Name of the combining model (i.e. the association table)</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$order</span><span class="var-description">: Property by which to sort the associated object</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionmap_properties_to_values" id="functionmap_properties_to_values"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">map_properties_to_values</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a707">707</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Builds an associative array by using an array of property names as the keys and an array of arguments  as the values.</p>
+<p class="description"><p>This method is typically used to deconstruct a dynamic finder or loader call into a SQL where  clause which is used in default load or find call.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns an associative array of column names pointing to argument values</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			map_properties_to_values
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$property_names</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$property_names</span><span class="var-description">: Array of column names</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of values for the columns</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionno_more_associations_to_load" id="functionno_more_associations_to_load"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">no_more_associations_to_load</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a191">191</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">See if the associations array contains anything besides 'directives'</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns false if any of the keys is not a 'directive', otherwise true</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			no_more_associations_to_load
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$associations</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$associations</span><span class="var-description">: Array of 'directives' or association names</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionplural" id="functionplural"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">plural</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a899">899</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the plural version of the model name</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the plural version of the model name</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			plural
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionsave" id="functionsave"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">save</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a998">998</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Validates and saves the object.</p>
+<p class="description"><p>If the validation failes, the object is not saved. Instead, false is returned.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true upon success, otherwise false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			save
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$record_id</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$record_id</span><span class="var-description">: Id of the object to save (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsave_all" id="functionsave_all"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">save_all</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a567">567</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Calls save method on each object in array $objects.</p>
+<p class="description"><p>The default implementation for model::save is to perform a validation first.  If this fails, then no actual save takes place for that object. All other valid objects  are still saved.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns true if all objects were valid, otherwise false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			save_all
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>, [<span class="var-type">array</span>&nbsp;<span class="var-name">$constants</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Objects to save</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$constants</span><span class="var-description">: Constants to attach to each object as a property before saving (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsave_without_validation" id="functionsave_without_validation"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">save_without_validation</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a1012">1012</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Saves the object.</p>
+<p class="description"><p>If you provide a record id, or a valid id property is present, the object will be updated in the database.  Otherwise an insert will take place.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the record id of the object upon success, otherwise false</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			save_without_validation
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$record_id</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$record_id</span><span class="var-description">: Id of the object to save (optional)</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsort_by" id="functionsort_by"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">sort_by</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a339">339</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sorts an array of objects by a property or method.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns sorted array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			sort_by
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$property_or_method</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$order</span> = <span class="var-default">&amp;quot;ASC&amp;quot;</span>], <span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of objects to sort</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$property_or_method</span><span class="var-description">: Name of the property or method to sort by</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$order</span><span class="var-description">: Sorting order (defaults to 'ascending', e.g. a, .. , z or 0, .. n)</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$objects</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsort_by_method" id="functionsort_by_method"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">sort_by_method</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a378">378</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sorts an array of objects by a method, i.e. by comparing the output of the called method.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns sorted array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			sort_by_method
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$order</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of objects to sort</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to sort by</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$order</span><span class="var-description">: Sorting order (defaults to 'ascending', e.g. a, .. , z or 0, .. n)</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$objects</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsort_by_property" id="functionsort_by_property"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">sort_by_property</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a358">358</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sorts an array of objects by a property</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns sorted array</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			sort_by_property
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$objects</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$property</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$order</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$objects</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$objects</span><span class="var-description">: Array of objects to sort</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$property</span><span class="var-description">: Name of the property to sort by</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$order</span><span class="var-description">: Sorting order (defaults to 'ascending', e.g. a, .. , z or 0, .. n)</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$objects</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionvalidate" id="functionvalidate"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<span class="method-title">validate</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a958">958</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Validates the object.</p>
+<p class="description"><p>Calls all validation rules for this model.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns false if any of the validation rules failed, otherwise true</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			validate
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="function__callStatic" id="function__callStatic"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<span class="method-title">__callStatic</span> (line <span class="line-number"><a href="../__filesource/fsource_Soda__class.model.php.html#a638">638</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Delegates calls to non-existing method to a finder or loader.</p>
+<p class="description"><p>If the method is not found in static::$finder_signatures, an exception is thrown.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns mixed type</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			__callStatic
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$method</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$method</span><span class="var-description">: Name of the method to call dynamically</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: Array of arguments with the method</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 12 Jan 2012 10:54:22 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

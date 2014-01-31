@@ -1,0 +1,198 @@
+<script src="http://yui.yahooapis.com/2.9.0/build/selector/selector-min.js"></script>
+<script type="text/javascript">
+if (!Array.prototype.indexOf) { 
+    Array.prototype.indexOf = function(obj, start) {
+         for (var i = (start || 0), j = this.length; i < j; i++) {
+             if (this[i] === obj) { return i; }
+         }
+         return -1;
+    }
+}
+var courses = {<?php
+$i = 0;
+foreach ($courses as $course) {
+    echo "'" . $course->id . "': '" . $course->fullname . "'";
+    if ($i+1 !== count($courses)) {
+        echo ',';
+    }
+    $i++;
+}
+?>};
+var selected_courses, selected_groups, ds;
+YUI().use('node', function (Y) {
+  selected_courses = document.getElementById('courses').value.split(',');
+  selected_groups = document.getElementById('groups').value.split(',');
+
+  var nodes = YAHOO.util.Selector.query('input[type^=submit]');
+  for (i=0; i<nodes.length; i++) {
+    if (nodes[i].value == 'Save changes') {
+      nodes[i].style.display = 'none';
+    }
+  }
+
+  sd = document.createElement('div');
+  sd.className = 'course_selector';
+
+  // Courses selector header
+  sd.header = document.createElement('div');
+  sd.header.className = 'fitemtitle';
+  sd.header.innerHTML = '<label for="courses"><?php print_string('auth_intake_voucher_courses', 'auth_intake'); ?></label>';
+  sd.appendChild(sd.header);
+
+  sd.left = document.createElement('div');
+  sd.left.className = 'left panel_wide';
+
+  // Groups selector header
+  sd.header = document.createElement('div');
+  sd.header.className = 'fitemtitle';
+  sd.header.innerHTML = '<label for="groups"><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></label>';
+  sd.appendChild(sd.header);
+
+  sd.left = document.createElement('div');
+  sd.left.className = 'left panel_wide';
+
+  // Left header
+  sd.left.header = document.createElement('b');
+  sd.left.header.innerHTML = '<?php print_string('auth_intake_voucher_use_courses', 'auth_intake'); ?>';
+  sd.left.appendChild(sd.left.header);
+
+  // Left Selector
+  sd.left.selector = document.createElement('select');
+  sd.left.selector.opts = {};
+  sd.left.selector.multiple = 'multiple';
+  sd.left.appendChild(sd.left.selector);;
+  buildOptions(sd.left.selector, true);
+
+  // Controls
+  sd.mid  = document.createElement('div');
+  sd.mid.className = 'left panel_mid';
+  sd.mid.to = document.createElement('a');
+  sd.mid.to.href = 'javascript:void(0);';
+  sd.mid.to.innerHTML = '<?php print_string('auth_intake_add', 'auth_intake'); ?>';
+  sd.mid.to.onclick = function() {
+    var _selected = getSelection(sd.left.selector, true);
+    var _newly_selected = getSelection(sd.right.selector);
+    selected_courses = _selected.concat(_newly_selected);
+
+    redrawOptions();
+  }
+
+  sd.mid.divider = document.createElement('span');
+  sd.mid.divider.innerHTML = ' | ';
+
+
+  sd.mid.from = document.createElement('a');
+  sd.mid.from.href = 'javascript:void(0);';
+  sd.mid.from.innerHTML = '<?php print_string('auth_intake_remove', 'auth_intake'); ?>';
+  sd.mid.from.onclick = function() {
+    var _selected = getSelection(sd.left.selector);
+
+    for(i in _selected) {
+        if (_selected[i] !== '') {
+           var _value = _selected[i];
+           while(_selected.indexOf(_value) !== -1) {
+               _selected.splice(_selected.indexOf(_value));
+           }
+        }
+    }
+    selected_courses = _selected;
+
+    redrawOptions();
+  }
+  sd.mid.appendChild(sd.mid.to);
+  sd.mid.appendChild(sd.mid.divider);
+  sd.mid.appendChild(sd.mid.from);
+
+
+  // Right side
+  sd.right = document.createElement('div');
+  sd.right.className = 'left panel_wide';
+
+  // Right header
+  sd.right.header = document.createElement('b');
+  sd.right.header.innerHTML = '<?php print_string('auth_intake_voucher_other_courses', 'auth_intake'); ?>';
+  sd.right.appendChild(sd.right.header);
+
+  // Right Selector
+  sd.right.selector = document.createElement('select');
+  sd.right.selector.opts = {};
+  sd.right.selector.multiple = 'multiple';
+  sd.right.appendChild(sd.right.selector);
+  buildOptions(sd.right.selector, false);
+
+  sd.appendChild(sd.left);
+  sd.appendChild(sd.mid);
+  sd.appendChild(sd.right);
+
+  // Clear
+  sd.br = document.createElement('br');
+  sd.br.clear = 'all';
+  sd.appendChild(sd.br);
+
+  document.getElementById('fitem_id_use_dates').appendChild(sd);
+});
+
+function buildOptions(selector, condition) {
+  // Add one empty option
+  //selector.appendChild(document.createElement('option'))
+  for (id in courses) {
+    if ((selected_courses.indexOf(id) !== -1) == condition) {
+      selector.opts[id] = document.createElement('option');
+      selector.opts[id].value = id;
+      selector.opts[id].innerHTML = courses[id];
+      selector.appendChild(selector.opts[id]);
+    }
+  }
+}
+
+function cleanSelect(select) {
+  var _nodes = select.childNodes.length;
+  for (i=0; i<_nodes; i++) {
+    select.removeChild(select.lastChild);
+  }
+}
+
+function getSelection(o, skip_check){
+	if (o.options.length == 0) return [];
+
+	var selectedOptions = [];
+	for (var i = 0; i < o.options.length; i++) if (skip_check || o.options[i].selected) selectedOptions.push(o.options[i].value);
+	return selectedOptions;
+}
+
+function redrawOptions() {
+    cleanSelect(sd.left.selector);
+    cleanSelect(sd.right.selector);
+    buildOptions(sd.left.selector, true);
+    buildOptions(sd.right.selector, false);
+
+    
+    while (selected_courses.indexOf('') !== -1) {
+      selected_courses.splice(selected_courses.indexOf(''), 1);
+    }
+    document.getElementById('courses').value = selected_courses.join(',');
+}
+
+</script>
+<style>
+.course_selector {
+    width: 600px;
+    clear: both;
+}
+.course_selector br {
+    clear: both;
+}
+.left {
+    float: left;
+}
+.panel_wide {
+    width: 250px;
+}
+.panel_wide select {
+    width: 240px;
+}
+.panel_mid {
+    width: 100px;
+    padding-top: 30px;
+}
+</style>
