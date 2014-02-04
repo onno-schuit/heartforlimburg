@@ -1,4 +1,8 @@
 <?php
+    $string['select_course'] = '- Select course -';
+    $string['no_available_courses'] = 'No available repeatcourses';
+    $string['add_course'] = 'Add course';
+    
     $string['repeatcourse'] = "repeatcourse";
 	$string['modulename'] = "repeatcourse";
 	$string['modulenameplural'] = 'repeatcourses';

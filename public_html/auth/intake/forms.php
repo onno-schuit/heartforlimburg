@@ -1,4 +1,3 @@
-
 <?php
 
 class new_voucher_form extends moodleform {

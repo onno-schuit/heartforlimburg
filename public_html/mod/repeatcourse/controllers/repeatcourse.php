@@ -4,6 +4,14 @@ include_once("{$CFG->dirroot}/local/soda/class.controller.php");
 class repeatcourse_controller extends controller {
 
     function index() {
+        global $DB;
+        $courses = array();
+
+        $user_id = optional_param('user_id', 0, PARAM_INT);
+        if($user_id) {
+            $courses = $DB->get_records_sql('SELECT * FROM {course_categories} WHERE '. $DB->sql_like('name', ':repeat course'));
+        }
+
         $this->get_view();
     } // function index
 

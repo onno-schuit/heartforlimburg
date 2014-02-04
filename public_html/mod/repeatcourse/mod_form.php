@@ -19,6 +19,7 @@ class mod_repeatcourse_mod_form extends moodleform_mod {
         } else {
             $mform->setType('name', PARAM_CLEANHTML);
         }
+
         $mform->addRule('name', null, 'required', null, 'client');
         $this->add_intro_editor();
 
@@ -30,4 +31,3 @@ class mod_repeatcourse_mod_form extends moodleform_mod {
     }
 
 }
-?>
