@@ -1,48 +1,73 @@
-<? include( $this->get_partial_path('flash') );
-echo "<script src='./media/js/functions.js' type='text/javascript'></script>";
-global $DB; 
-$repeatCourseId = $DB->get_record('course_categories', array('name' => 'Repeat Courses'), 'id'); //courses from "Repeat Corse" category
-$repeatCourses = $DB->get_records('course', array('category'=>$repeatCourseId->id), '', 'id, fullname');
-$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse} WHERE course = '.$repeatCourseId->id); //courses from mod_repeatcourse table
-?>
+<? include( $this->get_partial_path('flash') ); ?>
 <h1>Configuring a repeatcourse "<?php echo $this->course->fullname;?>"</h1>
 <p><?php //echo "<pre>"; print_r($this);?></p>
-<table id="coursetable">
-    <tr>
-        <th>ID</th>
-        <th>Course</th>
-        <th>Ordering</th>
-        <th>Interval</th>
-        <th></th>
-    </tr>
-    <?php $i = 0;
-    foreach($curCourses as $val){
-        $i = 1 - $i;
-        echo '<tr class="row_'.$i.'">
-            <td>'.$val->id.'</td>
-            <td>'.$val->name.'</td>
-            <td>
-                '.$val->ordering.'
-                <a href="" class="priority_up"><img src="./media/images/triangle_up.gif" alt="Priority up" class="triangle_up"/></a>
-                <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
-            </td>
-            <td>'.$val->cinterval.'</td>
-            <td><a href="javascript:void();" class="remove_btn" id="course_'.$val->id.'">Remove</a></td>
-        </tr>';
-    } ?>
-</table>
-<div class="available_courses">
-    <?php if(sizeof($repeatCourses)){ ?>
-    <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
-    <select id="course_selector" onchange="course_selector_change()">
-        <option value="0"><?php print_string('select_course', 'repeatcourse');?></option>
-    <?php
-        foreach($repeatCourses as $course){
-            echo '<option value="'.$course->id.'">'.$course->fullname.'</option>';
-        }
-    ?>
-    </select>
-    <?php } else {
-            echo print_string('no_available_courses', 'repeatcourse');
-    } ?>
+<div id="coursetable_div">
+    <table id="coursetable">
+        <tr>
+            <th style="width: 5%;">ID</th>
+            <th style="width: 40%;">Course</th>
+            <th style="width: 20%;">Ordering</th>
+            <th style="width: 20%;">Interval</th>
+            <th style="width: 15%;"></th>
+        </tr>
+        <?php
+        foreach($curCourses as $val){
+            echo '<tr>
+                <td>'.$val->id.'</td>
+                <td>'.$val->name.'</td>
+                <td>
+                    '.$val->ordering.'
+                    <a href="" class="priority_up"><img src="./media/images/triangle_up.gif" alt="Priority up" class="triangle_up"/></a>
+                    <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
+                </td>
+                <td>'.$val->cinterval.'</td>
+                <td><a href="javascript:void();" class="remove_btn" id="course_'.$val->id.'">Remove</a></td>
+            </tr>';
+        } ?>
+    </table>
+    <div id="available_courses">
+        <?php if(sizeof($repeatCourses)){ ?>
+        <span>
+            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
+            <select id="course_selector">
+            <?php
+                foreach($repeatCourses as $course){
+                    echo '<option value="'.$course->id.'">'.$course->fullname.'</option>';
+                }
+            ?>
+            </select>
+        </span><span>
+            <label for="repcourse_interval">Interval (in days)</label>
+            <input id="repcourse_interval" type="number" placeholder="Enter interval (in days)" value="1"/>
+        </span><span>
+            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
+        </span>
+        <?php } else {
+                echo print_string('no_available_courses', 'repeatcourse');
+        } ?>
+    </div>
+    <div id="rep_course_buttons">
+        
+    </div>
 </div>
+<style>
+    #coursetable_div{
+        text-align:center;
+    }
+    table#coursetable {
+        margin: auto;
+        text-align: center;
+    }
+    table#coursetable td.row_1 {
+        
+    }
+    #available_courses,
+    #rep_course_buttons {
+        margin-top: 30px;
+    }
+    #available_courses span {
+        margin-left: 10px;
+        margin-right: 10px;
+        min-width: 50px;
+    }
+</style>

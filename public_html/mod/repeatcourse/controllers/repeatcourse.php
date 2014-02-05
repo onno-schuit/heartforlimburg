@@ -4,15 +4,17 @@ include_once("{$CFG->dirroot}/local/soda/class.controller.php");
 class repeatcourse_controller extends controller {
 
     function index() {
-        global $DB;
-        $courses = array();
+        global $DB ,$PAGE;
+        $PAGE->requires->js("/lib/jquery/jquery-1.10.2.min.js");
+        $PAGE->requires->js("/mod/repeatcourse/media/js/functions.js");
+        $repeatCourseId = $DB->get_record('course_categories', array('name' => 'Repeat Courses'), 'id'); //courses from "Repeat Corse" category
+        $repeatCourses = $DB->get_records('course', array('category'=>$repeatCourseId->id), '', 'id, fullname');
+        $curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse} WHERE course = '.$repeatCourseId->id." ORDER BY ordering"); //courses from mod_repeatcourse table
 
-        $user_id = optional_param('user_id', 0, PARAM_INT);
-        if($user_id) {
-            $courses = $DB->get_records_sql('SELECT * FROM {course_categories} WHERE '. $DB->sql_like('name', ':repeat course'));
-        }
-
-        $this->get_view();
+        $this->get_view(array(
+            'repeatCourses' => $repeatCourses,
+            'curCourses'    => $curCourses,
+        ));
     } // function index
 
 
