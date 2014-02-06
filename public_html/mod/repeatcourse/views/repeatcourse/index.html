@@ -12,7 +12,7 @@
         </tr>
         <?php
         foreach($curCourses as $val){
-            echo '<tr>
+            echo '<tr id="repcourse_'.$val->id.'">
                 <td>'.$val->id.'</td>
                 <td>'.$val->name.'</td>
                 <td>
@@ -21,7 +21,7 @@
                     <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
                 </td>
                 <td>'.$val->cinterval.'</td>
-                <td><a href="javascript:void();" class="remove_btn" id="course_'.$val->id.'">Remove</a></td>
+                <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
             </tr>';
         } ?>
     </table>
@@ -38,7 +38,7 @@
             </select>
         </span><span>
             <label for="repcourse_interval">Interval (in days)</label>
-            <input id="repcourse_interval" type="number" placeholder="Enter interval (in days)" value="1"/>
+            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
         </span><span>
             <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
         </span>
@@ -46,6 +46,7 @@
                 echo print_string('no_available_courses', 'repeatcourse');
         } ?>
     </div>
+    <div id="result_msg"></div>
     <div id="rep_course_buttons">
         
     </div>
@@ -62,12 +63,20 @@
         
     }
     #available_courses,
-    #rep_course_buttons {
-        margin-top: 30px;
+    #rep_course_buttons,
+    #result_msg {
+        margin-top: 15px;
+        min-height: 20px;
     }
     #available_courses span {
         margin-left: 10px;
         margin-right: 10px;
         min-width: 50px;
+    }
+    .msg_error{
+        color: red;
+    }
+    .msg_success{
+        color:green;
     }
 </style>
