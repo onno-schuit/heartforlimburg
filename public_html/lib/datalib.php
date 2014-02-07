@@ -1333,13 +1333,20 @@ function get_coursemodule_from_id($modulename, $cmid, $courseid=0, $sectionnum=f
         $sectionjoin  = "LEFT JOIN {course_sections} cw ON cw.id = cm.section";
     }
 
-    $sql = "SELECT cm.*, m.name, md.name AS modname $sectionfield
-              FROM {course_modules} cm
-                   JOIN {modules} md ON md.id = cm.module
-                   JOIN {".$modulename."} m ON m.id = cm.instance
-                   $sectionjoin
-             WHERE cm.id = :cmid AND md.name = :modulename
-                   $courseselect";
+    $moduleCondSel = $moduleCondJoin = '';
+    if($modulename != 'repeatcourse'){
+    	$moduleCondSel .= 'm.name, ';
+    	$moduleCondJoin .= "JOIN {".$modulename."} m ON m.id = cm.instance";
+    	
+    }
+
+    $sql = "SELECT cm.*, $moduleCondSel md.name AS modname $sectionfield
+    FROM {course_modules} cm
+    JOIN {modules} md ON md.id = cm.module
+    $moduleCondJoin
+    $sectionjoin
+    WHERE cm.id = :cmid AND md.name = :modulename
+    $courseselect";
 
     return $DB->get_record_sql($sql, $params, $strictness);
 }

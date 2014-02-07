@@ -2,10 +2,10 @@
 -- version 4.0.10
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jan 31, 2014 at 07:25 PM
--- Server version: 5.5.35-log
--- PHP Version: 5.4.22
+-- Хост: 127.0.0.1:3306
+-- Время создания: Фев 07 2014 г., 18:21
+-- Версия сервера: 5.5.35-log
+-- Версия PHP: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `moodle`
+-- База данных: `moodle`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign`
+-- Структура таблицы `mdl_assign`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign` (
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignfeedback_comments`
+-- Структура таблицы `mdl_assignfeedback_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_comments` (
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignfeedback_editpdf_annot`
+-- Структура таблицы `mdl_assignfeedback_editpdf_annot`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_annot` (
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_annot` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignfeedback_editpdf_cmnt`
+-- Структура таблицы `mdl_assignfeedback_editpdf_cmnt`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_cmnt` (
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_cmnt` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignfeedback_editpdf_quick`
+-- Структура таблицы `mdl_assignfeedback_editpdf_quick`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_quick` (
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_editpdf_quick` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignfeedback_file`
+-- Структура таблицы `mdl_assignfeedback_file`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_file` (
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignfeedback_file` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignment`
+-- Структура таблицы `mdl_assignment`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignment` (
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignment_submissions`
+-- Структура таблицы `mdl_assignment_submissions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignsubmission_file`
+-- Структура таблицы `mdl_assignsubmission_file`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_file` (
@@ -228,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_file` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assignsubmission_onlinetext`
+-- Структура таблицы `mdl_assignsubmission_onlinetext`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_onlinetext` (
@@ -245,7 +245,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assignsubmission_onlinetext` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign_grades`
+-- Структура таблицы `mdl_assign_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign_grades` (
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign_grades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign_plugin_config`
+-- Структура таблицы `mdl_assign_plugin_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign_plugin_config` (
@@ -287,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign_plugin_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign_submission`
+-- Структура таблицы `mdl_assign_submission`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign_submission` (
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign_submission` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign_user_flags`
+-- Структура таблицы `mdl_assign_user_flags`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign_user_flags` (
@@ -330,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign_user_flags` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_assign_user_mapping`
+-- Структура таблицы `mdl_assign_user_mapping`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assign_user_mapping` (
@@ -345,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `mdl_assign_user_mapping` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_auth_intake_vouchers`
+-- Структура таблицы `mdl_auth_intake_vouchers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_auth_intake_vouchers` (
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `mdl_auth_intake_vouchers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Vouchers storage' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_auth_intake_vouchers`
+-- Дамп данных таблицы `mdl_auth_intake_vouchers`
 --
 
 INSERT INTO `mdl_auth_intake_vouchers` (`id`, `code`, `count`, `used`, `courses`, `groups`, `active_from`, `active_till`) VALUES
@@ -372,7 +372,7 @@ INSERT INTO `mdl_auth_intake_vouchers` (`id`, `code`, `count`, `used`, `courses`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_backup_controllers`
+-- Структура таблицы `mdl_backup_controllers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_controllers` (
@@ -401,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_controllers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_backup_courses`
+-- Структура таблицы `mdl_backup_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_courses` (
@@ -418,7 +418,7 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_courses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_backup_logs`
+-- Структура таблицы `mdl_backup_logs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_logs` (
@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_logs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge`
+-- Структура таблицы `mdl_badge`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge` (
@@ -469,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_backpack`
+-- Структура таблицы `mdl_badge_backpack`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_backpack` (
@@ -487,7 +487,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_backpack` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_criteria`
+-- Структура таблицы `mdl_badge_criteria`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_criteria` (
@@ -504,7 +504,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_criteria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_criteria_met`
+-- Структура таблицы `mdl_badge_criteria_met`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_criteria_met` (
@@ -522,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_criteria_met` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_criteria_param`
+-- Структура таблицы `mdl_badge_criteria_param`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_criteria_param` (
@@ -537,7 +537,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_criteria_param` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_external`
+-- Структура таблицы `mdl_badge_external`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_external` (
@@ -551,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_external` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_issued`
+-- Структура таблицы `mdl_badge_issued`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_issued` (
@@ -572,7 +572,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_issued` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_badge_manual_award`
+-- Структура таблицы `mdl_badge_manual_award`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_badge_manual_award` (
@@ -592,7 +592,7 @@ CREATE TABLE IF NOT EXISTS `mdl_badge_manual_award` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_block`
+-- Структура таблицы `mdl_block`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block` (
@@ -606,7 +606,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='contains all installed blocks' AUTO_INCREMENT=41 ;
 
 --
--- Dumping data for table `mdl_block`
+-- Дамп данных таблицы `mdl_block`
 --
 
 INSERT INTO `mdl_block` (`id`, `name`, `cron`, `lastcron`, `visible`) VALUES
@@ -654,7 +654,7 @@ INSERT INTO `mdl_block` (`id`, `name`, `cron`, `lastcron`, `visible`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_block_community`
+-- Структура таблицы `mdl_block_community`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_community` (
@@ -670,7 +670,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_community` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_block_instances`
+-- Структура таблицы `mdl_block_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
@@ -686,10 +686,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_blocinst_parshopagsub_ix` (`parentcontextid`,`showinsubcontexts`,`pagetypepattern`,`subpagepattern`),
   KEY `mdl_blocinst_par_ix` (`parentcontextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=22 ;
 
 --
--- Dumping data for table `mdl_block_instances`
+-- Дамп данных таблицы `mdl_block_instances`
 --
 
 INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showinsubcontexts`, `pagetypepattern`, `subpagepattern`, `defaultregion`, `defaultweight`, `configdata`) VALUES
@@ -709,12 +709,16 @@ INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showin
 (14, 'search_forums', 25, 0, 'course-view-*', NULL, 'side-post', 0, ''),
 (15, 'news_items', 25, 0, 'course-view-*', NULL, 'side-post', 1, ''),
 (16, 'calendar_upcoming', 25, 0, 'course-view-*', NULL, 'side-post', 2, ''),
-(17, 'recent_activity', 25, 0, 'course-view-*', NULL, 'side-post', 3, '');
+(17, 'recent_activity', 25, 0, 'course-view-*', NULL, 'side-post', 3, ''),
+(18, 'search_forums', 39, 0, 'course-view-*', NULL, 'side-post', 0, ''),
+(19, 'news_items', 39, 0, 'course-view-*', NULL, 'side-post', 1, ''),
+(20, 'calendar_upcoming', 39, 0, 'course-view-*', NULL, 'side-post', 2, ''),
+(21, 'recent_activity', 39, 0, 'course-view-*', NULL, 'side-post', 3, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_block_positions`
+-- Структура таблицы `mdl_block_positions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
@@ -735,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_block_rss_client`
+-- Структура таблицы `mdl_block_rss_client`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_rss_client` (
@@ -752,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_rss_client` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_blog_association`
+-- Структура таблицы `mdl_blog_association`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
@@ -762,12 +766,19 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
   PRIMARY KEY (`id`),
   KEY `mdl_blogasso_con_ix` (`contextid`),
   KEY `mdl_blogasso_blo_ix` (`blogid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `mdl_blog_association`
+--
+
+INSERT INTO `mdl_blog_association` (`id`, `contextid`, `blogid`) VALUES
+(2, 25, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_blog_external`
+-- Структура таблицы `mdl_blog_external`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_blog_external` (
@@ -787,7 +798,7 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_external` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_book`
+-- Структура таблицы `mdl_book`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_book` (
@@ -807,7 +818,7 @@ CREATE TABLE IF NOT EXISTS `mdl_book` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_book_chapters`
+-- Структура таблицы `mdl_book_chapters`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_book_chapters` (
@@ -828,7 +839,7 @@ CREATE TABLE IF NOT EXISTS `mdl_book_chapters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_cache_filters`
+-- Структура таблицы `mdl_cache_filters`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_filters` (
@@ -845,7 +856,7 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_filters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_cache_flags`
+-- Структура таблицы `mdl_cache_flags`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
@@ -858,14 +869,14 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=16 ;
 
 --
--- Dumping data for table `mdl_cache_flags`
+-- Дамп данных таблицы `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1391172315, '1', 1391179515),
+(1, 'userpreferenceschanged', '2', 1391773788, '1', 1391780988),
 (2, 'accesslib/dirtycontexts', '/1/3/15', 1390572661, '1', 1390579861),
 (3, 'userpreferenceschanged', '3', 1390571158, '1', 1390578358),
 (4, 'userpreferenceschanged', '4', 1391168893, '1', 1391176093),
@@ -873,12 +884,18 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (6, 'accesslib/dirtycontexts', '/1/24/25', 1391086974, '1', 1391094174),
 (7, 'accesslib/dirtycontexts', '/1', 1390990751, '1', 1390997951),
 (8, 'userpreferenceschanged', '5', 1391086669, '1', 1391093869),
-(9, 'userpreferenceschanged', '6', 1391086727, '1', 1391093927);
+(9, 'userpreferenceschanged', '6', 1391442528, '1', 1391449728),
+(10, 'accesslib/dirtycontexts', '/1/24/25/33', 1391433588, '1', 1391440788),
+(11, 'accesslib/dirtycontexts', '/1/24/25/35', 1391441190, '1', 1391448390),
+(12, 'accesslib/dirtycontexts', '/1/24/25/34', 1391441192, '1', 1391448392),
+(13, 'accesslib/dirtycontexts', '/1/24/37', 1391774109, '1', 1391781309),
+(14, 'accesslib/dirtycontexts', '/1/24/39', 1391773924, '1', 1391781124),
+(15, 'accesslib/dirtycontexts', '/1/24/37/38', 1391774108, '1', 1391781308);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_cache_text`
+-- Структура таблицы `mdl_cache_text`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
@@ -889,20 +906,72 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=54 ;
 
 --
--- Dumping data for table `mdl_cache_text`
+-- Дамп данных таблицы `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(1, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1391179090),
-(2, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1391176492);
+(1, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1391773944),
+(2, 'f2a2a86d4a0f0adcce0428f36cead8e8', '<div class="no-overflow"><p>test course 4 repeatcourse module</p></div>', 1391773795),
+(3, '22b44ad09dae8876b5f39b4400b6b116', '<div class="no-overflow"><p>Course course</p></div>', 1391784127),
+(4, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1391784127),
+(5, 'd0bdc7b7321c9054ade83b89de8125c1', '<div class="no-overflow"><p>Repeat Courses Description</p></div>', 1391774255),
+(6, 'bcd2d79f338802c5541bff362f0cbcca', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1391774147),
+(7, '5349f7eb02bf5a4bd63a01c3bce68a94', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p></div>', 1391784127),
+(8, '2d30f6e1cc0171260e990757dc127216', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(9, 'c808e68d8543e489259bd11b33a2bfdf', '<p>There is currently no help associated with this resource or activity</p>\n', 1391774276),
+(10, '4a73b88cb798d33d047bd7aefbc863b9', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(11, 'f90cf1200cc30a18a96b21945b0fc5e5', '<p>The choice activity module enables a teacher to ask a single question and offer a selection of possible responses.</p>\n\n<p>Choice results may be published after students have answered, after a certain date, or not at all. Results may be published with student names or anonymously.</p>\n\n<p>A choice activity may be used</p>\n\n<ul><li>As a quick poll to stimulate thinking about a topic</li>\n<li>To quickly test students'' understanding</li>\n<li>To facilitate student decision-making, for example allowing students to vote on a direction for the course</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/choice/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(12, '1719552d25840df13faabef25f0f5c57', '<p>The database activity module enables participants to create, maintain and search a collection of entries (i.e. records).  The structure of the entries is defined by the teacher as a number of fields. Field types include checkbox, radio buttons, dropdown menu, text area, URL, picture and uploaded file.</p>\n\n<p>The visual layout of information when listing, viewing or editing database entries may be controlled by database templates. Database activities may be shared between courses as presets and a teacher may also import and export database entries.</p>\n\n<p>If the database auto-linking filter is enabled, any entries in a database will be automatically linked where the words or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Database activities have many uses, such as</p>\n\n<ul><li>A collaborative collection of web links, books, book reviews, journal references etc</li>\n<li>For displaying student-created photos, posters, websites or poems for peer comment and review</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/data/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(13, 'c20b6d72a1237be7e676e5b72d38be6a', '<p>The external tool activity module enables students to interact with learning resources and activities on other web sites. For example, an external tool could provide access to a new activity type or learning materials from a publisher.</p>\n\n<p>To create an external tool activity, a tool provider which supports LTI (Learning Tools Interoperability) is required. A teacher can create an external tool activity or make use of a tool configured by the site administrator.</p>\n\n<p>External tool activities differ from URL resources in a few ways:</p>\n\n<ul><li>External tools are context aware i.e. they have access to information about the user who launched the tool, such as institution, course and name</li>\n<li>External tools support reading, updating, and deleting grades associated with the activity instance</li>\n<li>External tool configurations create a trust relationship between your site and the tool provider, allowing secure communication between them</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lti/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(14, 'b94cba869ec1de974f231b77e279a236', '<p>The forum activity module enables participants to have asynchronous discussions i.e. discussions that take place over an extended period of time.</p>\n\n<p>There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students'' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.</p>\n\n<p>Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.</p>\n\n<p>Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Forums have many uses, such as</p>\n\n<ul><li>A social space for students to get to know each other</li>\n<li>For course announcements (using a news forum with forced subscription)</li>\n<li>For discussing course content or reading materials</li>\n<li>For continuing online an issue raised previously in a face-to-face session</li>\n<li>For teacher-only discussions (using a hidden forum)</li>\n<li>A help centre where tutors and students can give advice</li>\n<li>A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)</li>\n<li>For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions to</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/forum/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774276),
+(15, 'b21dd50e222f6b0993e5f78438972438', '<p>The glossary activity module enables participants to create and maintain a list of definitions, like a dictionary, or to collect and organise resources or information.</p>\n\n<p>A teacher can allow files to be attached to glossary entries. Attached images are displayed in the entry. Entries can be searched or browsed alphabetically or by category, date or author. Entries can be approved by default or require approval by a teacher before they are viewable by everyone.</p>\n\n<p>If the glossary auto-linking filter is enabled, entries will be automatically linked where the concept words and/or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Glossaries have many uses, such as</p>\n\n<ul><li>A collaborative bank of key terms</li>\n<li>A ‘getting to know you’ space where new students add their name and personal details</li>\n<li>A ‘handy tips’ resource of best practice in a practical subject</li>\n<li>A sharing area of useful videos, images or sound files</li>\n<li>A revision resource of facts to remember</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/glossary/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(16, '193503aec0d364c7c4db3afb0271aa5f', '<p>The lesson activity module enables a teacher to deliver content and/or practice activities in  interesting and flexible ways. A teacher can use the lesson to create a linear set of content pages or instructional activities that offer a variety of paths or options for the learner. In either case, teachers can choose to increase engagement and ensure understanding by including a variety of questions, such as multiple choice, matching and short answer. Depending on the student''s choice of answer and how the teacher develops the lesson, students may progress to the next page, be taken back to a previous page or redirected down a different path entirely.</p>\n\n<p>A lesson may be graded, with the grade recorded in the gradebook.</p>\n\n<p>Lessons may be used</p>\n\n<ul><li>For self-directed learning of a new topic</li>\n<li>For  scenarios or simulations/decision-making exercises</li>\n<li>For differentiated revision, with different sets of revision questions depending upon answers given to initial questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lesson/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(17, '5382128cce2ebacbc1f28144113892a6', '<p>The quiz activity enables a teacher to create quizzes comprising questions of various types, including multiple choice, matching, short-answer and numerical.</p>\n\n<p>The teacher can allow the quiz to be attempted multiple times, with the questions shuffled or randomly selected from the question bank. A time limit may be set.</p>\n\n<p>Each attempt is marked automatically, with the exception of essay questions, and the grade is recorded in the gradebook.</p>\n\n<p>The teacher can choose when and if hints, feedback and correct answers are shown to students.</p>\n\n<p>Quizzes may be used</p>\n\n<ul><li>As course exams</li>\n<li>As mini tests for reading assignments or at the end of a topic</li>\n<li>As exam practice using questions from past exams</li>\n<li>To deliver immediate feedback about performance</li>\n<li>For self-assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/quiz/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(18, '1d3bec8ae214248288959df04290fea7', '<p>Manage your repeatcourses</p>\n', 1391774277),
+(19, 'f8dbd0ee54c3cde2c6763c07978fec2a', '<p>Manage your roses</p>\n', 1391774277),
+(20, 'b3d7e80c58f2b3d021ae1ef98f734f99', '<p>A SCORM package is a collection of files which are packaged according to an agreed standard for learning objects. The SCORM activity module enables SCORM or AICC packages to be uploaded as a zip file and added to a course.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a table of contents, with navigation buttons etc. SCORM activities generally include questions, with grades being recorded in the gradebook.</p>\n\n<p>SCORM activities may be used</p>\n\n<ul><li>For presenting multimedia content and animations</li>\n<li>As an assessment tool</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/scorm/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(21, 'c54c7cde3e0ad1c9a320f6bbcd7960aa', '<p>The survey activity module provides a number of verified survey instruments that have been found useful in assessing and stimulating learning in online environments. A teacher can use these to gather data from their students that will help them learn about their class and reflect on their own teaching.</p>\n\n<p>Note that these survey tools are pre-populated with questions. Teachers who wish to create their own survey should use the feedback activity module.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/survey/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(22, '257e116fa0048827c071b6b084ad21c2', '<p>The wiki activity module enables participants to add and edit a collection of web pages. A wiki can be collaborative, with everyone being able to edit it, or individual, where everyone has their own wiki which only they can edit.</p>\n\n<p>A history of previous versions of each page in the wiki is kept, listing the edits made by each participant.</p>\n\n<p>Wikis have many uses, such as</p>\n\n<ul><li>For group lecture notes or study guides</li>\n<li>For members of a faculty to plan a scheme of work or meeting agenda together</li>\n<li>For students to collaboratively author an online book, creating content on a topic set by their tutor</li>\n<li>For collaborative storytelling or poetry creation, where each participant writes a line or verse</li>\n<li>As a personal journal for examination notes or revision (using an individual wiki)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/wiki/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(23, '4859a0799d3c7577de1cb72f1f3b7fc8', '<p>The workshop activity module enables the collection, review and peer assessment of students'' work.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents or spreadsheets and can also type text directly into a field using the text editor.</p>\n\n<p>Submissions are assessed using a multi-criteria assessment form defined by the teacher. The process of peer assessment and understanding the assessment form can be practised in advance with example submissions provided by the teacher, together with a reference assessment. Students are given the opportunity to assess one or more of their peers'' submissions. Submissions and reviewers may be anonymous if required.</p>\n\n<p>Students obtain two grades in a workshop activity - a grade for their submission and a grade for their assessment of their peers'' submissions. Both grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/workshop/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(24, '256d8d6484d12ab6f9adf4a3a86d1217', '<p>The book module enables a teacher to create a multi-page resource in a book-like format, with chapters and subchapters. Books can contain media files as well as text and are useful for displaying lengthy passages of information which can be broken down into sections.</p>\n\n<p>A book may be used</p>\n\n<ul><li>To display reading material for individual modules of study</li>\n<li>As a staff departmental handbook</li>\n<li>As a showcase portfolio of student work</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/book/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(25, '435f2e4f7e0f85cdbde191008ae052c2', '<p>The file module enables a teacher to provide a file as a course resource. Where possible, the file will be displayed within the course interface; otherwise students will be prompted to download it. The file may include supporting files, for example an HTML page may have embedded images or Flash objects.</p>\n\n<p>Note that students need to have the appropriate software on their computers in order to open the file.</p>\n\n<p>A file may be used</p>\n\n<ul><li>To share presentations given in class</li>\n<li>To include a mini website as a course resource</li>\n<li>To provide draft files of certain software programs (eg Photoshop .psd) so students can edit and submit them for assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/resource/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(26, 'e82847c603ddc2e241cd320d42110ee6', '<p>The folder module enables a teacher to display a number of related files inside a single folder, reducing scrolling on the course page. A zipped folder may be uploaded and unzipped for display, or an empty folder created and files uploaded into it.</p>\n\n<p>A folder may be used</p>\n\n<ul><li>For a series of files on one topic, for example a set of past examination papers in pdf format or a collection of image files for use in student projects</li>\n<li>To provide a shared uploading space for teachers on the course page (keeping the folder hidden so that only teachers can see it)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/folder/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(27, 'c284acdc8cccade8857fc8256b41ee06', '<p>An IMS content package is a collection of files which are packaged according to an agreed standard so they can be reused in different systems. The IMS content package module enables such content packages to be uploaded as a zip file and added to a course as a resource.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a navigation menu or buttons etc.</p>\n\n<p>An IMS content package may be used for presenting multimedia content and animations.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/imscp/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(28, '900796ea45eff5a2780bb6aabd1b0af4', '<p>The label module enables text and multimedia to be inserted into the course page in between links to other resources and activities. Labels are very versatile and can help to improve the appearance of a course if used thoughtfully.</p>\n\n<p>Labels may be used</p>\n\n<ul><li>To split up a long list of activities with a subheading or an image</li>\n<li>To display an embedded sound file or video directly on the course page</li>\n<li>To add a short description to a course section</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/label/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(29, '665f09ed5693386fdd4acb149045b2fe', '<p>The page module enables a teacher to create a web page resource using the text editor. A page can display text, images, sound, video, web links and embedded code, such as Google maps.</p>\n\n<p>Advantages of using the page module rather than the file module include the resource being more accessible (for example to users of mobile devices) and easier to update.</p>\n\n<p>For large amounts of content, it''s recommended that a book is used rather than a page.</p>\n\n<p>A page may be used</p>\n\n<ul><li>To present the terms and conditions of a course or a summary of the course syllabus</li>\n<li>To embed several videos or sound files together with some explanatory text</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/page/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(30, '5db7f1963ee4578e65459e188b270b46', '<p>The URL module enables a teacher to provide a web link as a course resource. Anything that is freely available online, such as documents or images, can be linked to; the URL doesn’t have to be the home page of a website. The URL of a particular web page may be copied and pasted or a teacher can use the file picker and choose a link from a repository such as Flickr, YouTube or Wikimedia (depending upon which repositories are enabled for the site).</p>\n\n<p>There are a number of display options for the URL, such as embedded or opening in a new window and advanced options for passing information, such as a student''s name, to the URL if required.</p>\n\n<p>Note that URLs can also be added to any other resource or activity type through the text editor.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/url/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391774277),
+(31, 'b3b96d06c4a1d5573e4e1748eb6ed240', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(32, '054ebf66d81ad73b8fefada55259264e', '<p>There is currently no help associated with this resource or activity</p>\n', 1391784126),
+(33, 'fd9beec57f580c16c62949e5723a5fb0', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(34, '551e50551dd8f3c746f06bd7fd38ef40', '<p>The choice activity module enables a teacher to ask a single question and offer a selection of possible responses.</p>\n\n<p>Choice results may be published after students have answered, after a certain date, or not at all. Results may be published with student names or anonymously.</p>\n\n<p>A choice activity may be used</p>\n\n<ul><li>As a quick poll to stimulate thinking about a topic</li>\n<li>To quickly test students'' understanding</li>\n<li>To facilitate student decision-making, for example allowing students to vote on a direction for the course</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/choice/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(35, '05805a6da5a9359014bae12839c35557', '<p>The database activity module enables participants to create, maintain and search a collection of entries (i.e. records).  The structure of the entries is defined by the teacher as a number of fields. Field types include checkbox, radio buttons, dropdown menu, text area, URL, picture and uploaded file.</p>\n\n<p>The visual layout of information when listing, viewing or editing database entries may be controlled by database templates. Database activities may be shared between courses as presets and a teacher may also import and export database entries.</p>\n\n<p>If the database auto-linking filter is enabled, any entries in a database will be automatically linked where the words or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Database activities have many uses, such as</p>\n\n<ul><li>A collaborative collection of web links, books, book reviews, journal references etc</li>\n<li>For displaying student-created photos, posters, websites or poems for peer comment and review</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/data/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(36, 'ee49ffe1acaedfd074bd0f615318b3ce', '<p>The external tool activity module enables students to interact with learning resources and activities on other web sites. For example, an external tool could provide access to a new activity type or learning materials from a publisher.</p>\n\n<p>To create an external tool activity, a tool provider which supports LTI (Learning Tools Interoperability) is required. A teacher can create an external tool activity or make use of a tool configured by the site administrator.</p>\n\n<p>External tool activities differ from URL resources in a few ways:</p>\n\n<ul><li>External tools are context aware i.e. they have access to information about the user who launched the tool, such as institution, course and name</li>\n<li>External tools support reading, updating, and deleting grades associated with the activity instance</li>\n<li>External tool configurations create a trust relationship between your site and the tool provider, allowing secure communication between them</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lti/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(37, '7adb028bee9962c451cb94efcda99f6c', '<p>The forum activity module enables participants to have asynchronous discussions i.e. discussions that take place over an extended period of time.</p>\n\n<p>There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students'' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.</p>\n\n<p>Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.</p>\n\n<p>Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Forums have many uses, such as</p>\n\n<ul><li>A social space for students to get to know each other</li>\n<li>For course announcements (using a news forum with forced subscription)</li>\n<li>For discussing course content or reading materials</li>\n<li>For continuing online an issue raised previously in a face-to-face session</li>\n<li>For teacher-only discussions (using a hidden forum)</li>\n<li>A help centre where tutors and students can give advice</li>\n<li>A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)</li>\n<li>For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions to</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/forum/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(38, 'b967094cc160212336b40cb982f17b46', '<p>The glossary activity module enables participants to create and maintain a list of definitions, like a dictionary, or to collect and organise resources or information.</p>\n\n<p>A teacher can allow files to be attached to glossary entries. Attached images are displayed in the entry. Entries can be searched or browsed alphabetically or by category, date or author. Entries can be approved by default or require approval by a teacher before they are viewable by everyone.</p>\n\n<p>If the glossary auto-linking filter is enabled, entries will be automatically linked where the concept words and/or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Glossaries have many uses, such as</p>\n\n<ul><li>A collaborative bank of key terms</li>\n<li>A ‘getting to know you’ space where new students add their name and personal details</li>\n<li>A ‘handy tips’ resource of best practice in a practical subject</li>\n<li>A sharing area of useful videos, images or sound files</li>\n<li>A revision resource of facts to remember</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/glossary/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(39, '5bfa691cfddc867af061ec91fbfb6dce', '<p>The lesson activity module enables a teacher to deliver content and/or practice activities in  interesting and flexible ways. A teacher can use the lesson to create a linear set of content pages or instructional activities that offer a variety of paths or options for the learner. In either case, teachers can choose to increase engagement and ensure understanding by including a variety of questions, such as multiple choice, matching and short answer. Depending on the student''s choice of answer and how the teacher develops the lesson, students may progress to the next page, be taken back to a previous page or redirected down a different path entirely.</p>\n\n<p>A lesson may be graded, with the grade recorded in the gradebook.</p>\n\n<p>Lessons may be used</p>\n\n<ul><li>For self-directed learning of a new topic</li>\n<li>For  scenarios or simulations/decision-making exercises</li>\n<li>For differentiated revision, with different sets of revision questions depending upon answers given to initial questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lesson/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(40, '0424a8b783271a177c887d306f0cd4c6', '<p>The quiz activity enables a teacher to create quizzes comprising questions of various types, including multiple choice, matching, short-answer and numerical.</p>\n\n<p>The teacher can allow the quiz to be attempted multiple times, with the questions shuffled or randomly selected from the question bank. A time limit may be set.</p>\n\n<p>Each attempt is marked automatically, with the exception of essay questions, and the grade is recorded in the gradebook.</p>\n\n<p>The teacher can choose when and if hints, feedback and correct answers are shown to students.</p>\n\n<p>Quizzes may be used</p>\n\n<ul><li>As course exams</li>\n<li>As mini tests for reading assignments or at the end of a topic</li>\n<li>As exam practice using questions from past exams</li>\n<li>To deliver immediate feedback about performance</li>\n<li>For self-assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/quiz/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(41, '27bc126975b3f37e28d88dfdbaa83ca6', '<p>Manage your repeatcourses</p>\n', 1391784126),
+(42, '252bdab89ec43ec81f3619f089fa2067', '<p>Manage your roses</p>\n', 1391784126),
+(43, '4522fb98ca03317048ade230aba36db7', '<p>A SCORM package is a collection of files which are packaged according to an agreed standard for learning objects. The SCORM activity module enables SCORM or AICC packages to be uploaded as a zip file and added to a course.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a table of contents, with navigation buttons etc. SCORM activities generally include questions, with grades being recorded in the gradebook.</p>\n\n<p>SCORM activities may be used</p>\n\n<ul><li>For presenting multimedia content and animations</li>\n<li>As an assessment tool</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/scorm/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(44, '04d5be698c921e9f84bb87be5f0a633a', '<p>The survey activity module provides a number of verified survey instruments that have been found useful in assessing and stimulating learning in online environments. A teacher can use these to gather data from their students that will help them learn about their class and reflect on their own teaching.</p>\n\n<p>Note that these survey tools are pre-populated with questions. Teachers who wish to create their own survey should use the feedback activity module.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/survey/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(45, '08f28a445ef00792bd2e9e698fdc0e70', '<p>The wiki activity module enables participants to add and edit a collection of web pages. A wiki can be collaborative, with everyone being able to edit it, or individual, where everyone has their own wiki which only they can edit.</p>\n\n<p>A history of previous versions of each page in the wiki is kept, listing the edits made by each participant.</p>\n\n<p>Wikis have many uses, such as</p>\n\n<ul><li>For group lecture notes or study guides</li>\n<li>For members of a faculty to plan a scheme of work or meeting agenda together</li>\n<li>For students to collaboratively author an online book, creating content on a topic set by their tutor</li>\n<li>For collaborative storytelling or poetry creation, where each participant writes a line or verse</li>\n<li>As a personal journal for examination notes or revision (using an individual wiki)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/wiki/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(46, 'b0c42fb764fa0a95b47a22488997b9f3', '<p>The workshop activity module enables the collection, review and peer assessment of students'' work.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents or spreadsheets and can also type text directly into a field using the text editor.</p>\n\n<p>Submissions are assessed using a multi-criteria assessment form defined by the teacher. The process of peer assessment and understanding the assessment form can be practised in advance with example submissions provided by the teacher, together with a reference assessment. Students are given the opportunity to assess one or more of their peers'' submissions. Submissions and reviewers may be anonymous if required.</p>\n\n<p>Students obtain two grades in a workshop activity - a grade for their submission and a grade for their assessment of their peers'' submissions. Both grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/workshop/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(47, 'a3ec5f060ae5bdd9344f77bb66289ee3', '<p>The book module enables a teacher to create a multi-page resource in a book-like format, with chapters and subchapters. Books can contain media files as well as text and are useful for displaying lengthy passages of information which can be broken down into sections.</p>\n\n<p>A book may be used</p>\n\n<ul><li>To display reading material for individual modules of study</li>\n<li>As a staff departmental handbook</li>\n<li>As a showcase portfolio of student work</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/book/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(48, 'd49ca31e0ff040004945a2dd278349e4', '<p>The file module enables a teacher to provide a file as a course resource. Where possible, the file will be displayed within the course interface; otherwise students will be prompted to download it. The file may include supporting files, for example an HTML page may have embedded images or Flash objects.</p>\n\n<p>Note that students need to have the appropriate software on their computers in order to open the file.</p>\n\n<p>A file may be used</p>\n\n<ul><li>To share presentations given in class</li>\n<li>To include a mini website as a course resource</li>\n<li>To provide draft files of certain software programs (eg Photoshop .psd) so students can edit and submit them for assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/resource/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(49, '976e3c348719e8b55e8c2628d310f1d9', '<p>The folder module enables a teacher to display a number of related files inside a single folder, reducing scrolling on the course page. A zipped folder may be uploaded and unzipped for display, or an empty folder created and files uploaded into it.</p>\n\n<p>A folder may be used</p>\n\n<ul><li>For a series of files on one topic, for example a set of past examination papers in pdf format or a collection of image files for use in student projects</li>\n<li>To provide a shared uploading space for teachers on the course page (keeping the folder hidden so that only teachers can see it)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/folder/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(50, 'ad35eab77980a2f32f0462f443495ffb', '<p>An IMS content package is a collection of files which are packaged according to an agreed standard so they can be reused in different systems. The IMS content package module enables such content packages to be uploaded as a zip file and added to a course as a resource.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a navigation menu or buttons etc.</p>\n\n<p>An IMS content package may be used for presenting multimedia content and animations.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/imscp/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(51, '5cfb1e9637777f42d28b606ed7b2d098', '<p>The label module enables text and multimedia to be inserted into the course page in between links to other resources and activities. Labels are very versatile and can help to improve the appearance of a course if used thoughtfully.</p>\n\n<p>Labels may be used</p>\n\n<ul><li>To split up a long list of activities with a subheading or an image</li>\n<li>To display an embedded sound file or video directly on the course page</li>\n<li>To add a short description to a course section</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/label/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126),
+(52, 'b43b5acecb9a8c713494d3d43a149f6a', '<p>The page module enables a teacher to create a web page resource using the text editor. A page can display text, images, sound, video, web links and embedded code, such as Google maps.</p>\n\n<p>Advantages of using the page module rather than the file module include the resource being more accessible (for example to users of mobile devices) and easier to update.</p>\n\n<p>For large amounts of content, it''s recommended that a book is used rather than a page.</p>\n\n<p>A page may be used</p>\n\n<ul><li>To present the terms and conditions of a course or a summary of the course syllabus</li>\n<li>To embed several videos or sound files together with some explanatory text</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/page/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126);
+INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
+(53, '460bb9070667fb9513830d14fd0a5e76', '<p>The URL module enables a teacher to provide a web link as a course resource. Anything that is freely available online, such as documents or images, can be linked to; the URL doesn’t have to be the home page of a website. The URL of a particular web page may be copied and pasted or a teacher can use the file picker and choose a link from a repository such as Flickr, YouTube or Wikimedia (depending upon which repositories are enabled for the site).</p>\n\n<p>There are a number of display options for the URL, such as embedded or opening in a new window and advanced options for passing information, such as a student''s name, to the URL if required.</p>\n\n<p>Note that URLs can also be added to any other resource or activity type through the text editor.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/url/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1391605539/docs" />More help</a></div>\n', 1391784126);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_capabilities`
+-- Структура таблицы `mdl_capabilities`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_capabilities` (
@@ -914,10 +983,10 @@ CREATE TABLE IF NOT EXISTS `mdl_capabilities` (
   `riskbitmask` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_capa_nam_uix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='this defines all capabilities' AUTO_INCREMENT=514 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='this defines all capabilities' AUTO_INCREMENT=517 ;
 
 --
--- Dumping data for table `mdl_capabilities`
+-- Дамп данных таблицы `mdl_capabilities`
 --
 
 INSERT INTO `mdl_capabilities` (`id`, `name`, `captype`, `contextlevel`, `component`, `riskbitmask`) VALUES
@@ -1426,12 +1495,15 @@ INSERT INTO `mdl_capabilities` (`id`, `name`, `captype`, `contextlevel`, `compon
 (510, 'mod/assign:manageallocations', 'write', 70, 'mod_assign', 0),
 (511, 'repository/areafiles:view', 'read', 70, 'repository_areafiles', 0),
 (512, 'repository/skydrive:view', 'read', 70, 'repository_skydrive', 0),
-(513, 'tool/uploaduser:uploaduserpictures', 'write', 10, 'tool_uploaduser', 16);
+(513, 'tool/uploaduser:uploaduserpictures', 'write', 10, 'tool_uploaduser', 16),
+(514, 'mod/rose:addinstance', 'write', 50, 'mod_rose', 4),
+(515, 'mod/rose:edit', 'write', 70, 'mod_rose', 0),
+(516, 'mod/rose:submit', 'write', 70, 'mod_rose', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_certificate`
+-- Структура таблицы `mdl_certificate`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_certificate` (
@@ -1470,7 +1542,7 @@ CREATE TABLE IF NOT EXISTS `mdl_certificate` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_certificate_issues`
+-- Структура таблицы `mdl_certificate_issues`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_certificate_issues` (
@@ -1485,7 +1557,7 @@ CREATE TABLE IF NOT EXISTS `mdl_certificate_issues` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_chat`
+-- Структура таблицы `mdl_chat`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat` (
@@ -1506,7 +1578,7 @@ CREATE TABLE IF NOT EXISTS `mdl_chat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_chat_messages`
+-- Структура таблицы `mdl_chat_messages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_messages` (
@@ -1527,7 +1599,7 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_chat_messages_current`
+-- Структура таблицы `mdl_chat_messages_current`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_messages_current` (
@@ -1548,7 +1620,7 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages_current` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_chat_users`
+-- Структура таблицы `mdl_chat_users`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_users` (
@@ -1574,7 +1646,7 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_choice`
+-- Структура таблицы `mdl_choice`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice` (
@@ -1600,7 +1672,7 @@ CREATE TABLE IF NOT EXISTS `mdl_choice` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_choice_answers`
+-- Структура таблицы `mdl_choice_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice_answers` (
@@ -1618,7 +1690,7 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_answers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_choice_options`
+-- Структура таблицы `mdl_choice_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice_options` (
@@ -1634,7 +1706,7 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_options` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_cohort`
+-- Структура таблицы `mdl_cohort`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cohort` (
@@ -1652,7 +1724,7 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each record represents one cohort (aka site-wide group).' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mdl_cohort`
+-- Дамп данных таблицы `mdl_cohort`
 --
 
 INSERT INTO `mdl_cohort` (`id`, `contextid`, `name`, `idnumber`, `description`, `descriptionformat`, `component`, `timecreated`, `timemodified`) VALUES
@@ -1661,7 +1733,7 @@ INSERT INTO `mdl_cohort` (`id`, `contextid`, `name`, `idnumber`, `description`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_cohort_members`
+-- Структура таблицы `mdl_cohort_members`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cohort_members` (
@@ -1678,7 +1750,7 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort_members` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_comments`
+-- Структура таблицы `mdl_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_comments` (
@@ -1696,7 +1768,7 @@ CREATE TABLE IF NOT EXISTS `mdl_comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_config`
+-- Структура таблицы `mdl_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config` (
@@ -1708,7 +1780,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Moodle configuration variables' AUTO_INCREMENT=447 ;
 
 --
--- Dumping data for table `mdl_config`
+-- Дамп данных таблицы `mdl_config`
 --
 
 INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
@@ -1730,8 +1802,8 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (17, 'mnet_all_hosts_id', '2'),
 (18, 'siteguest', '1'),
 (19, 'siteadmins', '2'),
-(20, 'themerev', '1391172212'),
-(21, 'jsrev', '1391172212'),
+(20, 'themerev', '1391605539'),
+(21, 'jsrev', '1391606671'),
 (22, 'licenses', 'unknown,allrightsreserved,public,cc,cc-nd,cc-nc-nd,cc-nc,cc-nc-sa,cc-sa'),
 (23, 'version', '2013111801.03'),
 (24, 'enableoutcomes', '0'),
@@ -1828,8 +1900,8 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (116, 'lang', 'en'),
 (117, 'langmenu', '1'),
 (118, 'langlist', ''),
-(119, 'langcache', '1'),
-(120, 'langstringcache', '1'),
+(119, 'langcache', '0'),
+(120, 'langstringcache', '0'),
 (121, 'locale', ''),
 (122, 'latinexcelexport', '0'),
 (124, 'authpreventaccountcreation', '0'),
@@ -1962,7 +2034,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (251, 'enableajax', '1'),
 (252, 'useexternalyui', '0'),
 (253, 'yuicomboloading', '1'),
-(254, 'cachejs', '1'),
+(254, 'cachejs', '0'),
 (255, 'modchooserdefault', '1'),
 (256, 'additionalhtmlhead', ''),
 (257, 'additionalhtmltopofbody', ''),
@@ -2104,8 +2176,8 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (398, 'forum_lastreadclean', '1390821670'),
 (399, 'scorm_updatetimelast', '1390821670'),
 (400, 'fileslastcleanup', '1390821670'),
-(401, 'langrev', '1391172212'),
-(402, 'localcachedirpurged', '1391172212'),
+(401, 'langrev', '1391605539'),
+(402, 'localcachedirpurged', '1391605539'),
 (404, 'enableblogs', '1'),
 (405, 'filesrootrecordsfixed', '1'),
 (406, 'movingmoduleupgradescriptwasrun', '1'),
@@ -2138,7 +2210,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (433, 'courseoverviewfilesext', '.jpg,.gif,.png'),
 (434, 'frontpagecourselimit', '200'),
 (435, 'updateautodeploy', '0'),
-(437, 'allversionshash', '9d2d46cff26f2bf50b0e2ec00436c23decf38768'),
+(437, 'allversionshash', '5b93c15c56d05f2d2892dd32682c0b9ff56addc1'),
 (438, 'completiondefault', '1'),
 (439, 'forum_trackingtype', '1'),
 (440, 'forum_allowforcedreadtracking', '0'),
@@ -2152,7 +2224,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_config_log`
+-- Структура таблицы `mdl_config_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config_log` (
@@ -2166,10 +2238,10 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
   PRIMARY KEY (`id`),
   KEY `mdl_conflog_tim_ix` (`timemodified`),
   KEY `mdl_conflog_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=936 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=939 ;
 
 --
--- Dumping data for table `mdl_config_log`
+-- Дамп данных таблицы `mdl_config_log`
 --
 
 INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, `value`, `oldvalue`) VALUES
@@ -3108,12 +3180,15 @@ INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, 
 (932, 2, 1391087384, NULL, 'registerauth', '', 'intake'),
 (933, 2, 1391087413, NULL, 'registerauth', 'intake', ''),
 (934, 2, 1391090517, NULL, 'registerauth', 'email', 'intake'),
-(935, 2, 1391090595, NULL, 'registerauth', 'intake', '');
+(935, 2, 1391090595, NULL, 'registerauth', 'intake', ''),
+(936, 2, 1391442512, NULL, 'debug', '30719', '32767'),
+(937, 2, 1391604690, NULL, 'debug', '32767', '30719'),
+(938, 2, 1391606671, NULL, 'cachejs', '0', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_config_plugins`
+-- Структура таблицы `mdl_config_plugins`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config_plugins` (
@@ -3123,10 +3198,10 @@ CREATE TABLE IF NOT EXISTS `mdl_config_plugins` (
   `value` longtext NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_confplug_plunam_uix` (`plugin`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Moodle modules and plugins configuration variables' AUTO_INCREMENT=1106 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Moodle modules and plugins configuration variables' AUTO_INCREMENT=1107 ;
 
 --
--- Dumping data for table `mdl_config_plugins`
+-- Дамп данных таблицы `mdl_config_plugins`
 --
 
 INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
@@ -4137,12 +4212,13 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 (1102, 'auth/manual', 'field_lock_department', 'unlocked'),
 (1103, 'auth/manual', 'field_lock_phone1', 'unlocked'),
 (1104, 'auth/manual', 'field_lock_phone2', 'unlocked'),
-(1105, 'auth/manual', 'field_lock_address', 'unlocked');
+(1105, 'auth/manual', 'field_lock_address', 'unlocked'),
+(1106, 'mod_rose', 'version', '2013093002');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_context`
+-- Структура таблицы `mdl_context`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_context` (
@@ -4155,10 +4231,10 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=46 ;
 
 --
--- Dumping data for table `mdl_context`
+-- Дамп данных таблицы `mdl_context`
 --
 
 INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) VALUES
@@ -4193,12 +4269,20 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (29, 80, 17, '/1/24/25/29', 4),
 (30, 70, 3, '/1/24/25/30', 4),
 (31, 30, 5, '/1/31', 2),
-(32, 30, 6, '/1/32', 2);
+(32, 30, 6, '/1/32', 2),
+(36, 70, 7, '/1/24/25/36', 4),
+(39, 50, 5, '/1/24/39', 3),
+(40, 80, 18, '/1/24/39/40', 4),
+(41, 80, 19, '/1/24/39/41', 4),
+(42, 80, 20, '/1/24/39/42', 4),
+(43, 80, 21, '/1/24/39/43', 4),
+(44, 70, 8, '/1/24/39/44', 4),
+(45, 70, 9, '/1/24/39/45', 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_context_temp`
+-- Структура таблицы `mdl_context_temp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_context_temp` (
@@ -4211,7 +4295,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context_temp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course`
+-- Структура таблицы `mdl_course`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course` (
@@ -4250,21 +4334,22 @@ CREATE TABLE IF NOT EXISTS `mdl_course` (
   KEY `mdl_cour_idn_ix` (`idnumber`),
   KEY `mdl_cour_sho_ix` (`shortname`),
   KEY `mdl_cour_sor_ix` (`sortorder`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Central course table' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Central course table' AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `mdl_course`
+-- Дамп данных таблицы `mdl_course`
 --
 
 INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`, `idnumber`, `summary`, `summaryformat`, `format`, `showgrades`, `newsitems`, `startdate`, `marker`, `maxbytes`, `legacyfiles`, `showreports`, `visible`, `visibleold`, `groupmode`, `groupmodeforce`, `defaultgroupingid`, `lang`, `theme`, `timecreated`, `timemodified`, `requested`, `enablecompletion`, `completionnotify`, `cacherev`, `calendartype`) VALUES
-(1, 0, 1, 'Solin', 'Solin', '', '', 0, 'site', 1, 3, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, '', '', 1390393232, 1390393972, 0, 0, 0, 1391172212, ''),
-(2, 1, 20001, 'Test course', 'tstcrs', '1', '<p>Summary desummary</p>', 1, 'weeks', 1, 5, 1389124800, 0, 52428800, 0, 0, 1, 1, 0, 0, 0, '', '', 1390480406, 1390480406, 0, 0, 0, 1391172212, ''),
-(3, 2, 10001, 'First Course', '1st course', '', '', 1, 'weeks', 1, 5, 1389729600, 0, 10485760, 0, 0, 1, 1, 2, 1, 0, '', '', 1390915875, 1390993915, 0, 0, 0, 1391172212, '');
+(1, 0, 1, 'Solin', 'Solin', '', '', 0, 'site', 1, 3, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, '', '', 1390393232, 1390393972, 0, 0, 0, 1391605539, ''),
+(2, 1, 20001, 'Test course', 'tstcrs', '1', '<p>Summary desummary</p>', 1, 'weeks', 1, 5, 1389124800, 0, 52428800, 0, 0, 1, 1, 0, 0, 0, '', '', 1390480406, 1390480406, 0, 0, 0, 1391605539, ''),
+(3, 2, 10002, 'First Course', '1st course', '', '<p>Course course</p>', 1, 'weeks', 1, 5, 1389729600, 0, 10485760, 0, 1, 1, 1, 2, 1, 0, '', '', 1390915875, 1391442869, 0, 0, 0, 1391605539, ''),
+(5, 2, 10001, 'isWortkable007', 'isworkable007', '', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>', 1, 'topics', 1, 5, 1391803200, 0, 52428800, 0, 0, 1, 1, 2, 0, 0, '', '', 1391773923, 1391773923, 0, 0, 0, 1391774323, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_categories`
+-- Структура таблицы `mdl_course_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
@@ -4287,17 +4372,17 @@ CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course categories' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_course_categories`
+-- Дамп данных таблицы `mdl_course_categories`
 --
 
 INSERT INTO `mdl_course_categories` (`id`, `name`, `idnumber`, `description`, `descriptionformat`, `parent`, `sortorder`, `coursecount`, `visible`, `visibleold`, `timemodified`, `depth`, `path`, `theme`) VALUES
 (1, 'Miscellaneous', NULL, NULL, 0, 0, 20000, 1, 1, 1, 1390393232, 1, '/1', NULL),
-(2, 'Repeat Courses', '', '<p>Repeat Courses Description</p>', 1, 0, 10000, 1, 1, 1, 1390913230, 1, '/2', NULL);
+(2, 'Repeat Courses', '', '<p>Repeat Courses Description</p>', 1, 0, 10000, 2, 1, 1, 1390913230, 1, '/2', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_completions`
+-- Структура таблицы `mdl_course_completions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
@@ -4318,7 +4403,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_completion_aggr_methd`
+-- Структура таблицы `mdl_course_completion_aggr_methd`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
@@ -4336,7 +4421,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_completion_criteria`
+-- Структура таблицы `mdl_course_completion_criteria`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
@@ -4357,7 +4442,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_completion_crit_compl`
+-- Структура таблицы `mdl_course_completion_crit_compl`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
@@ -4379,7 +4464,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_format_options`
+-- Структура таблицы `mdl_course_format_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_format_options` (
@@ -4392,10 +4477,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_format_options` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_courformopti_couforsec_uix` (`courseid`,`format`,`sectionid`,`name`),
   KEY `mdl_courformopti_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `mdl_course_format_options`
+-- Дамп данных таблицы `mdl_course_format_options`
 --
 
 INSERT INTO `mdl_course_format_options` (`id`, `courseid`, `format`, `sectionid`, `name`, `value`) VALUES
@@ -4407,12 +4492,15 @@ INSERT INTO `mdl_course_format_options` (`id`, `courseid`, `format`, `sectionid`
 (6, 2, 'weeks', 0, 'hiddensections', '0'),
 (7, 3, 'weeks', 0, 'coursedisplay', '0'),
 (8, 3, 'weeks', 0, 'numsections', '10'),
-(9, 3, 'weeks', 0, 'hiddensections', '0');
+(9, 3, 'weeks', 0, 'hiddensections', '0'),
+(11, 5, 'topics', 0, 'numsections', '10'),
+(12, 5, 'topics', 0, 'hiddensections', '0'),
+(13, 5, 'topics', 0, 'coursedisplay', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_modules`
+-- Структура таблицы `mdl_course_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
@@ -4445,21 +4533,24 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
   KEY `mdl_courmodu_ins_ix` (`instance`),
   KEY `mdl_courmodu_idncou_ix` (`idnumber`,`course`),
   KEY `mdl_courmodu_gro_ix` (`groupingid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `mdl_course_modules`
+-- Дамп данных таблицы `mdl_course_modules`
 --
 
 INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section`, `idnumber`, `added`, `score`, `indent`, `visible`, `visibleold`, `groupmode`, `groupingid`, `groupmembersonly`, `completion`, `completiongradeitemnumber`, `completionview`, `completionexpected`, `availablefrom`, `availableuntil`, `showavailability`, `showdescription`) VALUES
 (1, 2, 10, 1, 2, NULL, 1390480416, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
 (2, 2, 24, 1, 2, '', 1390831929, 0, 0, 1, 1, 1, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
-(3, 3, 10, 2, 14, NULL, 1390915899, 0, 0, 1, 1, 1, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0);
+(3, 3, 10, 2, 14, NULL, 1390915899, 0, 0, 1, 1, 1, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
+(7, 3, 17, 1, 17, '', 1391443071, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
+(8, 5, 10, 3, 27, NULL, 1391774272, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
+(9, 5, 24, 15, 28, '', 1391774321, 0, 0, 1, 1, 2, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_modules_availability`
+-- Структура таблицы `mdl_course_modules_availability`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules_availability` (
@@ -4479,7 +4570,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_availability` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_modules_avail_fields`
+-- Структура таблицы `mdl_course_modules_avail_fields`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules_avail_fields` (
@@ -4496,7 +4587,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_avail_fields` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_modules_completion`
+-- Структура таблицы `mdl_course_modules_completion`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
@@ -4514,7 +4605,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_published`
+-- Структура таблицы `mdl_course_published`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_published` (
@@ -4532,7 +4623,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_published` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_request`
+-- Структура таблицы `mdl_course_request`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_request` (
@@ -4552,7 +4643,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_request` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_sections`
+-- Структура таблицы `mdl_course_sections`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
@@ -4570,10 +4661,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
   `groupingid` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_coursect_cousec_uix` (`course`,`section`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='to define the sections for each course' AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='to define the sections for each course' AUTO_INCREMENT=38 ;
 
 --
--- Dumping data for table `mdl_course_sections`
+-- Дамп данных таблицы `mdl_course_sections`
 --
 
 INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`, `summaryformat`, `sequence`, `visible`, `availablefrom`, `availableuntil`, `showavailability`, `groupingid`) VALUES
@@ -4593,19 +4684,30 @@ INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`,
 (14, 3, 0, NULL, NULL, 1, '3', 1, 0, 0, 0, 0),
 (15, 3, 1, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (16, 3, 2, NULL, '', 1, '', 1, 0, 0, 0, 0),
-(17, 3, 3, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(17, 3, 3, NULL, '', 1, '7', 1, 0, 0, 0, 0),
 (18, 3, 4, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (19, 3, 5, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (20, 3, 6, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (21, 3, 7, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (22, 3, 8, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (23, 3, 9, NULL, '', 1, '', 1, 0, 0, 0, 0),
-(24, 3, 10, NULL, '', 1, '', 1, 0, 0, 0, 0);
+(24, 3, 10, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(27, 5, 0, NULL, '', 1, '8', 1, 0, 0, 0, 0),
+(28, 5, 1, NULL, '', 1, '9', 1, 0, 0, 0, 0),
+(29, 5, 2, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(30, 5, 3, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(31, 5, 4, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(32, 5, 5, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(33, 5, 6, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(34, 5, 7, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(35, 5, 8, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(36, 5, 9, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(37, 5, 10, NULL, '', 1, '', 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_sections_availability`
+-- Структура таблицы `mdl_course_sections_availability`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_sections_availability` (
@@ -4625,7 +4727,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections_availability` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_course_sections_avail_fields`
+-- Структура таблицы `mdl_course_sections_avail_fields`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_sections_avail_fields` (
@@ -4642,7 +4744,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections_avail_fields` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_data`
+-- Структура таблицы `mdl_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data` (
@@ -4686,7 +4788,7 @@ CREATE TABLE IF NOT EXISTS `mdl_data` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_data_content`
+-- Структура таблицы `mdl_data_content`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_content` (
@@ -4706,7 +4808,7 @@ CREATE TABLE IF NOT EXISTS `mdl_data_content` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_data_fields`
+-- Структура таблицы `mdl_data_fields`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_fields` (
@@ -4733,7 +4835,7 @@ CREATE TABLE IF NOT EXISTS `mdl_data_fields` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_data_records`
+-- Структура таблицы `mdl_data_records`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_records` (
@@ -4751,7 +4853,7 @@ CREATE TABLE IF NOT EXISTS `mdl_data_records` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_enrol`
+-- Структура таблицы `mdl_enrol`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol` (
@@ -4793,10 +4895,10 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
   PRIMARY KEY (`id`),
   KEY `mdl_enro_enr_ix` (`enrol`),
   KEY `mdl_enro_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `mdl_enrol`
+-- Дамп данных таблицы `mdl_enrol`
 --
 
 INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name`, `enrolperiod`, `enrolstartdate`, `enrolenddate`, `expirynotify`, `expirythreshold`, `notifyall`, `password`, `cost`, `currency`, `roleid`, `customint1`, `customint2`, `customint3`, `customint4`, `customint5`, `customint6`, `customint7`, `customint8`, `customchar1`, `customchar2`, `customchar3`, `customdec1`, `customdec2`, `customtext1`, `customtext2`, `customtext3`, `customtext4`, `timecreated`, `timemodified`) VALUES
@@ -4804,13 +4906,16 @@ INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name
 (2, 'guest', 1, 2, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1390480406),
 (3, 'self', 1, 2, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1390480406),
 (4, 'manual', 0, 3, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390915875),
-(5, 'guest', 1, 3, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390993915),
-(6, 'self', 0, 3, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390915875);
+(5, 'guest', 1, 3, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1391442869),
+(6, 'self', 0, 3, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390915875),
+(10, 'manual', 0, 5, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1391773924, 1391773924),
+(11, 'guest', 1, 5, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1391773924, 1391773924),
+(12, 'self', 1, 5, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1391773924, 1391773924);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_enrol_flatfile`
+-- Структура таблицы `mdl_enrol_flatfile`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_flatfile` (
@@ -4831,7 +4936,7 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_flatfile` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_enrol_paypal`
+-- Структура таблицы `mdl_enrol_paypal`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_paypal` (
@@ -4862,7 +4967,7 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_paypal` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_event`
+-- Структура таблицы `mdl_event`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_event` (
@@ -4890,19 +4995,20 @@ CREATE TABLE IF NOT EXISTS `mdl_event` (
   KEY `mdl_even_tim_ix` (`timestart`),
   KEY `mdl_even_tim2_ix` (`timeduration`),
   KEY `mdl_even_grocouvisuse_ix` (`groupid`,`courseid`,`visible`,`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For everything with a time associated to it' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For everything with a time associated to it' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_event`
+-- Дамп данных таблицы `mdl_event`
 --
 
 INSERT INTO `mdl_event` (`id`, `name`, `description`, `format`, `courseid`, `groupid`, `userid`, `repeatid`, `modulename`, `instance`, `eventtype`, `timestart`, `timeduration`, `visible`, `uuid`, `sequence`, `timemodified`, `subscriptionid`) VALUES
-(1, 'course event', '<p>crs vnt</p>', 1, 2, 0, 2, 0, '0', 0, 'course', 1390576800, 2100, 1, '', 1, 1390576951, NULL);
+(1, 'course event', '<p>crs vnt</p>', 1, 2, 0, 2, 0, '0', 0, 'course', 1390576800, 2100, 1, '', 1, 1390576951, NULL),
+(2, 'test event', '<p>test event</p>', 1, 0, 0, 6, 0, '0', 0, 'user', 1391442600, 0, 1, '', 1, 1391442641, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_events_handlers`
+-- Структура таблицы `mdl_events_handlers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_handlers` (
@@ -4919,7 +5025,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_handlers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table is for storing which components requests what typ' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mdl_events_handlers`
+-- Дамп данных таблицы `mdl_events_handlers`
 --
 
 INSERT INTO `mdl_events_handlers` (`id`, `eventname`, `component`, `handlerfile`, `handlerfunction`, `schedule`, `status`, `internal`) VALUES
@@ -4928,7 +5034,7 @@ INSERT INTO `mdl_events_handlers` (`id`, `eventname`, `component`, `handlerfile`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_events_queue`
+-- Структура таблицы `mdl_events_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
@@ -4944,7 +5050,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_events_queue_handlers`
+-- Структура таблицы `mdl_events_queue_handlers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
@@ -4962,7 +5068,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_event_subscriptions`
+-- Структура таблицы `mdl_event_subscriptions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_event_subscriptions` (
@@ -4981,7 +5087,7 @@ CREATE TABLE IF NOT EXISTS `mdl_event_subscriptions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_external_functions`
+-- Структура таблицы `mdl_external_functions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_functions` (
@@ -4997,7 +5103,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='list of all external functions' AUTO_INCREMENT=114 ;
 
 --
--- Dumping data for table `mdl_external_functions`
+-- Дамп данных таблицы `mdl_external_functions`
 --
 
 INSERT INTO `mdl_external_functions` (`id`, `name`, `classname`, `methodname`, `classpath`, `component`, `capabilities`) VALUES
@@ -5118,7 +5224,7 @@ INSERT INTO `mdl_external_functions` (`id`, `name`, `classname`, `methodname`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_external_services`
+-- Структура таблицы `mdl_external_services`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services` (
@@ -5138,7 +5244,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='built in and custom external services' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mdl_external_services`
+-- Дамп данных таблицы `mdl_external_services`
 --
 
 INSERT INTO `mdl_external_services` (`id`, `name`, `enabled`, `requiredcapability`, `restrictedusers`, `component`, `timecreated`, `timemodified`, `shortname`, `downloadfiles`, `uploadfiles`) VALUES
@@ -5147,7 +5253,7 @@ INSERT INTO `mdl_external_services` (`id`, `name`, `enabled`, `requiredcapabilit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_external_services_functions`
+-- Структура таблицы `mdl_external_services_functions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services_functions` (
@@ -5159,7 +5265,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='lists functions available in each service group' AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `mdl_external_services_functions`
+-- Дамп данных таблицы `mdl_external_services_functions`
 --
 
 INSERT INTO `mdl_external_services_functions` (`id`, `externalserviceid`, `functionname`) VALUES
@@ -5178,7 +5284,7 @@ INSERT INTO `mdl_external_services_functions` (`id`, `externalserviceid`, `funct
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_external_services_users`
+-- Структура таблицы `mdl_external_services_users`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services_users` (
@@ -5196,7 +5302,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_external_tokens`
+-- Структура таблицы `mdl_external_tokens`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_tokens` (
@@ -5222,7 +5328,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback`
+-- Структура таблицы `mdl_feedback`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback` (
@@ -5250,7 +5356,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_completed`
+-- Структура таблицы `mdl_feedback_completed`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_completed` (
@@ -5268,7 +5374,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completed` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_completedtmp`
+-- Структура таблицы `mdl_feedback_completedtmp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_completedtmp` (
@@ -5287,7 +5393,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completedtmp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_item`
+-- Структура таблицы `mdl_feedback_item`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_item` (
@@ -5312,7 +5418,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_item` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_sitecourse_map`
+-- Структура таблицы `mdl_feedback_sitecourse_map`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_sitecourse_map` (
@@ -5327,7 +5433,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_sitecourse_map` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_template`
+-- Структура таблицы `mdl_feedback_template`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_template` (
@@ -5342,7 +5448,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_template` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_tracking`
+-- Структура таблицы `mdl_feedback_tracking`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_tracking` (
@@ -5360,7 +5466,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_tracking` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_value`
+-- Структура таблицы `mdl_feedback_value`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_value` (
@@ -5378,7 +5484,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_value` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_feedback_valuetmp`
+-- Структура таблицы `mdl_feedback_valuetmp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_valuetmp` (
@@ -5396,7 +5502,7 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_valuetmp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_files`
+-- Структура таблицы `mdl_files`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_files` (
@@ -5427,10 +5533,10 @@ CREATE TABLE IF NOT EXISTS `mdl_files` (
   KEY `mdl_file_con2_ix` (`contextid`),
   KEY `mdl_file_use_ix` (`userid`),
   KEY `mdl_file_ref_ix` (`referencefileid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=34 ;
 
 --
--- Dumping data for table `mdl_files`
+-- Дамп данных таблицы `mdl_files`
 --
 
 INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `component`, `filearea`, `itemid`, `filepath`, `filename`, `userid`, `filesize`, `mimetype`, `status`, `source`, `author`, `license`, `timecreated`, `timemodified`, `sortorder`, `referencefileid`) VALUES
@@ -5455,12 +5561,22 @@ INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `comp
 (19, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '74c104d54c05b5f8c633a36da516d37e6c5279e4', 1, 'core', 'preview', 0, '/thumb/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1390991337, 1390991337, 0, NULL),
 (21, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '884555719c50529b9df662a38619d04b5b11e25c', 1, 'core', 'preview', 0, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1390991337, 1390991337, 0, NULL),
 (22, '7efae77d53d4f0d2b6d871831af6f53ef20b6649', '675477f925b106b0931b404346bdcfa37dc0616e', 1, 'core', 'preview', 0, '/thumb/', 'fb262df98d67c4e2a5c9802403821e00cf2992af', NULL, 1493, 'image/png', 0, NULL, NULL, NULL, 1390991337, 1390991337, 0, NULL),
-(23, 'd2734626774fcce1a28a88316ba23e6d66bdf22a', 'c176d36b1573c5809911f6515652a5cfa93b9edd', 1, 'core', 'preview', 0, '/thumb/', 'd613d55f37bb76d38d4ffb4b7b83e6c694778c30', NULL, 1068, 'image/png', 0, NULL, NULL, NULL, 1390991337, 1390991337, 0, NULL);
+(23, 'd2734626774fcce1a28a88316ba23e6d66bdf22a', 'c176d36b1573c5809911f6515652a5cfa93b9edd', 1, 'core', 'preview', 0, '/thumb/', 'd613d55f37bb76d38d4ffb4b7b83e6c694778c30', NULL, 1068, 'image/png', 0, NULL, NULL, NULL, 1390991337, 1390991337, 0, NULL),
+(24, '67e1ae7f1c354719673bff5fd961aebdd7f5b097', 'fd1e19af8fa7af22c52125760c37f9b355edf4bb', 5, 'user', 'draft', 360198975, '/', '34881.jpg.jpg', 2, 39613, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:13:"34881.jpg.jpg";}', 'Admin User', 'allrightsreserved', 1391442741, 1391442741, 0, NULL),
+(25, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'dff13e4d4c62a15570a5abcb6f0c03257d036c56', 5, 'user', 'draft', 360198975, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1391442741, 1391442741, 0, NULL),
+(26, 'd04143e2b86c55610d3f7045eded5847f5dcc0d7', '42962bad262d139b724affd269656e19a73c5d50', 1, 'core', 'preview', 0, '/thumb/', '67e1ae7f1c354719673bff5fd961aebdd7f5b097', NULL, 9008, 'image/png', 0, NULL, NULL, NULL, 1391442742, 1391442742, 0, NULL),
+(27, '67e1ae7f1c354719673bff5fd961aebdd7f5b097', 'a75138b49991a4669ae92bdda4ff70c75b24a175', 30, 'mod_forum', 'attachment', 3, '/', '34881.jpg.jpg', 2, 39613, 'image/jpeg', 0, '34881.jpg.jpg', 'Admin User', 'allrightsreserved', 1391442741, 1391442743, 0, NULL),
+(28, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8aed6e640dc2b2bfbea8fc08651f4e602b0d7e8c', 30, 'mod_forum', 'attachment', 3, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1391442741, 1391442743, 0, NULL),
+(29, '90864877ef2a88e45eca9e2cd973e1cb3654139b', 'f1c3675c207639f9ea36b261b5d8d84e4151351b', 5, 'user', 'draft', 233825684, '/', 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 2, 27990, 'image/png', 0, 'O:8:"stdClass":1:{s:6:"source";s:58:"charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png";}', 'Admin User', 'allrightsreserved', 1391442857, 1391442857, 0, NULL),
+(30, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'b8acc26de3c0ed2e58b8a57f69d3604c0b228a0b', 5, 'user', 'draft', 233825684, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1391442857, 1391442857, 0, NULL),
+(31, 'fe7d20e9b505a95b068c0a180540357161102a57', '40f3a95eb1422e0c7fd3ce12651adfe6ef8a6e83', 1, 'core', 'preview', 0, '/thumb/', '90864877ef2a88e45eca9e2cd973e1cb3654139b', NULL, 4017, 'image/png', 0, NULL, NULL, NULL, 1391442858, 1391442858, 0, NULL),
+(32, '90864877ef2a88e45eca9e2cd973e1cb3654139b', '29f4585ec48ef44e585c586a598131000200ba1b', 25, 'course', 'overviewfiles', 0, '/', 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 2, 27990, 'image/png', 0, 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 'Admin User', 'allrightsreserved', 1391442857, 1391442869, 0, NULL),
+(33, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8e30edd0af2b3512863dba8f04ff263abfa4b940', 25, 'course', 'overviewfiles', 0, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1391442857, 1391442869, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_files_reference`
+-- Структура таблицы `mdl_files_reference`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_files_reference` (
@@ -5477,7 +5593,7 @@ CREATE TABLE IF NOT EXISTS `mdl_files_reference` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_filter_active`
+-- Структура таблицы `mdl_filter_active`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_filter_active` (
@@ -5492,7 +5608,7 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_active` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores information about which filters are active in which c' AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `mdl_filter_active`
+-- Дамп данных таблицы `mdl_filter_active`
 --
 
 INSERT INTO `mdl_filter_active` (`id`, `filter`, `contextid`, `active`, `sortorder`) VALUES
@@ -5512,7 +5628,7 @@ INSERT INTO `mdl_filter_active` (`id`, `filter`, `contextid`, `active`, `sortord
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_filter_config`
+-- Структура таблицы `mdl_filter_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_filter_config` (
@@ -5529,7 +5645,7 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_folder`
+-- Структура таблицы `mdl_folder`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_folder` (
@@ -5549,7 +5665,7 @@ CREATE TABLE IF NOT EXISTS `mdl_folder` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum`
+-- Структура таблицы `mdl_forum`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum` (
@@ -5579,20 +5695,21 @@ CREATE TABLE IF NOT EXISTS `mdl_forum` (
   `displaywordcount` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_foru_cou_ix` (`course`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_forum`
+-- Дамп данных таблицы `mdl_forum`
 --
 
 INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`, `assessed`, `assesstimestart`, `assesstimefinish`, `scale`, `maxbytes`, `maxattachments`, `forcesubscribe`, `trackingtype`, `rsstype`, `rssarticles`, `timemodified`, `warnafter`, `blockafter`, `blockperiod`, `completiondiscussions`, `completionreplies`, `completionposts`, `displaywordcount`) VALUES
-(1, 2, 'news', 'News forum', 'General news and announcements', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1390480416, 0, 0, 0, 0, 0, 0, 0),
-(2, 3, 'news', 'News forum', 'General news and announcements', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1390915899, 0, 0, 0, 0, 0, 0, 0);
+(1, 2, 'news', 'News forum', 'General news and announcements', 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1390480416, 0, 0, 0, 0, 0, 0, 0),
+(2, 3, 'news', 'News forum', 'General news and announcements', 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1390915899, 0, 0, 0, 0, 0, 0, 0),
+(3, 5, 'news', 'News forum', 'General news and announcements', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1391774272, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_digests`
+-- Структура таблицы `mdl_forum_digests`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_digests` (
@@ -5609,7 +5726,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_digests` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_discussions`
+-- Структура таблицы `mdl_forum_discussions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
@@ -5628,19 +5745,21 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
   PRIMARY KEY (`id`),
   KEY `mdl_forudisc_use_ix` (`userid`),
   KEY `mdl_forudisc_for_ix` (`forum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Forums are composed of discussions' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Forums are composed of discussions' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_forum_discussions`
+-- Дамп данных таблицы `mdl_forum_discussions`
 --
 
 INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost`, `userid`, `groupid`, `assessed`, `timemodified`, `usermodified`, `timestart`, `timeend`) VALUES
-(1, 2, 1, 'Discussion1', 1, 2, -1, 1, 1390576991, 2, 0, 0);
+(1, 2, 1, 'Discussion1', 1, 2, -1, 1, 1390576991, 2, 0, 0),
+(2, 3, 2, 'Test', 2, 2, -1, 1, 1391442585, 2, 0, 0),
+(3, 3, 2, 'News', 3, 2, -1, 1, 1391442743, 2, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_posts`
+-- Структура таблицы `mdl_forum_posts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
@@ -5664,19 +5783,21 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
   KEY `mdl_forupost_mai_ix` (`mailed`),
   KEY `mdl_forupost_dis_ix` (`discussion`),
   KEY `mdl_forupost_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='All posts are stored in this table' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='All posts are stored in this table' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_forum_posts`
+-- Дамп данных таблицы `mdl_forum_posts`
 --
 
 INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`, `modified`, `mailed`, `subject`, `message`, `messageformat`, `messagetrust`, `attachment`, `totalscore`, `mailnow`) VALUES
-(1, 1, 0, 2, 1390576991, 1390576991, 0, 'Discussion1', '<p>dscssn</p>', 1, 0, '', 0, 0);
+(1, 1, 0, 2, 1390576991, 1390576991, 0, 'Discussion1', '<p>dscssn</p>', 1, 0, '', 0, 0),
+(2, 2, 0, 2, 1391442585, 1391442585, 0, 'Test', '<p>Test test</p>', 1, 0, '', 0, 0),
+(3, 3, 0, 2, 1391442743, 1391442743, 0, 'News', '<p>News news</p>', 1, 0, '1', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_queue`
+-- Структура таблицы `mdl_forum_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_queue` (
@@ -5694,7 +5815,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_queue` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_read`
+-- Структура таблицы `mdl_forum_read`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_read` (
@@ -5714,7 +5835,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_read` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_subscriptions`
+-- Структура таблицы `mdl_forum_subscriptions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
@@ -5729,7 +5850,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_forum_track_prefs`
+-- Структура таблицы `mdl_forum_track_prefs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_track_prefs` (
@@ -5743,7 +5864,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_track_prefs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary`
+-- Структура таблицы `mdl_glossary`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary` (
@@ -5782,7 +5903,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary_alias`
+-- Структура таблицы `mdl_glossary_alias`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_alias` (
@@ -5796,7 +5917,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_alias` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary_categories`
+-- Структура таблицы `mdl_glossary_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_categories` (
@@ -5811,7 +5932,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary_entries`
+-- Структура таблицы `mdl_glossary_entries`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_entries` (
@@ -5840,7 +5961,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary_entries_categories`
+-- Структура таблицы `mdl_glossary_entries_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_entries_categories` (
@@ -5855,7 +5976,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries_categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_glossary_formats`
+-- Структура таблицы `mdl_glossary_formats`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_formats` (
@@ -5872,7 +5993,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_formats` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Setting of the display formats' AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `mdl_glossary_formats`
+-- Дамп данных таблицы `mdl_glossary_formats`
 --
 
 INSERT INTO `mdl_glossary_formats` (`id`, `name`, `popupformatname`, `visible`, `showgroup`, `defaultmode`, `defaulthook`, `sortkey`, `sortorder`) VALUES
@@ -5887,7 +6008,7 @@ INSERT INTO `mdl_glossary_formats` (`id`, `name`, `popupformatname`, `visible`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_categories`
+-- Структура таблицы `mdl_grade_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
@@ -5909,19 +6030,20 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_gradcate_cou_ix` (`courseid`),
   KEY `mdl_gradcate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_grade_categories`
+-- Дамп данных таблицы `mdl_grade_categories`
 --
 
 INSERT INTO `mdl_grade_categories` (`id`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`, `timecreated`, `timemodified`, `hidden`) VALUES
-(1, 2, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 1390576059, 1390576059, 0);
+(1, 2, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 1390576059, 1390576059, 0),
+(2, 3, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0, 1391432459, 1391432459, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_categories_history`
+-- Структура таблицы `mdl_grade_categories_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
@@ -5949,20 +6071,25 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
   KEY `mdl_gradcatehist_cou_ix` (`courseid`),
   KEY `mdl_gradcatehist_par_ix` (`parent`),
   KEY `mdl_gradcatehist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_categories' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_categories' AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `mdl_grade_categories_history`
+-- Дамп данных таблицы `mdl_grade_categories_history`
 --
 
 INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`, `hidden`) VALUES
 (1, 1, 1, 'system', 1390576059, 4, 2, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0, 0),
-(2, 2, 1, 'system', 1390576059, 4, 2, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 0);
+(2, 2, 1, 'system', 1390576059, 4, 2, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 0),
+(3, 1, 2, 'system', 1391432459, 2, 3, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0, 0),
+(4, 2, 2, 'system', 1391432459, 2, 3, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0, 0),
+(5, 1, 3, 'system', 1391774106, 2, 4, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0, 0),
+(6, 2, 3, 'system', 1391774106, 2, 4, NULL, 1, '/3/', '?', 11, 0, 0, 1, 0, 0, 0),
+(7, 3, 3, 'coursedelete', 1391774106, 2, 4, NULL, 1, '/3/', '?', 11, 0, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_grades`
+-- Структура таблицы `mdl_grade_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
@@ -5994,12 +6121,20 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
   KEY `mdl_gradgrad_use_ix` (`userid`),
   KEY `mdl_gradgrad_raw_ix` (`rawscaleid`),
   KEY `mdl_gradgrad_use2_ix` (`usermodified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `mdl_grade_grades`
+--
+
+INSERT INTO `mdl_grade_grades` (`id`, `itemid`, `userid`, `rawgrade`, `rawgrademax`, `rawgrademin`, `rawscaleid`, `usermodified`, `finalgrade`, `hidden`, `locked`, `locktime`, `exported`, `overridden`, `excluded`, `feedback`, `feedbackformat`, `information`, `informationformat`, `timecreated`, `timemodified`) VALUES
+(1, 3, 6, '10.00000', '10.00000', '0.00000', NULL, 6, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1391443317, 1391443318),
+(2, 2, 6, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_grades_history`
+-- Структура таблицы `mdl_grade_grades_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
@@ -6036,12 +6171,21 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
   KEY `mdl_gradgradhist_use2_ix` (`usermodified`),
   KEY `mdl_gradgradhist_log_ix` (`loggeduser`),
   KEY `mdl_gradgradhist_tim_ix` (`timemodified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='History table' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History table' AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `mdl_grade_grades_history`
+--
+
+INSERT INTO `mdl_grade_grades_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `itemid`, `userid`, `rawgrade`, `rawgrademax`, `rawgrademin`, `rawscaleid`, `usermodified`, `finalgrade`, `hidden`, `locked`, `locktime`, `exported`, `overridden`, `excluded`, `feedback`, `feedbackformat`, `information`, `informationformat`) VALUES
+(1, 1, 1, 'mod/quiz', 1391443318, 6, 3, 6, '10.00000', '10.00000', '0.00000', NULL, 6, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(2, 1, 2, 'system', 1391443318, 6, 2, 6, NULL, '100.00000', '0.00000', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(3, 2, 2, 'aggregation', 1391443318, 6, 2, 6, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_import_newitem`
+-- Структура таблицы `mdl_grade_import_newitem`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_import_newitem` (
@@ -6056,7 +6200,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_newitem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_import_values`
+-- Структура таблицы `mdl_grade_import_values`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_import_values` (
@@ -6077,7 +6221,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_values` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_items`
+-- Структура таблицы `mdl_grade_items`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
@@ -6119,19 +6263,21 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
   KEY `mdl_graditem_cat_ix` (`categoryid`),
   KEY `mdl_graditem_sca_ix` (`scaleid`),
   KEY `mdl_graditem_out_ix` (`outcomeid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_grade_items`
+-- Дамп данных таблицы `mdl_grade_items`
 --
 
 INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `display`, `decimals`, `hidden`, `locked`, `locktime`, `needsupdate`, `timecreated`, `timemodified`) VALUES
-(1, 2, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, NULL, 0, 0, 0, 0, 1390576059, 1390576059);
+(1, 2, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, NULL, 0, 0, 0, 0, 1390576059, 1390576059),
+(2, 3, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, NULL, 0, 0, 0, 0, 1391432459, 1391432459),
+(3, 3, 2, 'Test quiz', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, NULL, 0, 0, 0, 0, 1391443071, 1391443071);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_items_history`
+-- Структура таблицы `mdl_grade_items_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
@@ -6175,19 +6321,23 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
   KEY `mdl_graditemhist_sca_ix` (`scaleid`),
   KEY `mdl_graditemhist_out_ix` (`outcomeid`),
   KEY `mdl_graditemhist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_items' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_items' AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `mdl_grade_items_history`
+-- Дамп данных таблицы `mdl_grade_items_history`
 --
 
 INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `hidden`, `locked`, `locktime`, `needsupdate`, `display`, `decimals`) VALUES
-(1, 1, 1, 'system', 1390576059, 4, 2, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL);
+(1, 1, 1, 'system', 1390576059, 4, 2, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
+(2, 1, 2, 'system', 1391432459, 2, 3, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
+(3, 1, 3, NULL, 1391443071, 2, 3, 2, 'Test quiz', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, 0, 0, 1, 0, NULL),
+(4, 1, 4, 'system', 1391774106, 2, 4, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
+(5, 3, 4, 'coursedelete', 1391774106, 2, 4, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_letters`
+-- Структура таблицы `mdl_grade_letters`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_letters` (
@@ -6202,7 +6352,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_letters` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_outcomes`
+-- Структура таблицы `mdl_grade_outcomes`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes` (
@@ -6226,7 +6376,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_outcomes_courses`
+-- Структура таблицы `mdl_grade_outcomes_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_courses` (
@@ -6242,7 +6392,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_courses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_outcomes_history`
+-- Структура таблицы `mdl_grade_outcomes_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_history` (
@@ -6269,7 +6419,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grade_settings`
+-- Структура таблицы `mdl_grade_settings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_settings` (
@@ -6285,7 +6435,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_settings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_guide_comments`
+-- Структура таблицы `mdl_gradingform_guide_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_comments` (
@@ -6301,7 +6451,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_guide_criteria`
+-- Структура таблицы `mdl_gradingform_guide_criteria`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_criteria` (
@@ -6321,7 +6471,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_criteria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_guide_fillings`
+-- Структура таблицы `mdl_gradingform_guide_fillings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_fillings` (
@@ -6340,7 +6490,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_guide_fillings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_rubric_criteria`
+-- Структура таблицы `mdl_gradingform_rubric_criteria`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_criteria` (
@@ -6356,7 +6506,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_criteria` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_rubric_fillings`
+-- Структура таблицы `mdl_gradingform_rubric_fillings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_fillings` (
@@ -6376,7 +6526,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_fillings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_gradingform_rubric_levels`
+-- Структура таблицы `mdl_gradingform_rubric_levels`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_levels` (
@@ -6392,7 +6542,7 @@ CREATE TABLE IF NOT EXISTS `mdl_gradingform_rubric_levels` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grading_areas`
+-- Структура таблицы `mdl_grading_areas`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grading_areas` (
@@ -6409,7 +6559,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grading_areas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grading_definitions`
+-- Структура таблицы `mdl_grading_definitions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grading_definitions` (
@@ -6437,7 +6587,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grading_definitions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_grading_instances`
+-- Структура таблицы `mdl_grading_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grading_instances` (
@@ -6458,7 +6608,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grading_instances` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_groupings`
+-- Структура таблицы `mdl_groupings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groupings` (
@@ -6479,7 +6629,7 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_groupings_groups`
+-- Структура таблицы `mdl_groupings_groups`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groupings_groups` (
@@ -6495,7 +6645,7 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings_groups` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_groups`
+-- Структура таблицы `mdl_groups`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groups` (
@@ -6516,7 +6666,7 @@ CREATE TABLE IF NOT EXISTS `mdl_groups` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each record represents a group.' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `mdl_groups`
+-- Дамп данных таблицы `mdl_groups`
 --
 
 INSERT INTO `mdl_groups` (`id`, `courseid`, `idnumber`, `name`, `description`, `descriptionformat`, `enrolmentkey`, `picture`, `hidepicture`, `timecreated`, `timemodified`) VALUES
@@ -6528,7 +6678,7 @@ INSERT INTO `mdl_groups` (`id`, `courseid`, `idnumber`, `name`, `description`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_groups_members`
+-- Структура таблицы `mdl_groups_members`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
@@ -6544,7 +6694,7 @@ CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Link a user to a group.' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `mdl_groups_members`
+-- Дамп данных таблицы `mdl_groups_members`
 --
 
 INSERT INTO `mdl_groups_members` (`id`, `groupid`, `userid`, `timeadded`, `component`, `itemid`) VALUES
@@ -6555,7 +6705,7 @@ INSERT INTO `mdl_groups_members` (`id`, `groupid`, `userid`, `timeadded`, `compo
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_imscp`
+-- Структура таблицы `mdl_imscp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_imscp` (
@@ -6575,7 +6725,7 @@ CREATE TABLE IF NOT EXISTS `mdl_imscp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_label`
+-- Структура таблицы `mdl_label`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_label` (
@@ -6592,7 +6742,7 @@ CREATE TABLE IF NOT EXISTS `mdl_label` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson`
+-- Структура таблицы `mdl_lesson`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson` (
@@ -6643,7 +6793,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_answers`
+-- Структура таблицы `mdl_lesson_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_answers` (
@@ -6668,7 +6818,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_answers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_attempts`
+-- Структура таблицы `mdl_lesson_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_attempts` (
@@ -6691,7 +6841,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_branch`
+-- Структура таблицы `mdl_lesson_branch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_branch` (
@@ -6711,7 +6861,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_branch` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_grades`
+-- Структура таблицы `mdl_lesson_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_grades` (
@@ -6729,7 +6879,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_grades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_high_scores`
+-- Структура таблицы `mdl_lesson_high_scores`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_high_scores` (
@@ -6746,7 +6896,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_high_scores` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_pages`
+-- Структура таблицы `mdl_lesson_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_pages` (
@@ -6770,7 +6920,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lesson_timer`
+-- Структура таблицы `mdl_lesson_timer`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_timer` (
@@ -6787,7 +6937,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_timer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_license`
+-- Структура таблицы `mdl_license`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_license` (
@@ -6801,7 +6951,7 @@ CREATE TABLE IF NOT EXISTS `mdl_license` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='store licenses used by moodle' AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `mdl_license`
+-- Дамп данных таблицы `mdl_license`
 --
 
 INSERT INTO `mdl_license` (`id`, `shortname`, `fullname`, `source`, `enabled`, `version`) VALUES
@@ -6818,7 +6968,7 @@ INSERT INTO `mdl_license` (`id`, `shortname`, `fullname`, `source`, `enabled`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_log`
+-- Структура таблицы `mdl_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log` (
@@ -6838,10 +6988,10 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=178 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=352 ;
 
 --
--- Dumping data for table `mdl_log`
+-- Дамп данных таблицы `mdl_log`
 --
 
 INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`, `action`, `url`, `info`) VALUES
@@ -7021,12 +7171,184 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (174, 1391172315, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
 (175, 1391172315, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
 (176, 1391172320, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
-(177, 1391176316, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
+(177, 1391176316, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(178, 1391425539, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(179, 1391425539, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(180, 1391425547, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(181, 1391425547, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(182, 1391425551, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(183, 1391425551, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(184, 1391425560, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(185, 1391425560, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(186, 1391425563, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(187, 1391427711, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(188, 1391428824, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(189, 1391428826, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(190, 1391428827, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(191, 1391429293, 2, '127.0.0.1', 3, 'course', 0, 'add mod', '../mod/repeatcourse/view.php?id=2', 'repeatcourse 2'),
+(192, 1391429293, 2, '127.0.0.1', 3, 'repeatcourse', 4, 'add', 'view.php?id=4', '2'),
+(193, 1391432040, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(194, 1391432454, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(195, 1391433577, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(196, 1391433582, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(197, 1391433588, 2, '127.0.0.1', 3, 'course', 4, 'delete mod', 'view.php?id=3', 'repeatcourse 2'),
+(198, 1391433873, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(199, 1391437032, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(200, 1391437089, 2, '127.0.0.1', 3, 'course', 0, 'add mod', '../mod/repeatcourse/view.php?id=3', 'repeatcourse 3'),
+(201, 1391437089, 2, '127.0.0.1', 3, 'repeatcourse', 5, 'add', 'view.php?id=5', '3'),
+(202, 1391437225, 2, '127.0.0.1', 3, 'course', 0, 'add mod', '../mod/repeatcourse/view.php?id=4', 'repeatcourse 4'),
+(203, 1391437225, 2, '127.0.0.1', 3, 'repeatcourse', 6, 'add', 'view.php?id=6', '4'),
+(204, 1391441184, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(205, 1391441190, 2, '127.0.0.1', 3, 'course', 6, 'delete mod', 'view.php?id=3', 'repeatcourse 4'),
+(206, 1391441192, 2, '127.0.0.1', 3, 'course', 5, 'delete mod', 'view.php?id=3', 'repeatcourse 3'),
+(207, 1391442350, 2, '127.0.0.1', 3, 'course', 0, 'update', 'edit.php?id=3', '3'),
+(208, 1391442351, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(209, 1391442361, 2, '127.0.0.1', 3, 'user', 0, 'view all', 'index.php?id=3', ''),
+(210, 1391442384, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(211, 1391442384, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(212, 1391442443, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'student'),
+(213, 1391442462, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(214, 1391442462, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(215, 1391442477, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(216, 1391442477, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(217, 1391442481, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(218, 1391442481, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(219, 1391442483, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(220, 1391442483, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(221, 1391442486, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(222, 1391442486, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(223, 1391442517, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(224, 1391442517, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(225, 1391442528, 6, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=6', ''),
+(226, 1391442528, 6, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=6&course=1', '6'),
+(227, 1391442530, 6, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(228, 1391442532, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(229, 1391442563, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(230, 1391442569, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(231, 1391442585, 2, '127.0.0.1', 3, 'forum', 3, 'add discussion', 'discuss.php?d=2', '2'),
+(232, 1391442588, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(233, 1391442591, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(234, 1391442595, 6, '127.0.0.1', 3, 'forum', 3, 'view discussion', 'discuss.php?d=2', '2'),
+(235, 1391442599, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(236, 1391442608, 6, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(237, 1391442618, 6, '127.0.0.1', 3, 'user', 0, 'view all', 'index.php?id=3', ''),
+(238, 1391442641, 6, '127.0.0.1', 0, 'calendar', 0, 'add', 'event.php?action=edit&id=2', 'test event'),
+(239, 1391442647, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(240, 1391442657, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(241, 1391442659, 6, '127.0.0.1', 3, 'user', 0, 'view all', 'index.php?id=3', ''),
+(242, 1391442662, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(243, 1391442665, 2, '127.0.0.1', 3, 'user', 0, 'view all', 'index.php?id=3', ''),
+(244, 1391442667, 2, '127.0.0.1', 3, 'blog', 0, 'view', 'index.php?entryid=&tagid=&tag=', 'view blog entry'),
+(245, 1391442682, 2, '127.0.0.1', 3, 'blog', 0, 'add', 'index.php?userid=2&entryid=1', 'Test blog'),
+(246, 1391442682, 2, '127.0.0.1', 1, 'blog', 0, 'add', 'index.php?userid=2&entryid=1', 'Test blog'),
+(247, 1391442682, 2, '127.0.0.1', 3, 'blog', 0, 'add', 'index.php?userid=2&entryid=1', 'Test blog'),
+(248, 1391442682, 2, '127.0.0.1', 1, 'blog', 0, 'update', 'index.php?userid=2&entryid=1', 'Test blog'),
+(249, 1391442682, 2, '127.0.0.1', 3, 'blog', 0, 'view', 'index.php?entryid=&tagid=&tag=', 'view blog entry'),
+(250, 1391442696, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(251, 1391442714, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(252, 1391442743, 2, '127.0.0.1', 3, 'forum', 3, 'add discussion', 'discuss.php?d=3', '3'),
+(253, 1391442746, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(254, 1391442748, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(255, 1391442751, 6, '127.0.0.1', 3, 'forum', 3, 'view discussion', 'discuss.php?d=3', '3'),
+(256, 1391442759, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(257, 1391442762, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(258, 1391442777, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(259, 1391442791, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(260, 1391442821, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(261, 1391442869, 2, '127.0.0.1', 3, 'course', 0, 'update', 'edit.php?id=3', '3'),
+(262, 1391442869, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(263, 1391442874, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(264, 1391442891, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(265, 1391442903, 6, '127.0.0.1', 3, 'user', 0, 'view all', 'index.php?id=3', ''),
+(266, 1391442905, 6, '127.0.0.1', 3, 'user', 0, 'view', 'view.php?id=5&course=3', '5'),
+(267, 1391442921, 6, '127.0.0.1', 3, 'user', 0, 'view', 'view.php?id=6&course=3', '6'),
+(268, 1391442926, 6, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(269, 1391442972, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(270, 1391442984, 2, '127.0.0.1', 3, 'forum', 3, 'view forum', 'view.php?id=3', '2'),
+(271, 1391442987, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(272, 1391442990, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(273, 1391442990, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(274, 1391442999, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(275, 1391443071, 2, '127.0.0.1', 3, 'course', 0, 'add mod', '../mod/quiz/view.php?id=1', 'quiz 1'),
+(276, 1391443071, 2, '127.0.0.1', 3, 'quiz', 7, 'add', 'view.php?id=7', '1'),
+(277, 1391443072, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(278, 1391443074, 6, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(279, 1391443076, 6, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(280, 1391443089, 2, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(281, 1391443092, 2, '127.0.0.1', 3, 'quiz', 7, 'editquestions', 'view.php?id=7', '1'),
+(282, 1391443292, 2, '127.0.0.1', 3, 'quiz', 7, 'editquestions', 'view.php?id=7', '1'),
+(283, 1391443292, 2, '127.0.0.1', 3, 'quiz', 7, 'editquestions', 'view.php?id=7', '1'),
+(284, 1391443296, 6, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(285, 1391443298, 6, '127.0.0.1', 3, 'quiz', 7, 'attempt', 'review.php?attempt=1', '1'),
+(286, 1391443299, 6, '127.0.0.1', 3, 'quiz', 7, 'continue attempt', 'review.php?attempt=1', '1'),
+(287, 1391443307, 6, '127.0.0.1', 3, 'quiz', 7, 'view summary', 'summary.php?attempt=1', '1'),
+(288, 1391443309, 6, '127.0.0.1', 3, 'quiz', 7, 'continue attempt', 'review.php?attempt=1', '1'),
+(289, 1391443312, 6, '127.0.0.1', 3, 'quiz', 7, 'view summary', 'summary.php?attempt=1', '1'),
+(290, 1391443318, 6, '127.0.0.1', 3, 'quiz', 7, 'close attempt', 'review.php?attempt=1', '1'),
+(291, 1391443318, 6, '127.0.0.1', 3, 'quiz', 7, 'review', 'review.php?attempt=1', '1'),
+(292, 1391443351, 6, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(293, 1391443354, 6, '127.0.0.1', 3, 'quiz', 7, 'review', 'review.php?attempt=1', '1'),
+(294, 1391443356, 6, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(295, 1391443360, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(296, 1391443365, 2, '127.0.0.1', 3, 'quiz', 7, 'view', 'view.php?id=7', '1'),
+(297, 1391443368, 2, '127.0.0.1', 3, 'quiz', 7, 'report', 'report.php?id=7&mode=overview', '1'),
+(298, 1391443381, 2, '127.0.0.1', 3, 'quiz', 7, 'review', 'review.php?attempt=1', '1'),
+(299, 1391443384, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(300, 1391509523, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(301, 1391509523, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(302, 1391509531, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(303, 1391509531, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(304, 1391509930, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(305, 1391509930, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(306, 1391512163, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(307, 1391512173, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(308, 1391512173, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(309, 1391512177, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(310, 1391512177, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(311, 1391512181, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(312, 1391512181, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(313, 1391512801, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(314, 1391512801, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(315, 1391512872, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(316, 1391512872, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(317, 1391512879, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(318, 1391512884, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(319, 1391512884, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(320, 1391513137, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(321, 1391513140, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(322, 1391513141, 2, '127.0.0.1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(323, 1391513665, 2, '127.0.0.1', 1, 'course', 0, 'new', 'view.php?id=4', 'Example 4 repeatcourse (ID 4)'),
+(326, 1391515772, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(327, 1391527576, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(328, 1391528561, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(329, 1391594304, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(330, 1391594304, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(331, 1391594307, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(332, 1391604674, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(333, 1391681283, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(334, 1391681283, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(335, 1391703191, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(336, 1391703465, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(337, 1391703574, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(338, 1391773788, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(339, 1391773788, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(340, 1391773794, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(341, 1391773801, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(342, 1391773924, 2, '127.0.0.1', 1, 'course', 0, 'new', 'view.php?id=5', 'isWortkable007 (ID 5)'),
+(343, 1391774109, 2, '127.0.0.1', 1, 'course', 0, 'delete', 'view.php?id=4', 'Example 4 repeatcourse(ID 4)'),
+(344, 1391774272, 2, '127.0.0.1', 5, 'course', 0, 'view', 'view.php?id=5', '5'),
+(345, 1391774275, 2, '127.0.0.1', 5, 'course', 0, 'view', 'view.php?id=5', '5'),
+(346, 1391774275, 2, '127.0.0.1', 5, 'course', 0, 'view', 'view.php?id=5', '5'),
+(347, 1391774321, 2, '127.0.0.1', 5, 'course', 0, 'add mod', '../mod/repeatcourse/view.php?id=15', 'repeatcourse 15'),
+(348, 1391774321, 2, '127.0.0.1', 5, 'repeatcourse', 9, 'add', 'view.php?id=9', '15'),
+(349, 1391774322, 2, '127.0.0.1', 5, 'course', 0, 'view', 'view.php?id=5', '5'),
+(350, 1391774333, 2, '127.0.0.1', 5, 'course', 0, 'view', 'view.php?id=5', '5'),
+(351, 1391784125, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_log_display`
+-- Структура таблицы `mdl_log_display`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log_display` (
@@ -7041,7 +7363,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log_display` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For a particular module/action, specifies a moodle table/fie' AUTO_INCREMENT=192 ;
 
 --
--- Dumping data for table `mdl_log_display`
+-- Дамп данных таблицы `mdl_log_display`
 --
 
 INSERT INTO `mdl_log_display` (`id`, `module`, `action`, `mtable`, `field`, `component`) VALUES
@@ -7240,7 +7562,7 @@ INSERT INTO `mdl_log_display` (`id`, `module`, `action`, `mtable`, `field`, `com
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_log_queries`
+-- Структура таблицы `mdl_log_queries`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log_queries` (
@@ -7259,7 +7581,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log_queries` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lti`
+-- Структура таблицы `mdl_lti`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lti` (
@@ -7296,7 +7618,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lti` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lti_submission`
+-- Структура таблицы `mdl_lti_submission`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lti_submission` (
@@ -7316,7 +7638,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lti_submission` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lti_types`
+-- Структура таблицы `mdl_lti_types`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lti_types` (
@@ -7338,7 +7660,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lti_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_lti_types_config`
+-- Структура таблицы `mdl_lti_types_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lti_types_config` (
@@ -7353,7 +7675,7 @@ CREATE TABLE IF NOT EXISTS `mdl_lti_types_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message`
+-- Структура таблицы `mdl_message`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message` (
@@ -7377,7 +7699,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message_contacts`
+-- Структура таблицы `mdl_message_contacts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_contacts` (
@@ -7392,7 +7714,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_contacts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message_processors`
+-- Структура таблицы `mdl_message_processors`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_processors` (
@@ -7403,7 +7725,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_processors` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='List of message output plugins' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_message_processors`
+-- Дамп данных таблицы `mdl_message_processors`
 --
 
 INSERT INTO `mdl_message_processors` (`id`, `name`, `enabled`) VALUES
@@ -7414,7 +7736,7 @@ INSERT INTO `mdl_message_processors` (`id`, `name`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message_providers`
+-- Структура таблицы `mdl_message_providers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_providers` (
@@ -7427,7 +7749,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_providers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores the message providers (modules and core sy' AUTO_INCREMENT=26 ;
 
 --
--- Dumping data for table `mdl_message_providers`
+-- Дамп данных таблицы `mdl_message_providers`
 --
 
 INSERT INTO `mdl_message_providers` (`id`, `name`, `component`, `capability`) VALUES
@@ -7459,7 +7781,7 @@ INSERT INTO `mdl_message_providers` (`id`, `name`, `component`, `capability`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message_read`
+-- Структура таблицы `mdl_message_read`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_read` (
@@ -7484,7 +7806,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_read` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_message_working`
+-- Структура таблицы `mdl_message_working`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_working` (
@@ -7498,7 +7820,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_working` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnetservice_enrol_courses`
+-- Структура таблицы `mdl_mnetservice_enrol_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_courses` (
@@ -7523,7 +7845,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_courses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnetservice_enrol_enrolments`
+-- Структура таблицы `mdl_mnetservice_enrol_enrolments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_enrolments` (
@@ -7542,7 +7864,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_enrolments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_application`
+-- Структура таблицы `mdl_mnet_application`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_application` (
@@ -7556,7 +7878,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_application` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Information about applications on remote hosts' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_mnet_application`
+-- Дамп данных таблицы `mdl_mnet_application`
 --
 
 INSERT INTO `mdl_mnet_application` (`id`, `name`, `display_name`, `xmlrpc_server_url`, `sso_land_url`, `sso_jump_url`) VALUES
@@ -7566,7 +7888,7 @@ INSERT INTO `mdl_mnet_application` (`id`, `name`, `display_name`, `xmlrpc_server
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_host`
+-- Структура таблицы `mdl_mnet_host`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_host` (
@@ -7589,7 +7911,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Information about the local and remote hosts for RPC' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_mnet_host`
+-- Дамп данных таблицы `mdl_mnet_host`
 --
 
 INSERT INTO `mdl_mnet_host` (`id`, `deleted`, `wwwroot`, `ip_address`, `name`, `public_key`, `public_key_expires`, `transport`, `portno`, `last_connect_time`, `last_log_id`, `force_theme`, `theme`, `applicationid`) VALUES
@@ -7599,7 +7921,7 @@ INSERT INTO `mdl_mnet_host` (`id`, `deleted`, `wwwroot`, `ip_address`, `name`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_host2service`
+-- Структура таблицы `mdl_mnet_host2service`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_host2service` (
@@ -7615,7 +7937,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host2service` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_log`
+-- Структура таблицы `mdl_mnet_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_log` (
@@ -7639,7 +7961,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_remote_rpc`
+-- Структура таблицы `mdl_mnet_remote_rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_rpc` (
@@ -7653,7 +7975,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table describes functions that might be called remotely' AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `mdl_mnet_remote_rpc`
+-- Дамп данных таблицы `mdl_mnet_remote_rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`) VALUES
@@ -7677,7 +7999,7 @@ INSERT INTO `mdl_mnet_remote_rpc` (`id`, `functionname`, `xmlrpcpath`, `pluginty
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_remote_service2rpc`
+-- Структура таблицы `mdl_mnet_remote_service2rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_service2rpc` (
@@ -7689,7 +8011,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Group functions or methods under a service' AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `mdl_mnet_remote_service2rpc`
+-- Дамп данных таблицы `mdl_mnet_remote_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -7713,7 +8035,7 @@ INSERT INTO `mdl_mnet_remote_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_rpc`
+-- Структура таблицы `mdl_mnet_rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_rpc` (
@@ -7733,7 +8055,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Functions or methods that we may publish or subscribe to' AUTO_INCREMENT=16 ;
 
 --
--- Dumping data for table `mdl_mnet_rpc`
+-- Дамп данных таблицы `mdl_mnet_rpc`
 --
 
 INSERT INTO `mdl_mnet_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`, `help`, `profile`, `filename`, `classname`, `static`) VALUES
@@ -7756,7 +8078,7 @@ INSERT INTO `mdl_mnet_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_service`
+-- Структура таблицы `mdl_mnet_service`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_service` (
@@ -7769,7 +8091,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='A service is a group of functions' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `mdl_mnet_service`
+-- Дамп данных таблицы `mdl_mnet_service`
 --
 
 INSERT INTO `mdl_mnet_service` (`id`, `name`, `description`, `apiversion`, `offer`) VALUES
@@ -7781,7 +8103,7 @@ INSERT INTO `mdl_mnet_service` (`id`, `name`, `description`, `apiversion`, `offe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_service2rpc`
+-- Структура таблицы `mdl_mnet_service2rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_service2rpc` (
@@ -7793,7 +8115,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Group functions or methods under a service' AUTO_INCREMENT=16 ;
 
 --
--- Dumping data for table `mdl_mnet_service2rpc`
+-- Дамп данных таблицы `mdl_mnet_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -7816,7 +8138,7 @@ INSERT INTO `mdl_mnet_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_session`
+-- Структура таблицы `mdl_mnet_session`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_session` (
@@ -7836,7 +8158,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_session` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_mnet_sso_access_control`
+-- Структура таблицы `mdl_mnet_sso_access_control`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_sso_access_control` (
@@ -7851,7 +8173,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_sso_access_control` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_modules`
+-- Структура таблицы `mdl_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_modules` (
@@ -7863,10 +8185,10 @@ CREATE TABLE IF NOT EXISTS `mdl_modules` (
   `visible` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `mdl_modu_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='modules available in the site' AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='modules available in the site' AUTO_INCREMENT=26 ;
 
 --
--- Dumping data for table `mdl_modules`
+-- Дамп данных таблицы `mdl_modules`
 --
 
 INSERT INTO `mdl_modules` (`id`, `name`, `cron`, `lastcron`, `search`, `visible`) VALUES
@@ -7893,12 +8215,13 @@ INSERT INTO `mdl_modules` (`id`, `name`, `cron`, `lastcron`, `search`, `visible`
 (21, 'url', 0, 0, '', 1),
 (22, 'wiki', 0, 0, '', 1),
 (23, 'workshop', 60, 1390821669, '', 1),
-(24, 'repeatcourse', 0, 0, '', 1);
+(24, 'repeatcourse', 0, 0, '', 1),
+(25, 'rose', 0, 0, '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_my_pages`
+-- Структура таблицы `mdl_my_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
@@ -7912,7 +8235,7 @@ CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Extra user pages for the My Moodle system' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_my_pages`
+-- Дамп данных таблицы `mdl_my_pages`
 --
 
 INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALUES
@@ -7922,7 +8245,7 @@ INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_page`
+-- Структура таблицы `mdl_page`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_page` (
@@ -7946,7 +8269,7 @@ CREATE TABLE IF NOT EXISTS `mdl_page` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_instance`
+-- Структура таблицы `mdl_portfolio_instance`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance` (
@@ -7960,7 +8283,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_instance_config`
+-- Структура таблицы `mdl_portfolio_instance_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_config` (
@@ -7976,7 +8299,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_instance_user`
+-- Структура таблицы `mdl_portfolio_instance_user`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_user` (
@@ -7993,7 +8316,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_log`
+-- Структура таблицы `mdl_portfolio_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_log` (
@@ -8016,7 +8339,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_mahara_queue`
+-- Структура таблицы `mdl_portfolio_mahara_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_mahara_queue` (
@@ -8031,7 +8354,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_mahara_queue` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_portfolio_tempdata`
+-- Структура таблицы `mdl_portfolio_tempdata`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_tempdata` (
@@ -8048,7 +8371,7 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_tempdata` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_post`
+-- Структура таблицы `mdl_post`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_post` (
@@ -8077,12 +8400,19 @@ CREATE TABLE IF NOT EXISTS `mdl_post` (
   KEY `mdl_post_mod_ix` (`module`),
   KEY `mdl_post_sub_ix` (`subject`),
   KEY `mdl_post_use_ix` (`usermodified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_post`
+--
+
+INSERT INTO `mdl_post` (`id`, `module`, `userid`, `courseid`, `groupid`, `moduleid`, `coursemoduleid`, `subject`, `summary`, `content`, `uniquehash`, `rating`, `format`, `summaryformat`, `attachment`, `publishstate`, `lastmodified`, `created`, `usermodified`) VALUES
+(1, 'blog', 2, 3, 0, 0, 0, 'Test blog', '<p>Blog blog</p>', NULL, '', 0, 1, 1, '', 'site', 1391442682, 1391442682, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_profiling`
+-- Структура таблицы `mdl_profiling`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_profiling` (
@@ -8106,7 +8436,7 @@ CREATE TABLE IF NOT EXISTS `mdl_profiling` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_qtype_essay_options`
+-- Структура таблицы `mdl_qtype_essay_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_essay_options` (
@@ -8126,7 +8456,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_essay_options` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_qtype_match_options`
+-- Структура таблицы `mdl_qtype_match_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_match_options` (
@@ -8145,7 +8475,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_match_options` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines fixed matching questions' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mdl_qtype_match_options`
+-- Дамп данных таблицы `mdl_qtype_match_options`
 --
 
 INSERT INTO `mdl_qtype_match_options` (`id`, `questionid`, `shuffleanswers`, `correctfeedback`, `correctfeedbackformat`, `partiallycorrectfeedback`, `partiallycorrectfeedbackformat`, `incorrectfeedback`, `incorrectfeedbackformat`, `shownumcorrect`) VALUES
@@ -8154,7 +8484,7 @@ INSERT INTO `mdl_qtype_match_options` (`id`, `questionid`, `shuffleanswers`, `co
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_qtype_match_subquestions`
+-- Структура таблицы `mdl_qtype_match_subquestions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_match_subquestions` (
@@ -8168,7 +8498,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_match_subquestions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines the subquestions that make up a matching question' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_qtype_match_subquestions`
+-- Дамп данных таблицы `mdl_qtype_match_subquestions`
 --
 
 INSERT INTO `mdl_qtype_match_subquestions` (`id`, `questionid`, `questiontext`, `questiontextformat`, `answertext`) VALUES
@@ -8179,7 +8509,7 @@ INSERT INTO `mdl_qtype_match_subquestions` (`id`, `questionid`, `questiontext`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_qtype_multichoice_options`
+-- Структура таблицы `mdl_qtype_multichoice_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_multichoice_options` (
@@ -8203,7 +8533,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_multichoice_options` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_qtype_shortanswer_options`
+-- Структура таблицы `mdl_qtype_shortanswer_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_shortanswer_options` (
@@ -8217,7 +8547,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_shortanswer_options` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question`
+-- Структура таблицы `mdl_question`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question` (
@@ -8245,19 +8575,20 @@ CREATE TABLE IF NOT EXISTS `mdl_question` (
   KEY `mdl_ques_par_ix` (`parent`),
   KEY `mdl_ques_cre_ix` (`createdby`),
   KEY `mdl_ques_mod_ix` (`modifiedby`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The questions themselves' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The questions themselves' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `mdl_question`
+-- Дамп данных таблицы `mdl_question`
 --
 
 INSERT INTO `mdl_question` (`id`, `category`, `parent`, `name`, `questiontext`, `questiontextformat`, `generalfeedback`, `generalfeedbackformat`, `defaultmark`, `penalty`, `qtype`, `length`, `stamp`, `version`, `hidden`, `timecreated`, `timemodified`, `createdby`, `modifiedby`) VALUES
-(1, 2, 0, 'Match pairs', '<p>match equal pairs</p>', 1, '', 1, '1.0000000', '0.3333333', 'match', 1, 'solin.loc+140129121225+JJ7Vhc', 'solin.loc+140129121226+ZULTXr', 0, 1390997545, 1390997546, 2, 2);
+(1, 2, 0, 'Match pairs', '<p>match equal pairs</p>', 1, '', 1, '1.0000000', '0.3333333', 'match', 1, 'solin.loc+140129121225+JJ7Vhc', 'solin.loc+140129121226+ZULTXr', 0, 1390997545, 1390997546, 2, 2),
+(2, 1, 0, 'Quest one', '<p>lalala</p>', 1, '', 1, '1.0000000', '0.3333333', 'calculated', 1, 'solin.loc+140203160033+0EGZyT', 'solin.loc+140203160033+k5lh8P', 0, 1391443233, 1391443233, 2, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_answers`
+-- Структура таблицы `mdl_question_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
@@ -8270,12 +8601,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
   `feedbackformat` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesansw_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_answers`
+--
+
+INSERT INTO `mdl_question_answers` (`id`, `question`, `answer`, `answerformat`, `fraction`, `feedback`, `feedbackformat`) VALUES
+(1, 2, '{x}+50', 0, '1.0000000', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_attempts`
+-- Структура таблицы `mdl_question_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
@@ -8297,12 +8635,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
   UNIQUE KEY `mdl_quesatte_queslo_uix` (`questionusageid`,`slot`),
   KEY `mdl_quesatte_que_ix` (`questionid`),
   KEY `mdl_quesatte_que2_ix` (`questionusageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_attempts`
+--
+
+INSERT INTO `mdl_question_attempts` (`id`, `questionusageid`, `slot`, `behaviour`, `questionid`, `variant`, `maxmark`, `minfraction`, `maxfraction`, `flagged`, `questionsummary`, `rightanswer`, `responsesummary`, `timemodified`) VALUES
+(1, 1, 1, 'deferredfeedback', 2, 1, '1.0000000', '0.0000000', '1.0000000', 0, 'lalala', '100.00', '100', 1391443318);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_attempt_steps`
+-- Структура таблицы `mdl_question_attempt_steps`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
@@ -8317,12 +8662,21 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
   UNIQUE KEY `mdl_quesattestep_queseq_uix` (`questionattemptid`,`sequencenumber`),
   KEY `mdl_quesattestep_que_ix` (`questionattemptid`),
   KEY `mdl_quesattestep_use_ix` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=4 ;
+
+--
+-- Дамп данных таблицы `mdl_question_attempt_steps`
+--
+
+INSERT INTO `mdl_question_attempt_steps` (`id`, `questionattemptid`, `sequencenumber`, `state`, `fraction`, `timecreated`, `userid`) VALUES
+(1, 1, 0, 'todo', NULL, 1391443298, 6),
+(2, 1, 1, 'complete', NULL, 1391443306, 6),
+(3, 1, 2, 'gradedright', '1.0000000', 1391443317, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_attempt_step_data`
+-- Структура таблицы `mdl_question_attempt_step_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
@@ -8333,12 +8687,22 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_quesattestepdata_attna_uix` (`attemptstepid`,`name`),
   KEY `mdl_quesattestepdata_att_ix` (`attemptstepid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=5 ;
+
+--
+-- Дамп данных таблицы `mdl_question_attempt_step_data`
+--
+
+INSERT INTO `mdl_question_attempt_step_data` (`id`, `attemptstepid`, `name`, `value`) VALUES
+(1, 1, '_var_x', '50'),
+(2, 1, '_separators', '.$,'),
+(3, 2, 'answer', '100'),
+(4, 3, '-finish', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_calculated`
+-- Структура таблицы `mdl_question_calculated`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_calculated` (
@@ -8352,12 +8716,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated` (
   PRIMARY KEY (`id`),
   KEY `mdl_quescalc_ans_ix` (`answer`),
   KEY `mdl_quescalc_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Options for questions of type calculated' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_calculated`
+--
+
+INSERT INTO `mdl_question_calculated` (`id`, `question`, `answer`, `tolerance`, `tolerancetype`, `correctanswerlength`, `correctanswerformat`) VALUES
+(1, 2, 1, '0.01', 1, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_calculated_options`
+-- Структура таблицы `mdl_question_calculated_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_calculated_options` (
@@ -8376,12 +8747,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated_options` (
   `shownumcorrect` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quescalcopti_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Options for questions of type calculated' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_calculated_options`
+--
+
+INSERT INTO `mdl_question_calculated_options` (`id`, `question`, `synchronize`, `single`, `shuffleanswers`, `correctfeedback`, `correctfeedbackformat`, `partiallycorrectfeedback`, `partiallycorrectfeedbackformat`, `incorrectfeedback`, `incorrectfeedbackformat`, `answernumbering`, `shownumcorrect`) VALUES
+(1, 2, 0, 0, 1, '', 0, '', 0, '', 0, 'abc', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_categories`
+-- Структура таблицы `mdl_question_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
@@ -8396,21 +8774,22 @@ CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_quescate_con_ix` (`contextid`),
   KEY `mdl_quescate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Categories are for grouping questions' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Categories are for grouping questions' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `mdl_question_categories`
+-- Дамп данных таблицы `mdl_question_categories`
 --
 
 INSERT INTO `mdl_question_categories` (`id`, `name`, `contextid`, `info`, `infoformat`, `stamp`, `parent`, `sortorder`) VALUES
 (1, 'Default for 1st course', 25, 'The default category for questions shared in context ''1st course''.', 0, 'solin.loc+140129120423+FO1sHe', 0, 999),
 (2, 'Default for Repeat Courses', 24, 'The default category for questions shared in context ''Repeat Courses''.', 0, 'solin.loc+140129120423+IxnbM1', 0, 999),
-(3, 'Default for System', 1, 'The default category for questions shared in context ''System''.', 0, 'solin.loc+140129120423+waSSrR', 0, 999);
+(3, 'Default for System', 1, 'The default category for questions shared in context ''System''.', 0, 'solin.loc+140129120423+waSSrR', 0, 999),
+(4, 'Default for Test quiz', 36, 'The default category for questions shared in context ''Test quiz''.', 0, 'solin.loc+140203155812+HRUp4v', 0, 999);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_datasets`
+-- Структура таблицы `mdl_question_datasets`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_datasets` (
@@ -8421,12 +8800,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_datasets` (
   KEY `mdl_quesdata_quedat_ix` (`question`,`datasetdefinition`),
   KEY `mdl_quesdata_que_ix` (`question`),
   KEY `mdl_quesdata_dat_ix` (`datasetdefinition`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Many-many relation between questions and dataset definitions' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Many-many relation between questions and dataset definitions' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_datasets`
+--
+
+INSERT INTO `mdl_question_datasets` (`id`, `question`, `datasetdefinition`) VALUES
+(1, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_dataset_definitions`
+-- Структура таблицы `mdl_question_dataset_definitions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_dataset_definitions` (
@@ -8438,12 +8824,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_definitions` (
   `itemcount` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesdatadefi_cat_ix` (`category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Organises and stores properties for dataset items' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Organises and stores properties for dataset items' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_dataset_definitions`
+--
+
+INSERT INTO `mdl_question_dataset_definitions` (`id`, `category`, `name`, `type`, `options`, `itemcount`) VALUES
+(1, 0, 'x', 1, 'uniform:1:10:0', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_dataset_items`
+-- Структура таблицы `mdl_question_dataset_items`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_dataset_items` (
@@ -8453,12 +8846,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_items` (
   `value` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `mdl_quesdataitem_def_ix` (`definition`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Individual dataset items' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Individual dataset items' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_dataset_items`
+--
+
+INSERT INTO `mdl_question_dataset_items` (`id`, `definition`, `itemnumber`, `value`) VALUES
+(1, 1, 1, '50');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_hints`
+-- Структура таблицы `mdl_question_hints`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_hints` (
@@ -8476,7 +8876,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_hints` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_multianswer`
+-- Структура таблицы `mdl_question_multianswer`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_multianswer` (
@@ -8490,7 +8890,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_multianswer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_numerical`
+-- Структура таблицы `mdl_question_numerical`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical` (
@@ -8506,7 +8906,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_numerical_options`
+-- Структура таблицы `mdl_question_numerical_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical_options` (
@@ -8518,12 +8918,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_options` (
   `unitpenalty` decimal(12,7) NOT NULL DEFAULT '0.1000000',
   PRIMARY KEY (`id`),
   KEY `mdl_quesnumeopti_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Options for questions of type numerical This table is also u' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Options for questions of type numerical This table is also u' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_numerical_options`
+--
+
+INSERT INTO `mdl_question_numerical_options` (`id`, `question`, `showunits`, `unitsleft`, `unitgradingtype`, `unitpenalty`) VALUES
+(1, 2, 3, 0, 0, '0.1000000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_numerical_units`
+-- Структура таблицы `mdl_question_numerical_units`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical_units` (
@@ -8539,7 +8946,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_units` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_randomsamatch`
+-- Структура таблицы `mdl_question_randomsamatch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_randomsamatch` (
@@ -8553,7 +8960,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_randomsamatch` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_response_analysis`
+-- Структура таблицы `mdl_question_response_analysis`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_response_analysis` (
@@ -8572,7 +8979,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_response_analysis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_sessions`
+-- Структура таблицы `mdl_question_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_sessions` (
@@ -8596,7 +9003,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_sessions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_states`
+-- Структура таблицы `mdl_question_states`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_states` (
@@ -8618,7 +9025,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_states` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_statistics`
+-- Структура таблицы `mdl_question_statistics`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_statistics` (
@@ -8645,7 +9052,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_statistics` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_truefalse`
+-- Структура таблицы `mdl_question_truefalse`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
@@ -8660,7 +9067,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_question_usages`
+-- Структура таблицы `mdl_question_usages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
@@ -8670,12 +9077,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
   `preferredbehaviour` varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `mdl_quesusag_con_ix` (`contextid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_question_usages`
+--
+
+INSERT INTO `mdl_question_usages` (`id`, `contextid`, `component`, `preferredbehaviour`) VALUES
+(1, 36, 'mod_quiz', 'deferredfeedback');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz`
+-- Структура таблицы `mdl_quiz`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz` (
@@ -8720,12 +9134,19 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz` (
   `showblocks` smallint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quiz_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='The settings for each quiz.' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The settings for each quiz.' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_quiz`
+--
+
+INSERT INTO `mdl_quiz` (`id`, `course`, `name`, `intro`, `introformat`, `timeopen`, `timeclose`, `timelimit`, `overduehandling`, `graceperiod`, `preferredbehaviour`, `attempts`, `attemptonlast`, `grademethod`, `decimalpoints`, `questiondecimalpoints`, `reviewattempt`, `reviewcorrectness`, `reviewmarks`, `reviewspecificfeedback`, `reviewgeneralfeedback`, `reviewrightanswer`, `reviewoverallfeedback`, `questionsperpage`, `navmethod`, `shufflequestions`, `shuffleanswers`, `questions`, `sumgrades`, `grade`, `timecreated`, `timemodified`, `password`, `subnet`, `browsersecurity`, `delay1`, `delay2`, `showuserpicture`, `showblocks`) VALUES
+(1, 3, 'Test quiz', '<p>Test quiz test</p>', 1, 0, 0, 0, 'autoabandon', 0, 'deferredfeedback', 0, 0, 1, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 'free', 0, 1, '2,0', '1.00000', '10.00000', 0, 1391443071, '', '', '-', 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_attempts`
+-- Структура таблицы `mdl_quiz_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
@@ -8750,12 +9171,19 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
   KEY `mdl_quizatte_qui_ix` (`quiz`),
   KEY `mdl_quizatte_use_ix` (`userid`),
   KEY `mdl_quizatte_statim_ix` (`state`,`timecheckstate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores users attempts at quizzes.' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores users attempts at quizzes.' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_quiz_attempts`
+--
+
+INSERT INTO `mdl_quiz_attempts` (`id`, `quiz`, `userid`, `attempt`, `uniqueid`, `layout`, `currentpage`, `preview`, `state`, `timestart`, `timefinish`, `timemodified`, `timecheckstate`, `sumgrades`, `needsupgradetonewqe`) VALUES
+(1, 1, 6, 1, 1, '1,0', 0, 0, 'finished', 1391443298, 1391443317, 1391443317, NULL, '1.00000', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_feedback`
+-- Структура таблицы `mdl_quiz_feedback`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
@@ -8767,12 +9195,19 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
   `maxgrade` decimal(10,5) NOT NULL DEFAULT '0.00000',
   PRIMARY KEY (`id`),
   KEY `mdl_quizfeed_qui_ix` (`quizid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_quiz_feedback`
+--
+
+INSERT INTO `mdl_quiz_feedback` (`id`, `quizid`, `feedbacktext`, `feedbacktextformat`, `mingrade`, `maxgrade`) VALUES
+(1, 1, '', 1, '0.00000', '11.00000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_grades`
+-- Структура таблицы `mdl_quiz_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
@@ -8784,12 +9219,19 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizgrad_use_ix` (`userid`),
   KEY `mdl_quizgrad_qui_ix` (`quiz`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the overall grade for each user on the quiz, based on' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the overall grade for each user on the quiz, based on' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_quiz_grades`
+--
+
+INSERT INTO `mdl_quiz_grades` (`id`, `quiz`, `userid`, `grade`, `timemodified`) VALUES
+(1, 1, 6, '10.00000', 1391443318);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_overrides`
+-- Структура таблицы `mdl_quiz_overrides`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_overrides` (
@@ -8811,7 +9253,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overrides` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_overview_regrades`
+-- Структура таблицы `mdl_quiz_overview_regrades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_overview_regrades` (
@@ -8828,7 +9270,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overview_regrades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_question_instances`
+-- Структура таблицы `mdl_quiz_question_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
@@ -8839,12 +9281,19 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizquesinst_qui_ix` (`quiz`),
   KEY `mdl_quizquesinst_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_quiz_question_instances`
+--
+
+INSERT INTO `mdl_quiz_question_instances` (`id`, `quiz`, `question`, `grade`) VALUES
+(1, 1, 2, '1.0000000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_reports`
+-- Структура таблицы `mdl_quiz_reports`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_reports` (
@@ -8857,7 +9306,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_reports` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Lists all the installed quiz reports and their display order' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `mdl_quiz_reports`
+-- Дамп данных таблицы `mdl_quiz_reports`
 --
 
 INSERT INTO `mdl_quiz_reports` (`id`, `name`, `displayorder`, `capability`) VALUES
@@ -8869,7 +9318,7 @@ INSERT INTO `mdl_quiz_reports` (`id`, `name`, `displayorder`, `capability`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_quiz_statistics`
+-- Структура таблицы `mdl_quiz_statistics`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_statistics` (
@@ -8898,7 +9347,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_statistics` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_rating`
+-- Структура таблицы `mdl_rating`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_rating` (
@@ -8921,7 +9370,7 @@ CREATE TABLE IF NOT EXISTS `mdl_rating` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_registration_hubs`
+-- Структура таблицы `mdl_registration_hubs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_registration_hubs` (
@@ -8937,7 +9386,7 @@ CREATE TABLE IF NOT EXISTS `mdl_registration_hubs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_repeatcourse`
+-- Структура таблицы `mdl_repeatcourse`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repeatcourse` (
@@ -8948,21 +9397,24 @@ CREATE TABLE IF NOT EXISTS `mdl_repeatcourse` (
   `introformat` smallint(4) NOT NULL DEFAULT '0',
   `timemodified` bigint(10) NOT NULL DEFAULT '0',
   `ordering` bigint(10) NOT NULL DEFAULT '0',
+  `cinterval` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_repe_cou_ix` (`course`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='each record is one repeatcourse resource' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='each record is one repeatcourse resource' AUTO_INCREMENT=26 ;
 
 --
--- Dumping data for table `mdl_repeatcourse`
+-- Дамп данных таблицы `mdl_repeatcourse`
 --
 
-INSERT INTO `mdl_repeatcourse` (`id`, `course`, `name`, `intro`, `introformat`, `timemodified`, `ordering`) VALUES
-(1, 2, 'Test repeat course', '<p>description for repeatcourse</p>', 1, 0, 0);
+INSERT INTO `mdl_repeatcourse` (`id`, `course`, `name`, `intro`, `introformat`, `timemodified`, `ordering`, `cinterval`) VALUES
+(1, 2, 'Test repeat course', '<p>description for repeatcourse</p>', 1, 0, 0, 0),
+(13, 2, 'First Course', NULL, 0, 0, 0, 1),
+(14, 2, 'Example 4 repeatcourse', NULL, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_repository`
+-- Структура таблицы `mdl_repository`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository` (
@@ -8974,7 +9426,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `mdl_repository`
+-- Дамп данных таблицы `mdl_repository`
 --
 
 INSERT INTO `mdl_repository` (`id`, `type`, `visible`, `sortorder`) VALUES
@@ -8990,7 +9442,7 @@ INSERT INTO `mdl_repository` (`id`, `type`, `visible`, `sortorder`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_repository_instances`
+-- Структура таблицы `mdl_repository_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository_instances` (
@@ -9008,7 +9460,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instances` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `mdl_repository_instances`
+-- Дамп данных таблицы `mdl_repository_instances`
 --
 
 INSERT INTO `mdl_repository_instances` (`id`, `name`, `typeid`, `userid`, `contextid`, `username`, `password`, `timecreated`, `timemodified`, `readonly`) VALUES
@@ -9024,7 +9476,7 @@ INSERT INTO `mdl_repository_instances` (`id`, `name`, `typeid`, `userid`, `conte
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_repository_instance_config`
+-- Структура таблицы `mdl_repository_instance_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository_instance_config` (
@@ -9038,7 +9490,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instance_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_resource`
+-- Структура таблицы `mdl_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_resource` (
@@ -9062,7 +9514,7 @@ CREATE TABLE IF NOT EXISTS `mdl_resource` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_resource_old`
+-- Структура таблицы `mdl_resource_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_resource_old` (
@@ -9090,7 +9542,7 @@ CREATE TABLE IF NOT EXISTS `mdl_resource_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role`
+-- Структура таблицы `mdl_role`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role` (
@@ -9106,7 +9558,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='moodle roles' AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `mdl_role`
+-- Дамп данных таблицы `mdl_role`
 --
 
 INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `archetype`) VALUES
@@ -9122,7 +9574,7 @@ INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_allow_assign`
+-- Структура таблицы `mdl_role_allow_assign`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
@@ -9136,7 +9588,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='this defines what role can assign what role' AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `mdl_role_allow_assign`
+-- Дамп данных таблицы `mdl_role_allow_assign`
 --
 
 INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
@@ -9151,7 +9603,7 @@ INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_allow_override`
+-- Структура таблицы `mdl_role_allow_override`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_override` (
@@ -9165,7 +9617,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_override` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='this defines what role can override what role' AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `mdl_role_allow_override`
+-- Дамп данных таблицы `mdl_role_allow_override`
 --
 
 INSERT INTO `mdl_role_allow_override` (`id`, `roleid`, `allowoverride`) VALUES
@@ -9184,7 +9636,7 @@ INSERT INTO `mdl_role_allow_override` (`id`, `roleid`, `allowoverride`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_allow_switch`
+-- Структура таблицы `mdl_role_allow_switch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_switch` (
@@ -9198,7 +9650,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_switch` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores which which other roles a user is allowed ' AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `mdl_role_allow_switch`
+-- Дамп данных таблицы `mdl_role_allow_switch`
 --
 
 INSERT INTO `mdl_role_allow_switch` (`id`, `roleid`, `allowswitch`) VALUES
@@ -9215,7 +9667,7 @@ INSERT INTO `mdl_role_allow_switch` (`id`, `roleid`, `allowswitch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_assignments`
+-- Структура таблицы `mdl_role_assignments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
@@ -9239,7 +9691,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='assigning roles in different context' AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `mdl_role_assignments`
+-- Дамп данных таблицы `mdl_role_assignments`
 --
 
 INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
@@ -9253,7 +9705,7 @@ INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `time
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_capabilities`
+-- Структура таблицы `mdl_role_capabilities`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
@@ -9270,10 +9722,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
   KEY `mdl_rolecapa_con_ix` (`contextid`),
   KEY `mdl_rolecapa_mod_ix` (`modifierid`),
   KEY `mdl_rolecapa_cap_ix` (`capability`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1153 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1158 ;
 
 --
--- Dumping data for table `mdl_role_capabilities`
+-- Дамп данных таблицы `mdl_role_capabilities`
 --
 
 INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, `permission`, `timemodified`, `modifierid`) VALUES
@@ -10423,12 +10875,17 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 (1149, 1, 1, 'mod/assign:manageallocations', 1, 1390990753, 0),
 (1150, 1, 7, 'repository/areafiles:view', 1, 1390990766, 0),
 (1151, 1, 7, 'repository/skydrive:view', 1, 1390990767, 0),
-(1152, 1, 1, 'tool/uploaduser:uploaduserpictures', 1, 1390990771, 0);
+(1152, 1, 1, 'tool/uploaduser:uploaduserpictures', 1, 1390990771, 0),
+(1153, 1, 3, 'mod/rose:addinstance', 1, 1391512937, 2),
+(1154, 1, 1, 'mod/rose:addinstance', 1, 1391512937, 2),
+(1155, 1, 3, 'mod/rose:edit', 1, 1391512937, 2),
+(1156, 1, 1, 'mod/rose:edit', 1, 1391512937, 2),
+(1157, 1, 5, 'mod/rose:submit', 1, 1391512937, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_context_levels`
+-- Структура таблицы `mdl_role_context_levels`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
@@ -10441,7 +10898,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `mdl_role_context_levels`
+-- Дамп данных таблицы `mdl_role_context_levels`
 --
 
 INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
@@ -10460,7 +10917,7 @@ INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_names`
+-- Структура таблицы `mdl_role_names`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_names` (
@@ -10477,7 +10934,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_names` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_role_sortorder`
+-- Структура таблицы `mdl_role_sortorder`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_sortorder` (
@@ -10496,7 +10953,96 @@ CREATE TABLE IF NOT EXISTS `mdl_role_sortorder` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scale`
+-- Структура таблицы `mdl_rose`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_rose` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `course` bigint(10) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `intro` longtext,
+  `introformat` smallint(4) NOT NULL DEFAULT '0',
+  `timemodified` bigint(10) NOT NULL DEFAULT '0',
+  `x_left_label` varchar(255) DEFAULT NULL,
+  `x_right_label` varchar(255) DEFAULT NULL,
+  `y_top_label` varchar(255) DEFAULT NULL,
+  `y_bottom_label` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mdl_rose_cou_ix` (`course`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='each record is one rose resource' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mdl_rose_answers`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_rose_answers` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(10) NOT NULL,
+  `rose_id` bigint(10) NOT NULL,
+  `attempt_id` bigint(10) NOT NULL,
+  `dimension_id` bigint(10) NOT NULL,
+  `question_id` bigint(10) NOT NULL,
+  `value` tinyint(2) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mdl_roseansw_userosattdimqu_ix` (`user_id`,`rose_id`,`attempt_id`,`dimension_id`,`question_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='rose_answers table retrofitted from MySQL' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mdl_rose_attempts`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_rose_attempts` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `rose_id` bigint(10) NOT NULL,
+  `user_id` bigint(10) NOT NULL,
+  `date_started` datetime DEFAULT NULL,
+  `date_completed` datetime DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `mdl_roseatte_rosuse_ix` (`rose_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='rose_attempts table retrofitted from MySQL' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mdl_rose_dimensions`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_rose_dimensions` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `rose_id` bigint(10) NOT NULL,
+  `label` varchar(255) NOT NULL DEFAULT '',
+  `rank` tinyint(2) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `mdl_rosedime_ros_ix` (`rose_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='rose_dimensions table retrofitted from MySQL' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mdl_rose_questions`
+--
+
+CREATE TABLE IF NOT EXISTS `mdl_rose_questions` (
+  `id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `rose_id` bigint(10) NOT NULL,
+  `rank` tinyint(2) DEFAULT NULL,
+  `dimension_id` bigint(10) NOT NULL,
+  `label` varchar(255) NOT NULL DEFAULT '',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `mdl_roseques_rosdim_ix` (`rose_id`,`dimension_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='rose_questions table retrofitted from MySQL' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mdl_scale`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scale` (
@@ -10510,12 +11056,19 @@ CREATE TABLE IF NOT EXISTS `mdl_scale` (
   `timemodified` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_scal_cou_ix` (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Defines grading scales' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines grading scales' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_scale`
+--
+
+INSERT INTO `mdl_scale` (`id`, `courseid`, `userid`, `name`, `scale`, `description`, `descriptionformat`, `timemodified`) VALUES
+(1, 0, 0, 'Separate and Connected ways of knowing', 'Mostly separate knowing,Separate and connected,Mostly connected knowing', 'The scale based on the theory of separate and connected knowing. This theory describes two different ways that we can evaluate and learn about the things we see and hear.<ul><li><strong>Separate knowers</strong> remain as objective as possible without including feelings and emotions. In a discussion with other people, they like to defend their own ideas, using logic to find holes in opponent''s ideas.</li><li><strong>Connected knowers</strong> are more sensitive to other people. They are skilled at empathy and tends to listen and ask questions until they feel they can connect and "understand things from their point of view". They learn by trying to share the experiences that led to the knowledge they find in other people.</li></ul>', 0, 1391432459);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scale_history`
+-- Структура таблицы `mdl_scale_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scale_history` (
@@ -10540,7 +11093,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scale_history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm`
+-- Структура таблицы `mdl_scorm`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm` (
@@ -10589,7 +11142,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_aicc_session`
+-- Структура таблицы `mdl_scorm_aicc_session`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_aicc_session` (
@@ -10613,7 +11166,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_aicc_session` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_scoes`
+-- Структура таблицы `mdl_scorm_scoes`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes` (
@@ -10634,7 +11187,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_scoes_data`
+-- Структура таблицы `mdl_scorm_scoes_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_data` (
@@ -10649,7 +11202,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_data` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_scoes_track`
+-- Структура таблицы `mdl_scorm_scoes_track`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_track` (
@@ -10672,7 +11225,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_track` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_mapinfo`
+-- Структура таблицы `mdl_scorm_seq_mapinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_mapinfo` (
@@ -10693,7 +11246,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_mapinfo` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_objective`
+-- Структура таблицы `mdl_scorm_seq_objective`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_objective` (
@@ -10711,7 +11264,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_objective` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_rolluprule`
+-- Структура таблицы `mdl_scorm_seq_rolluprule`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprule` (
@@ -10730,7 +11283,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprule` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_rolluprulecond`
+-- Структура таблицы `mdl_scorm_seq_rolluprulecond`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprulecond` (
@@ -10748,7 +11301,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprulecond` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_rulecond`
+-- Структура таблицы `mdl_scorm_seq_rulecond`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rulecond` (
@@ -10768,7 +11321,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rulecond` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_scorm_seq_ruleconds`
+-- Структура таблицы `mdl_scorm_seq_ruleconds`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_ruleconds` (
@@ -10785,7 +11338,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_ruleconds` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_sessions`
+-- Структура таблицы `mdl_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_sessions` (
@@ -10804,21 +11357,25 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=116 ;
 
 --
--- Dumping data for table `mdl_sessions`
+-- Дамп данных таблицы `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
-(55, 0, 'b7evhe5q4ir64ag925f6rij573', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2k6MTtzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxODoiY2FjaGVzdG9yZV9zZXNzaW9uIjthOjE6e3M6MzA6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL2NvdXJzZWNhdCI7YTo0OntzOjE3OiJfX2xhc3RhY2Nlc3NfX3UyXyI7YToyOntpOjA7aToxMzkxMTc2MzE2O2k6MTtpOjEzOTExNzYzMTY7fXM6NDQ6InUyX184NmMxMGJiZThlY2NkMjcxNDhiOWI3MzgxNmQ1N2ViNDg2M2E3NDVjIjthOjI6e2k6MDtpOjEzOTExNzYzMTY7aToxO2k6MTM5MTE3NjMxNjt9czo0NDoidTJfX2FlZTUwMGEyMzc2NjZiZmZjNjNjMTZlYmY2NTlkNDVjN2ZiNGY1OTUiO2E6Mjp7aTowO2E6Mjp7aTowO2k6MztpOjE7aToyO31pOjE7aToxMzkxMTc2MzE2O31zOjQ0OiJ1Ml9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aToyO2k6MTtpOjEzOTExNzYzMTY7fX19czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7YjowO31VU0VSfE86ODoic3RkQ2xhc3MiOjU5OntzOjI6ImlkIjtzOjE6IjIiO3M6NDoiYXV0aCI7czo2OiJtYW51YWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjU6ImFkbWluIjtzOjg6ImlkbnVtYmVyIjtzOjA6IiI7czo5OiJmaXJzdG5hbWUiO3M6NToiQWRtaW4iO3M6ODoibGFzdG5hbWUiO3M6NDoiVXNlciI7czo1OiJlbWFpbCI7czozMToiYWxleGFuZGVyLnpodXJhdmxldkBpbnRvc29mdC5ieSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjU6Ik1pbnNrIjtzOjc6ImNvdW50cnkiO3M6MjoiQlkiO3M6NDoibGFuZyI7czoyOiJlbiI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzkwMzkzMzEzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzOTExNzY0OTI7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzOTExNzIyOTMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzkxMTcyMzE1O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzOTExNzIyOTMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTY6Imxhc3RuYW1lcGhvbmV0aWMiO047czoxNzoiZmlyc3RuYW1lcGhvbmV0aWMiO047czoxMDoibWlkZGxlbmFtZSI7TjtzOjEzOiJhbHRlcm5hdGVuYW1lIjtOO3M6MTI6ImNhbGVuZGFydHlwZSI7czo5OiJncmVnb3JpYW4iO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6Mjp7aToyO3M6MTA6IjEzOTA5MDg5MjUiO2k6MztzOjEwOiIxMzkxMDg3MDgxIjt9czoxOToiY3VycmVudGNvdXJzZWFjY2VzcyI7YTowOnt9czoxMToiZ3JvdXBtZW1iZXIiO2E6MDp7fXM6NzoicHJvZmlsZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJxSEJaWUtDMkZLIjtzOjEwOiJwcmVmZXJlbmNlIjthOjEwOntzOjI5OiJjb3Vyc2VfZWRpdF9mb3JtX3Nob3dhZHZhbmNlZCI7czoxOiIxIjtzOjE4OiJlbWFpbF9ib3VuY2VfY291bnQiO3M6MToiMSI7czoxNjoiZW1haWxfc2VuZF9jb3VudCI7czoxOiIxIjtzOjI0OiJmaWxlcGlja2VyX3JlY2VudGxpY2Vuc2UiO3M6MTc6ImFsbHJpZ2h0c3Jlc2VydmVkIjtzOjI3OiJmaWxlcGlja2VyX3JlY2VudHJlcG9zaXRvcnkiO3M6MToiMyI7czoxMzoidXNlbW9kY2hvb3NlciI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czoxOiIwIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6MToiMCI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTM5MTE3NjUwMTt9czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjk6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8zIjtzOjM6ImludCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrNWhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzYiO3M6MzoiaW50IjtzOjEyOiJibG9jazZoaWRkZW4iO3M6NDoiYm9vbCI7fX0=', 1391172315, 1391176492, '127.0.0.1', '127.0.0.1'),
-(56, 0, 'jdh1t3erk3vbh49mrj917dkq41', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTExNzg1NDg7aToxO2k6MTM5MTE3ODU0ODt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5MTE3ODU0ODtpOjE7aToxMzkxMTc4NTQ4O31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YToyOntpOjA7aTozO2k6MTtpOjI7fWk6MTtpOjEzOTExNzg1NDg7fXM6NDQ6InUwX185MTdkNjU5NGYwYjk0MmU3OWY1ZmU3ZGIyNGI3MmUxOTFlMWJkMGRiIjthOjI6e2k6MDtpOjI7aToxO2k6MTM5MTE3ODU0ODt9fX1zOjg6IndhbnRzdXJsIjtOO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiak9UbEpDNklMMSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjE7aToxO31zOjQ6InRpbWUiO2k6MTM5MTE3ODU0ODtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1391178548, 1391178550, '127.0.0.1', '127.0.0.1'),
-(57, 0, '6mrth40jfa3k12h9ohkupjhcb5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTExNzkwODk7aToxO2k6MTM5MTE3OTA4OTt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5MTE3OTA4OTtpOjE7aToxMzkxMTc5MDg5O31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YToyOntpOjA7aTozO2k6MTtpOjI7fWk6MTtpOjEzOTExNzkwODk7fXM6NDQ6InUwX185MTdkNjU5NGYwYjk0MmU3OWY1ZmU3ZGIyNGI3MmUxOTFlMWJkMGRiIjthOjI6e2k6MDtpOjI7aToxO2k6MTM5MTE3OTA4OTt9fX1zOjg6IndhbnRzdXJsIjtOO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiQUdic29IemxINyI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjE7aToxO31zOjQ6InRpbWUiO2k6MTM5MTE3OTA4OTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1391179089, 1391179091, '127.0.0.1', '127.0.0.1');
+(107, 0, 'rjpq3smm4al6l2krp538ai9ts3', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo2OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxODoiY2FjaGVzdG9yZV9zZXNzaW9uIjthOjM6e3M6MzA6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL2NvdXJzZWNhdCI7YTozOntzOjQ0OiJ1Ml9fMTIwNDEwZTEyMjIzNzkzNzlmM2I2OGMxMGM5NmM4YzZhOTg5MTI1MiI7YToyOntpOjA7YToyOntpOjI7YToyOntzOjQ6Im5hbWUiO3M6MTQ6IlJlcGVhdCBDb3Vyc2VzIjtzOjQ6InBhdGgiO3M6MjoiLzIiO31pOjE7YToyOntzOjQ6Im5hbWUiO3M6MTM6Ik1pc2NlbGxhbmVvdXMiO3M6NDoicGF0aCI7czoyOiIvMSI7fX1pOjE7aToxMzkxNjA2NjU1O31zOjE3OiJfX2xhc3RhY2Nlc3NfX3UyXyI7YToyOntpOjA7aToxMzkxNjA2NjcwO2k6MTtpOjEzOTE2MDY2NzA7fXM6NDQ6InUyX184NmMxMGJiZThlY2NkMjcxNDhiOWI3MzgxNmQ1N2ViNDg2M2E3NDVjIjthOjI6e2k6MDtpOjEzOTE2MDY2NzA7aToxO2k6MTM5MTYwNjY3MDt9fXM6MzU6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL3VzZXJzZWxlY3Rpb25zIjthOjA6e31zOjQ2OiJkZWZhdWx0X3Nlc3Npb24tcmVwb3NpdG9yeV9za3lkcml2ZS9mb2xkZXJuYW1lIjthOjA6e319czoyMToibG9hZF9uYXZpZ2F0aW9uX2FkbWluIjtpOjE7czoxMToiYWN0aXZlZ3JvdXAiO2E6MTp7aTo0O2E6Mzp7aToxO2E6MDp7fWk6MjthOjA6e31zOjM6ImFhZyI7YToxOntpOjA7aTowO319fXM6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjI6e3M6MTY6InVzZXJibG9nb3B0aW9uczIiO2E6Mzp7aTowO2k6MTM5MTYwNjY3MztpOjE7czoxOiIyIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMiI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNjoiY29udGV4dGhhc3JlcG9zNSI7YTozOntpOjA7aToxMzkxNjA2NjczO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fX1VU0VSfE86ODoic3RkQ2xhc3MiOjU5OntzOjI6ImlkIjtzOjE6IjIiO3M6NDoiYXV0aCI7czo2OiJtYW51YWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjU6ImFkbWluIjtzOjg6ImlkbnVtYmVyIjtzOjA6IiI7czo5OiJmaXJzdG5hbWUiO3M6NToiQWRtaW4iO3M6ODoibGFzdG5hbWUiO3M6NDoiVXNlciI7czo1OiJlbWFpbCI7czozMToiYWxleGFuZGVyLnpodXJhdmxldkBpbnRvc29mdC5ieSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjU6Ik1pbnNrIjtzOjc6ImNvdW50cnkiO3M6MjoiQlkiO3M6NDoibGFuZyI7czoyOiJlbiI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzkwMzkzMzEzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzOTE2MDY2NTQ7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzOTE1MTI4ODQiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzkxNTk0MzA0O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzOTE1MTI4ODQiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTY6Imxhc3RuYW1lcGhvbmV0aWMiO047czoxNzoiZmlyc3RuYW1lcGhvbmV0aWMiO047czoxMDoibWlkZGxlbmFtZSI7TjtzOjEzOiJhbHRlcm5hdGVuYW1lIjtOO3M6MTI6ImNhbGVuZGFydHlwZSI7czo5OiJncmVnb3JpYW4iO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6Mzp7aToyO3M6MTA6IjEzOTA5MDg5MjUiO2k6MztzOjEwOiIxMzkxNTIyODA2IjtpOjQ7czoxMDoiMTM5MTUxNDQ5NiI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6MDp7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiYmt3UHN1c3hWbSI7czoxMDoicHJlZmVyZW5jZSI7YToxMDp7czoyOToiY291cnNlX2VkaXRfZm9ybV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMSI7czoyNDoiZmlsZXBpY2tlcl9yZWNlbnRsaWNlbnNlIjtzOjE3OiJhbGxyaWdodHNyZXNlcnZlZCI7czoyNzoiZmlsZXBpY2tlcl9yZWNlbnRyZXBvc2l0b3J5IjtzOjE6IjMiO3M6MTM6InVzZW1vZGNob29zZXIiO3M6MToiMCI7czoyOToidXNlcnNlbGVjdG9yX2F1dG9zZWxlY3R1bmlxdWUiO3M6MToiMCI7czoyOToidXNlcnNlbGVjdG9yX3ByZXNlcnZlc2VsZWN0ZWQiO3M6MToiMCI7czoyNzoidXNlcnNlbGVjdG9yX3NlYXJjaGFueXdoZXJlIjtzOjE6IjAiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzOTE2MDY2Njk7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo5OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV82IjtzOjM6ImludCI7czoxMjoiYmxvY2s2aGlkZGVuIjtzOjQ6ImJvb2wiO319', 1391594304, 1391606654, '127.0.0.1', '127.0.0.1'),
+(108, 0, '7801p02e30n1t8kg39pjft4jn4', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjozOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjtzOjg6IndhbnRzdXJsIjtzOjM5OiJodHRwOi8vc29saW4ubG9jL21vZC9xdWl6L3ZpZXcucGhwP2lkPTciO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1391597937, 1391597937, '127.0.0.1', '127.0.0.1'),
+(109, 0, '3j6s781o7hunn5jnlh6g2sah37', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MTp7aTo0O2k6MTt9czo0OiJ0aW1lIjtpOjEzOTE1OTc5Mzc7czozOiJyc3ciO2E6MDp7fX1zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MDp7fXM6OToidGVtcGd1ZXN0IjthOjA6e319czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJQYUcwVkJHOHhUIjt9', 1391597937, 1391598779, '127.0.0.1', '127.0.0.1'),
+(110, 0, 'ild1um8iqnf8s7iljp75irn557', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MTp7aTo0O2k6MTt9czo0OiJ0aW1lIjtpOjEzOTE1OTk1MjE7czozOiJyc3ciO2E6MDp7fX1zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MDp7fXM6OToidGVtcGd1ZXN0IjthOjA6e319czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJGaUhadTdrU2ZoIjt9', 1391599521, 1391600229, '127.0.0.1', '127.0.0.1'),
+(111, 0, '33ou7b3b3nbcej7oio71s2vfd0', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6MjoiZW4iO31VU0VSfE86ODoic3RkQ2xhc3MiOjY6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjQ7aToxO31zOjQ6InRpbWUiO2k6MTM5MTYwMDI4MjtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6IkNzSmNmbDZlNEkiO30=', 1391600282, 1391615820, '127.0.0.1', '127.0.0.1'),
+(112, 0, 'astvdm4tjmf0jjdihq95cgofl2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6MjoiZW4iO31VU0VSfE86ODoic3RkQ2xhc3MiOjY6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjQ7aToxO31zOjQ6InRpbWUiO2k6MTM5MTY3NDczNTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6Ilo2WVEzaDBJN1MiO30=', 1391674733, 1391674733, '127.0.0.1', '127.0.0.1'),
+(115, 0, 'h7dhasj3sj5n1aghttfduflo61', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjM6e3M6MTY6InVzZXJibG9nb3B0aW9uczIiO2E6Mzp7aTowO2k6MTM5MTc4NjQyMTtpOjE7czoxOiIyIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMiI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNjoiY29udGV4dGhhc3JlcG9zNSI7YTozOntpOjA7aToxMzkxNzg2NDIxO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO31zOjE3OiJjb250ZXh0aGFzcmVwb3MzOSI7YTozOntpOjA7aToxMzkxNzc5NzczO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7aToxO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6Mjp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTJfIjthOjI6e2k6MDtpOjEzOTE3ODQxMjc7aToxO2k6MTM5MTc4NDEyNzt9czo0NDoidTJfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5MTc4NDEyNztpOjE7aToxMzkxNzg0MTI3O31zOjQ0OiJ1Ml9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTozOntpOjA7aTo1O2k6MTtpOjM7aToyO2k6Mjt9aToxO2k6MTM5MTc4NDEyNzt9czo0NDoidTJfXzkxN2Q2NTk0ZjBiOTQyZTc5ZjVmZTdkYjI0YjcyZTE5MWUxYmQwZGIiO2E6Mjp7aTowO2k6MztpOjE7aToxMzkxNzg0MTI3O319czozNToiZGVmYXVsdF9zZXNzaW9uLWNvcmUvdXNlcnNlbGVjdGlvbnMiO2E6MTp7czoxNzoiX19sYXN0YWNjZXNzX191Ml8iO2E6Mjp7aTowO2k6MTM5MTc3NDE0NDtpOjE7aTowO319fXM6MTE6ImFjdGl2ZWdyb3VwIjthOjE6e2k6NTthOjM6e2k6MTthOjA6e31pOjI7YTowOnt9czozOiJhYWciO2E6MTp7aTowO2k6MDt9fX1zOjIyOiJhZG1pbl9jcml0aWNhbF93YXJuaW5nIjtpOjA7czoxNDoiZnJvbWRpc2N1c3Npb24iO3M6Mzc6Imh0dHA6Ly9zb2xpbi5sb2MvY291cnNlL3ZpZXcucGhwP2lkPTUiO31VU0VSfE86ODoic3RkQ2xhc3MiOjYyOntzOjI6ImlkIjtzOjE6IjIiO3M6NDoiYXV0aCI7czo2OiJtYW51YWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjU6ImFkbWluIjtzOjg6ImlkbnVtYmVyIjtzOjA6IiI7czo5OiJmaXJzdG5hbWUiO3M6NToiQWRtaW4iO3M6ODoibGFzdG5hbWUiO3M6NDoiVXNlciI7czo1OiJlbWFpbCI7czozMToiYWxleGFuZGVyLnpodXJhdmxldkBpbnRvc29mdC5ieSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjU6Ik1pbnNrIjtzOjc6ImNvdW50cnkiO3M6MjoiQlkiO3M6NDoibGFuZyI7czoyOiJlbiI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzkwMzkzMzEzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzOTE3ODQxMjU7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzOTE2ODEyODMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzkxNzczNzg4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzOTE2ODEyODMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTY6Imxhc3RuYW1lcGhvbmV0aWMiO047czoxNzoiZmlyc3RuYW1lcGhvbmV0aWMiO047czoxMDoibWlkZGxlbmFtZSI7TjtzOjEzOiJhbHRlcm5hdGVuYW1lIjtOO3M6MTI6ImNhbGVuZGFydHlwZSI7czo5OiJncmVnb3JpYW4iO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6Mzp7aToyO3M6MTA6IjEzOTA5MDg5MjUiO2k6MztzOjEwOiIxMzkxNTIyODA2IjtpOjQ7czoxMDoiMTM5MTUxNDQ5NiI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6MTp7aTo1O2k6MTM5MTc3NDMzMzt9czoxMToiZ3JvdXBtZW1iZXIiO2E6MDp7fXM6NzoicHJvZmlsZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJRZlpXM213Qmx2IjtzOjEwOiJwcmVmZXJlbmNlIjthOjEwOntzOjI5OiJjb3Vyc2VfZWRpdF9mb3JtX3Nob3dhZHZhbmNlZCI7czoxOiIxIjtzOjE4OiJlbWFpbF9ib3VuY2VfY291bnQiO3M6MToiMSI7czoxNjoiZW1haWxfc2VuZF9jb3VudCI7czoxOiIxIjtzOjI0OiJmaWxlcGlja2VyX3JlY2VudGxpY2Vuc2UiO3M6MTc6ImFsbHJpZ2h0c3Jlc2VydmVkIjtzOjI3OiJmaWxlcGlja2VyX3JlY2VudHJlcG9zaXRvcnkiO3M6MToiMyI7czoxMzoidXNlbW9kY2hvb3NlciI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czoxOiIwIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6MToiMCI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTM5MTc4NjQyMDt9czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjIwOntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO3M6Mjc6ImZpbGVwaWNrZXJfcmVjZW50cmVwb3NpdG9yeSI7czozOiJpbnQiO3M6MjQ6ImZpbGVwaWNrZXJfcmVjZW50bGljZW5zZSI7czo3OiJzYWZlZGlyIjtzOjI1OiJmaWxlcGlja2VyX3JlY2VudHZpZXdtb2RlIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzE4IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzE5IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzIwIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzIxIjtzOjM6ImludCI7czoxMzoiYmxvY2sxOGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazE5aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMjBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syMWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJ1c2Vtb2RjaG9vc2VyIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrMWhpZGRlbiI7czo0OiJib29sIjt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6Mjp7czoyOiIvMSI7YToxOntpOjc7aTo3O31zOjQ6Ii8xLzIiO2E6MTp7aTo4O2k6ODt9fXM6NDoicmRlZiI7YToyOntzOjQ6Ii8xOjciO2E6NzY6e3M6MzU6ImJsb2NrL2FkbWluX2Jvb2ttYXJrczpteWFkZGluc3RhbmNlIjtpOjE7czoyNjoiYmxvY2svYmFkZ2VzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjM0OiJibG9jay9jYWxlbmRhcl9tb250aDpteWFkZGluc3RhbmNlIjtpOjE7czozNzoiYmxvY2svY2FsZW5kYXJfdXBjb21pbmc6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjg6ImJsb2NrL2NvbW1lbnRzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI5OiJibG9jay9jb21tdW5pdHk6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzE6ImJsb2NrL2NvdXJzZV9saXN0Om15YWRkaW5zdGFuY2UiO2k6MTtzOjM1OiJibG9jay9jb3Vyc2Vfb3ZlcnZpZXc6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzU6ImJsb2NrL2dsb3NzYXJ5X3JhbmRvbTpteWFkZGluc3RhbmNlIjtpOjE7czoyNDoiYmxvY2svaHRtbDpteWFkZGluc3RhbmNlIjtpOjE7czoyNzoiYmxvY2svbWVudGVlczpteWFkZGluc3RhbmNlIjtpOjE7czoyODoiYmxvY2svbWVzc2FnZXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzA6ImJsb2NrL21uZXRfaG9zdHM6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjk6ImJsb2NrL215cHJvZmlsZTpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svbmF2aWdhdGlvbjpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svbmV3c19pdGVtczpteWFkZGluc3RhbmNlIjtpOjE7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czozMjoiYmxvY2svb25saW5lX3VzZXJzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMzOiJibG9jay9wcml2YXRlX2ZpbGVzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMwOiJibG9jay9yc3NfY2xpZW50Om15YWRkaW5zdGFuY2UiO2k6MTtzOjI4OiJibG9jay9zZXR0aW5nczpteWFkZGluc3RhbmNlIjtpOjE7czoyNDoiYmxvY2svdGFnczpteWFkZGluc3RhbmNlIjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjI0OiJtb29kbGUvYmFkZ2VzOnZpZXdiYWRnZXMiO2k6MTtzOjI5OiJtb29kbGUvYmFkZ2VzOm1hbmFnZW93bmJhZGdlcyI7aToxO3M6Mjk6Im1vb2RsZS9iYWRnZXM6dmlld290aGVyYmFkZ2VzIjtpOjE7czoyMzoibW9vZGxlL2JhZGdlczplYXJuYmFkZ2UiO2k6MTtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7aToxO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpjcmVhdGUiO2k6MTtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7aToxO3M6MzI6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2Vvd25lbnRyaWVzIjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnBvc3QiO2k6MTtzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO2k6MTtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtpOjE7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO2k6MTtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO2k6MTtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO2k6MTtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO2k6MTtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO2k6MTtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7aToxO3M6MTc6Im1vb2RsZS90YWc6Y3JlYXRlIjtpOjE7czoxNToibW9vZGxlL3RhZzpmbGFnIjtpOjE7czoxNToibW9vZGxlL3RhZzplZGl0IjtpOjE7czoyNzoibW9vZGxlL3VzZXI6bWFuYWdlb3duYmxvY2tzIjtpOjE7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO2k6MTtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOjE7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtpOjE7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO2k6MTtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtpOjE7czoyMzoicmVwb3NpdG9yeS95b3V0dWJlOnZpZXciO2k6MTtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L2JveG5ldDp2aWV3IjtpOjE7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO2k6MTtzOjIzOiJyZXBvc2l0b3J5L2VxdWVsbGE6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO2k6MTtzOjI5OiJyZXBvc2l0b3J5L2ZsaWNrcl9wdWJsaWM6dmlldyI7aToxO3M6MjY6InJlcG9zaXRvcnkvZ29vZ2xlZG9jczp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvcGljYXNhOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtpOjE7czoyNToicmVwb3NpdG9yeS9hcmVhZmlsZXM6dmlldyI7aToxO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO2k6MTtzOjI0OiJyZXBvc2l0b3J5L3NreWRyaXZlOnZpZXciO2k6MTtzOjE5OiJyZXBvc2l0b3J5L3VybDp2aWV3IjtpOjE7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO2k6MTt9czo0OiIvMTo4IjthOjc6e3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6Mjk6Im1vZC9mb3J1bTphbGxvd2ZvcmNlc3Vic2NyaWJlIjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtpOjE7fX1zOjEwOiJyZGVmX2NvdW50IjtpOjI7czo4OiJyZGVmX2xjYyI7aToyO3M6NjoibG9hZGVkIjthOjA6e31zOjQ6InRpbWUiO2k6MTM5MTc3MzkyNjtzOjM6InJzdyI7YTowOnt9fXM6NzoiZWRpdGluZyI7aToxO30=', 1391773788, 1391786420, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_daily`
+-- Структура таблицы `mdl_stats_daily`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_daily` (
@@ -10838,7 +11395,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_daily` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_monthly`
+-- Структура таблицы `mdl_stats_monthly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_monthly` (
@@ -10858,7 +11415,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_monthly` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_user_daily`
+-- Структура таблицы `mdl_stats_user_daily`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_daily` (
@@ -10880,7 +11437,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_daily` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_user_monthly`
+-- Структура таблицы `mdl_stats_user_monthly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_monthly` (
@@ -10902,7 +11459,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_monthly` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_user_weekly`
+-- Структура таблицы `mdl_stats_user_weekly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_weekly` (
@@ -10924,7 +11481,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_weekly` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_stats_weekly`
+-- Структура таблицы `mdl_stats_weekly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_weekly` (
@@ -10944,7 +11501,7 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_weekly` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_survey`
+-- Структура таблицы `mdl_survey`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey` (
@@ -10963,7 +11520,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each record is one SURVEY module with its configuration' AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `mdl_survey`
+-- Дамп данных таблицы `mdl_survey`
 --
 
 INSERT INTO `mdl_survey` (`id`, `course`, `template`, `days`, `timecreated`, `timemodified`, `name`, `intro`, `introformat`, `questions`) VALUES
@@ -10976,7 +11533,7 @@ INSERT INTO `mdl_survey` (`id`, `course`, `template`, `days`, `timecreated`, `ti
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_survey_analysis`
+-- Структура таблицы `mdl_survey_analysis`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_analysis` (
@@ -10992,7 +11549,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_analysis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_survey_answers`
+-- Структура таблицы `mdl_survey_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_answers` (
@@ -11012,7 +11569,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_answers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_survey_questions`
+-- Структура таблицы `mdl_survey_questions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_questions` (
@@ -11027,7 +11584,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_questions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='the questions conforming one survey' AUTO_INCREMENT=74 ;
 
 --
--- Dumping data for table `mdl_survey_questions`
+-- Дамп данных таблицы `mdl_survey_questions`
 --
 
 INSERT INTO `mdl_survey_questions` (`id`, `text`, `shorttext`, `multi`, `intro`, `type`, `options`) VALUES
@@ -11108,7 +11665,7 @@ INSERT INTO `mdl_survey_questions` (`id`, `text`, `shorttext`, `multi`, `intro`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_tag`
+-- Структура таблицы `mdl_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag` (
@@ -11130,7 +11687,7 @@ CREATE TABLE IF NOT EXISTS `mdl_tag` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_tag_correlation`
+-- Структура таблицы `mdl_tag_correlation`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag_correlation` (
@@ -11144,7 +11701,7 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_correlation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_tag_instance`
+-- Структура таблицы `mdl_tag_instance`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag_instance` (
@@ -11163,7 +11720,7 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_instance` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_timezone`
+-- Структура таблицы `mdl_timezone`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_timezone` (
@@ -11189,7 +11746,7 @@ CREATE TABLE IF NOT EXISTS `mdl_timezone` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_tool_customlang`
+-- Структура таблицы `mdl_tool_customlang`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tool_customlang` (
@@ -11212,7 +11769,7 @@ CREATE TABLE IF NOT EXISTS `mdl_tool_customlang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_tool_customlang_components`
+-- Структура таблицы `mdl_tool_customlang_components`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tool_customlang_components` (
@@ -11225,7 +11782,7 @@ CREATE TABLE IF NOT EXISTS `mdl_tool_customlang_components` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_upgrade_log`
+-- Структура таблицы `mdl_upgrade_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_upgrade_log` (
@@ -11243,10 +11800,10 @@ CREATE TABLE IF NOT EXISTS `mdl_upgrade_log` (
   KEY `mdl_upgrlog_tim_ix` (`timemodified`),
   KEY `mdl_upgrlog_typtim_ix` (`type`,`timemodified`),
   KEY `mdl_upgrlog_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Upgrade logging' AUTO_INCREMENT=2944 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Upgrade logging' AUTO_INCREMENT=2947 ;
 
 --
--- Dumping data for table `mdl_upgrade_log`
+-- Дамп данных таблицы `mdl_upgrade_log`
 --
 
 INSERT INTO `mdl_upgrade_log` (`id`, `type`, `plugin`, `version`, `targetversion`, `info`, `details`, `backtrace`, `userid`, `timemodified`) VALUES
@@ -14198,12 +14755,15 @@ INSERT INTO `mdl_upgrade_log` (`id`, `type`, `plugin`, `version`, `targetversion
 (2940, 0, 'mod_certificate', '2012121302', '2013102300', 'Starting plugin upgrade', NULL, '', 2, 1390992594),
 (2941, 0, 'mod_certificate', '2013102300', '2013102300', 'Upgrade savepoint reached', NULL, '', 2, 1390992594),
 (2942, 0, 'mod_certificate', '2013102300', '2013102300', 'Plugin upgraded', NULL, '', 2, 1390992594),
-(2943, 2, 'core', '2013111801.03', '2013111801.03', 'Exception: plugin_misplaced_exception', 'Plugin "auth_intake" is installed in incorrect location "$CFG-&gt;dirroot/auth/intake", expected location is "$CFG-&gt;dirroot/auth/email"', '* line 427 of \\lib\\upgradelib.php: plugin_misplaced_exception thrown\n* line 1580 of \\lib\\upgradelib.php: call to upgrade_plugins()\n* line 431 of \\admin\\index.php: call to upgrade_noncore()\n', 0, 1391172212);
+(2943, 2, 'core', '2013111801.03', '2013111801.03', 'Exception: plugin_misplaced_exception', 'Plugin "auth_intake" is installed in incorrect location "$CFG-&gt;dirroot/auth/intake", expected location is "$CFG-&gt;dirroot/auth/email"', '* line 427 of \\lib\\upgradelib.php: plugin_misplaced_exception thrown\n* line 1580 of \\lib\\upgradelib.php: call to upgrade_plugins()\n* line 431 of \\admin\\index.php: call to upgrade_noncore()\n', 0, 1391172212),
+(2944, 0, 'mod_rose', NULL, '2013093002', 'Starting plugin installation', NULL, '', 2, 1391512936),
+(2945, 0, 'mod_rose', '2013093002', '2013093002', 'Upgrade savepoint reached', NULL, '', 2, 1391512937),
+(2946, 0, 'mod_rose', '2013093002', '2013093002', 'Plugin installed', NULL, '', 2, 1391512937);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_url`
+-- Структура таблицы `mdl_url`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_url` (
@@ -14224,7 +14784,7 @@ CREATE TABLE IF NOT EXISTS `mdl_url` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user`
+-- Структура таблицы `mdl_user`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user` (
@@ -14300,21 +14860,21 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='One record for each person' AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `mdl_user`
+-- Дамп данных таблицы `mdl_user`
 --
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `lastnamephonetic`, `firstnamephonetic`, `middlename`, `alternatename`, `calendartype`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', 'f7ce79d5792ff8274ea845a9084fb4dd', '', 'Guest user', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', 'This user is a special user that allows read-only access to some courses.', 0, 1, 0, 2, 1, 0, 0, 1390393232, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1391176492, 1391172293, 1391172315, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1391172315, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1391784125, 1391681283, 1391773788, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1391773788, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (3, 'intake', 1, 0, 0, 0, 1, 'testuser', '289e3d7a0c42af241011446c626d8794', '', 'Test', 'User', 'testuser@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Menesk', 'BY', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1390571158, 1390571158, 0, '', NULL, NULL, NULL, NULL, 'gregorian'),
 (4, 'intake', 1, 0, 0, 0, 1, 'testuser2', '$2y$10$w3Mk2r.QLkfvR.TlRm..Suafz5rBMIpKjNkDYHUAemloaF7a0voIa', '', 'Testuser2', 'Testuser2', 'testuser2@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Testuser2', 'IQ', 'en', '', '99', 1390572660, 1391168893, 1391168796, 1391168893, '127.0.0.1', '66uOtLZ28RFnKZp', 0, '', NULL, 0, 1, 0, 2, 1, 0, 1390572660, 1391168893, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (5, 'intake', 1, 0, 0, 0, 1, 'teacher', '$2y$10$LqA9yjV6fxmIv6g99An0teyQQGw6y8J93H9riqyDOvRysmIu48Rfy', '', 'teacher', 'teacher', 'teacher@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'BS', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086669, 1391086669, 0, '', '', '', '', '', 'gregorian'),
-(6, 'intake', 1, 0, 0, 0, 1, 'student', '$2y$10$vYChx6x9Dz0PLcdYLZyR4ui.FYyo27TB5N/J1AV/N8tszfCXXnhEa', '', 'student', 'student', 'student@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'AL', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086727, 1391086727, 0, '', '', '', '', '', 'gregorian');
+(6, 'intake', 1, 0, 0, 0, 1, 'student', '$2y$10$vYChx6x9Dz0PLcdYLZyR4ui.FYyo27TB5N/J1AV/N8tszfCXXnhEa', '', 'student', 'student', 'student@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'AL', 'en', '', '99', 1391442384, 1391443296, 1391442517, 1391442528, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086727, 1391442528, 0, '', '', '', '', '', 'gregorian');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_devices`
+-- Структура таблицы `mdl_user_devices`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_devices` (
@@ -14338,7 +14898,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_devices` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_enrolments`
+-- Структура таблицы `mdl_user_enrolments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
@@ -14359,7 +14919,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `mdl_user_enrolments`
+-- Дамп данных таблицы `mdl_user_enrolments`
 --
 
 INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timestart`, `timeend`, `modifierid`, `timecreated`, `timemodified`) VALUES
@@ -14370,7 +14930,7 @@ INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timesta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_info_category`
+-- Структура таблицы `mdl_user_info_category`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_category` (
@@ -14381,7 +14941,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Customisable fields categories' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mdl_user_info_category`
+-- Дамп данных таблицы `mdl_user_info_category`
 --
 
 INSERT INTO `mdl_user_info_category` (`id`, `name`, `sortorder`) VALUES
@@ -14390,7 +14950,7 @@ INSERT INTO `mdl_user_info_category` (`id`, `name`, `sortorder`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_info_data`
+-- Структура таблицы `mdl_user_info_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
@@ -14406,7 +14966,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_info_field`
+-- Структура таблицы `mdl_user_info_field`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
@@ -14436,7 +14996,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_lastaccess`
+-- Структура таблицы `mdl_user_lastaccess`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
@@ -14448,21 +15008,23 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
   UNIQUE KEY `mdl_userlast_usecou_uix` (`userid`,`courseid`),
   KEY `mdl_userlast_use_ix` (`userid`),
   KEY `mdl_userlast_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `mdl_user_lastaccess`
+-- Дамп данных таблицы `mdl_user_lastaccess`
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
 (1, 2, 2, 1390908925),
 (2, 4, 2, 1390577046),
-(3, 2, 3, 1391087081);
+(3, 2, 3, 1391522806),
+(4, 6, 3, 1391443296),
+(6, 2, 5, 1391774333);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_password_resets`
+-- Структура таблицы `mdl_user_password_resets`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_password_resets` (
@@ -14478,7 +15040,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_preferences`
+-- Структура таблицы `mdl_user_preferences`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
@@ -14491,7 +15053,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=25 ;
 
 --
--- Dumping data for table `mdl_user_preferences`
+-- Дамп данных таблицы `mdl_user_preferences`
 --
 
 INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
@@ -14523,7 +15085,7 @@ INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_user_private_key`
+-- Структура таблицы `mdl_user_private_key`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_private_key` (
@@ -14543,7 +15105,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_private_key` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_webdav_locks`
+-- Структура таблицы `mdl_webdav_locks`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_webdav_locks` (
@@ -14566,7 +15128,7 @@ CREATE TABLE IF NOT EXISTS `mdl_webdav_locks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki`
+-- Структура таблицы `mdl_wiki`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki` (
@@ -14590,7 +15152,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_links`
+-- Структура таблицы `mdl_wiki_links`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_links` (
@@ -14607,7 +15169,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_links` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_locks`
+-- Структура таблицы `mdl_wiki_locks`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_locks` (
@@ -14622,7 +15184,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_locks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_pages`
+-- Структура таблицы `mdl_wiki_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_pages` (
@@ -14644,7 +15206,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_pages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_subwikis`
+-- Структура таблицы `mdl_wiki_subwikis`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_subwikis` (
@@ -14660,7 +15222,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_subwikis` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_synonyms`
+-- Структура таблицы `mdl_wiki_synonyms`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_synonyms` (
@@ -14675,7 +15237,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_synonyms` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_wiki_versions`
+-- Структура таблицы `mdl_wiki_versions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_versions` (
@@ -14693,7 +15255,7 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_versions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop`
+-- Структура таблицы `mdl_workshop`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop` (
@@ -14737,7 +15299,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopallocation_scheduled`
+-- Структура таблицы `mdl_workshopallocation_scheduled`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopallocation_scheduled` (
@@ -14757,7 +15319,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopallocation_scheduled` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopeval_best_settings`
+-- Структура таблицы `mdl_workshopeval_best_settings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopeval_best_settings` (
@@ -14771,7 +15333,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopeval_best_settings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_accumulative`
+-- Структура таблицы `mdl_workshopform_accumulative`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_accumulative` (
@@ -14789,7 +15351,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_accumulative` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_comments`
+-- Структура таблицы `mdl_workshopform_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_comments` (
@@ -14805,7 +15367,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_comments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_numerrors`
+-- Структура таблицы `mdl_workshopform_numerrors`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors` (
@@ -14825,7 +15387,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_numerrors_map`
+-- Структура таблицы `mdl_workshopform_numerrors_map`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors_map` (
@@ -14841,7 +15403,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors_map` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_rubric`
+-- Структура таблицы `mdl_workshopform_rubric`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric` (
@@ -14857,7 +15419,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_rubric_config`
+-- Структура таблицы `mdl_workshopform_rubric_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_config` (
@@ -14871,7 +15433,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_config` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshopform_rubric_levels`
+-- Структура таблицы `mdl_workshopform_rubric_levels`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_levels` (
@@ -14887,7 +15449,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_levels` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_aggregations`
+-- Структура таблицы `mdl_workshop_aggregations`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_aggregations` (
@@ -14905,7 +15467,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_aggregations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_assessments`
+-- Структура таблицы `mdl_workshop_assessments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments` (
@@ -14933,7 +15495,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_assessments_old`
+-- Структура таблицы `mdl_workshop_assessments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments_old` (
@@ -14964,7 +15526,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_comments_old`
+-- Структура таблицы `mdl_workshop_comments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_comments_old` (
@@ -14987,7 +15549,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_comments_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_elements_old`
+-- Структура таблицы `mdl_workshop_elements_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_elements_old` (
@@ -15009,7 +15571,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_elements_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_grades`
+-- Структура таблицы `mdl_workshop_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_grades` (
@@ -15028,7 +15590,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_grades_old`
+-- Структура таблицы `mdl_workshop_grades_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_grades_old` (
@@ -15048,7 +15610,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_old`
+-- Структура таблицы `mdl_workshop_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_old` (
@@ -15093,7 +15655,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_rubrics_old`
+-- Структура таблицы `mdl_workshop_rubrics_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_rubrics_old` (
@@ -15111,7 +15673,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_rubrics_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_stockcomments_old`
+-- Структура таблицы `mdl_workshop_stockcomments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_stockcomments_old` (
@@ -15128,7 +15690,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_stockcomments_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_submissions`
+-- Структура таблицы `mdl_workshop_submissions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions` (
@@ -15160,7 +15722,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mdl_workshop_submissions_old`
+-- Структура таблицы `mdl_workshop_submissions_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions_old` (

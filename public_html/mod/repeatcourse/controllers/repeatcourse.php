@@ -15,6 +15,7 @@ class repeatcourse_controller extends controller {
         }
         $curCoursesNames = rtrim($curCoursesNames, ',');
         $repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$repeatCourseId->id.'" AND fullname NOT IN('.$curCoursesNames.')');
+//TODO:change structure {repeatcorse}. maybe add a field with associated course id or to exclude other courses..
 
         $this->get_view(array(
             'repeatCourses' => $repeatCourses,
@@ -39,9 +40,10 @@ class repeatcourse_controller extends controller {
         // To use the 'flash' message, provide a 3rd argument to redirect_to, containing the actual message:
         // $this->redirect_to( 'index', array('saved' => 1), array('notification' => get_string('message_saved', 'repeatcourse')));
     } // function create
-    
+
     function add_repcourse(){
         global $DB;
+        $this->no_layout = true;
         $repeatCourseId = $DB->get_record('course_categories', array('name' => 'Repeat Courses'), 'id');
         $record = new stdClass();
         $record->cinterval = optional_param('interval', 0, PARAM_INT);
@@ -50,13 +52,14 @@ class repeatcourse_controller extends controller {
         $record->introformat = 0;
         $record->timemodified = 0;
         $record->ordering = 0;
-        $record->course = $repeatCourseId->id;
+        $record->course = $repeatCourseId;//$this->course->id;
         $insertedId = $DB->insert_record('repeatcourse', $record);
         return $insertedId;
     }
-    
+
     function delete_repcourse(){
         global $DB;
+        $this->no_layout = true;
         $repCourseId = optional_param('rep_id', 0, PARAM_INT);
         if($repCourseId != 0){
             return $DB->delete_records('repeatcourse', array('id' => $repCourseId));
