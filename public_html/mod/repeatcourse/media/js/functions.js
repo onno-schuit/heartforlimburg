@@ -9,7 +9,7 @@ document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
 });
 
 function add_rep_course() {
-    var id = _GET['id']; /* Change this value to value from $_GET!!!*/
+    var id = _GET['id'];
     var selected_course = $("#course_selector :selected").html();
     var data = "id="+id+"&coursename="+selected_course+"&interval="+$("#repcourse_interval").val()+"&action=add_repcourse";/*+"&ordering="+ordering;*/
     $.ajax({
@@ -41,10 +41,11 @@ function add_rep_course() {
 };
 
 function repcourse_remove(rep_id){
+	var id = _GET['id'];
     $.ajax({
         type: "POST",
         url: '/mod/repeatcourse/index.php',
-        data: "rep_id="+rep_id+"&action=delete_repcourse",
+        data: "id="+id+"&rep_id="+rep_id+"&action=delete_repcourse",
         success: function(){
             $("#repcourse_"+rep_id).remove();
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully removed<span>');

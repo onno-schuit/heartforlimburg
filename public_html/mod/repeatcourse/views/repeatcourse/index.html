@@ -1,6 +1,5 @@
-<? include( $this->get_partial_path('flash') ); ?>
+<?php include( $this->get_partial_path('flash') ); ?>
 <h1>Configuring a repeatcourse "<?php echo $this->course->fullname;?>"</h1>
-<p><?php //echo "<pre>"; print_r($this);?></p>
 <div id="coursetable_div">
     <table id="coursetable">
         <tr>
@@ -16,11 +15,11 @@
                 <td>'.$val->id.'</td>
                 <td>'.$val->name.'</td>
                 <td>
-                    '.$val->ordering.'
+                    '.@$val->ordering.'
                     <a href="" class="priority_up"><img src="./media/images/triangle_up.gif" alt="Priority up" class="triangle_up"/></a>
                     <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
                 </td>
-                <td>'.$val->cinterval.'</td>
+                <td>'.@$val->cinterval.'</td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
             </tr>';
         } ?>
