@@ -28,12 +28,12 @@ function add_rep_course() {
             }
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully saved<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(100, function(){$(".msg_success").remove()});
+            setInterval(function(){$(".msg_success").remove();}, 2000);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
             $(".msg_error").fadeIn(500).fadeOut(2000);
-            setInterval(100, function(){$(".msg_error").remove()});
+            setInterval(function(){$(".msg_error").remove();}, 2000);
         }
     });
     
@@ -50,14 +50,34 @@ function repcourse_remove(rep_id){
             $("#repcourse_"+rep_id).remove();
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully removed<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(100, function(){$(".msg_success").remove()});
+            setInterval(function(){location.reload();}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
             $(".msg_error").fadeIn(500).fadeOut(2000);
-            setInterval(100, function(){$(".msg_error").remove()});
+            setInterval(function(){$(".msg_error").remove();}, 2000);
         }
     });
     
     return true;
+}
+
+function priority_change(course_id, direction){
+	var id = _GET['id'];
+	direction = (direction == 1) ? 'up' : 'down';
+	$.ajax({
+		type: "POST",
+		url: '/mod/repeatcourse/index.php',
+		data: "id="+id+"&rep_course_id="+course_id+"&action=ordering_"+direction,
+		success: function(){
+			$("#result_msg").html('<span class="msg_success" style="display: none;">Successfully changed! Reloading page...<span>');
+            $(".msg_success").fadeIn(500).fadeOut(1000);
+            setInterval(function(){location.reload();}, 500);
+		},
+		error: function(){
+			$("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
+            $(".msg_error").fadeIn(500).fadeOut(2000);
+            setInterval(function(){$(".msg_error").remove();}, 2000);
+		}
+	});
 }

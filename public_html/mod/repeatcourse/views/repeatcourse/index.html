@@ -10,15 +10,18 @@
             <th style="width: 15%;"></th>
         </tr>
         <?php
+        $orderArr = array();
+        foreach ($curCourses as $course) {
+			$orderArr[] = $course->ordering;
+		}
         foreach($curCourses as $val){
+			$order_up = ($val->ordering == min($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 1);"><img src="./media/images/triangle_up.gif" alt="Priority up" title="Priority up"/></a>';
+        	$order_down = ($val->ordering == max($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 0);"><img src="./media/images/triangle_down.gif" alt="Priority down" title="Priority down"/></a>';
             echo '<tr id="repcourse_'.$val->id.'">
                 <td>'.$val->id.'</td>
                 <td>'.$val->name.'</td>
                 <td>
-                    '.@$val->ordering.'
-                    <a href="" class="priority_up"><img src="./media/images/triangle_up.gif" alt="Priority up" class="triangle_up"/></a>
-                    <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
-                </td>
+                    '.@$val->ordering.$order_up.$order_down.'</td>
                 <td>'.@$val->cinterval.'</td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
             </tr>';

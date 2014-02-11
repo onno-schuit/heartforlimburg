@@ -540,10 +540,6 @@ class soda {
          */
 
         if (isset($context)) return;
-        if($cm === NULL) {
-        	$cm = new stdClass();
-        	$cm->id = $id;
-        }
         if (!$context = context_module::instance($cm->id)) {
             print_error('badcontext');
         }  

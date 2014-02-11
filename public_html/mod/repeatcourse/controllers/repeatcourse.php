@@ -69,11 +69,101 @@ class repeatcourse_controller extends controller {
         global $DB;
         $this->no_layout = true;
         $repCourseId = optional_param('rep_id', 0, PARAM_INT);
-        if($repCourseId != 0){
+        if($repCourseId > 0){
             return $DB->delete_records('repeatcourse_records', array('id' => $repCourseId));
         } else{
             return false;
         }
+    }
+    
+    function ordering_up(){
+    	global $DB;
+    	$orderArr = array();
+    	$this->no_layout = true;
+    	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
+    	if($repCourseId > 0){
+    		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
+    		foreach($orderings as $order){
+    			$orderArr[$order->id] = $order->ordering;
+    		}
+    		asort($orderArr);//assoc array sorted ASC by values: [1]=>1, [3]=>2
+    		
+    		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));//2
+
+    		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);//1
+    		$repCourseOrderIdPrev = self::incrementDecrementKey($repCourseOrderIdCur, $orderArr, false);//1--1
+
+    		$curObject = new stdClass();
+    		$curObject->id = $repCourseOrderIdCur;//3
+    		$curObject->ordering = $orderArr[$repCourseOrderIdPrev];//1
+
+    		$prevObject = new stdClass();
+    		$prevObject->id = $repCourseOrderIdPrev;//1
+    		$prevObject->ordering = $repCourseOrderCur->ordering;//2
+
+    		try {
+    			$transaction = $DB->start_delegated_transaction();
+    			$DB->update_record('repeatcourse_records', $curObject);
+    			$DB->update_record('repeatcourse_records', $prevObject);
+    			// Perform some $DB stuff
+    			$transaction->allow_commit();
+    		} catch (Exception $e) {
+    			//extra cleanup steps
+    			$transaction->rollback($e); // rethrows exception
+    		}
+    		return true;
+    	}
+    	return false;
+    }
+    
+    function ordering_down(){
+    	global $DB;
+    	$orderArr = array();
+    	$this->no_layout = true;
+    	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
+    	if($repCourseId > 0){
+    		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
+    		foreach($orderings as $order){
+    			$orderArr[$order->id] = $order->ordering;
+    		}
+    		asort($orderArr);//assoc array sorted ASC by values: [1]=>1, [3]=>2
+    	
+    		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));//2
+    	
+    		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);//1
+    		$repCourseOrderIdPrev = self::incrementDecrementKey($repCourseOrderIdCur, $orderArr, true);//1--1
+    	
+    		$curObject = new stdClass();
+    		$curObject->id = $repCourseOrderIdCur;//3
+    		$curObject->ordering = $orderArr[$repCourseOrderIdPrev];//1
+    	
+    		$prevObject = new stdClass();
+    		$prevObject->id = $repCourseOrderIdPrev;//1
+    		$prevObject->ordering = $repCourseOrderCur->ordering;//2
+    	
+    		try {
+    			$transaction = $DB->start_delegated_transaction();
+    			$DB->update_record('repeatcourse_records', $curObject);
+    			$DB->update_record('repeatcourse_records', $prevObject);
+    			// Perform some $DB stuff
+    			$transaction->allow_commit();
+    		} catch (Exception $e) {
+    			//extra cleanup steps
+    			$transaction->rollback($e); // rethrows exception
+    		}
+    		return true;
+    	}
+    	return false;
+    }
+    
+    function incrementDecrementKey($key, $array, $isInc){
+    	$keys = array_keys($array);
+    	$keys_flip = array_flip(array_keys($array));
+    	if($isInc){
+    		return $keys[$keys_flip[$key]+1];
+    	} else {
+    		return $keys[$keys_flip[$key]-1];
+    	}
     }
 
 } // class repeatcourse_controller 
