@@ -1,4 +1,5 @@
 <?php
+    $string['repcoursecategoryname'] = 'Repeat Course';
     $string['select_course'] = '- Select course -';
     $string['no_available_courses'] = 'No available repeatcourses';
     $string['add_course'] = 'Add course';

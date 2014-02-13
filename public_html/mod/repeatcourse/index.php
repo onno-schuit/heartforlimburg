@@ -4,4 +4,3 @@ require_once("../../config.php");
 include_once('lib.php');
 
 $repeatcourse_instance->display();
-?>

@@ -21,7 +21,7 @@
                 <td>'.$val->id.'</td>
                 <td>'.$val->name.'</td>
                 <td>
-                    '.@$val->ordering.$order_up.$order_down.'</td>
+                    '.$order_up.$order_down.'</td>
                 <td>'.@$val->cinterval.'</td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
             </tr>';
