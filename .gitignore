@@ -19,3 +19,4 @@ CVS
 moodledata/
 moodledata/*
 /public_html/.idea
+/public_html/config.php
