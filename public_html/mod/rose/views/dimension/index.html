@@ -1,0 +1,48 @@
+<h2><?= $cm->name . " - " . get_string('title_dimensions', 'rose'); ?></h2>
+<? // exit(print_object($questions)); ?>
+
+<?= $this->form_open($action = false, array('action' => ($dimension_id) ? 'update' : 'create')); ?>
+<?#= $this->create_hidden_fields(array('action' => ($dimension_id) ? 'update' : 'create')); ?>
+<table id='rose_dimension_index'>
+    <tr>
+        <th><?= get_string('title_dimension', 'rose') ?></th>
+    </tr>
+<?
+$error_class = (soda_error::class_in_error('label')) ? ' error' : '';
+foreach($dimensions as $dimension) {
+    if ($dimension->id == $dimension_id) {
+        if ($selected_dimension) $dimension = $selected_dimension;
+        echo "<tr>
+                <td class='soda{$error_class}'>
+                    <input type='text' value='{$dimension->label}' name='dimension[label]'>
+                    <input type='hidden' value='{$dimension_id}' name='dimension_id'>
+                </td>";
+        echo "<td><input type='submit' name='submit' value='" . get_string('update') . "'/></td>";
+        echo "<td colspan='2'><input value='" . get_string('cancel') ."' type='button' onclick='window.location=\"" . $this->get_url() . "\"'/></td></tr>";
+        continue;
+        }
+    ?>
+    <tr>
+        <td><?= $dimension->label ?></td>
+        <td><a onclick="<?= $this->post_to_url_js(array('dimension_id' => $dimension->id)) ?>" href="#"><?= get_string('delete', 'rose') ?></a></td>
+        <td><a href='<?= $this->get_url("dimension_id={$dimension->id}") ?>'><?= get_string('edit', 'rose') ?></a></td>
+        <td>
+            <a href='<?= $this->get_url("dimension_id={$dimension->id}&controller=question") ?>'>
+                <?= get_string('questions', 'rose'); ?>
+            </a>
+            <?= ($count = count(\rose\question::find_all_by_dimension_id($dimension->id, $questions))) ? "($count)" : ""; ?>
+        </td>
+    </tr>
+<?
+}
+?>
+<? if (! $dimension_id ) { ?>
+<tr>
+    <td class='soda<?= $error_class ?>'><input type='text' value='<?= ($selected_dimension) ? $selected_dimension->label : "" ?>' name='dimension[label]'></td>
+    <td colspan='3'><input type='submit' name='submit' value='<?= get_string('add') ?>'/></td>
+</tr>
+<? } ?>
+</table>
+</form>
+
+

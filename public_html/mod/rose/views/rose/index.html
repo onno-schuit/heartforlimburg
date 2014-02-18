@@ -1,0 +1,10 @@
+<h1>Hello World!</h1>
+<p>Find me in mod/rose/views/rose/index.html</p>
+<p>Please visit <a target="_blank" href="http://tech.solin.eu/doku.php?id=moodle:using_soda_to_create_new_moodle_modules">tech.solin.eu</a>
+to learn more about creating a Moodle module with Soda.</p>
+<p>Soda's Application Programming Interface (API) can be found <a target="_blank" href="http://soda-api.solin.eu/">here</a>.</p>
+<p>
+<?= $this->link_to('index', get_string('edit_dimensions', 'rose'), "controller=dimension"); ?>
+<br/>
+<?= $this->link_to('index', get_string('take_test', 'rose'), "controller=attempt"); ?>
+

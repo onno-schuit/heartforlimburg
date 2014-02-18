@@ -1,0 +1,7 @@
+<h2>attempt#radarchart</h2>
+
+<? foreach($dimensions as $dimension) { ?>
+    Selected answers for <?= $dimension->label; ?>: <?= $dimension->count_selected_answers($answers); ?><br/>
+<? } ?>
+<br/>
+x_left_label = <?= $rose->x_left_label; ?>

@@ -20,7 +20,7 @@ class repeatcourse_controller extends controller {
         	$curCoursesNames = rtrim($curCoursesNames, ',');
         	$curCoursesNames .= ')';
         }
-        $repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$this->course->category.'" '.$curCoursesNames);
+        $repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$this->course->category.'" '.$curCoursesNames . ' AND lang IN ("", "'.current_language().'")');
 //TODO:change structure {repeatcorse}. maybe add a field with associated course id or to exclude other courses..
 
         $this->get_view(array(
