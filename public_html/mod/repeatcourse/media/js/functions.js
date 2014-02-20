@@ -28,7 +28,7 @@ function add_rep_course() {
             }
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully saved<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(function(){location.reload();}, 500);
+            setInterval(function(){location.href = window.location.pathname+'?id='+id;}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
@@ -50,7 +50,7 @@ function repcourse_remove(rep_id){
             $("#repcourse_"+rep_id).remove();
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully removed<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(function(){location.reload();}, 500);
+            setInterval(function(){location.href = window.location.pathname+'?id='+id;}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
@@ -73,6 +73,26 @@ function priority_change(course_id, direction){
 			$("#result_msg").html('<span class="msg_success" style="display: none;">Successfully changed! Reloading page...<span>');
             $(".msg_success").fadeIn(500).fadeOut(1000);
             setInterval(function(){location.reload();}, 500);
+		},
+		error: function(){
+			$("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
+            $(".msg_error").fadeIn(500).fadeOut(2000);
+            setInterval(function(){$(".msg_error").remove();}, 2000);
+		}
+	});
+}
+
+function main_course_selecta(){
+	var id = _GET['id'];
+	var dataStr = "id="+id+"&main_course_id="+$("#main_courses option:selected").val();
+	$.ajax({
+		type: "GET",
+		url: window.location.pathname,
+		data: dataStr,
+		success: function(){
+			$("#result_msg").html('<span class="msg_success" style="display: none;">Successfully selected! Reloading page...<span>');
+            $(".msg_success").fadeIn(500).fadeOut(1000);
+            setInterval(function(){location.href = window.location.pathname+"?"+dataStr;}, 500);
 		},
 		error: function(){
 			$("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');

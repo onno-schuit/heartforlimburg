@@ -1,6 +1,7 @@
 <?php include( $this->get_partial_path('flash') ); ?>
 <h1>Configuring a repeatcourse "<?php echo $this->course->fullname;?>"</h1>
 <div id="coursetable_div">
+<?php if(isset($curCourses) && !isset($mainCourses)) { ?>
     <table id="coursetable">
         <tr>
             <th style="width: 5%;">ID</th>
@@ -48,6 +49,16 @@
                 echo print_string('no_available_courses', 'repeatcourse');
         } ?>
     </div>
+<?php } else { ?>
+    <select id="main_courses" onchange="main_course_selecta()">
+        <option value="0">-- Select Main Course --</option>
+        <?php
+            foreach($mainCourses as $mc){
+                echo '<option value="'.$mc->id.'">'.$mc->fullname.'</option>';
+            }
+        ?>
+    </select>
+<?php } ?>
     <div id="result_msg"></div>
     <div id="rep_course_buttons">
         
