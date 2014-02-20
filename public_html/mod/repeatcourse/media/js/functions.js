@@ -28,7 +28,7 @@ function add_rep_course() {
             }
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully saved<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(function(){$(".msg_success").remove();}, 2000);
+            setInterval(function(){location.reload();}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');

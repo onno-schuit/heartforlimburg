@@ -10,6 +10,8 @@ class repeatcourse_controller extends controller {
         $PAGE->requires->js("/lib/jquery/jquery-1.10.2.min.js");
         $PAGE->requires->js("/mod/repeatcourse/media/js/functions.js");
 
+        $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = "'.get_string('repcoursecategoryname', 'repeatcourse').'"');
+
         $curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE `repeatcourse` = '.$this->course->id.' ORDER BY ordering');       
 
         if(sizeof($curCourses)){
@@ -20,7 +22,7 @@ class repeatcourse_controller extends controller {
         	$curCoursesNames = rtrim($curCoursesNames, ',');
         	$curCoursesNames .= ')';
         }
-        $repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$this->course->category.'" '.$curCoursesNames . ' AND lang IN ("", "'.current_language().'")');
+        $repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$repCourseCat->id.'" '.$curCoursesNames . ' AND lang IN ("", "'.current_language().'")');
 //TODO:change structure {repeatcorse}. maybe add a field with associated course id or to exclude other courses..
 
         $this->get_view(array(

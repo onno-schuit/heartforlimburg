@@ -1,0 +1,15 @@
+<h2>Attempts</h2>
+<? foreach($attempts as $attempt) { 
+    if ($attempt->date_completed) {
+    ?>
+        <div>
+            Attempt completed - <?= $this->link_to('radarchart', get_string('link_to_radarchart', 'rose'),  "attempt_id={$attempt->id}"); ?>
+            | <?= $this->link_to('show', get_string('show_answers', 'rose'), "attempt_id={$attempt->id}"); ?>
+        </div>
+
+        <?
+        continue;
+    }
+    ?>
+        <div>Unfinished attempt - <?= $this->link_to('show', get_string('complete_questions', 'rose'), array('attempt_id' => $attempt->id)); ?></div>
+<? } ?>
