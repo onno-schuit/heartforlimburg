@@ -24,7 +24,7 @@ function repeatcourse_cron(){
 	            foreach($curCourseUsers as $ccu){
 	            	$mailTo = $DB->get_record('user', array('id' => $ccu->userid), '*');
 	            	$from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
-error_log(var_dump($from));
+
 	            	$subject = $mailTo->firstname . ', the course you\'ve passed is available again now!';
 	            	$messagetext = 'Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
 	            		The course <strong>' . $repcourse->fullname . '</strong> you\'ve passed is available to be passed again now!<br/>

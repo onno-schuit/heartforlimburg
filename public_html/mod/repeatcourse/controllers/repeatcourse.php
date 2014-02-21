@@ -15,11 +15,12 @@ class repeatcourse_controller extends controller {
         $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = "'.get_string('repcoursecategoryname', 'repeatcourse').'"');
         
         $mainCourseId = optional_param('main_course_id', 0, PARAM_INT);
-        if($mainCourseId == 0){
+        /*if($mainCourseId == 0){
         	$isMCourseExist = $DB->get_records_sql('SELECT id FROM {repeatcourse_records} WHERE repeatcourse = '. $this->course->id);
-        }
+        }*/
 
-        if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
+        //if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
+        if($mainCourseId > 0){
         	$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE repeatcourse = '.$this->course->id.' ORDER BY ordering');
         	
         	if(sizeof($curCourses)){

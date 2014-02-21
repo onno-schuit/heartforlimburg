@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 20 2014 г., 17:48
+-- Время создания: Фев 21 2014 г., 15:25
 -- Версия сервера: 5.5.35-log
 -- Версия PHP: 5.5.6
 
@@ -880,7 +880,7 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1392905509, '1', 1392912709);
+(1, 'userpreferenceschanged', '2', 1392980084, '1', 1392987284);
 
 -- --------------------------------------------------------
 
@@ -7019,7 +7019,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=531 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=535 ;
 
 --
 -- Дамп данных таблицы `mdl_log`
@@ -7553,7 +7553,11 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (527, 1392905517, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
 (528, 1392905517, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
 (529, 1392906004, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/repeatcourse/view.php?id=17', 'repeatcourse 17'),
-(530, 1392906004, 2, '127.0.0.1', 2, 'repeatcourse', 14, 'add', 'view.php?id=14', '17');
+(530, 1392906004, 2, '127.0.0.1', 2, 'repeatcourse', 14, 'add', 'view.php?id=14', '17'),
+(531, 1392980085, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(532, 1392980085, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(533, 1392980085, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(534, 1392980363, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2');
 
 -- --------------------------------------------------------
 
@@ -9665,7 +9669,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repeatcourse_records` (
   `ordering` bigint(10) NOT NULL DEFAULT '0',
   `cinterval` bigint(10) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='multiple records for repeatcourse resource' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='multiple records for repeatcourse resource' AUTO_INCREMENT=21 ;
 
 --
 -- Дамп данных таблицы `mdl_repeatcourse_records`
@@ -9673,8 +9677,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repeatcourse_records` (
 
 INSERT INTO `mdl_repeatcourse_records` (`id`, `repeatcourse`, `name`, `timemodified`, `ordering`, `cinterval`) VALUES
 (3, 6, 'isWorkable008', 1392052284, 3, 9),
-(6, 6, 'isWortkable007', 1392204921, 2, 5),
-(10, 2, 'isWortkable007', 1392907664, 3, 1);
+(6, 6, 'isWortkable007', 1392204921, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -11625,7 +11628,7 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=351 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=377 ;
 
 --
 -- Дамп данных таблицы `mdl_sessions`
@@ -11653,7 +11656,30 @@ INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecre
 (345, 0, '5ddb7h5lg7s41hvv7jb010r080', 0, NULL, 1392904743, 1392904743, '127.0.0.1', '127.0.0.1'),
 (347, 0, 'ssgu13pl1dkjikhfg5lfnp5hb7', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6Ik1xbkcyYXdGdkgiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5MjkwNzY1NTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392907654, 1392907654, '127.0.0.1', '127.0.0.1'),
 (348, 0, 'qsq5m4uep9p5i8f2l12lbr78o2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6Ijd3a0w5Y1RJQ0EiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5MjkwNzY1NTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392907654, 1392907654, '127.0.0.1', '127.0.0.1'),
-(350, 0, '29hp8jnqol9ol9v870lkl7uh65', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6IldNVnhscmpuS0YiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5MjkwNzY2MTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392907660, 1392907661, '127.0.0.1', '127.0.0.1');
+(352, 0, 'aftgii31ib01v0752osd1i1987', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6IlVsYVN5TXJDZkkiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5Mjk4MjI0NjtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392982246, 1392982246, '127.0.0.1', '127.0.0.1'),
+(353, 0, '6or5ta9i6eucn95ksrsu0g6vq1', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6IjZmVmhMTlZFOW4iO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5Mjk4MjI0NjtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392982246, 1392982246, '127.0.0.1', '127.0.0.1'),
+(354, 0, '82j39c6lfkmd6mmon4ailoih20', 0, NULL, 1392982246, 1392982246, '127.0.0.1', '127.0.0.1'),
+(355, 0, 'f5ajqg9ugql3atih4h1k87jm71', 0, NULL, 1392982246, 1392982246, '127.0.0.1', '127.0.0.1'),
+(356, 0, 'bvvr63bhftuvhnh96heon17o13', 0, NULL, 1392982247, 1392982247, '127.0.0.1', '127.0.0.1'),
+(357, 0, '85mdhfg7l7gea2rh5c74efo5h7', 0, NULL, 1392982247, 1392982247, '127.0.0.1', '127.0.0.1'),
+(359, 0, '31ic3fmrmnh4r4ete654cgmr04', 0, NULL, 1392982247, 1392982247, '127.0.0.1', '127.0.0.1'),
+(360, 0, 'aq85odnel4glcla787kt8ugsa1', 0, NULL, 1392982247, 1392982247, '127.0.0.1', '127.0.0.1'),
+(361, 0, '8ij9024vns6eod9hpj4l81u4h6', 0, NULL, 1392982248, 1392982248, '127.0.0.1', '127.0.0.1'),
+(362, 0, 'sq2lef2mjds4rq4omrbc6skur4', 0, NULL, 1392982248, 1392982248, '127.0.0.1', '127.0.0.1'),
+(363, 0, 'qc7fdnr662gp5tfihm40or7no1', 0, NULL, 1392982248, 1392982248, '127.0.0.1', '127.0.0.1'),
+(364, 0, 'qsu2cgrlmdrh8qvtgt6vgchai7', 0, NULL, 1392982248, 1392982248, '127.0.0.1', '127.0.0.1'),
+(365, 0, 'pf9mjg9bo2jghpuebncm3vkq91', 0, NULL, 1392982248, 1392982248, '127.0.0.1', '127.0.0.1'),
+(366, 0, 'tif9hmbhv2jq14uettcsjv6ba1', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(367, 0, '3n5sdnds8kmt9eknbkgcvj7l43', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(368, 0, '8351e2qg6kvjmh820o64kr7k92', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(369, 0, 'jcg5abj0jkceu1lg8k0ir400d6', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6IkxOY1NXOGRTT1ciO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YToxOntpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5Mjk4MjI0OTtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1392982249, 1392985342, '127.0.0.1', '127.0.0.1'),
+(370, 0, 'am3k1h3q7ef09f76phacs0q0s4', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(371, 0, 'tk0vdl3osjapdjona8qhsi2oj0', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(372, 0, 'f3krgqogrb1bsa4hqsc8mlg2g6', 0, NULL, 1392982249, 1392982249, '127.0.0.1', '127.0.0.1'),
+(373, 0, 'bgs7ee4hs3c24fpmcle8nfrur3', 0, NULL, 1392982250, 1392982250, '127.0.0.1', '127.0.0.1'),
+(374, 0, 'lfl01uagt2pvg2n3q9d4er0io6', 0, NULL, 1392982250, 1392982250, '127.0.0.1', '127.0.0.1'),
+(375, 0, 'o4fi77d7sf5t8onqshs5mo17h7', 0, NULL, 1392982250, 1392982250, '127.0.0.1', '127.0.0.1'),
+(376, 0, 'eircev311kgada3c31umoqjkq4', 0, NULL, 1392982250, 1392982250, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -15151,7 +15177,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `lastnamephonetic`, `firstnamephonetic`, `middlename`, `alternatename`, `calendartype`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', 'f7ce79d5792ff8274ea845a9084fb4dd', '', 'Guest user', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', 'This user is a special user that allows read-only access to some courses.', 0, 1, 0, 2, 1, 0, 0, 1390393232, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1392906004, 1392896854, 1392905509, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1392905509, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1392980363, 1392905509, 1392980084, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1392980084, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (3, 'intake', 1, 0, 0, 0, 1, 'testuser', '289e3d7a0c42af241011446c626d8794', '', 'Test', 'User', 'testuser@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Menesk', 'BY', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1390571158, 1390571158, 0, '', NULL, NULL, NULL, NULL, 'gregorian'),
 (4, 'intake', 1, 0, 0, 0, 1, 'testuser2', '$2y$10$w3Mk2r.QLkfvR.TlRm..Suafz5rBMIpKjNkDYHUAemloaF7a0voIa', '', 'Testuser2', 'Testuser2', 'testuser2@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Testuser2', 'IQ', 'en', '', '99', 1390572660, 1392305850, 1392291522, 1392293323, '127.0.0.1', '66uOtLZ28RFnKZp', 0, '', NULL, 0, 1, 0, 2, 1, 0, 1390572660, 1392293323, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (5, 'intake', 1, 0, 0, 0, 1, 'teacher', '$2y$10$LqA9yjV6fxmIv6g99An0teyQQGw6y8J93H9riqyDOvRysmIu48Rfy', '', 'teacher', 'teacher', 'teacher@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'BS', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086669, 1391086669, 0, '', '', '', '', '', 'gregorian'),
@@ -15304,7 +15330,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
-(1, 2, 2, 1392906004),
+(1, 2, 2, 1392980363),
 (2, 4, 2, 1392291534),
 (3, 2, 3, 1392294699),
 (4, 6, 3, 1391443296),
