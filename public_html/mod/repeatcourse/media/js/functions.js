@@ -12,7 +12,7 @@ function add_rep_course() {
     var id = _GET['id'];
     var main_course_id = _GET['main_course_id'];
     var selected_course = $("#course_selector :selected").html();
-    var data = "id="+id+"&coursename="+selected_course+"&interval="+$("#repcourse_interval").val()+"&action=add_repcourse";
+    var data = "id="+id+"&coursename="+selected_course+"&interval="+$("#repcourse_interval").val()+"&action=add_repcourse&main_course_id="+main_course_id;
     $.ajax({
         type: "POST",
         url: '/mod/repeatcourse/index.php',
@@ -29,7 +29,8 @@ function add_rep_course() {
             }
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully saved<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(function(){location.href = window.location.pathname+'?id='+id+"&main_course_id="+main_course_id;}, 500);
+            //setInterval(function(){location.href = window.location.pathname+'?id='+id+"&main_course_id="+main_course_id;}, 500);
+            setInterval(function(){location.reload();}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');

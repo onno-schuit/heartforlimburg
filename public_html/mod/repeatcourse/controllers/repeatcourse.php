@@ -21,7 +21,7 @@ class repeatcourse_controller extends controller {
 
         //if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
         if($mainCourseId > 0){
-        	$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE repeatcourse = '.$this->course->id.' ORDER BY ordering');
+        	$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE repeatcourse = '.$mainCourseId.' ORDER BY ordering');
         	
         	if(sizeof($curCourses)){
         		$curCoursesNames = 'AND fullname  NOT IN (';
@@ -39,7 +39,7 @@ class repeatcourse_controller extends controller {
         			'curCourses'    => $curCourses,
         	));
         } else {
-        	$mainCoursesArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');        	
+        	$mainCoursesArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');
         	$this->get_view(array(
         			'mainCourses'	=> $mainCoursesArr
         	));
@@ -68,11 +68,14 @@ class repeatcourse_controller extends controller {
         global $DB;
         $this->no_layout = true;
         
-        $lastOrderObj = $DB->get_record_sql('SELECT MAX(ordering) as maxord FROM {repeatcourse_records} WHERE repeatcourse = '. $this->course->id);
+        $courseId = optional_param('main_course_id', 0, PARAM_INT);
+        if($courseId == 0){ return false; }
+        
+        $lastOrderObj = $DB->get_record_sql('SELECT MAX(ordering) as maxord FROM {repeatcourse_records} WHERE repeatcourse = '. $courseId);
         $lastOrder = ($lastOrderObj->maxord === NULL) ? 0 : $lastOrderObj->maxord;
 
         $record = new stdClass();
-        $record->repeatcourse = $this->course->id;
+        $record->repeatcourse = $courseId;
         $record->name = optional_param('coursename', '', PARAM_NOTAGS);
         $record->timemodified = time();
         $record->ordering = $lastOrder+1;
@@ -122,7 +125,7 @@ class repeatcourse_controller extends controller {
     			$transaction = $DB->start_delegated_transaction();
     			$DB->update_record('repeatcourse_records', $curObject);
     			$DB->update_record('repeatcourse_records', $prevObject);
-    			// Perform some $DB stuff
+
     			$transaction->allow_commit();
     		} catch (Exception $e) {
     			//extra cleanup steps
@@ -145,24 +148,24 @@ class repeatcourse_controller extends controller {
     		}
     		asort($orderArr);//assoc array sorted ASC by values: [1]=>1, [3]=>2
     	
-    		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));//2
+    		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));
     	
-    		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);//1
-    		$repCourseOrderIdPrev = self::incrementDecrementKey($repCourseOrderIdCur, $orderArr, true);//1--1
+    		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);
+    		$repCourseOrderIdPrev = self::incrementDecrementKey($repCourseOrderIdCur, $orderArr, true);
     	
     		$curObject = new stdClass();
-    		$curObject->id = $repCourseOrderIdCur;//3
-    		$curObject->ordering = $orderArr[$repCourseOrderIdPrev];//1
+    		$curObject->id = $repCourseOrderIdCur;
+    		$curObject->ordering = $orderArr[$repCourseOrderIdPrev];
     	
     		$prevObject = new stdClass();
-    		$prevObject->id = $repCourseOrderIdPrev;//1
-    		$prevObject->ordering = $repCourseOrderCur->ordering;//2
+    		$prevObject->id = $repCourseOrderIdPrev;
+    		$prevObject->ordering = $repCourseOrderCur->ordering;
     	
     		try {
     			$transaction = $DB->start_delegated_transaction();
     			$DB->update_record('repeatcourse_records', $curObject);
     			$DB->update_record('repeatcourse_records', $prevObject);
-    			// Perform some $DB stuff
+
     			$transaction->allow_commit();
     		} catch (Exception $e) {
     			//extra cleanup steps
