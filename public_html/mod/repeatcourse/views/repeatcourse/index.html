@@ -15,17 +15,22 @@
         foreach ($curCourses as $course) {
 			$orderArr[] = $course->ordering;
 		}
+        $i = 1;
         foreach($curCourses as $val){
 			$order_up = ($val->ordering == min($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 1);"><img src="./media/images/triangle_up.gif" alt="Priority up" title="Priority up"/></a>';
         	$order_down = ($val->ordering == max($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 0);"><img src="./media/images/triangle_down.gif" alt="Priority down" title="Priority down"/></a>';
+            $intervalStr = $val->cinterval . ' ';
+            $intervalStr .= ($val->cinterval == 1) ? 'day' : 'days';
+
             echo '<tr id="repcourse_'.$val->id.'">
-                <td>'.$val->id.'</td>
+                <td>'.$i.'</td>
                 <td>'.$val->name.'</td>
                 <td>
                     '.$order_up.$order_down.'</td>
-                <td>'.@$val->cinterval.'</td>
+                <td>'.$intervalStr.' </td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
             </tr>';
+            $i++;
         } ?>
     </table>
     <div id="available_courses">

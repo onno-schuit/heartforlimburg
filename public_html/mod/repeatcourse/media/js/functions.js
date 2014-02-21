@@ -10,9 +10,11 @@ document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
 
 function add_rep_course() {
     var id = _GET['id'];
-    var main_course_id = _GET['main_course_id'];
-    var selected_course = $("#course_selector :selected").html();
-    var data = "id="+id+"&coursename="+selected_course+"&interval="+$("#repcourse_interval").val()+"&action=add_repcourse&main_course_id="+main_course_id;
+    var maincourseid = _GET['maincourseid'];
+    var selected_course_id = $("#course_selector :selected").val();
+    var coursename = $("#course_selector :selected").html();
+    var data = "id="+id+"&coursename="+coursename+"&selected_course_id="+selected_course_id+"&interval="+$("#repcourse_interval").val()+"&action=add_repcourse&maincourseid="+maincourseid;
+    var interval_str = ($("#repcourse_interval").val() == 1) ? $("#repcourse_interval").val() + ' day' : $("#repcourse_interval").val() + ' days';
     $.ajax({
         type: "POST",
         url: '/mod/repeatcourse/index.php',
@@ -21,8 +23,8 @@ function add_rep_course() {
             var table = $("#coursetable");
             var row = $("#coursetable tr").eq(1).clone().appendTo(table);
             row.children().eq(0).html();
-            row.children().eq(1).html(selected_course);
-            row.children().eq(3).html($("#repcourse_interval").val());
+            row.children().eq(1).html(coursename);
+            row.children().eq(3).html(interval_str);
             $("#course_selector :selected").remove();
             if($("#course_selector").children().length == 0){
                 $("#available_courses").hide();
@@ -44,7 +46,7 @@ function add_rep_course() {
 
 function repcourse_remove(rep_id){
 	var id = _GET['id'];
-	var main_course_id = _GET['main_course_id'];
+	var maincourseid = _GET['maincourseid'];
     $.ajax({
         type: "POST",
         url: '/mod/repeatcourse/index.php',
@@ -53,7 +55,7 @@ function repcourse_remove(rep_id){
             $("#repcourse_"+rep_id).remove();
             $("#result_msg").html('<span class="msg_success" style="display: none;">Successfully removed<span>');
             $(".msg_success").fadeIn(500).fadeOut(2000);
-            setInterval(function(){location.href = window.location.pathname+'?id='+id+"&main_course_id="+main_course_id;}, 500);
+            setInterval(function(){location.href = window.location.pathname+'?id='+id+"&maincourseid="+maincourseid;}, 500);
         },
         error: function(){
             $("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
@@ -87,13 +89,13 @@ function priority_change(course_id, direction){
 
 function main_course_selecta(){
 	var id = _GET['id'];
-	var dataStr = "id="+id+"&main_course_id="+$("#main_courses option:selected").val();
+	var dataStr = "id="+id+"&maincourseid="+$("#main_courses option:selected").val();
 	$.ajax({
 		type: "GET",
 		url: window.location.pathname,
 		data: dataStr,
 		success: function(){
-			$("#result_msg").html('<span class="msg_success" style="display: none;">Course <strong>'+$("#main_courses option:selected").html()+'</strong> selected! Reloading page...<span>');
+			$("#result_msg").html('<span class="msg_success" style="display: none;">Course <strong>'+$("#main_courses option:selected").html()+'</strong> selected! Wait a moment...<span>');
             $(".msg_success").fadeIn(500).fadeOut(1000);
             setInterval(function(){location.href = window.location.pathname+"?"+dataStr;}, 500);
 		},

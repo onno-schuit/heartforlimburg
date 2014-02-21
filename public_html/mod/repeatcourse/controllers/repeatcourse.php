@@ -14,14 +14,14 @@ class repeatcourse_controller extends controller {
         
         $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = "'.get_string('repcoursecategoryname', 'repeatcourse').'"');
         
-        $mainCourseId = optional_param('main_course_id', 0, PARAM_INT);
+        $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         /*if($mainCourseId == 0){
         	$isMCourseExist = $DB->get_records_sql('SELECT id FROM {repeatcourse_records} WHERE repeatcourse = '. $this->course->id);
         }*/
 
         //if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
         if($mainCourseId > 0){
-        	$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE repeatcourse = '.$mainCourseId.' ORDER BY ordering');
+        	$curCourses = $DB->get_records_sql('SELECT id, name, ordering, cinterval FROM {repeatcourse_records} WHERE maincourseid = "'.$mainCourseId.'" ORDER BY ordering');
         	
         	if(sizeof($curCourses)){
         		$curCoursesNames = 'AND fullname  NOT IN (';
@@ -68,14 +68,16 @@ class repeatcourse_controller extends controller {
         global $DB;
         $this->no_layout = true;
         
-        $courseId = optional_param('main_course_id', 0, PARAM_INT);
-        if($courseId == 0){ return false; }
-        
-        $lastOrderObj = $DB->get_record_sql('SELECT MAX(ordering) as maxord FROM {repeatcourse_records} WHERE repeatcourse = '. $courseId);
+        $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
+        $repeatCourseId = optional_param('selected_course_id', 0, PARAM_INT);
+        if($mainCourseId == 0 || $repeatCourseId == 0){ return false; }
+
+        $lastOrderObj = $DB->get_record_sql('SELECT MAX(ordering) as maxord FROM {repeatcourse_records} WHERE maincourseid = "'. $mainCourseId . '"');
         $lastOrder = ($lastOrderObj->maxord === NULL) ? 0 : $lastOrderObj->maxord;
 
         $record = new stdClass();
-        $record->repeatcourse = $courseId;
+        $record->maincourseid = $mainCourseId;
+        $record->repeatcourse = $repeatCourseId;
         $record->name = optional_param('coursename', '', PARAM_NOTAGS);
         $record->timemodified = time();
         $record->ordering = $lastOrder+1;
