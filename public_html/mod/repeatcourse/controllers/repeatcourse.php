@@ -39,9 +39,39 @@ class repeatcourse_controller extends controller {
         			'curCourses'    => $curCourses,
         	));
         } else {
-        	$mainCoursesArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');
+        	$mainCourseArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');
+        	$mainCourseStr = '';
+        	foreach($mainCourseArr as $mc){
+        		$mainCourseStr .= $mc->id . ',';
+        	}
+        	$mainCourseStr = rtrim($mainCourseStr, ',');
+        	
+        	//$repMainCourseArr = $DB->get_records_sql('SELECT maincourseid, repeatcourse, name FROM {repeatcourse_records} WHERE repeatcourse NOT IN (' . $mainCourseStr . ') ORDER BY ordering');
+            
+            $resultRCArr = $DB->get_records_sql('
+                SELECT rc.id AS rcid, rc.maincourseid AS mid, rc.repeatcourse AS rid, rc.name AS rcname, mc.fullname 
+                FROM {course} AS mc  LEFT JOIN {repeatcourse_records} AS rc ON rc.maincourseid = mc.id
+                WHERE rc.repeatcourse NOT IN (' . $mainCourseStr . ') ORDER BY rc.ordering ASC
+            ');
+            $resArr = array();
+            foreach($resultRCArr as $rc){
+                if(@$resArr[$rc->mid]){
+                    $resArr[$rc->mid] .= $rc->rcname . ', ';
+                } else {
+                    $resArr[$rc->mid] = $rc->rcname . ', ';
+                }
+            }
+            $resultRCArr = $DB->get_records_sql('
+                SELECT rc.id AS rcid, rc.maincourseid AS mid, rc.repeatcourse AS rid, rc.name AS rcname, mc.fullname FROM {course} AS mc 
+                LEFT JOIN {repeatcourse_records} AS rc ON rc.maincourseid = mc.id WHERE rc.repeatcourse NOT IN (' . $mainCourseStr . ')
+                GROUP BY rc.maincourseid ORDER BY rc.ordering ASC
+            ');
+            
+//echo "<pre>"; print_r($resArr); die;
         	$this->get_view(array(
-        			'mainCourses'	=> $mainCoursesArr
+        			'mainCourses'    => $mainCourseArr,
+        			'resultArray'    => $resultRCArr,
+                    'resArr'         => $resArr 
         	));
         }
     } // function index
@@ -67,7 +97,7 @@ class repeatcourse_controller extends controller {
     function add_repcourse(){
         global $DB;
         $this->no_layout = true;
-        
+
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         $repeatCourseId = optional_param('selected_course_id', 0, PARAM_INT);
         if($mainCourseId == 0 || $repeatCourseId == 0){ return false; }
@@ -82,9 +112,16 @@ class repeatcourse_controller extends controller {
         $record->timemodified = time();
         $record->ordering = $lastOrder+1;
         $record->cinterval = optional_param('interval', 0, PARAM_INT);
-
-        $insertedId = $DB->insert_record('repeatcourse_records', $record);
-        return $insertedId;
+error_log(var_export($record, true));return false;
+        try {
+			$transaction = $DB->start_delegated_transaction();
+            $DB->insert_record('repeatcourse_records', $record);
+			$transaction->allow_commit();
+		} catch (Exception $e) {
+			//extra cleanup steps
+			$transaction->rollback($e); // rethrows exception
+		}
+        return true;
     }
 
     function delete_repcourse(){

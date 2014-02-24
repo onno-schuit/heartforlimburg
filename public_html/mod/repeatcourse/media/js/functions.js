@@ -7,7 +7,7 @@ document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
 
     _GET[decode(arguments[1])] = decode(arguments[2]);
 });
-
+ 
 function add_rep_course() {
     var id = _GET['id'];
     var maincourseid = _GET['maincourseid'];
@@ -19,7 +19,7 @@ function add_rep_course() {
         type: "POST",
         url: '/mod/repeatcourse/index.php',
         data: data,
-        success: function(e, data){
+        success: function(){
             var table = $("#coursetable");
             var row = $("#coursetable tr").eq(1).clone().appendTo(table);
             row.children().eq(0).html();
@@ -87,22 +87,25 @@ function priority_change(course_id, direction){
 	});
 }
 
-function main_course_selecta(){
+function main_course_selecta(mcourseid){
 	var id = _GET['id'];
-	var dataStr = "id="+id+"&maincourseid="+$("#main_courses option:selected").val();
-	$.ajax({
+    if(mcourseid == 0){
+        mcourseid = $("#main_courses option:selected").val();
+    }
+	var dataStr = "id="+id+"&maincourseid="+mcourseid;
+
+    location.href = window.location.pathname+"?"+dataStr;
+	/*$.ajax({
 		type: "GET",
 		url: window.location.pathname,
 		data: dataStr,
 		success: function(){
-			$("#result_msg").html('<span class="msg_success" style="display: none;">Course <strong>'+$("#main_courses option:selected").html()+'</strong> selected! Wait a moment...<span>');
-            $(".msg_success").fadeIn(500).fadeOut(1000);
-            setInterval(function(){location.href = window.location.pathname+"?"+dataStr;}, 500);
+			
 		},
 		error: function(){
 			$("#result_msg").html('<span class="msg_error" style="display: none;">Something going wrong. Try again later.<span>');
             $(".msg_error").fadeIn(500).fadeOut(2000);
             setInterval(function(){$(".msg_error").remove();}, 2000);
 		}
-	});
+	});*/
 }

@@ -55,14 +55,38 @@
         } ?>
     </div>
 <?php } else { ?>
-    <select id="main_courses" onchange="main_course_selecta()">
-        <option value="0">-- Select Main Course --</option>
+<table id="coursetable">
+        <tr>
+            <th style="width: 40%;">Main Course</th>
+            <th style="width: 40%;">Refreshing Courses</th>
+            <th style="width: 20%;"></th>
+        </tr>
         <?php
-            foreach($mainCourses as $mc){
-                echo '<option value="'.$mc->id.'">'.$mc->fullname.'</option>';
-            }
+        foreach($resultArray as $ra){
+                echo '<tr id="maincourse_' . $ra->mid . '">
+                    <td>' . $ra->fullname . '</td>
+                    <td>' . rtrim($resArr[$ra->mid], ', ') . '</td>
+                    <td>
+                        <a href="#" onclick="">Remove all</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="main_course_selecta(' . $ra->mid . ')">Edit</a>
+                    </td>
+                </tr>';
+        }
         ?>
-    </select>
+    <tr>
+        <td>
+            <select id="main_courses" onchange="main_course_selecta(0)">
+                <option value="0">-- Select Main Course --</option>
+                <?php
+                    foreach($mainCourses as $mc){
+                        echo '<option value="'.$mc->id.'">'.$mc->fullname.'</option>';
+                    }
+                ?>
+            </select>
+        </td>
+        <td colspan="2"></td>
+    </tr>
+</table>
 <?php } ?>
     <div id="result_msg"></div>
     <div id="rep_course_buttons">
