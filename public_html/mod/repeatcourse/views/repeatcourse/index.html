@@ -6,9 +6,9 @@
         <tr>
             <th style="width: 5%;">ID</th>
             <th style="width: 40%;">Course</th>
-            <th style="width: 20%;">Ordering</th>
             <th style="width: 20%;">Interval</th>
             <th style="width: 15%;"></th>
+            <th style="width: 20%;">Ordering</th>
         </tr>
         <?php
         $orderArr = array();
@@ -25,35 +25,42 @@
             echo '<tr id="repcourse_'.$val->id.'">
                 <td>'.$i.'</td>
                 <td>'.$val->name.'</td>
-                <td>
-                    '.$order_up.$order_down.'</td>
                 <td>'.$intervalStr.' </td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
+                <td>
+                    '.$order_up.$order_down.'</td>
             </tr>';
             $i++;
         } ?>
-    </table>
-    <div id="available_courses">
-        <?php if(sizeof($repeatCourses)){ ?>
-        <span>
-            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
-            <select id="course_selector">
-            <?php
-                foreach($repeatCourses as $course){
+    <tr class="available_courses">
+	   <td></td>
+	   <td>
+		        <?php if(sizeof($repeatCourses)){ ?>
+		        <span>
+		            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
+		            <select id="course_selector">
+		            <?php
+		                foreach($repeatCourses as $course){
                     echo '<option value="'.$course->id.'">'.$course->fullname.'</option>';
                 }
             ?>
-            </select>
-        </span><span>
-            <label for="repcourse_interval">Interval (in days)</label>
-            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
-        </span><span>
-            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
-        </span>
-        <?php } else {
+		            </select>
+		        </span>
+	   </td><td>
+               <span>
+		            <label for="repcourse_interval">Interval (in days)</label>
+		            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
+		        </span>
+        </td><td>
+		        <span>
+		            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
+		        </span>
+		        <?php } else {
                 echo print_string('no_available_courses', 'repeatcourse');
         } ?>
-    </div>
+	    </td><td></td>
+    </tr>
+</table>
 <?php } else { ?>
 <table id="coursetable">
         <tr>
@@ -67,7 +74,7 @@
                     <td>' . $ra->fullname . '</td>
                     <td>' . rtrim($resArr[$ra->mid], ', ') . '</td>
                     <td>
-                        <a href="#" onclick="">Remove all</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="main_course_remova(' . $ra->mid . ')">Remove all</a>&nbsp;|&nbsp;
                         <a href="#" onclick="main_course_selecta(' . $ra->mid . ')">Edit</a>
                     </td>
                 </tr>';
