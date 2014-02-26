@@ -15,12 +15,16 @@ class repeatcourse_controller extends controller {
         $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = "'.get_string('repcoursecategoryname', 'repeatcourse').'"');
         
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
+        
+        $mainCourseName = $this->course->fullname;
         /*if($mainCourseId == 0){
         	$isMCourseExist = $DB->get_records_sql('SELECT id FROM {repeatcourse_records} WHERE repeatcourse = '. $this->course->id);
         }*/
 
         //if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
         if($mainCourseId > 0){
+            $mainCourseNameObj = $DB->get_record('course', array('id' => $mainCourseId), 'fullname');
+            $mainCourseName = $mainCourseNameObj->fullname;
         	$curCourses = $DB->get_records_sql('
         			SELECT rr.id, rr.repeatcourse, rr.ordering, rr.cinterval, cc.fullname AS name
         			FROM {repeatcourse_records} as rr
@@ -42,6 +46,7 @@ class repeatcourse_controller extends controller {
         	$this->get_view(array(
         			'repeatCourses' => $repeatCourses,
         			'curCourses'    => $curCourses,
+                    'mainCourseName' => $mainCourseName,
         	));
         } else {
         	$mainCourseArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');
@@ -79,7 +84,8 @@ class repeatcourse_controller extends controller {
         	$this->get_view(array(
         			'mainCourses'    => $mainCourseArr,
         			'resultArray'    => $resultRCArr,
-                    'resArr'         => $resArr 
+                    'resArr'         => $resArr,
+                    'mainCourseName' => $mainCourseName,
         	));
         }
     } // function index
