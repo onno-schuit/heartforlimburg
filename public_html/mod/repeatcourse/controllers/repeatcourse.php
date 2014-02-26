@@ -128,7 +128,8 @@ class repeatcourse_controller extends controller {
 
         try {
 			$transaction = $DB->start_delegated_transaction();
-            $DB->insert_record('repeatcourse_records', $record);
+//            $DB->insert_record('repeatcourse_records', $record);
+            $DB->execute("INSERT INTO {repeatcourse_records} (maincourseid, repeatcourse,timemodified,ordering,cinterval) VALUES('" . $record->maincourseid . "', '" . $record->repeatcourse . "','" . $record->timemodified . "','" . $record->ordering . "','" . $record->cinterval . "')");
 			$transaction->allow_commit();
 		} catch (Exception $e) {
 			//extra cleanup steps
