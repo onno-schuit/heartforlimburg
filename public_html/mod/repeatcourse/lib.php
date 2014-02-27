@@ -25,9 +25,9 @@ function repeatcourse_cron(){
 	            	$mailTo = $DB->get_record('user', array('id' => $ccu->userid), '*');
 	            	$from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
 
-	            	$subject = $mailTo->firstname . ', the course you\'ve passed is available again now!';
+	            	$subject = 'Dear' . $mailTo->firstname . '!';
 	            	$messagetext = 'Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
-	            		The course <strong>' . $repcourse->fullname . '</strong> you\'ve passed is available to be passed again now!<br/>
+	            		Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin. The course will start on <br/>
 						Best regards, HeartforLimburg team.';
 	            	email_to_user($mailTo, $from, $subject, $messagetext);
 	            	return true;
