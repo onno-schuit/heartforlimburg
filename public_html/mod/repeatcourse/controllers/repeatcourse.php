@@ -6,6 +6,8 @@ class repeatcourse_controller extends controller {
     function index() {
         global $DB ,$PAGE;
 
+        require_login($this->course);
+
         $curCoursesNames = '';
         $isMCourseExist = array();
         
@@ -17,6 +19,7 @@ class repeatcourse_controller extends controller {
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         
         $mainCourseName = $this->course->fullname;
+        
         /*if($mainCourseId == 0){
         	$isMCourseExist = $DB->get_records_sql('SELECT id FROM {repeatcourse_records} WHERE repeatcourse = '. $this->course->id);
         }*/
@@ -112,6 +115,8 @@ class repeatcourse_controller extends controller {
         global $DB;
         $this->no_layout = true;
 
+        require_login($this->course);
+
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         $repeatCourseId = optional_param('selected_course_id', 0, PARAM_INT);
         if($mainCourseId == 0 || $repeatCourseId == 0){ return false; }
@@ -134,6 +139,7 @@ class repeatcourse_controller extends controller {
 		} catch (Exception $e) {
 			//extra cleanup steps
 			$transaction->rollback($e); // rethrows exception
+            error_log(var_export($e, true));
 			return false;
 		}
         return true;
@@ -142,6 +148,9 @@ class repeatcourse_controller extends controller {
     function delete_repcourse(){
         global $DB;
         $this->no_layout = true;
+
+        require_login($this->course);
+
         $repCourseId = optional_param('rep_id', 0, PARAM_INT);
         if($repCourseId > 0){
             return $DB->delete_records('repeatcourse_records', array('id' => $repCourseId));
@@ -154,6 +163,9 @@ class repeatcourse_controller extends controller {
     	global $DB;
     	$orderArr = array();
     	$this->no_layout = true;
+
+        require_login($this->course);
+
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
     		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
@@ -194,6 +206,9 @@ class repeatcourse_controller extends controller {
     	global $DB;
     	$orderArr = array();
     	$this->no_layout = true;
+
+        require_login($this->course);
+
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
     		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
@@ -242,6 +257,8 @@ class repeatcourse_controller extends controller {
     }
     
     function main_course_remova(){
+        require_login($this->course);
+
     	$mcid = optional_param('mcid', 0, PARAM_INT);
     	if($mcid == 0){ return false; }
 
