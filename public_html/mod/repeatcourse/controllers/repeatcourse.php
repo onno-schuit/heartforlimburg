@@ -164,7 +164,7 @@ class repeatcourse_controller extends controller {
     	$orderArr = array();
     	$this->no_layout = true;
 
-        require_login($this->course);
+        //require_login($this->course);
 
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
@@ -207,7 +207,7 @@ class repeatcourse_controller extends controller {
     	$orderArr = array();
     	$this->no_layout = true;
 
-        require_login($this->course);
+        //require_login($this->course);
 
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
@@ -239,7 +239,6 @@ class repeatcourse_controller extends controller {
     		} catch (Exception $e) {
     			//extra cleanup steps
     			$transaction->rollback($e); // rethrows exception
-    			return false;
     		}
     		return true;
     	}
@@ -248,7 +247,7 @@ class repeatcourse_controller extends controller {
     
     function incrementDecrementKey($key, $array, $isInc){
     	$keys = array_keys($array);
-    	$keys_flip = array_flip(array_keys($array));
+    	$keys_flip = array_flip($keys);
     	if($isInc){
     		return $keys[$keys_flip[$key]+1];
     	} else {
