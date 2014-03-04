@@ -17,4 +17,4 @@
     $string['configintro'] = 'The values you set here define count of day before refresher courses starts';
     $string['daytoremindcount'] = 'Day to remind';
     $string['configdaytoremindcount'] = 'Day before sending reminder email about refresher courses start';
-?>
+

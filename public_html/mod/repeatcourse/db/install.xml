@@ -33,5 +33,16 @@
 			<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
 		</KEYS>
 	</TABLE>
+	<TABLE NAME="course_completions_repcourse" COMMENT="table with associations between userid - maincourseid - mailing">
+		<FIELDS>
+			<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+			<FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="maincourseid"/>
+			<FIELD NAME="maincourseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="userid" NEXT="mailing"/>
+			<FIELD NAME="mailing" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="maincourseid"/>
+		</FIELDS>
+		<KEYS>
+			<KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+		</KEYS>
+	</TABLE>
   </TABLES>
 </XMLDB>

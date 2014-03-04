@@ -1,0 +1,32 @@
+<?php include( $this->get_partial_path('flash') );
+if($mainCourseId == 0 || $userId == 0){
+    echo "<h1>Wrong input data!</h1>"; die();
+} else {
+    $isChecked = ($isCurUser && $isMailing) ? 'checked="checked"' : '';
+?>
+<h1>Configuring a course "<?php echo $mainCourseName;?>"</h1>
+<form action="index.php" method="POST" id="optin_screen">
+    <div class="center">
+        <input type="checkbox" id="mailing" name="mailing" <?php echo $isChecked; ?> /><label for="mailing">Yes, I want to take the refresher courses news for <strong><?php echo $mainCourseName;?></strong> course</label>
+        <div class="buttons">
+            <input type="hidden" name="id" value="<?php echo $curId ?>"/>
+            <input type="hidden" name="action" value="optin_save"/>
+            <input type="hidden" name="ismailing" value="0" id="ismailing"/>
+            <input type="hidden" name="maincourseid" value="<?php echo $mainCourseId ?>"/>
+            <input type="hidden" name="userid" value="<?php echo $userId ?>"/>
+            <input type="submit" value="Save"/>
+        </div>
+    </div>
+</form>
+<?php
+}
+?>
+<style>
+.center {
+    text-align: center;
+    margin: 40px 0 40px 0;
+}
+.buttons {
+    margin-top: 20px;
+}
+</style>

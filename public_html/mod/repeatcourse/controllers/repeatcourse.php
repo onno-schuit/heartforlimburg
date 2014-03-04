@@ -92,7 +92,70 @@ class repeatcourse_controller extends controller {
         	));
         }
     } // function index
+    
+    function optin(){
+        global $DB, $PAGE, $USER;
+        
+        require_login($this->course);
+        $PAGE->requires->js("/lib/jquery/jquery-1.10.2.min.js");
+        $PAGE->requires->js("/mod/repeatcourse/media/js/optin_screen.js");
 
+        $curId          = optional_param('id', 0, PARAM_INT);
+        $mainCourseId   = optional_param('maincourseid', 0, PARAM_INT);
+        $userId         = $USER->id;
+        $mainCourseName = $this->course->fullname;
+        
+        $isCurUser = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
+        if($isCurUser->mailing == 1) {$isMailing = 1;} else {$isMailing = 0;} 
+        $isCurUser = ($isCurUser) ? 1 : 0;
+        
+        $this->get_view(array(
+            'mainCourseId'  => $mainCourseId,
+            'userId'        => $userId,
+            'mainCourseName'=> $mainCourseName,
+            'curId'         => $curId,
+            'isCurUser'     => $isCurUser,
+            'isMailing'     => $isMailing,
+        ));
+    }
+    
+    function optin_save(){
+        global $DB, $PAGE, $USER;
+        
+        require_login($this->course);
+        $PAGE->requires->js("/lib/jquery/jquery-1.10.2.min.js");
+        $PAGE->requires->js("/mod/repeatcourse/media/js/optin_screen.js");
+        
+        $curId          = optional_param('id', 0, PARAM_INT);
+        $mainCourseId   = optional_param('maincourseid', 0, PARAM_INT);
+        $isMailing      = optional_param('ismailing', 0, PARAM_INT);
+        $userId         = $USER->id;
+        $mainCourseName = $this->course->fullname;
+        
+        $params = array(
+            'ismailing' => $isMailing,
+            'userid' => $userId,
+            'maincourseid' => $mainCourseId
+        );
+        
+        $isCurUser = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
+
+        $isCurUser = ($isCurUser !== null) ? 1 : 0;
+        if($isCurUser){
+            $DB->execute('UPDATE {course_completions_repcourse} SET `mailing`=:ismailing WHERE userid=:userid AND maincourseid=:maincourseid', $params);
+        } else {
+            $DB->execute('INSERT INTO {course_completions_repcourse} (userid, maincourseid, mailing) VALUES (:userid, :maincourseid, :ismailing)', $params);
+        }
+        
+        $this->get_view(array(
+            'mainCourseId'  => $mainCourseId,
+            'userId'        => $userId,
+            'mainCourseName'=> $mainCourseName,
+            'curId'         => $curId,
+            'isCurUser'     => $isCurUser,
+            'isMailing'     => $isMailing,
+        ), 'optin');
+    }
 
     function show() {
     } // function show
