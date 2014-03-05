@@ -4,10 +4,10 @@ if($mainCourseId == 0 || $userId == 0){
 } else {
     $isChecked = ($isCurUser && $isMailing) ? 'checked="checked"' : '';
 ?>
-<h1>Configuring a course "<?php echo $mainCourseName;?>"</h1>
+<h1>Mailing settings for "<?php echo $mainCourseName;?>" course</h1>
 <form action="index.php" method="POST" id="optin_screen">
     <div class="center">
-        <input type="checkbox" id="mailing" name="mailing" <?php echo $isChecked; ?> /><label for="mailing">Yes, I want to take the refresher courses news for <strong><?php echo $mainCourseName;?></strong> course</label>
+        <input type="checkbox" id="mailing" name="mailing" <?php echo $isChecked; ?> /><label for="mailing">I want to receive notification emails about the refresher course for that specific main course <strong><?php echo $mainCourseName;?></strong>.</label>
         <div class="buttons">
             <input type="hidden" name="id" value="<?php echo $curId ?>"/>
             <input type="hidden" name="action" value="optin_save"/>

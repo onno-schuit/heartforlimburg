@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 04 2014 г., 16:33
+-- Время создания: Мар 05 2014 г., 19:36
 -- Версия сервера: 5.5.35-log
 -- Версия PHP: 5.5.6
 
@@ -638,7 +638,7 @@ INSERT INTO `mdl_block` (`id`, `name`, `cron`, `lastcron`, `visible`) VALUES
 (26, 'private_files', 0, 0, 1),
 (27, 'quiz_results', 0, 0, 1),
 (28, 'recent_activity', 0, 0, 1),
-(29, 'rss_client', 300, 1393607009, 1),
+(29, 'rss_client', 300, 1393940210, 1),
 (30, 'search_forums', 0, 0, 1),
 (31, 'section_links', 0, 0, 1),
 (32, 'selfcompletion', 0, 0, 1),
@@ -686,7 +686,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_blocinst_parshopagsub_ix` (`parentcontextid`,`showinsubcontexts`,`pagetypepattern`,`subpagepattern`),
   KEY `mdl_blocinst_par_ix` (`parentcontextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=30 ;
 
 --
 -- Дамп данных таблицы `mdl_block_instances`
@@ -717,7 +717,10 @@ INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showin
 (22, 'search_forums', 46, 0, 'course-view-*', NULL, 'side-post', 0, ''),
 (23, 'news_items', 46, 0, 'course-view-*', NULL, 'side-post', 1, ''),
 (24, 'calendar_upcoming', 46, 0, 'course-view-*', NULL, 'side-post', 2, ''),
-(25, 'recent_activity', 46, 0, 'course-view-*', NULL, 'side-post', 3, '');
+(25, 'recent_activity', 46, 0, 'course-view-*', NULL, 'side-post', 3, ''),
+(26, 'completionstatus', 15, 0, 'course-view-*', NULL, 'side-pre', 2, ''),
+(28, 'completionstatus', 46, 0, 'course-view-*', NULL, 'side-pre', 2, ''),
+(29, 'selfcompletion', 46, 0, 'course-view-*', NULL, 'side-pre', 3, '');
 
 -- --------------------------------------------------------
 
@@ -770,14 +773,15 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
   PRIMARY KEY (`id`),
   KEY `mdl_blogasso_con_ix` (`contextid`),
   KEY `mdl_blogasso_blo_ix` (`blogid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `mdl_blog_association`
 --
 
 INSERT INTO `mdl_blog_association` (`id`, `contextid`, `blogid`) VALUES
-(2, 25, 1);
+(2, 25, 1),
+(4, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -873,14 +877,29 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1393934872, '1', 1393942072);
+(1, 'userpreferenceschanged', '2', 1394016512, '1', 1394023712),
+(2, 'userpreferenceschanged', '3', 1394028457, '1', 1394035657),
+(3, 'accesslib/dirtycontexts', '/1/3/15', 1394028952, '1', 1394036152),
+(4, 'accesslib/dirtycontexts', '/1/24', 1394022550, '1', 1394029750),
+(5, 'accesslib/dirtycontexts', '/1/3/15/58', 1394030967, '1', 1394038167),
+(6, 'accesslib/dirtycontexts', '/1/3/15/59', 1394030973, '1', 1394038173),
+(7, 'accesslib/dirtycontexts', '/1/3/15/60', 1394030975, '1', 1394038175),
+(8, 'accesslib/dirtycontexts', '/1/3/15/61', 1394030977, '1', 1394038177),
+(9, 'accesslib/dirtycontexts', '/1/3/15/62', 1394030979, '1', 1394038179),
+(10, 'accesslib/dirtycontexts', '/1/3/15/63', 1394030981, '1', 1394038181),
+(11, 'accesslib/dirtycontexts', '/1/3/15/64', 1394030983, '1', 1394038183),
+(12, 'accesslib/dirtycontexts', '/1/3/15/67', 1394031007, '1', 1394038207),
+(13, 'accesslib/dirtycontexts', '/1/3/15/66', 1394034506, '1', 1394041706),
+(14, 'accesslib/dirtycontexts', '/1/3/15/68', 1394034675, '1', 1394041875),
+(15, 'accesslib/dirtycontexts', '/1/3/15/54', 1394034694, '1', 1394041894),
+(16, 'accesslib/dirtycontexts', '/1/3/15/56', 1394034713, '1', 1394041913);
 
 -- --------------------------------------------------------
 
@@ -896,41 +915,117 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=132 ;
 
 --
 -- Дамп данных таблицы `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(29, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1393843639),
-(30, 'e24a131bce6e65917187551fbdbeecd2', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>', 1393843475),
-(31, '5349f7eb02bf5a4bd63a01c3bce68a94', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p></div>', 1393843475),
-(32, '22b44ad09dae8876b5f39b4400b6b116', '<div class="no-overflow"><p>Course course</p></div>', 1393843475),
-(33, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1393853365),
-(34, '504630abd3e91e33777470b379296790', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845094),
-(35, '32763eea66e8b6be6f7044702d29d624', '<p>There is currently no help associated with this resource or activity</p>\n', 1393845095),
-(36, '4b5a9f9950dfcad82494c5ea18dc850f', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(37, '0d8fd619ecfc36acf27b9a904c039c7a', '<p>The choice activity module enables a teacher to ask a single question and offer a selection of possible responses.</p>\n\n<p>Choice results may be published after students have answered, after a certain date, or not at all. Results may be published with student names or anonymously.</p>\n\n<p>A choice activity may be used</p>\n\n<ul><li>As a quick poll to stimulate thinking about a topic</li>\n<li>To quickly test students'' understanding</li>\n<li>To facilitate student decision-making, for example allowing students to vote on a direction for the course</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/choice/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(38, '54834d1d4b5b112f428954e13421c0de', '<p>The database activity module enables participants to create, maintain and search a collection of entries (i.e. records).  The structure of the entries is defined by the teacher as a number of fields. Field types include checkbox, radio buttons, dropdown menu, text area, URL, picture and uploaded file.</p>\n\n<p>The visual layout of information when listing, viewing or editing database entries may be controlled by database templates. Database activities may be shared between courses as presets and a teacher may also import and export database entries.</p>\n\n<p>If the database auto-linking filter is enabled, any entries in a database will be automatically linked where the words or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Database activities have many uses, such as</p>\n\n<ul><li>A collaborative collection of web links, books, book reviews, journal references etc</li>\n<li>For displaying student-created photos, posters, websites or poems for peer comment and review</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/data/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(39, '69c272a3fe15153a8030be430cd6d525', '<p>The external tool activity module enables students to interact with learning resources and activities on other web sites. For example, an external tool could provide access to a new activity type or learning materials from a publisher.</p>\n\n<p>To create an external tool activity, a tool provider which supports LTI (Learning Tools Interoperability) is required. A teacher can create an external tool activity or make use of a tool configured by the site administrator.</p>\n\n<p>External tool activities differ from URL resources in a few ways:</p>\n\n<ul><li>External tools are context aware i.e. they have access to information about the user who launched the tool, such as institution, course and name</li>\n<li>External tools support reading, updating, and deleting grades associated with the activity instance</li>\n<li>External tool configurations create a trust relationship between your site and the tool provider, allowing secure communication between them</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lti/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(40, 'a23ed4392a4674407bc2b4207843787b', '<p>The forum activity module enables participants to have asynchronous discussions i.e. discussions that take place over an extended period of time.</p>\n\n<p>There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students'' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.</p>\n\n<p>Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.</p>\n\n<p>Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Forums have many uses, such as</p>\n\n<ul><li>A social space for students to get to know each other</li>\n<li>For course announcements (using a news forum with forced subscription)</li>\n<li>For discussing course content or reading materials</li>\n<li>For continuing online an issue raised previously in a face-to-face session</li>\n<li>For teacher-only discussions (using a hidden forum)</li>\n<li>A help centre where tutors and students can give advice</li>\n<li>A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)</li>\n<li>For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions to</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/forum/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(41, '0a24d3260ae555cc7ea9a71fd2a9f4fc', '<p>The glossary activity module enables participants to create and maintain a list of definitions, like a dictionary, or to collect and organise resources or information.</p>\n\n<p>A teacher can allow files to be attached to glossary entries. Attached images are displayed in the entry. Entries can be searched or browsed alphabetically or by category, date or author. Entries can be approved by default or require approval by a teacher before they are viewable by everyone.</p>\n\n<p>If the glossary auto-linking filter is enabled, entries will be automatically linked where the concept words and/or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Glossaries have many uses, such as</p>\n\n<ul><li>A collaborative bank of key terms</li>\n<li>A ‘getting to know you’ space where new students add their name and personal details</li>\n<li>A ‘handy tips’ resource of best practice in a practical subject</li>\n<li>A sharing area of useful videos, images or sound files</li>\n<li>A revision resource of facts to remember</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/glossary/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(42, 'a774011855037860168428269b446874', '<p>The lesson activity module enables a teacher to deliver content and/or practice activities in  interesting and flexible ways. A teacher can use the lesson to create a linear set of content pages or instructional activities that offer a variety of paths or options for the learner. In either case, teachers can choose to increase engagement and ensure understanding by including a variety of questions, such as multiple choice, matching and short answer. Depending on the student''s choice of answer and how the teacher develops the lesson, students may progress to the next page, be taken back to a previous page or redirected down a different path entirely.</p>\n\n<p>A lesson may be graded, with the grade recorded in the gradebook.</p>\n\n<p>Lessons may be used</p>\n\n<ul><li>For self-directed learning of a new topic</li>\n<li>For  scenarios or simulations/decision-making exercises</li>\n<li>For differentiated revision, with different sets of revision questions depending upon answers given to initial questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lesson/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(43, '90843e8dcd334eb594f7ab8b8b6668d3', '<p>The quiz activity enables a teacher to create quizzes comprising questions of various types, including multiple choice, matching, short-answer and numerical.</p>\n\n<p>The teacher can allow the quiz to be attempted multiple times, with the questions shuffled or randomly selected from the question bank. A time limit may be set.</p>\n\n<p>Each attempt is marked automatically, with the exception of essay questions, and the grade is recorded in the gradebook.</p>\n\n<p>The teacher can choose when and if hints, feedback and correct answers are shown to students.</p>\n\n<p>Quizzes may be used</p>\n\n<ul><li>As course exams</li>\n<li>As mini tests for reading assignments or at the end of a topic</li>\n<li>As exam practice using questions from past exams</li>\n<li>To deliver immediate feedback about performance</li>\n<li>For self-assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/quiz/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(44, '53a276930ec1d98c1e6af92b39723213', '<p>Manage your repeatcourses</p>\n', 1393845095),
-(45, 'd13f285ecdb99d78f033946457379610', '<p>Manage your roses</p>\n', 1393845095),
-(46, 'c09d86294175c14e83c86579dbf0d606', '<p>A SCORM package is a collection of files which are packaged according to an agreed standard for learning objects. The SCORM activity module enables SCORM or AICC packages to be uploaded as a zip file and added to a course.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a table of contents, with navigation buttons etc. SCORM activities generally include questions, with grades being recorded in the gradebook.</p>\n\n<p>SCORM activities may be used</p>\n\n<ul><li>For presenting multimedia content and animations</li>\n<li>As an assessment tool</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/scorm/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(47, '1cde9ae8e4d9528c6671ffdad1b0dd79', '<p>The survey activity module provides a number of verified survey instruments that have been found useful in assessing and stimulating learning in online environments. A teacher can use these to gather data from their students that will help them learn about their class and reflect on their own teaching.</p>\n\n<p>Note that these survey tools are pre-populated with questions. Teachers who wish to create their own survey should use the feedback activity module.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/survey/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(48, '9e3dc4437b137c2a9e11932ac4067ca6', '<p>The wiki activity module enables participants to add and edit a collection of web pages. A wiki can be collaborative, with everyone being able to edit it, or individual, where everyone has their own wiki which only they can edit.</p>\n\n<p>A history of previous versions of each page in the wiki is kept, listing the edits made by each participant.</p>\n\n<p>Wikis have many uses, such as</p>\n\n<ul><li>For group lecture notes or study guides</li>\n<li>For members of a faculty to plan a scheme of work or meeting agenda together</li>\n<li>For students to collaboratively author an online book, creating content on a topic set by their tutor</li>\n<li>For collaborative storytelling or poetry creation, where each participant writes a line or verse</li>\n<li>As a personal journal for examination notes or revision (using an individual wiki)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/wiki/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(49, 'a74852676936afe082af34c25a86335a', '<p>The workshop activity module enables the collection, review and peer assessment of students'' work.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents or spreadsheets and can also type text directly into a field using the text editor.</p>\n\n<p>Submissions are assessed using a multi-criteria assessment form defined by the teacher. The process of peer assessment and understanding the assessment form can be practised in advance with example submissions provided by the teacher, together with a reference assessment. Students are given the opportunity to assess one or more of their peers'' submissions. Submissions and reviewers may be anonymous if required.</p>\n\n<p>Students obtain two grades in a workshop activity - a grade for their submission and a grade for their assessment of their peers'' submissions. Both grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/workshop/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(50, 'c6bb11e175a3301046714e2d01383e04', '<p>The book module enables a teacher to create a multi-page resource in a book-like format, with chapters and subchapters. Books can contain media files as well as text and are useful for displaying lengthy passages of information which can be broken down into sections.</p>\n\n<p>A book may be used</p>\n\n<ul><li>To display reading material for individual modules of study</li>\n<li>As a staff departmental handbook</li>\n<li>As a showcase portfolio of student work</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/book/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(51, 'a09bf8a2fbdac1468105eb275e13d5ec', '<p>The file module enables a teacher to provide a file as a course resource. Where possible, the file will be displayed within the course interface; otherwise students will be prompted to download it. The file may include supporting files, for example an HTML page may have embedded images or Flash objects.</p>\n\n<p>Note that students need to have the appropriate software on their computers in order to open the file.</p>\n\n<p>A file may be used</p>\n\n<ul><li>To share presentations given in class</li>\n<li>To include a mini website as a course resource</li>\n<li>To provide draft files of certain software programs (eg Photoshop .psd) so students can edit and submit them for assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/resource/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(52, '15bd9dec76d1b3910efd562cf767775a', '<p>The folder module enables a teacher to display a number of related files inside a single folder, reducing scrolling on the course page. A zipped folder may be uploaded and unzipped for display, or an empty folder created and files uploaded into it.</p>\n\n<p>A folder may be used</p>\n\n<ul><li>For a series of files on one topic, for example a set of past examination papers in pdf format or a collection of image files for use in student projects</li>\n<li>To provide a shared uploading space for teachers on the course page (keeping the folder hidden so that only teachers can see it)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/folder/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(53, '7e4231389433de3a02a1cf98256f3fb2', '<p>An IMS content package is a collection of files which are packaged according to an agreed standard so they can be reused in different systems. The IMS content package module enables such content packages to be uploaded as a zip file and added to a course as a resource.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a navigation menu or buttons etc.</p>\n\n<p>An IMS content package may be used for presenting multimedia content and animations.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/imscp/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(54, 'd604debde2784639137dc5948fe8659d', '<p>The label module enables text and multimedia to be inserted into the course page in between links to other resources and activities. Labels are very versatile and can help to improve the appearance of a course if used thoughtfully.</p>\n\n<p>Labels may be used</p>\n\n<ul><li>To split up a long list of activities with a subheading or an image</li>\n<li>To display an embedded sound file or video directly on the course page</li>\n<li>To add a short description to a course section</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/label/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(55, 'f9ce56db3025b341821d5e39052a4a39', '<p>The page module enables a teacher to create a web page resource using the text editor. A page can display text, images, sound, video, web links and embedded code, such as Google maps.</p>\n\n<p>Advantages of using the page module rather than the file module include the resource being more accessible (for example to users of mobile devices) and easier to update.</p>\n\n<p>For large amounts of content, it''s recommended that a book is used rather than a page.</p>\n\n<p>A page may be used</p>\n\n<ul><li>To present the terms and conditions of a course or a summary of the course syllabus</li>\n<li>To embed several videos or sound files together with some explanatory text</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/page/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095),
-(56, '8bbeef247512f2190d315a8916072a82', '<p>The URL module enables a teacher to provide a web link as a course resource. Anything that is freely available online, such as documents or images, can be linked to; the URL doesn’t have to be the home page of a website. The URL of a particular web page may be copied and pasted or a teacher can use the file picker and choose a link from a repository such as Flickr, YouTube or Wikimedia (depending upon which repositories are enabled for the site).</p>\n\n<p>There are a number of display options for the URL, such as embedded or opening in a new window and advanced options for passing information, such as a student''s name, to the URL if required.</p>\n\n<p>Note that URLs can also be added to any other resource or activity type through the text editor.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/url/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1393845095);
+(29, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1394025690),
+(30, 'e24a131bce6e65917187551fbdbeecd2', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>', 1394037168),
+(31, '5349f7eb02bf5a4bd63a01c3bce68a94', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p></div>', 1394037168),
+(32, '22b44ad09dae8876b5f39b4400b6b116', '<div class="no-overflow"><p>Course course</p></div>', 1394037169),
+(33, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1394037169),
+(34, '504630abd3e91e33777470b379296790', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(35, '32763eea66e8b6be6f7044702d29d624', '<p>There is currently no help associated with this resource or activity</p>\n', 1394034885),
+(36, '4b5a9f9950dfcad82494c5ea18dc850f', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(37, '0d8fd619ecfc36acf27b9a904c039c7a', '<p>The choice activity module enables a teacher to ask a single question and offer a selection of possible responses.</p>\n\n<p>Choice results may be published after students have answered, after a certain date, or not at all. Results may be published with student names or anonymously.</p>\n\n<p>A choice activity may be used</p>\n\n<ul><li>As a quick poll to stimulate thinking about a topic</li>\n<li>To quickly test students'' understanding</li>\n<li>To facilitate student decision-making, for example allowing students to vote on a direction for the course</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/choice/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(38, '54834d1d4b5b112f428954e13421c0de', '<p>The database activity module enables participants to create, maintain and search a collection of entries (i.e. records).  The structure of the entries is defined by the teacher as a number of fields. Field types include checkbox, radio buttons, dropdown menu, text area, URL, picture and uploaded file.</p>\n\n<p>The visual layout of information when listing, viewing or editing database entries may be controlled by database templates. Database activities may be shared between courses as presets and a teacher may also import and export database entries.</p>\n\n<p>If the database auto-linking filter is enabled, any entries in a database will be automatically linked where the words or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Database activities have many uses, such as</p>\n\n<ul><li>A collaborative collection of web links, books, book reviews, journal references etc</li>\n<li>For displaying student-created photos, posters, websites or poems for peer comment and review</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/data/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(39, '69c272a3fe15153a8030be430cd6d525', '<p>The external tool activity module enables students to interact with learning resources and activities on other web sites. For example, an external tool could provide access to a new activity type or learning materials from a publisher.</p>\n\n<p>To create an external tool activity, a tool provider which supports LTI (Learning Tools Interoperability) is required. A teacher can create an external tool activity or make use of a tool configured by the site administrator.</p>\n\n<p>External tool activities differ from URL resources in a few ways:</p>\n\n<ul><li>External tools are context aware i.e. they have access to information about the user who launched the tool, such as institution, course and name</li>\n<li>External tools support reading, updating, and deleting grades associated with the activity instance</li>\n<li>External tool configurations create a trust relationship between your site and the tool provider, allowing secure communication between them</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lti/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(40, 'a23ed4392a4674407bc2b4207843787b', '<p>The forum activity module enables participants to have asynchronous discussions i.e. discussions that take place over an extended period of time.</p>\n\n<p>There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students'' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.</p>\n\n<p>Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.</p>\n\n<p>Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Forums have many uses, such as</p>\n\n<ul><li>A social space for students to get to know each other</li>\n<li>For course announcements (using a news forum with forced subscription)</li>\n<li>For discussing course content or reading materials</li>\n<li>For continuing online an issue raised previously in a face-to-face session</li>\n<li>For teacher-only discussions (using a hidden forum)</li>\n<li>A help centre where tutors and students can give advice</li>\n<li>A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)</li>\n<li>For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions to</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/forum/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(41, '0a24d3260ae555cc7ea9a71fd2a9f4fc', '<p>The glossary activity module enables participants to create and maintain a list of definitions, like a dictionary, or to collect and organise resources or information.</p>\n\n<p>A teacher can allow files to be attached to glossary entries. Attached images are displayed in the entry. Entries can be searched or browsed alphabetically or by category, date or author. Entries can be approved by default or require approval by a teacher before they are viewable by everyone.</p>\n\n<p>If the glossary auto-linking filter is enabled, entries will be automatically linked where the concept words and/or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Glossaries have many uses, such as</p>\n\n<ul><li>A collaborative bank of key terms</li>\n<li>A ‘getting to know you’ space where new students add their name and personal details</li>\n<li>A ‘handy tips’ resource of best practice in a practical subject</li>\n<li>A sharing area of useful videos, images or sound files</li>\n<li>A revision resource of facts to remember</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/glossary/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(42, 'a774011855037860168428269b446874', '<p>The lesson activity module enables a teacher to deliver content and/or practice activities in  interesting and flexible ways. A teacher can use the lesson to create a linear set of content pages or instructional activities that offer a variety of paths or options for the learner. In either case, teachers can choose to increase engagement and ensure understanding by including a variety of questions, such as multiple choice, matching and short answer. Depending on the student''s choice of answer and how the teacher develops the lesson, students may progress to the next page, be taken back to a previous page or redirected down a different path entirely.</p>\n\n<p>A lesson may be graded, with the grade recorded in the gradebook.</p>\n\n<p>Lessons may be used</p>\n\n<ul><li>For self-directed learning of a new topic</li>\n<li>For  scenarios or simulations/decision-making exercises</li>\n<li>For differentiated revision, with different sets of revision questions depending upon answers given to initial questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lesson/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(43, '90843e8dcd334eb594f7ab8b8b6668d3', '<p>The quiz activity enables a teacher to create quizzes comprising questions of various types, including multiple choice, matching, short-answer and numerical.</p>\n\n<p>The teacher can allow the quiz to be attempted multiple times, with the questions shuffled or randomly selected from the question bank. A time limit may be set.</p>\n\n<p>Each attempt is marked automatically, with the exception of essay questions, and the grade is recorded in the gradebook.</p>\n\n<p>The teacher can choose when and if hints, feedback and correct answers are shown to students.</p>\n\n<p>Quizzes may be used</p>\n\n<ul><li>As course exams</li>\n<li>As mini tests for reading assignments or at the end of a topic</li>\n<li>As exam practice using questions from past exams</li>\n<li>To deliver immediate feedback about performance</li>\n<li>For self-assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/quiz/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(44, '53a276930ec1d98c1e6af92b39723213', '<p>Manage your repeatcourses</p>\n', 1394034885),
+(45, 'd13f285ecdb99d78f033946457379610', '<p>Manage your roses</p>\n', 1394034885),
+(46, 'c09d86294175c14e83c86579dbf0d606', '<p>A SCORM package is a collection of files which are packaged according to an agreed standard for learning objects. The SCORM activity module enables SCORM or AICC packages to be uploaded as a zip file and added to a course.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a table of contents, with navigation buttons etc. SCORM activities generally include questions, with grades being recorded in the gradebook.</p>\n\n<p>SCORM activities may be used</p>\n\n<ul><li>For presenting multimedia content and animations</li>\n<li>As an assessment tool</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/scorm/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(47, '1cde9ae8e4d9528c6671ffdad1b0dd79', '<p>The survey activity module provides a number of verified survey instruments that have been found useful in assessing and stimulating learning in online environments. A teacher can use these to gather data from their students that will help them learn about their class and reflect on their own teaching.</p>\n\n<p>Note that these survey tools are pre-populated with questions. Teachers who wish to create their own survey should use the feedback activity module.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/survey/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(48, '9e3dc4437b137c2a9e11932ac4067ca6', '<p>The wiki activity module enables participants to add and edit a collection of web pages. A wiki can be collaborative, with everyone being able to edit it, or individual, where everyone has their own wiki which only they can edit.</p>\n\n<p>A history of previous versions of each page in the wiki is kept, listing the edits made by each participant.</p>\n\n<p>Wikis have many uses, such as</p>\n\n<ul><li>For group lecture notes or study guides</li>\n<li>For members of a faculty to plan a scheme of work or meeting agenda together</li>\n<li>For students to collaboratively author an online book, creating content on a topic set by their tutor</li>\n<li>For collaborative storytelling or poetry creation, where each participant writes a line or verse</li>\n<li>As a personal journal for examination notes or revision (using an individual wiki)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/wiki/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(49, 'a74852676936afe082af34c25a86335a', '<p>The workshop activity module enables the collection, review and peer assessment of students'' work.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents or spreadsheets and can also type text directly into a field using the text editor.</p>\n\n<p>Submissions are assessed using a multi-criteria assessment form defined by the teacher. The process of peer assessment and understanding the assessment form can be practised in advance with example submissions provided by the teacher, together with a reference assessment. Students are given the opportunity to assess one or more of their peers'' submissions. Submissions and reviewers may be anonymous if required.</p>\n\n<p>Students obtain two grades in a workshop activity - a grade for their submission and a grade for their assessment of their peers'' submissions. Both grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/workshop/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(50, 'c6bb11e175a3301046714e2d01383e04', '<p>The book module enables a teacher to create a multi-page resource in a book-like format, with chapters and subchapters. Books can contain media files as well as text and are useful for displaying lengthy passages of information which can be broken down into sections.</p>\n\n<p>A book may be used</p>\n\n<ul><li>To display reading material for individual modules of study</li>\n<li>As a staff departmental handbook</li>\n<li>As a showcase portfolio of student work</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/book/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(51, 'a09bf8a2fbdac1468105eb275e13d5ec', '<p>The file module enables a teacher to provide a file as a course resource. Where possible, the file will be displayed within the course interface; otherwise students will be prompted to download it. The file may include supporting files, for example an HTML page may have embedded images or Flash objects.</p>\n\n<p>Note that students need to have the appropriate software on their computers in order to open the file.</p>\n\n<p>A file may be used</p>\n\n<ul><li>To share presentations given in class</li>\n<li>To include a mini website as a course resource</li>\n<li>To provide draft files of certain software programs (eg Photoshop .psd) so students can edit and submit them for assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/resource/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(52, '15bd9dec76d1b3910efd562cf767775a', '<p>The folder module enables a teacher to display a number of related files inside a single folder, reducing scrolling on the course page. A zipped folder may be uploaded and unzipped for display, or an empty folder created and files uploaded into it.</p>\n\n<p>A folder may be used</p>\n\n<ul><li>For a series of files on one topic, for example a set of past examination papers in pdf format or a collection of image files for use in student projects</li>\n<li>To provide a shared uploading space for teachers on the course page (keeping the folder hidden so that only teachers can see it)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/folder/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(53, '7e4231389433de3a02a1cf98256f3fb2', '<p>An IMS content package is a collection of files which are packaged according to an agreed standard so they can be reused in different systems. The IMS content package module enables such content packages to be uploaded as a zip file and added to a course as a resource.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a navigation menu or buttons etc.</p>\n\n<p>An IMS content package may be used for presenting multimedia content and animations.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/imscp/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(54, 'd604debde2784639137dc5948fe8659d', '<p>The label module enables text and multimedia to be inserted into the course page in between links to other resources and activities. Labels are very versatile and can help to improve the appearance of a course if used thoughtfully.</p>\n\n<p>Labels may be used</p>\n\n<ul><li>To split up a long list of activities with a subheading or an image</li>\n<li>To display an embedded sound file or video directly on the course page</li>\n<li>To add a short description to a course section</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/label/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(55, 'f9ce56db3025b341821d5e39052a4a39', '<p>The page module enables a teacher to create a web page resource using the text editor. A page can display text, images, sound, video, web links and embedded code, such as Google maps.</p>\n\n<p>Advantages of using the page module rather than the file module include the resource being more accessible (for example to users of mobile devices) and easier to update.</p>\n\n<p>For large amounts of content, it''s recommended that a book is used rather than a page.</p>\n\n<p>A page may be used</p>\n\n<ul><li>To present the terms and conditions of a course or a summary of the course syllabus</li>\n<li>To embed several videos or sound files together with some explanatory text</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/page/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(56, '8bbeef247512f2190d315a8916072a82', '<p>The URL module enables a teacher to provide a web link as a course resource. Anything that is freely available online, such as documents or images, can be linked to; the URL doesn’t have to be the home page of a website. The URL of a particular web page may be copied and pasted or a teacher can use the file picker and choose a link from a repository such as Flickr, YouTube or Wikimedia (depending upon which repositories are enabled for the site).</p>\n\n<p>There are a number of display options for the URL, such as embedded or opening in a new window and advanced options for passing information, such as a student''s name, to the URL if required.</p>\n\n<p>Note that URLs can also be added to any other resource or activity type through the text editor.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/url/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
+(57, '0f07844265740fc6ad93593126441a28', '<div class="text_to_html">The default category for questions shared in context ''tstcrs''.</div>', 1394034241),
+(58, 'd010c3f4fd697cd9b88689107c3b8784', '<div class="no-overflow"><p>Iwannacompletethiscourse</p></div>', 1394028466),
+(59, '31647cccf36b078e3b37c8f4b29e113e', '<div class="no-overflow">General news and announcements</div>', 1394035292),
+(60, '7412e6300a1ce9f5ce924ceb2bf93068', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=21">iwannafinishit</a></p></div>', 1394029456),
+(61, 'ec343bc52f3323175d0538419e096a96', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=21">iwannafinishit</a></p></div>', 1394029462),
+(62, 'c3e9ab79c9aa10d3fe7affa2acf08b09', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=16">iwannafinishit</a></p></div>', 1394029166),
+(63, 'f66a0f81ed15acaaa3ef275f549f2643', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=17">iwannafinishit</a></p></div>', 1394029167),
+(64, 'd4b9f9d0c259987544bedb9b430b663e', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=16">iwannafinishit</a></p></div>', 1394029169),
+(65, '227cf2af960b350e83a5f8098aa30900', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=16">iwannafinishit</a></p></div>', 1394029170),
+(66, 'd2bcaf5453d791d8d626c070998a6473', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=21">iwannafinishit</a></p></div>', 1394029443),
+(67, '7e3319a4ad143dab93f04b00f0636325', '<div class="no-overflow"><p>iwannafinishit</p></div>', 1394033502),
+(68, '3124bd7e78b57332aa30394d6d2d95f9', '<div class="no-overflow"><p>iwannafinishit</p></div>', 1394035241),
+(69, '127381e111dcf2681305aa55209985b7', '<div class="no-overflow"><p><a class="autolink" title="iwannafinishit" href="http://solin.loc/mod/quiz/view.php?id=21">iwannafinishit</a></p></div>', 1394030942),
+(70, '2a13a2151194fb1fd5bffaadbf229a42', '<p>https://psv4.vk.me/c536503/u63474706/audios/95e405211952.mp3</p>', 1394029187),
+(71, '290c43d407de539b2e7ef20dc28d886a', '<p>true true</p>', 1394029187),
+(72, 'ce0e8d1e8a63b0f02408a16c20aa68cb', '<p>true</p>', 1394030873),
+(73, '38ae605166c6aaed8f7d7fe36fb567b0', '<p>true</p>', 1394030867),
+(74, '5dd9f15988377bc3750bfd6c4b78d8b8', '<p>Network connection lost. (Autosave failed).</p>\n\n<p>Make a note of any responses entered on this page in the last few minutes, then try to re-connect.</p>\n\n<p>Once connection has been re-established, your responses should be saved and this message will disappear.</p>\n', 1394030873),
+(75, 'cca32b91854beb18bfa25a7cdc12492f', '<p>Network connection restored. You may continue safely.</p>\n', 1394030874),
+(76, '36c6eadfe2321cc4faf3329eaa19d20d', '<p>what r u doin here?</p>\r\n<p></p>', 1394030000),
+(77, 'dc0ff6322b0b2d9e80b2137af4e6e132', '<p>what r u doin here?</p>\r\n<p></p>', 1394030067),
+(78, 'c78451b7bd055c82582de863049fe857', 'I dont know:(', 1394030083),
+(79, 'd3c1f90fb501e8cd8b7274928356d273', '<p>dscssn</p>', 1394035303),
+(80, '1110d140bdf4f83e2df37ab4b5d4d780', '<p>A tick next to an activity name may be used to indicate when the activity is complete.</p>\n\n<p>If a box with a dotted border is shown, a tick will appear automatically when you have completed the activity according to conditions set by the teacher.</p>\n\n<p>If a box with a solid border is shown, you can click it to tick the box when you think you have completed the activity. (Clicking it again removes the tick if you change your mind.) The tick is optional and is simply a way of tracking your progress through the course.</p>\n', 1394035221),
+(81, '81a10f3debe4fb519e45cdd3642ca1d6', '<p>https://psv4.vk.me/c536503/u63474706/audios/95e405211952.mp3</p>', 1394034243),
+(82, 'a764e2d30935ffe8090d002a6d68b452', '<p>true</p>', 1394034243),
+(83, '518a880a04e61fe68e54f92ef51c0bad', '<p>true true</p>', 1394034243),
+(84, '0334a0450d5f8b40338ce12d0c9621d5', '<p>1</p>', 1394034310),
+(85, '4b70f4b1700790638d28665b53c31f08', '<p>2</p>', 1394034311),
+(86, '380c2b76a4ffdfb705051b1b7c10410f', '<p>3</p>', 1394034393),
+(87, '89c51b6beeb32d211462fa5d31ccfc26', '<p>4</p>', 1394034395),
+(88, '5066734219493acab9860002466033b6', '<p>1</p>', 1394034301),
+(89, '666a866a2add46ddefcd9a602f45d87a', '<p>2</p>', 1394034301),
+(90, '7c00924cda99061a706e4da81d7b59fa', '<p>3</p>', 1394034301),
+(91, '0901934ca4095c85cbc91276afda9116', '<p>4</p>', 1394034302),
+(92, 'd20b8f561e7755d454a73b48fbdd795a', '<p>Network connection lost. (Autosave failed).</p>\n\n<p>Make a note of any responses entered on this page in the last few minutes, then try to re-connect.</p>\n\n<p>Once connection has been re-established, your responses should be saved and this message will disappear.</p>\n', 1394034312),
+(93, '2183d33913286167eeda793a229e4772', '<p>Network connection restored. You may continue safely.</p>\n', 1394034312),
+(94, '181e4738a91ab04b50a9c17776435596', '<p>22</p>', 1394034407),
+(95, '331c2dad2bb5e65507d54e94bbbcbe37', '<p>333</p>', 1394034408),
+(96, '3099e800e3815f344a6f68a1ab883559', '<p>22</p>', 1394034302),
+(97, 'acac9eec968aee28fd274578176721fd', '<p>333</p>', 1394034302),
+(98, '95159c88649bb33d86140ef14fb69cd4', '<p>222</p>', 1394034407),
+(99, '4799ccb70535cb93ea1f912e391198cb', '<p>3333</p>', 1394034409),
+(100, 'd28feba368e895df51f7317816d9ec51', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(101, 'f77439c4646aeb0eb508d01c3c11714c', '<p>There is currently no help associated with this resource or activity</p>\n', 1394037108),
+(102, '01b84b5e1a28c9e4f4edfadfbed96559', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(103, 'bc79ad3e6fb6ff170ce1fd758217295d', '<p>The choice activity module enables a teacher to ask a single question and offer a selection of possible responses.</p>\n\n<p>Choice results may be published after students have answered, after a certain date, or not at all. Results may be published with student names or anonymously.</p>\n\n<p>A choice activity may be used</p>\n\n<ul><li>As a quick poll to stimulate thinking about a topic</li>\n<li>To quickly test students'' understanding</li>\n<li>To facilitate student decision-making, for example allowing students to vote on a direction for the course</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/choice/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(104, 'dacd41cdcf4c86a8500c7bedec115488', '<p>The database activity module enables participants to create, maintain and search a collection of entries (i.e. records).  The structure of the entries is defined by the teacher as a number of fields. Field types include checkbox, radio buttons, dropdown menu, text area, URL, picture and uploaded file.</p>\n\n<p>The visual layout of information when listing, viewing or editing database entries may be controlled by database templates. Database activities may be shared between courses as presets and a teacher may also import and export database entries.</p>\n\n<p>If the database auto-linking filter is enabled, any entries in a database will be automatically linked where the words or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Database activities have many uses, such as</p>\n\n<ul><li>A collaborative collection of web links, books, book reviews, journal references etc</li>\n<li>For displaying student-created photos, posters, websites or poems for peer comment and review</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/data/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(105, '413470fa0ba08f8ab9c7847dbd8ab996', '<p>The external tool activity module enables students to interact with learning resources and activities on other web sites. For example, an external tool could provide access to a new activity type or learning materials from a publisher.</p>\n\n<p>To create an external tool activity, a tool provider which supports LTI (Learning Tools Interoperability) is required. A teacher can create an external tool activity or make use of a tool configured by the site administrator.</p>\n\n<p>External tool activities differ from URL resources in a few ways:</p>\n\n<ul><li>External tools are context aware i.e. they have access to information about the user who launched the tool, such as institution, course and name</li>\n<li>External tools support reading, updating, and deleting grades associated with the activity instance</li>\n<li>External tool configurations create a trust relationship between your site and the tool provider, allowing secure communication between them</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lti/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(106, '3a9933125ec4822c111c7164669542b0', '<p>The forum activity module enables participants to have asynchronous discussions i.e. discussions that take place over an extended period of time.</p>\n\n<p>There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students'' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.</p>\n\n<p>Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.</p>\n\n<p>Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Forums have many uses, such as</p>\n\n<ul><li>A social space for students to get to know each other</li>\n<li>For course announcements (using a news forum with forced subscription)</li>\n<li>For discussing course content or reading materials</li>\n<li>For continuing online an issue raised previously in a face-to-face session</li>\n<li>For teacher-only discussions (using a hidden forum)</li>\n<li>A help centre where tutors and students can give advice</li>\n<li>A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)</li>\n<li>For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions to</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/forum/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(107, 'a1793bc1809a9e320283fc77bb66ce6e', '<p>The glossary activity module enables participants to create and maintain a list of definitions, like a dictionary, or to collect and organise resources or information.</p>\n\n<p>A teacher can allow files to be attached to glossary entries. Attached images are displayed in the entry. Entries can be searched or browsed alphabetically or by category, date or author. Entries can be approved by default or require approval by a teacher before they are viewable by everyone.</p>\n\n<p>If the glossary auto-linking filter is enabled, entries will be automatically linked where the concept words and/or phrases appear within the course.</p>\n\n<p>A teacher can allow comments on entries. Entries can also be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.</p>\n\n<p>Glossaries have many uses, such as</p>\n\n<ul><li>A collaborative bank of key terms</li>\n<li>A ‘getting to know you’ space where new students add their name and personal details</li>\n<li>A ‘handy tips’ resource of best practice in a practical subject</li>\n<li>A sharing area of useful videos, images or sound files</li>\n<li>A revision resource of facts to remember</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/glossary/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(108, '35eaf73f975e4b955448d8d6cedcf8d0', '<p>The lesson activity module enables a teacher to deliver content and/or practice activities in  interesting and flexible ways. A teacher can use the lesson to create a linear set of content pages or instructional activities that offer a variety of paths or options for the learner. In either case, teachers can choose to increase engagement and ensure understanding by including a variety of questions, such as multiple choice, matching and short answer. Depending on the student''s choice of answer and how the teacher develops the lesson, students may progress to the next page, be taken back to a previous page or redirected down a different path entirely.</p>\n\n<p>A lesson may be graded, with the grade recorded in the gradebook.</p>\n\n<p>Lessons may be used</p>\n\n<ul><li>For self-directed learning of a new topic</li>\n<li>For  scenarios or simulations/decision-making exercises</li>\n<li>For differentiated revision, with different sets of revision questions depending upon answers given to initial questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/lesson/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(109, '7e1a6649f10ae19f71e6017617899455', '<p>The quiz activity enables a teacher to create quizzes comprising questions of various types, including multiple choice, matching, short-answer and numerical.</p>\n\n<p>The teacher can allow the quiz to be attempted multiple times, with the questions shuffled or randomly selected from the question bank. A time limit may be set.</p>\n\n<p>Each attempt is marked automatically, with the exception of essay questions, and the grade is recorded in the gradebook.</p>\n\n<p>The teacher can choose when and if hints, feedback and correct answers are shown to students.</p>\n\n<p>Quizzes may be used</p>\n\n<ul><li>As course exams</li>\n<li>As mini tests for reading assignments or at the end of a topic</li>\n<li>As exam practice using questions from past exams</li>\n<li>To deliver immediate feedback about performance</li>\n<li>For self-assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/quiz/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(110, '454c6a7d37ed2b44a2fa36e460dd9753', '<p>Manage your repeatcourses</p>\n', 1394037108),
+(111, '95a8f76e78c486a9f3f5d70113bc55e1', '<p>Manage your roses</p>\n', 1394037108),
+(112, '20a5ba4c671ed9373e886754900154df', '<p>A SCORM package is a collection of files which are packaged according to an agreed standard for learning objects. The SCORM activity module enables SCORM or AICC packages to be uploaded as a zip file and added to a course.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a table of contents, with navigation buttons etc. SCORM activities generally include questions, with grades being recorded in the gradebook.</p>\n\n<p>SCORM activities may be used</p>\n\n<ul><li>For presenting multimedia content and animations</li>\n<li>As an assessment tool</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/scorm/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(113, 'e24904ccfb4e80119b93b904dfe0caac', '<p>The survey activity module provides a number of verified survey instruments that have been found useful in assessing and stimulating learning in online environments. A teacher can use these to gather data from their students that will help them learn about their class and reflect on their own teaching.</p>\n\n<p>Note that these survey tools are pre-populated with questions. Teachers who wish to create their own survey should use the feedback activity module.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/survey/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(114, '92dbb8c3bfecff48f863b172df286217', '<p>The wiki activity module enables participants to add and edit a collection of web pages. A wiki can be collaborative, with everyone being able to edit it, or individual, where everyone has their own wiki which only they can edit.</p>\n\n<p>A history of previous versions of each page in the wiki is kept, listing the edits made by each participant.</p>\n\n<p>Wikis have many uses, such as</p>\n\n<ul><li>For group lecture notes or study guides</li>\n<li>For members of a faculty to plan a scheme of work or meeting agenda together</li>\n<li>For students to collaboratively author an online book, creating content on a topic set by their tutor</li>\n<li>For collaborative storytelling or poetry creation, where each participant writes a line or verse</li>\n<li>As a personal journal for examination notes or revision (using an individual wiki)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/wiki/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(115, 'e7792a959fb2a9cb9883b41f70994c97', '<p>The workshop activity module enables the collection, review and peer assessment of students'' work.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents or spreadsheets and can also type text directly into a field using the text editor.</p>\n\n<p>Submissions are assessed using a multi-criteria assessment form defined by the teacher. The process of peer assessment and understanding the assessment form can be practised in advance with example submissions provided by the teacher, together with a reference assessment. Students are given the opportunity to assess one or more of their peers'' submissions. Submissions and reviewers may be anonymous if required.</p>\n\n<p>Students obtain two grades in a workshop activity - a grade for their submission and a grade for their assessment of their peers'' submissions. Both grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/workshop/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(116, '247f0da867b27a2ac9c33a52c1d5802b', '<p>The book module enables a teacher to create a multi-page resource in a book-like format, with chapters and subchapters. Books can contain media files as well as text and are useful for displaying lengthy passages of information which can be broken down into sections.</p>\n\n<p>A book may be used</p>\n\n<ul><li>To display reading material for individual modules of study</li>\n<li>As a staff departmental handbook</li>\n<li>As a showcase portfolio of student work</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/book/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108);
+INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
+(117, '542c9065d9ee526d0c1be6dda8327dc4', '<p>The file module enables a teacher to provide a file as a course resource. Where possible, the file will be displayed within the course interface; otherwise students will be prompted to download it. The file may include supporting files, for example an HTML page may have embedded images or Flash objects.</p>\n\n<p>Note that students need to have the appropriate software on their computers in order to open the file.</p>\n\n<p>A file may be used</p>\n\n<ul><li>To share presentations given in class</li>\n<li>To include a mini website as a course resource</li>\n<li>To provide draft files of certain software programs (eg Photoshop .psd) so students can edit and submit them for assessment</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/resource/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(118, '00958882c867217e386a414e49b01e75', '<p>The folder module enables a teacher to display a number of related files inside a single folder, reducing scrolling on the course page. A zipped folder may be uploaded and unzipped for display, or an empty folder created and files uploaded into it.</p>\n\n<p>A folder may be used</p>\n\n<ul><li>For a series of files on one topic, for example a set of past examination papers in pdf format or a collection of image files for use in student projects</li>\n<li>To provide a shared uploading space for teachers on the course page (keeping the folder hidden so that only teachers can see it)</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/folder/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(119, '14e3571bfdf92119c51010b6bc96b2f1', '<p>An IMS content package is a collection of files which are packaged according to an agreed standard so they can be reused in different systems. The IMS content package module enables such content packages to be uploaded as a zip file and added to a course as a resource.</p>\n\n<p>Content is usually displayed over several pages, with navigation between the pages. There are various options for displaying content in a pop-up window, with a navigation menu or buttons etc.</p>\n\n<p>An IMS content package may be used for presenting multimedia content and animations.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/imscp/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(120, 'fb2368df39cc98512ef9033bef8aad5c', '<p>The label module enables text and multimedia to be inserted into the course page in between links to other resources and activities. Labels are very versatile and can help to improve the appearance of a course if used thoughtfully.</p>\n\n<p>Labels may be used</p>\n\n<ul><li>To split up a long list of activities with a subheading or an image</li>\n<li>To display an embedded sound file or video directly on the course page</li>\n<li>To add a short description to a course section</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/label/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(121, '222dcdb78c572c38f6686c24a421acbd', '<p>The page module enables a teacher to create a web page resource using the text editor. A page can display text, images, sound, video, web links and embedded code, such as Google maps.</p>\n\n<p>Advantages of using the page module rather than the file module include the resource being more accessible (for example to users of mobile devices) and easier to update.</p>\n\n<p>For large amounts of content, it''s recommended that a book is used rather than a page.</p>\n\n<p>A page may be used</p>\n\n<ul><li>To present the terms and conditions of a course or a summary of the course syllabus</li>\n<li>To embed several videos or sound files together with some explanatory text</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/page/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(122, 'fba443e7d5f067371b4c2b3245d5f128', '<p>The URL module enables a teacher to provide a web link as a course resource. Anything that is freely available online, such as documents or images, can be linked to; the URL doesn’t have to be the home page of a website. The URL of a particular web page may be copied and pasted or a teacher can use the file picker and choose a link from a repository such as Flickr, YouTube or Wikimedia (depending upon which repositories are enabled for the site).</p>\n\n<p>There are a number of display options for the URL, such as embedded or opening in a new window and advanced options for passing information, such as a student''s name, to the URL if required.</p>\n\n<p>Note that URLs can also be added to any other resource or activity type through the text editor.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/url/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394037108),
+(123, '4a57e062c5ec1105e8130926e0b168de', '<p>Once enabled, the completion tracking settings are displayed in the completion tracking page, and in the activity settings.</p>\n', 1394035394),
+(124, '56d4e913837598dd789726ae6e6c9b4d', '<div class="no-overflow"><p>test quiz isW008_2</p></div>', 1394035768),
+(125, '9ddbe3019a22de738b65189c04c446f7', '<p>First question text</p>', 1394035772),
+(126, '17c8f2215e3c6023eba88898cda76615', '<p>First question text</p>', 1394035781),
+(127, '023ce370dedf22a86d7d345b0551aa34', '<p>Network connection lost. (Autosave failed).</p>\n\n<p>Make a note of any responses entered on this page in the last few minutes, then try to re-connect.</p>\n\n<p>Once connection has been re-established, your responses should be saved and this message will disappear.</p>\n', 1394035782),
+(128, '76c1756e6d1a0897bf58d7bf6a267801', '<p>Network connection restored. You may continue safely.</p>\n', 1394035782),
+(129, '5654b221789026a8614a42c260fb01eb', '<p>u really pretty</p>', 1394035799),
+(130, '371bce26f6b26d17aee1ef2227cd5330', '<p>U r right!</p>', 1394035808),
+(131, '7944dd2d8b8efcedd06ae593877b0376', '<p>Okay, choose next</p>', 1394035808);
 
 -- --------------------------------------------------------
 
@@ -1793,7 +1888,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (34, 'enablestats', '0'),
 (35, 'enablerssfeeds', '0'),
 (36, 'bloglevel', '4'),
-(37, 'enablecompletion', '0'),
+(37, 'enablecompletion', '1'),
 (38, 'enableavailability', '0'),
 (39, 'enableplagiarism', '0'),
 (40, 'autologinguests', '0'),
@@ -2147,9 +2242,9 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (393, 'supportemail', 'alexander.zhuravlev@intosoft.by'),
 (394, 'registerauth', 'intake'),
 (397, 'digestmailtimelast', '1393607011'),
-(398, 'forum_lastreadclean', '1393607011'),
-(399, 'scorm_updatetimelast', '1393607011'),
-(400, 'fileslastcleanup', '1393607017'),
+(398, 'forum_lastreadclean', '1393940211'),
+(399, 'scorm_updatetimelast', '1393940211'),
+(400, 'fileslastcleanup', '1393940215'),
 (401, 'langrev', '1392386994'),
 (402, 'localcachedirpurged', '1392386994'),
 (404, 'enableblogs', '1'),
@@ -2212,7 +2307,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
   PRIMARY KEY (`id`),
   KEY `mdl_conflog_tim_ix` (`timemodified`),
   KEY `mdl_conflog_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=945 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=947 ;
 
 --
 -- Дамп данных таблицы `mdl_config_log`
@@ -3163,7 +3258,9 @@ INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, 
 (941, 2, 1393604706, 'repeatcourse', 'daytoremind', '5', NULL),
 (942, 2, 1393604706, 'repeatcourse', 'daytoremind_adv', '', NULL),
 (943, 2, 1393604769, 'repeatcourse', 'daytoremind', '1488', '5'),
-(944, 2, 1393607149, 'repeatcourse', 'daytoremind', '1', '1488');
+(944, 2, 1393607149, 'repeatcourse', 'daytoremind', '1', '1488'),
+(945, 2, 1394019775, 'moodlecourse', 'enablecompletion', '1', '0'),
+(946, 2, 1394025247, NULL, 'enablecompletion', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -3198,7 +3295,7 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 (11, 'moodlecourse', 'groupmodeforce', '0'),
 (12, 'moodlecourse', 'visible', '1'),
 (13, 'moodlecourse', 'lang', ''),
-(14, 'moodlecourse', 'enablecompletion', '0'),
+(14, 'moodlecourse', 'enablecompletion', '1'),
 (15, 'moodlecourse', 'completionstartonenrol', '0'),
 (16, 'backup', 'loglifetime', '30'),
 (17, 'backup', 'backup_general_users', '1'),
@@ -3929,15 +4026,15 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 (831, 'enrol_self', 'roleid', '5'),
 (832, 'auth/intake', 'recaptcha', '0'),
 (833, 'enrol_ldap', 'objectclass', '(objectClass=*)'),
-(835, 'core_plugin', 'recentfetch', '1393607017'),
-(836, 'core_plugin', 'recentresponse', '{"status":"OK","provider":"https:\\/\\/download.moodle.org\\/api\\/1.2\\/updates.php","apiver":"1.2","timegenerated":1393607016,"ticket":"JUM5JTkxNiVGOG4lRDV4JTdGJUUyJUM0JURGJUQ1JUU4MCUxOSVFNEklQzklOUElQTglNUVnJTlBJTdFJTJBJUJFJUE1JTFEbyVBRCUyOCUwQyU4OCUxNiUxQiU4NSU3QiU4QSU4OUw=","forbranch":"2.6","forversion":"2013111801.03","updates":{"core":[{"version":2013111801.09,"release":"2.6.1+ (Build: 20140220)","branch":"2.6","maturity":200,"url":"http:\\/\\/download.moodle.org","download":"http:\\/\\/download.moodle.org\\/download.php\\/direct\\/stable26\\/moodle-latest-26.zip"},{"version":2014022000,"release":"2.7dev (Build: 20140220)","branch":"2.7","maturity":50,"url":"http:\\/\\/download.moodle.org","download":"http:\\/\\/download.moodle.org\\/download.php\\/direct\\/moodle\\/moodle-latest.zip"}],"mod_certificate":[{"version":"2013102300","release":"Stable 2.4 to 2.6","maturity":200,"url":"https:\\/\\/moodle.org\\/plugins\\/pluginversion.php?id=5116","download":"https:\\/\\/moodle.org\\/plugins\\/download.php\\/5116\\/mod_certificate_moodle26_2013102300.zip","downloadmd5":"6bd4f1e5cc134d02ea160337c4093b87"}]}}'),
-(838, 'enrol_self', 'lastcron', '1393607010'),
-(839, 'enrol_cohort', 'lastcron', '1393607010'),
-(842, 'quiz_statistics', 'lastcron', '1393607011'),
-(843, 'workshopallocation_scheduled', 'lastcron', '1393607190'),
+(835, 'core_plugin', 'recentfetch', '1393940215'),
+(836, 'core_plugin', 'recentresponse', '{"status":"OK","provider":"https:\\/\\/download.moodle.org\\/api\\/1.2\\/updates.php","apiver":"1.2","timegenerated":1393940214,"ticket":"JUM5JTkxNiVGOG4lRDV4JTdGJUUyJUM0JURGJUQ1JUU4MCUxOSVFNEklQzklOUElQTglNUVnJTlBJTdFJTJBJUJFJUE1JTFEbyVBRCUyOCUwQyU4OCUxNiUxQiU4NSU3QiU4QiU4OUw=","forbranch":"2.6","forversion":"2013111801.03","updates":{"core":[{"version":2013111801.1,"release":"2.6.1+ (Build: 20140228)","branch":"2.6","maturity":200,"url":"http:\\/\\/download.moodle.org","download":"http:\\/\\/download.moodle.org\\/download.php\\/direct\\/stable26\\/moodle-latest-26.zip"},{"version":2014022800,"release":"2.7dev (Build: 20140228)","branch":"2.7","maturity":50,"url":"http:\\/\\/download.moodle.org","download":"http:\\/\\/download.moodle.org\\/download.php\\/direct\\/moodle\\/moodle-latest.zip"}],"mod_certificate":[{"version":"2013102300","release":"Stable 2.4 to 2.6","maturity":200,"url":"https:\\/\\/moodle.org\\/plugins\\/pluginversion.php?id=5116","download":"https:\\/\\/moodle.org\\/plugins\\/download.php\\/5116\\/mod_certificate_moodle26_2013102300.zip","downloadmd5":"6bd4f1e5cc134d02ea160337c4093b87"}]}}'),
+(838, 'enrol_self', 'lastcron', '1393940210'),
+(839, 'enrol_cohort', 'lastcron', '1393940210'),
+(842, 'quiz_statistics', 'lastcron', '1393940211'),
+(843, 'workshopallocation_scheduled', 'lastcron', '1393940211'),
 (844, 'registration', 'crontime', '1393607013'),
-(845, 'repository_dropbox', 'lastcron', '1393607242'),
-(846, 'tool_qeupgradehelper', 'lastcron', '1393607242'),
+(845, 'repository_dropbox', 'lastcron', '1393940215'),
+(846, 'tool_qeupgradehelper', 'lastcron', '1393940215'),
 (848, 'local_soda', 'version', '2012103101'),
 (849, 'folder', 'showexpanded', '0'),
 (850, 'auth/cas', 'start_tls', '0'),
@@ -4194,10 +4291,10 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 (1104, 'auth/manual', 'field_lock_phone2', 'unlocked'),
 (1105, 'auth/manual', 'field_lock_address', 'unlocked'),
 (1106, 'mod_rose', 'version', '2013093002'),
-(1107, 'enrol_manual', 'expirynotifylast', '1393607010'),
-(1108, 'enrol_manual', 'lastcron', '1393607010'),
-(1109, 'enrol_self', 'expirynotifylast', '1393607010'),
-(1110, 'repository_filesystem', 'lastcron', '1393607242'),
+(1107, 'enrol_manual', 'expirynotifylast', '1393940210'),
+(1108, 'enrol_manual', 'lastcron', '1393940210'),
+(1109, 'enrol_self', 'expirynotifylast', '1393940210'),
+(1110, 'repository_filesystem', 'lastcron', '1393940215'),
 (1111, 'repeatcourse', 'daytoremind', '1'),
 (1112, 'repeatcourse', 'daytoremind_adv', '');
 
@@ -4217,7 +4314,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=71 ;
 
 --
 -- Дамп данных таблицы `mdl_context`
@@ -4272,9 +4369,12 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (51, 70, 10, '/1/24/46/51', 4),
 (52, 70, 11, '/1/24/46/52', 4),
 (53, 70, 12, '/1/24/46/53', 4),
-(54, 70, 13, '/1/3/15/54', 4),
 (55, 70, 14, '/1/3/15/55', 4),
-(56, 70, 15, '/1/3/15/56', 4);
+(57, 80, 26, '/1/3/15/57', 4),
+(65, 70, 23, '/1/3/15/65', 4),
+(66, 70, 24, '/1/3/15/66', 4),
+(69, 80, 28, '/1/24/46/69', 4),
+(70, 80, 29, '/1/24/46/70', 4);
 
 -- --------------------------------------------------------
 
@@ -4339,10 +4439,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course` (
 
 INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`, `idnumber`, `summary`, `summaryformat`, `format`, `showgrades`, `newsitems`, `startdate`, `marker`, `maxbytes`, `legacyfiles`, `showreports`, `visible`, `visibleold`, `groupmode`, `groupmodeforce`, `defaultgroupingid`, `lang`, `theme`, `timecreated`, `timemodified`, `requested`, `enablecompletion`, `completionnotify`, `cacherev`, `calendartype`) VALUES
 (1, 0, 1, 'Solin', 'Solin', '', '', 0, 'site', 1, 3, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, '', '', 1390393232, 1390393972, 0, 0, 0, 1392386994, ''),
-(2, 1, 20001, 'Test course', 'tstcrs', '1', '<p>Summary desummary</p>', 1, 'weeks', 1, 5, 1389124800, 0, 52428800, 0, 0, 1, 1, 0, 0, 0, '', '', 1390480406, 1390480406, 0, 0, 0, 1393845119, ''),
+(2, 1, 20001, 'Test course', 'tstcrs', '1', '<p>Summary desummary</p>', 1, 'weeks', 1, 5, 1389042000, 0, 52428800, 0, 1, 1, 1, 0, 0, 0, '', '', 1390480406, 1394028053, 0, 1, 0, 1394034714, ''),
 (3, 2, 10003, 'First Course', '1st course', '', '<p>Course course</p>', 1, 'weeks', 1, 5, 1389729600, 0, 10485760, 0, 1, 1, 1, 2, 1, 0, '', '', 1390915875, 1391442869, 0, 0, 0, 1392386994, ''),
 (5, 2, 10002, 'isWortkable007', 'isworkable007', '', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>', 1, 'topics', 1, 5, 1391803200, 0, 52428800, 0, 0, 1, 1, 2, 0, 0, '', '', 1391773923, 1391773923, 0, 0, 0, 1392386994, ''),
-(6, 2, 10001, 'isWorkable008', 'iswork8', '', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>', 1, 'topics', 1, 5, 1391979600, 0, 52428800, 0, 0, 1, 1, 2, 0, 0, 'en', '', 1392043210, 1392653781, 0, 0, 0, 1392653781, '');
+(6, 2, 10001, 'isWorkable008', 'iswork8', '', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>', 1, 'topics', 1, 5, 1391979600, 0, 52428800, 0, 0, 1, 1, 2, 0, 0, 'en', '', 1392043210, 1394035400, 0, 1, 0, 1394035400, '');
 
 -- --------------------------------------------------------
 
@@ -4396,14 +4496,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
   KEY `mdl_courcomp_use_ix` (`userid`),
   KEY `mdl_courcomp_cou_ix` (`course`),
   KEY `mdl_courcomp_tim_ix` (`timecompleted`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course completion records' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course completion records' AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `mdl_course_completions`
 --
 
 INSERT INTO `mdl_course_completions` (`id`, `userid`, `course`, `timeenrolled`, `timestarted`, `timecompleted`, `reaggregate`) VALUES
-(1, 2, 3, 1392036220, 1392036288, 1392036298, 1392036230);
+(1, 2, 3, 1392036220, 1392036288, 1392036298, 1392036230),
+(8, 3, 6, 0, 1394037141, NULL, 1394037141);
 
 -- --------------------------------------------------------
 
@@ -4442,7 +4543,21 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
   UNIQUE KEY `mdl_courcompaggrmeth_coucr_uix` (`course`,`criteriatype`),
   KEY `mdl_courcompaggrmeth_cou_ix` (`course`),
   KEY `mdl_courcompaggrmeth_cri_ix` (`criteriatype`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Course completion aggregation methods for criteria' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course completion aggregation methods for criteria' AUTO_INCREMENT=45 ;
+
+--
+-- Дамп данных таблицы `mdl_course_completion_aggr_methd`
+--
+
+INSERT INTO `mdl_course_completion_aggr_methd` (`id`, `course`, `criteriatype`, `method`, `value`) VALUES
+(21, 2, NULL, 2, NULL),
+(22, 2, 4, 1, NULL),
+(23, 2, 8, 1, NULL),
+(24, 2, 7, 2, NULL),
+(41, 6, NULL, 1, NULL),
+(42, 6, 4, 1, NULL),
+(43, 6, 8, 1, NULL),
+(44, 6, 7, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -4463,7 +4578,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
   `role` bigint(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_courcompcrit_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Course completion criteria' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course completion criteria' AUTO_INCREMENT=34 ;
+
+--
+-- Дамп данных таблицы `mdl_course_completion_criteria`
+--
+
+INSERT INTO `mdl_course_completion_criteria` (`id`, `course`, `criteriatype`, `module`, `moduleinstance`, `courseinstance`, `enrolperiod`, `timeend`, `gradepass`, `role`) VALUES
+(26, 2, 4, 'quiz', 24, NULL, NULL, NULL, NULL, NULL),
+(33, 6, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -4485,7 +4608,14 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
   KEY `mdl_courcompcritcomp_cou_ix` (`course`),
   KEY `mdl_courcompcritcomp_cri_ix` (`criteriaid`),
   KEY `mdl_courcompcritcomp_tim_ix` (`timecompleted`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Course completion user records' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Course completion user records' AUTO_INCREMENT=11 ;
+
+--
+-- Дамп данных таблицы `mdl_course_completion_crit_compl`
+--
+
+INSERT INTO `mdl_course_completion_crit_compl` (`id`, `userid`, `course`, `criteriaid`, `gradefinal`, `unenroled`, `timecompleted`) VALUES
+(10, 3, 6, 33, NULL, NULL, 1394037141);
 
 -- --------------------------------------------------------
 
@@ -4514,7 +4644,7 @@ INSERT INTO `mdl_course_format_options` (`id`, `courseid`, `format`, `sectionid`
 (2, 1, 'site', 0, 'numsections', '1'),
 (3, 1, 'site', 0, 'hiddensections', '0'),
 (4, 2, 'weeks', 0, 'coursedisplay', '0'),
-(5, 2, 'weeks', 0, 'numsections', '10'),
+(5, 2, 'weeks', 0, 'numsections', '9'),
 (6, 2, 'weeks', 0, 'hiddensections', '0'),
 (7, 3, 'weeks', 0, 'coursedisplay', '0'),
 (8, 3, 'weeks', 0, 'numsections', '10'),
@@ -4562,7 +4692,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
   KEY `mdl_courmodu_ins_ix` (`instance`),
   KEY `mdl_courmodu_idncou_ix` (`idnumber`,`course`),
   KEY `mdl_courmodu_gro_ix` (`groupingid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=26 ;
 
 --
 -- Дамп данных таблицы `mdl_course_modules`
@@ -4578,9 +4708,9 @@ INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section
 (10, 6, 10, 4, 39, NULL, 1392043218, 0, 0, 1, 1, 2, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
 (11, 6, 24, 15, 40, '', 1392043492, 0, 0, 0, 0, 2, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
 (12, 6, 17, 2, 40, '', 1392293943, 0, 0, 1, 1, 2, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
-(13, 2, 24, 16, 3, '', 1392722423, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
 (14, 2, 24, 17, 4, '', 1392906004, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0),
-(15, 2, 25, 1, 2, '', 1393845117, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0);
+(23, 2, 17, 10, 11, '', 1394029173, 0, 0, 1, 1, 0, 0, 0, 1, NULL, 0, 0, 0, 0, 0, 0),
+(24, 2, 17, 11, 11, '', 1394029174, 0, 0, 1, 1, 0, 0, 0, 1, NULL, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4635,7 +4765,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_courmoducomp_usecou_uix` (`userid`,`coursemoduleid`),
   KEY `mdl_courmoducomp_cou_ix` (`coursemoduleid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores the completion state (completed or not completed, etc' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the completion state (completed or not completed, etc' AUTO_INCREMENT=11 ;
+
+--
+-- Дамп данных таблицы `mdl_course_modules_completion`
+--
+
+INSERT INTO `mdl_course_modules_completion` (`id`, `coursemoduleid`, `userid`, `completionstate`, `viewed`, `timemodified`) VALUES
+(8, 23, 3, 0, 0, 1394033898),
+(9, 24, 3, 1, 0, 1394034440);
 
 -- --------------------------------------------------------
 
@@ -4704,8 +4842,8 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
 
 INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`, `summaryformat`, `sequence`, `visible`, `availablefrom`, `availableuntil`, `showavailability`, `groupingid`) VALUES
 (1, 1, 1, NULL, '', 1, '', 1, 0, 0, 0, 0),
-(2, 2, 0, NULL, NULL, 1, '1,2,15', 1, 0, 0, 0, 0),
-(3, 2, 1, NULL, '', 1, '13', 1, 0, 0, 0, 0),
+(2, 2, 0, NULL, NULL, 1, '1,2', 1, 0, 0, 0, 0),
+(3, 2, 1, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (4, 2, 2, NULL, '', 1, '14', 1, 0, 0, 0, 0),
 (5, 2, 3, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (6, 2, 4, NULL, '', 1, '', 1, 0, 0, 0, 0),
@@ -4713,7 +4851,7 @@ INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`,
 (8, 2, 6, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (9, 2, 7, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (10, 2, 8, NULL, '', 1, '', 1, 0, 0, 0, 0),
-(11, 2, 9, NULL, '', 1, '', 1, 0, 0, 0, 0),
+(11, 2, 9, NULL, '', 1, '23,24', 1, 0, 0, 0, 0),
 (12, 2, 10, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (13, 1, 0, NULL, '', 1, '', 1, 0, 0, 0, 0),
 (14, 3, 0, NULL, NULL, 1, '3', 1, 0, 0, 0, 0),
@@ -4949,8 +5087,8 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
 
 INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name`, `enrolperiod`, `enrolstartdate`, `enrolenddate`, `expirynotify`, `expirythreshold`, `notifyall`, `password`, `cost`, `currency`, `roleid`, `customint1`, `customint2`, `customint3`, `customint4`, `customint5`, `customint6`, `customint7`, `customint8`, `customchar1`, `customchar2`, `customchar3`, `customdec1`, `customdec2`, `customtext1`, `customtext2`, `customtext3`, `customtext4`, `timecreated`, `timemodified`) VALUES
 (1, 'manual', 0, 2, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1390480406),
-(2, 'guest', 1, 2, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1390480406),
-(3, 'self', 1, 2, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1390480406),
+(2, 'guest', 1, 2, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390480406, 1394028053),
+(3, 'self', 0, 2, 2, '', 0, 0, 0, 0, 86400, 0, '', NULL, NULL, 5, 0, 0, 0, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, 1390480406, 1394028976),
 (4, 'manual', 0, 3, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390915875),
 (5, 'guest', 1, 3, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1391442869),
 (6, 'self', 0, 3, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1390915875, 1390915875),
@@ -4958,7 +5096,7 @@ INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name
 (11, 'guest', 1, 5, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1391773924, 1391773924),
 (12, 'self', 1, 5, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1391773924, 1391773924),
 (13, 'manual', 0, 6, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1392043211),
-(14, 'guest', 1, 6, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1392653781),
+(14, 'guest', 1, 6, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1394035400),
 (15, 'self', 1, 6, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1392043211),
 (16, 'cohort', 0, 6, 3, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392293309, 1392293309);
 
@@ -5583,7 +5721,7 @@ CREATE TABLE IF NOT EXISTS `mdl_files` (
   KEY `mdl_file_con2_ix` (`contextid`),
   KEY `mdl_file_use_ix` (`userid`),
   KEY `mdl_file_ref_ix` (`referencefileid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=51 ;
 
 --
 -- Дамп данных таблицы `mdl_files`
@@ -5614,7 +5752,18 @@ INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `comp
 (36, '164c5fc87943e40661f40bfc8dbd77f712f97819', '09ebaf5dc3d17e28a7760b6b76f8e872edc783b9', 46, 'group', 'icon', 5, '/', 'f1.png', NULL, 5188, 'image/png', 0, NULL, NULL, NULL, 1392294714, 1392294714, 0, NULL),
 (37, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'f384422b63064d61369519fabc78665e3c67cedd', 46, 'group', 'icon', 5, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1392294714, 1392294714, 0, NULL),
 (38, '85db4f82a6cacb3bb1eaf83b3cfd1abcb53cbed4', 'dc643d8f76e737714d5fb40be47b24e7399d178d', 46, 'group', 'icon', 5, '/', 'f2.png', NULL, 1099, 'image/png', 0, NULL, NULL, NULL, 1392294714, 1392294714, 0, NULL),
-(39, 'ee26ffd69302f5dd6cd1f01127d69ce6b61639de', '931a3c07e6c2beb22032f918762b1854f83e549a', 46, 'group', 'icon', 5, '/', 'f3.png', NULL, 41798, 'image/png', 0, NULL, NULL, NULL, 1392294714, 1392294714, 0, NULL);
+(39, 'ee26ffd69302f5dd6cd1f01127d69ce6b61639de', '931a3c07e6c2beb22032f918762b1854f83e549a', 46, 'group', 'icon', 5, '/', 'f3.png', NULL, 41798, 'image/png', 0, NULL, NULL, NULL, 1392294714, 1392294714, 0, NULL),
+(40, '90864877ef2a88e45eca9e2cd973e1cb3654139b', 'f8802057302d06375330ac4bf132989217406c61', 5, 'user', 'draft', 3509522, '/', 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 2, 27990, 'image/png', 0, 'O:8:"stdClass":1:{s:6:"source";s:121:"Server files: Repeat Courses/First Course/Course summary files/charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png";}', 'Admin User', 'allrightsreserved', 1394028038, 1394028038, 0, NULL),
+(41, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8ab5c8a116ab52d32ae0c96e34f784d5eea6d37e', 5, 'user', 'draft', 3509522, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1394028038, 1394028038, 0, NULL),
+(42, '90864877ef2a88e45eca9e2cd973e1cb3654139b', '4d8a3c78195d3f372a91f318f4803a8637f4b71e', 15, 'course', 'overviewfiles', 0, '/', 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 2, 27990, 'image/png', 0, 'Server files: Repeat Courses/First Course/Course summary files/charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 'Admin User', 'allrightsreserved', 1394028038, 1394028053, 0, NULL),
+(43, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '568e9a3486938c9cdcbc04a4e4dc5574b5fe04fb', 15, 'course', 'overviewfiles', 0, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1394028038, 1394028053, 0, NULL),
+(44, '31605a72e7558b84e6585266cfda90ab6c31382e', 'e5a9121715305879d1b315813d1978b493a29726', 21, 'user', 'draft', 909088134, '/', 'xx-BYOj4lkQ.jpg', 3, 30080, 'image/jpeg', 0, 'O:8:"stdClass":1:{s:6:"source";s:15:"xx-BYOj4lkQ.jpg";}', 'Test User', 'allrightsreserved', 1394028457, 1394028457, 0, NULL),
+(45, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '6b688ed43cb9aec7f63fecf263d9c5d84dc8b215', 21, 'user', 'draft', 909088134, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1394028457, 1394028457, 0, NULL),
+(46, '2f351159ae0fd9a7631f657903d552ce2a25fd4e', '47f2d7d0b7c6af007d4bb14ca92024ee07f79916', 1, 'core', 'preview', 0, '/thumb/', '31605a72e7558b84e6585266cfda90ab6c31382e', NULL, 10122, 'image/png', 0, NULL, NULL, NULL, 1394028458, 1394028458, 0, NULL),
+(47, '31605a72e7558b84e6585266cfda90ab6c31382e', '48b705eaf14f09e7ae78f776d856eb3531e3a77c', 1, 'blog', 'attachment', 2, '/', 'xx-BYOj4lkQ.jpg', 3, 30080, 'image/jpeg', 0, 'xx-BYOj4lkQ.jpg', 'Test User', 'allrightsreserved', 1394028457, 1394028463, 0, NULL),
+(48, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'bb343b4c8a468ed8946a3f664b0759978f02a6a0', 1, 'blog', 'attachment', 2, '/', '.', 3, 0, NULL, 0, NULL, NULL, NULL, 1394028457, 1394028463, 0, NULL),
+(49, '90864877ef2a88e45eca9e2cd973e1cb3654139b', '999d0711bc2a8dcc297a5ec7c69e9a70c8d596aa', 5, 'user', 'draft', 135589600, '/', 'charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png', 2, 27990, 'image/png', 0, 'O:8:"stdClass":2:{s:6:"source";s:121:"Server files: Repeat Courses/First Course/Course summary files/charlie_chaplin__the_tramp_by_conquerorromulus-d6x0s1c.png";s:8:"original";s:284:"YTo2OntzOjk6ImNvbnRleHRpZCI7aToxNTtzOjk6ImNvbXBvbmVudCI7czo2OiJjb3Vyc2UiO3M6NjoiaXRlbWlkIjtpOjA7czo4OiJmaWxlYXJlYSI7czoxMzoib3ZlcnZpZXdmaWxlcyI7czo4OiJmaWxlcGF0aCI7czoxOiIvIjtzOjg6ImZpbGVuYW1lIjtzOjU4OiJjaGFybGllX2NoYXBsaW5fX3RoZV90cmFtcF9ieV9jb25xdWVyb3Jyb211bHVzLWQ2eDBzMWMucG5nIjt9";}', 'Admin User', 'allrightsreserved', 1394028038, 1394028053, 0, NULL),
+(50, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '33602289d10f16f125a82a8dfaf2809cccff507e', 5, 'user', 'draft', 135589600, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1394028858, 1394028858, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -6170,7 +6319,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
   KEY `mdl_gradgrad_use_ix` (`userid`),
   KEY `mdl_gradgrad_raw_ix` (`rawscaleid`),
   KEY `mdl_gradgrad_use2_ix` (`usermodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `mdl_grade_grades`
@@ -6180,7 +6329,11 @@ INSERT INTO `mdl_grade_grades` (`id`, `itemid`, `userid`, `rawgrade`, `rawgradem
 (1, 3, 6, '10.00000', '10.00000', '0.00000', NULL, 6, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1391443317, 1391443318),
 (2, 2, 6, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
 (3, 5, 4, '10.00000', '10.00000', '0.00000', NULL, 4, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1392299423, 1392299423),
-(4, 4, 4, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
+(4, 4, 4, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(6, 1, 3, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL),
+(7, 14, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1394034356, 1394034356),
+(8, 5, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1394035799, 1394035799),
+(9, 4, 3, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6222,7 +6375,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
   KEY `mdl_gradgradhist_use2_ix` (`usermodified`),
   KEY `mdl_gradgradhist_log_ix` (`loggeduser`),
   KEY `mdl_gradgradhist_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History table' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History table' AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `mdl_grade_grades_history`
@@ -6234,7 +6387,19 @@ INSERT INTO `mdl_grade_grades_history` (`id`, `action`, `oldid`, `source`, `time
 (3, 2, 2, 'aggregation', 1391443318, 6, 2, 6, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
 (4, 1, 3, 'mod/quiz', 1392299423, 4, 5, 4, '10.00000', '10.00000', '0.00000', NULL, 4, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
 (5, 1, 4, 'system', 1392299424, 4, 4, 4, NULL, '100.00000', '0.00000', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
-(6, 2, 4, 'aggregation', 1392299424, 4, 4, 4, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0);
+(6, 2, 4, 'aggregation', 1392299424, 4, 4, 4, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(7, 1, 5, 'mod/quiz', 1394029496, 3, 15, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(8, 1, 6, 'system', 1394029496, 3, 1, 3, NULL, '100.00000', '0.00000', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(9, 2, 6, 'aggregation', 1394029496, 3, 1, 3, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(10, 2, 5, 'mod/quiz', 1394030888, 3, 15, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(11, 3, 5, 'mod/quiz', 1394031007, 2, 15, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(12, 2, 6, 'aggregation', 1394031008, 2, 1, 3, NULL, '100.00000', '0.00000', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(13, 1, 7, 'mod/quiz', 1394031405, 3, 14, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(14, 2, 6, 'aggregation', 1394031405, 3, 1, 3, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(15, 2, 7, 'mod/quiz', 1394034356, 3, 14, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(16, 1, 8, 'mod/quiz', 1394035799, 3, 5, 3, '10.00000', '10.00000', '0.00000', NULL, 3, '10.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(17, 1, 9, 'system', 1394035799, 3, 4, 3, NULL, '100.00000', '0.00000', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(18, 2, 9, 'aggregation', 1394035799, 3, 4, 3, NULL, '100.00000', '0.00000', NULL, NULL, '100.00000', 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -6317,7 +6482,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
   KEY `mdl_graditem_cat_ix` (`categoryid`),
   KEY `mdl_graditem_sca_ix` (`scaleid`),
   KEY `mdl_graditem_out_ix` (`outcomeid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `mdl_grade_items`
@@ -6328,7 +6493,9 @@ INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `item
 (2, 3, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, NULL, 0, 0, 0, 0, 1391432459, 1391432459),
 (3, 3, 2, 'Test quiz', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, NULL, 0, 0, 0, 0, 1391443071, 1391443071),
 (4, 6, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, NULL, 0, 0, 0, 0, 1392293603, 1392293603),
-(5, 6, 3, 'test quiz isW008_2', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, NULL, 0, 0, 0, 0, 1392293943, 1392293943);
+(5, 6, 3, 'test quiz isW008_2', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, NULL, 0, 0, 0, 0, 1392293943, 1392293943),
+(13, 2, 1, '3', 'mod', 'quiz', 10, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 9, 0, NULL, 0, 0, 0, 0, 1394029173, 1394030959),
+(14, 2, 1, '2', 'mod', 'quiz', 11, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 10, 0, NULL, 0, 0, 0, 0, 1394029174, 1394030956);
 
 -- --------------------------------------------------------
 
@@ -6377,7 +6544,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
   KEY `mdl_graditemhist_sca_ix` (`scaleid`),
   KEY `mdl_graditemhist_out_ix` (`outcomeid`),
   KEY `mdl_graditemhist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_items' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='History of grade_items' AUTO_INCREMENT=28 ;
 
 --
 -- Дамп данных таблицы `mdl_grade_items_history`
@@ -6390,7 +6557,27 @@ INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timem
 (4, 1, 4, 'system', 1391774106, 2, 4, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
 (5, 3, 4, 'coursedelete', 1391774106, 2, 4, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
 (6, 1, 4, 'system', 1392293603, 2, 6, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, '100.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 1, 0, 0, 0, 1, 0, NULL),
-(7, 1, 5, NULL, 1392293943, 2, 6, 3, 'test quiz isW008_2', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, 0, 0, 1, 0, NULL);
+(7, 1, 5, NULL, 1392293943, 2, 6, 3, 'test quiz isW008_2', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, 0, 0, 1, 0, NULL),
+(8, 1, 6, NULL, 1394029158, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 3, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, 0, 0, 1, 0, NULL),
+(9, 1, 7, NULL, 1394029164, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 4, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 3, 0, 0, 0, 1, 0, NULL),
+(10, 1, 8, NULL, 1394029166, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 5, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 4, 0, 0, 0, 1, 0, NULL),
+(11, 1, 9, NULL, 1394029167, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 6, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 5, 0, 0, 0, 1, 0, NULL),
+(12, 1, 10, NULL, 1394029169, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 7, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 6, 0, 0, 0, 1, 0, NULL),
+(13, 1, 11, NULL, 1394029170, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 8, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 7, 0, 0, 0, 1, 0, NULL),
+(14, 1, 12, NULL, 1394029171, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 9, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 8, 0, 0, 0, 1, 0, NULL),
+(15, 1, 13, NULL, 1394029173, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 10, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 9, 0, 0, 0, 1, 0, NULL),
+(16, 1, 14, NULL, 1394029174, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 11, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 10, 0, 0, 0, 1, 0, NULL),
+(17, 1, 15, NULL, 1394029175, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 12, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 11, 0, 0, 0, 1, 0, NULL),
+(18, 2, 14, NULL, 1394030956, 2, 2, 1, '2', 'mod', 'quiz', 11, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 10, 0, 0, 0, 0, 0, NULL),
+(19, 2, 13, NULL, 1394030959, 2, 2, 1, '3', 'mod', 'quiz', 10, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 9, 0, 0, 0, 0, 0, NULL),
+(20, 3, 6, 'mod/quiz', 1394030967, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 3, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 2, 0, 0, 0, 1, 0, NULL),
+(21, 3, 7, 'mod/quiz', 1394030973, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 4, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 3, 0, 0, 0, 1, 0, NULL),
+(22, 3, 8, 'mod/quiz', 1394030975, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 5, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 4, 0, 0, 0, 1, 0, NULL),
+(23, 3, 9, 'mod/quiz', 1394030977, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 6, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 5, 0, 0, 0, 1, 0, NULL),
+(24, 3, 10, 'mod/quiz', 1394030979, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 7, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 6, 0, 0, 0, 1, 0, NULL),
+(25, 3, 11, 'mod/quiz', 1394030981, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 8, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 7, 0, 0, 0, 1, 0, NULL),
+(26, 3, 12, 'mod/quiz', 1394030983, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 9, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 8, 0, 0, 0, 1, 0, NULL),
+(27, 3, 15, 'mod/quiz', 1394031007, 2, 2, 1, 'iwannafinishit', 'mod', 'quiz', 12, 0, NULL, '', NULL, 1, '10.00000', '0.00000', NULL, NULL, '0.00000', '1.00000', '0.00000', '0.00000', 11, 0, 0, 0, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -7050,7 +7237,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=670 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=964 ;
 
 --
 -- Дамп данных таблицы `mdl_log`
@@ -7724,7 +7911,301 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (666, 1393845117, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/rose/view.php?id=1', 'rose 1'),
 (667, 1393845117, 2, '127.0.0.1', 2, 'rose', 15, 'add', 'view.php?id=15', '1'),
 (668, 1393934872, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
-(669, 1393934872, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2');
+(669, 1393934872, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(670, 1393943832, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(671, 1393943832, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(672, 1394016512, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(673, 1394016513, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(674, 1394016513, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(675, 1394016565, 2, '127.0.0.1', 2, 'course', 0, 'update', 'edit.php?id=2', '2'),
+(676, 1394016565, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(677, 1394016570, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(678, 1394016571, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(679, 1394016691, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(680, 1394019792, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(681, 1394019800, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(682, 1394019800, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(683, 1394019826, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(684, 1394020222, 0, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=3', ''),
+(685, 1394020222, 0, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=3', ''),
+(686, 1394020222, 3, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=3', ''),
+(687, 1394020222, 3, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=3&course=1', '3'),
+(688, 1394020223, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(689, 1394020803, 2, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(690, 1394020814, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(691, 1394020846, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(692, 1394021032, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(693, 1394021638, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(694, 1394021643, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(695, 1394021652, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(696, 1394021978, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(697, 1394021983, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(698, 1394022449, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(699, 1394022459, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(700, 1394022550, 2, '127.0.0.1', 0, 'role', 0, 'unassign', 'admin/roles/assign.php?contextid=24&roleid=1', 'Manager'),
+(701, 1394022560, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(702, 1394022562, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(703, 1394022566, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(704, 1394022575, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(705, 1394022611, 2, '127.0.0.1', 1, 'user', 0, 'view all', 'index.php?id=1', ''),
+(706, 1394023419, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(707, 1394024927, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(708, 1394024939, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(709, 1394024943, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(710, 1394024957, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(711, 1394025001, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(712, 1394025008, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(713, 1394025019, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(714, 1394025122, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(715, 1394025272, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(716, 1394025777, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(717, 1394026925, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(718, 1394027987, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(719, 1394028053, 2, '127.0.0.1', 2, 'course', 0, 'update', 'edit.php?id=2', '2'),
+(720, 1394028054, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(721, 1394028076, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(722, 1394028081, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(723, 1394028179, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(724, 1394028179, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(725, 1394028244, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(726, 1394028245, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(727, 1394028389, 3, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(728, 1394028397, 3, '127.0.0.1', 2, 'blog', 0, 'view', 'index.php?entryid=&tagid=&tag=', 'view blog entry'),
+(729, 1394028463, 3, '127.0.0.1', 2, 'blog', 0, 'add', 'index.php?userid=3&entryid=2', 'Iwannacompletethiscourse'),
+(730, 1394028463, 3, '127.0.0.1', 1, 'blog', 0, 'add', 'index.php?userid=3&entryid=2', 'Iwannacompletethiscourse'),
+(731, 1394028463, 3, '127.0.0.1', 2, 'blog', 0, 'add', 'index.php?userid=3&entryid=2', 'Iwannacompletethiscourse'),
+(732, 1394028463, 3, '127.0.0.1', 1, 'blog', 0, 'update', 'index.php?userid=3&entryid=2', 'Iwannacompletethiscourse'),
+(733, 1394028467, 3, '127.0.0.1', 2, 'blog', 0, 'view', 'index.php?entryid=&tagid=&tag=', 'view blog entry'),
+(734, 1394028478, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(735, 1394028507, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(736, 1394028532, 3, '127.0.0.1', 2, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(737, 1394028537, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(738, 1394028541, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(739, 1394028580, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(740, 1394028580, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(741, 1394028599, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(742, 1394028628, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(743, 1394028640, 3, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(744, 1394028649, 3, '127.0.0.1', 2, 'user', 0, 'view', 'view.php?id=3&course=2', '3'),
+(745, 1394028906, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(746, 1394028989, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(747, 1394029008, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(748, 1394029031, 3, '127.0.0.1', 2, 'course', 0, 'report outline', 'report/outline/user.php?id=3&course=2&mode=complete', '2'),
+(749, 1394029041, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(750, 1394029049, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(751, 1394029158, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=3', 'quiz 3'),
+(752, 1394029158, 2, '127.0.0.1', 2, 'quiz', 16, 'add', 'view.php?id=16', '3'),
+(753, 1394029158, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(754, 1394029164, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=4', 'quiz 4'),
+(755, 1394029164, 2, '127.0.0.1', 2, 'quiz', 17, 'add', 'view.php?id=17', '4'),
+(756, 1394029166, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=5', 'quiz 5'),
+(757, 1394029166, 2, '127.0.0.1', 2, 'quiz', 18, 'add', 'view.php?id=18', '5'),
+(758, 1394029167, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=6', 'quiz 6'),
+(759, 1394029167, 2, '127.0.0.1', 2, 'quiz', 19, 'add', 'view.php?id=19', '6'),
+(760, 1394029169, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=7', 'quiz 7'),
+(761, 1394029169, 2, '127.0.0.1', 2, 'quiz', 20, 'add', 'view.php?id=20', '7'),
+(762, 1394029170, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=8', 'quiz 8'),
+(763, 1394029170, 2, '127.0.0.1', 2, 'quiz', 21, 'add', 'view.php?id=21', '8'),
+(764, 1394029171, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=9', 'quiz 9'),
+(765, 1394029171, 2, '127.0.0.1', 2, 'quiz', 22, 'add', 'view.php?id=22', '9'),
+(766, 1394029173, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=10', 'quiz 10'),
+(767, 1394029173, 2, '127.0.0.1', 2, 'quiz', 23, 'add', 'view.php?id=23', '10'),
+(768, 1394029174, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=11', 'quiz 11'),
+(769, 1394029174, 2, '127.0.0.1', 2, 'quiz', 24, 'add', 'view.php?id=24', '11'),
+(770, 1394029175, 2, '127.0.0.1', 2, 'course', 0, 'add mod', '../mod/quiz/view.php?id=12', 'quiz 12'),
+(771, 1394029175, 2, '127.0.0.1', 2, 'quiz', 25, 'add', 'view.php?id=25', '12'),
+(772, 1394029176, 2, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(773, 1394029183, 2, '127.0.0.1', 2, 'quiz', 25, 'editquestions', 'view.php?id=25', '12'),
+(774, 1394029217, 2, '127.0.0.1', 2, 'quiz', 25, 'editquestions', 'view.php?id=25', '12'),
+(775, 1394029217, 2, '127.0.0.1', 2, 'quiz', 25, 'editquestions', 'view.php?id=25', '12'),
+(776, 1394029427, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(777, 1394029441, 3, '127.0.0.1', 2, 'quiz', 22, 'view', 'view.php?id=22', '9'),
+(778, 1394029448, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(779, 1394029454, 3, '127.0.0.1', 2, 'quiz', 16, 'view', 'view.php?id=16', '3'),
+(780, 1394029459, 3, '127.0.0.1', 2, 'quiz', 17, 'view', 'view.php?id=17', '4'),
+(781, 1394029469, 3, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(782, 1394029474, 3, '127.0.0.1', 2, 'quiz', 25, 'attempt', 'review.php?attempt=3', '12'),
+(783, 1394029475, 3, '127.0.0.1', 2, 'quiz', 25, 'continue attempt', 'review.php?attempt=3', '12'),
+(784, 1394029485, 3, '127.0.0.1', 2, 'quiz', 25, 'view summary', 'summary.php?attempt=3', '12'),
+(785, 1394029496, 3, '127.0.0.1', 2, 'quiz', 25, 'close attempt', 'review.php?attempt=3', '12'),
+(786, 1394029497, 3, '127.0.0.1', 2, 'quiz', 25, 'review', 'review.php?attempt=3', '12'),
+(787, 1394029513, 3, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(788, 1394029521, 3, '127.0.0.1', 2, 'quiz', 25, 'review', 'review.php?attempt=3', '12'),
+(789, 1394029530, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(790, 1394029535, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(791, 1394029540, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(792, 1394029960, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(793, 1394029965, 2, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(794, 1394030011, 2, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(795, 1394030033, 2, '127.0.0.1', 2, 'user', 0, 'view', 'view.php?id=3&course=2', '3'),
+(796, 1394030042, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(797, 1394030079, 3, '127.0.0.1', 1, 'message', 0, 'write', 'index.php?user=3&id=2&history=1#m2', '3'),
+(798, 1394030095, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(799, 1394030133, 3, '127.0.0.1', 2, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(800, 1394030137, 3, '127.0.0.1', 2, 'forum', 1, 'view discussion', 'discuss.php?d=1', '1'),
+(801, 1394030150, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(802, 1394030216, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(803, 1394030310, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(804, 1394030330, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(805, 1394030363, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(806, 1394030405, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(807, 1394030439, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(808, 1394030558, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(809, 1394030703, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(810, 1394030722, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(811, 1394030837, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(812, 1394030837, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(813, 1394030852, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(814, 1394030860, 3, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(815, 1394030867, 3, '127.0.0.1', 2, 'quiz', 25, 'attempt', 'review.php?attempt=4', '12'),
+(816, 1394030867, 3, '127.0.0.1', 2, 'quiz', 25, 'continue attempt', 'review.php?attempt=4', '12'),
+(817, 1394030877, 3, '127.0.0.1', 2, 'quiz', 25, 'view summary', 'summary.php?attempt=4', '12'),
+(818, 1394030887, 3, '127.0.0.1', 2, 'quiz', 25, 'close attempt', 'review.php?attempt=4', '12'),
+(819, 1394030888, 3, '127.0.0.1', 2, 'quiz', 25, 'review', 'review.php?attempt=4', '12'),
+(820, 1394030901, 3, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(821, 1394030913, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(822, 1394030940, 3, '127.0.0.1', 2, 'quiz', 25, 'view', 'view.php?id=25', '12'),
+(823, 1394030967, 2, '127.0.0.1', 2, 'course', 16, 'delete mod', 'view.php?id=2', 'quiz 3'),
+(824, 1394030973, 2, '127.0.0.1', 2, 'course', 17, 'delete mod', 'view.php?id=2', 'quiz 4'),
+(825, 1394030975, 2, '127.0.0.1', 2, 'course', 18, 'delete mod', 'view.php?id=2', 'quiz 5'),
+(826, 1394030977, 2, '127.0.0.1', 2, 'course', 19, 'delete mod', 'view.php?id=2', 'quiz 6'),
+(827, 1394030979, 2, '127.0.0.1', 2, 'course', 20, 'delete mod', 'view.php?id=2', 'quiz 7'),
+(828, 1394030981, 2, '127.0.0.1', 2, 'course', 21, 'delete mod', 'view.php?id=2', 'quiz 8'),
+(829, 1394030983, 2, '127.0.0.1', 2, 'course', 22, 'delete mod', 'view.php?id=2', 'quiz 9'),
+(830, 1394030995, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(831, 1394030995, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(832, 1394031007, 2, '127.0.0.1', 2, 'course', 25, 'delete mod', 'view.php?id=2', 'quiz 12'),
+(833, 1394031008, 2, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(834, 1394031015, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(835, 1394031093, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(836, 1394031106, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(837, 1394031107, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(838, 1394031132, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(839, 1394031132, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(840, 1394031152, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(841, 1394031153, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(842, 1394031175, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(843, 1394031176, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(844, 1394031197, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(845, 1394031197, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(846, 1394031217, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(847, 1394031222, 3, '127.0.0.1', 2, 'quiz', 24, 'attempt', 'review.php?attempt=5', '11'),
+(848, 1394031223, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=5', '11'),
+(849, 1394031379, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=5', '11'),
+(850, 1394031391, 3, '127.0.0.1', 2, 'quiz', 24, 'view summary', 'summary.php?attempt=5', '11'),
+(851, 1394031405, 3, '127.0.0.1', 2, 'quiz', 24, 'close attempt', 'review.php?attempt=5', '11'),
+(852, 1394031405, 3, '127.0.0.1', 2, 'quiz', 24, 'review', 'review.php?attempt=5', '11'),
+(853, 1394031419, 3, '127.0.0.1', 2, 'quiz', 24, 'review', 'review.php?attempt=5', '11'),
+(854, 1394031431, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(855, 1394031440, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(856, 1394033499, 3, '127.0.0.1', 2, 'quiz', 23, 'view', 'view.php?id=23', '10'),
+(857, 1394033504, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(858, 1394033523, 3, '127.0.0.1', 2, 'quiz', 23, 'view', 'view.php?id=23', '10'),
+(859, 1394033527, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(860, 1394033536, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(861, 1394033756, 3, '127.0.0.1', 2, 'quiz', 24, 'attempt', 'review.php?attempt=6', '11'),
+(862, 1394033756, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=6', '11'),
+(863, 1394033765, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(864, 1394033770, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(865, 1394033793, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(866, 1394033850, 2, '127.0.0.1', 2, 'course', 0, 'completion updated', 'completion.php?id=2', ''),
+(867, 1394033851, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(868, 1394033881, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(869, 1394033899, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(870, 1394033943, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(871, 1394033950, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(872, 1394033958, 2, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(873, 1394033968, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(874, 1394033974, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(875, 1394034001, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(876, 1394034001, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(877, 1394034008, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(878, 1394034009, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(879, 1394034016, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(880, 1394034016, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(881, 1394034023, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(882, 1394034024, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(883, 1394034052, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(884, 1394034052, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(885, 1394034237, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(886, 1394034237, 2, '127.0.0.1', 2, 'quiz', 24, 'editquestions', 'view.php?id=24', '11'),
+(887, 1394034253, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(888, 1394034278, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(889, 1394034290, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(890, 1394034302, 3, '127.0.0.1', 2, 'quiz', 24, 'attempt', 'review.php?attempt=7', '11'),
+(891, 1394034303, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=7', '11'),
+(892, 1394034317, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=7', '11'),
+(893, 1394034330, 3, '127.0.0.1', 2, 'quiz', 24, 'continue attempt', 'review.php?attempt=7', '11'),
+(894, 1394034344, 3, '127.0.0.1', 2, 'quiz', 24, 'view summary', 'summary.php?attempt=7', '11'),
+(895, 1394034356, 3, '127.0.0.1', 2, 'quiz', 24, 'close attempt', 'review.php?attempt=7', '11'),
+(896, 1394034357, 3, '127.0.0.1', 2, 'quiz', 24, 'review', 'review.php?attempt=7', '11'),
+(897, 1394034385, 3, '127.0.0.1', 2, 'quiz', 24, 'review', 'review.php?attempt=7', '11'),
+(898, 1394034399, 3, '127.0.0.1', 2, 'quiz', 24, 'review', 'review.php?attempt=7', '11'),
+(899, 1394034420, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(900, 1394034429, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(901, 1394034458, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(902, 1394034471, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(903, 1394034506, 2, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=66&roleid=5', 'Student'),
+(904, 1394034528, 2, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(905, 1394034534, 2, '127.0.0.1', 2, 'quiz', 24, 'report', 'report.php?id=24&mode=overview', '11'),
+(906, 1394034626, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(907, 1394034647, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(908, 1394034652, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(909, 1394034665, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(910, 1394034672, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(911, 1394034675, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(912, 1394034694, 2, '127.0.0.1', 2, 'course', 13, 'delete mod', 'view.php?id=2', 'repeatcourse 16'),
+(913, 1394034713, 2, '127.0.0.1', 2, 'course', 15, 'delete mod', 'view.php?id=2', 'rose 1'),
+(914, 1394034877, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(915, 1394034900, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(916, 1394035238, 3, '127.0.0.1', 2, 'quiz', 24, 'view', 'view.php?id=24', '11'),
+(917, 1394035244, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(918, 1394035263, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(919, 1394035279, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(920, 1394035292, 3, '127.0.0.1', 2, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(921, 1394035297, 3, '127.0.0.1', 2, 'forum', 1, 'view discussion', 'discuss.php?d=1', '1'),
+(922, 1394035311, 3, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(923, 1394035321, 3, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(924, 1394035358, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(925, 1394035369, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(926, 1394035372, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(927, 1394035400, 2, '127.0.0.1', 6, 'course', 0, 'update', 'edit.php?id=6', '6'),
+(928, 1394035401, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(929, 1394035466, 2, '127.0.0.1', 6, 'course', 0, 'completion updated', 'completion.php?id=6', ''),
+(930, 1394035466, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(931, 1394035479, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(932, 1394035481, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(933, 1394035495, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(934, 1394035513, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(935, 1394035541, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(936, 1394035570, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(937, 1394035582, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(938, 1394035599, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(939, 1394035607, 2, '127.0.0.1', 6, 'course', 0, 'completion updated', 'completion.php?id=6', ''),
+(940, 1394035607, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(941, 1394035618, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(942, 1394035755, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(943, 1394035764, 3, '127.0.0.1', 6, 'quiz', 12, 'view', 'view.php?id=12', '2'),
+(944, 1394035772, 3, '127.0.0.1', 6, 'quiz', 12, 'attempt', 'review.php?attempt=8', '2'),
+(945, 1394035773, 3, '127.0.0.1', 6, 'quiz', 12, 'continue attempt', 'review.php?attempt=8', '2'),
+(946, 1394035786, 3, '127.0.0.1', 6, 'quiz', 12, 'view summary', 'summary.php?attempt=8', '2'),
+(947, 1394035799, 3, '127.0.0.1', 6, 'quiz', 12, 'close attempt', 'review.php?attempt=8', '2'),
+(948, 1394035799, 3, '127.0.0.1', 6, 'quiz', 12, 'review', 'review.php?attempt=8', '2'),
+(949, 1394035816, 3, '127.0.0.1', 6, 'quiz', 12, 'view', 'view.php?id=12', '2'),
+(950, 1394035853, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(951, 1394035868, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(952, 1394036639, 2, '127.0.0.1', 6, 'course', 0, 'completion updated', 'completion.php?id=6', ''),
+(953, 1394036639, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(954, 1394036689, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(955, 1394036707, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(956, 1394036775, 2, '127.0.0.1', 6, 'course', 0, 'completion updated', 'completion.php?id=6', ''),
+(957, 1394036775, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(958, 1394036852, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(959, 1394036886, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(960, 1394037103, 2, '127.0.0.1', 6, 'course', 0, 'completion updated', 'completion.php?id=6', ''),
+(961, 1394037103, 2, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(962, 1394037115, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(963, 1394037143, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6');
 
 -- --------------------------------------------------------
 
@@ -8075,7 +8556,14 @@ CREATE TABLE IF NOT EXISTS `mdl_message` (
   PRIMARY KEY (`id`),
   KEY `mdl_mess_use_ix` (`useridfrom`),
   KEY `mdl_mess_use2_ix` (`useridto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores all unread messages' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores all unread messages' AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `mdl_message`
+--
+
+INSERT INTO `mdl_message` (`id`, `useridfrom`, `useridto`, `subject`, `fullmessage`, `fullmessageformat`, `fullmessagehtml`, `smallmessage`, `notification`, `contexturl`, `contexturlname`, `timecreated`) VALUES
+(2, 3, 2, 'New message from Test User', 'I dont know:(\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Solin". Go to http://solin.loc/message/index.php?user=2&id=3 to reply.', 0, '', 'I dont know:(', 0, NULL, NULL, 1394030079);
 
 -- --------------------------------------------------------
 
@@ -8182,7 +8670,14 @@ CREATE TABLE IF NOT EXISTS `mdl_message_read` (
   PRIMARY KEY (`id`),
   KEY `mdl_messread_use_ix` (`useridfrom`),
   KEY `mdl_messread_use2_ix` (`useridto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Stores all messages that have been read' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores all messages that have been read' AUTO_INCREMENT=2 ;
+
+--
+-- Дамп данных таблицы `mdl_message_read`
+--
+
+INSERT INTO `mdl_message_read` (`id`, `useridfrom`, `useridto`, `subject`, `fullmessage`, `fullmessageformat`, `fullmessagehtml`, `smallmessage`, `notification`, `contexturl`, `contexturlname`, `timecreated`, `timeread`) VALUES
+(1, 2, 3, 'New message from Admin User', 'what r u doin here? \n\n\n\n---------------------------------------------------------------------\nThis is a copy of a message sent to you at "Solin". Go to http://solin.loc/message/index.php?user=3&id=2 to reply.', 1, '<p>what r u doin here?</p>\r\n<p></p><br /><br />---------------------------------------------------------------------<br />This is a copy of a message sent to you at "Solin". Go to http://solin.loc/message/index.php?user=3&id=2 to reply.', '<p>what r u doin here?</p>\r\n<p></p>', 0, NULL, NULL, 1394030007, 1394030066);
 
 -- --------------------------------------------------------
 
@@ -8196,7 +8691,14 @@ CREATE TABLE IF NOT EXISTS `mdl_message_working` (
   `processorid` bigint(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_messwork_unr_ix` (`unreadmessageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Lists all the messages and processors that need to be proces' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Lists all the messages and processors that need to be proces' AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `mdl_message_working`
+--
+
+INSERT INTO `mdl_message_working` (`id`, `unreadmessageid`, `processorid`) VALUES
+(2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -8577,26 +9079,26 @@ INSERT INTO `mdl_modules` (`id`, `name`, `cron`, `lastcron`, `search`, `visible`
 (2, 'assignment', 60, 0, '', 0),
 (3, 'book', 0, 0, '', 1),
 (4, 'certificate', 0, 0, '', 1),
-(5, 'chat', 300, 1393607009, '', 1),
+(5, 'chat', 300, 1393940210, '', 1),
 (6, 'choice', 0, 0, '', 1),
 (7, 'data', 0, 0, '', 1),
 (8, 'feedback', 0, 0, '', 0),
 (9, 'folder', 0, 0, '', 1),
-(10, 'forum', 60, 1393607189, '', 1),
+(10, 'forum', 60, 1393940210, '', 1),
 (11, 'glossary', 0, 0, '', 1),
 (12, 'imscp', 0, 0, '', 1),
 (13, 'label', 0, 0, '', 1),
 (14, 'lesson', 0, 0, '', 1),
 (15, 'lti', 0, 0, '', 1),
 (16, 'page', 0, 0, '', 1),
-(17, 'quiz', 60, 1393607189, '', 1),
+(17, 'quiz', 60, 1393940210, '', 1),
 (18, 'resource', 0, 0, '', 1),
-(19, 'scorm', 300, 1393607009, '', 1),
+(19, 'scorm', 300, 1393940210, '', 1),
 (20, 'survey', 0, 0, '', 1),
 (21, 'url', 0, 0, '', 1),
 (22, 'wiki', 0, 0, '', 1),
-(23, 'workshop', 60, 1393607189, '', 1),
-(24, 'repeatcourse', 86400, 1393607241, '', 1),
+(23, 'workshop', 60, 1393940210, '', 1),
+(24, 'repeatcourse', 86400, 1393940210, '', 1),
 (25, 'rose', 0, 0, '', 1);
 
 -- --------------------------------------------------------
@@ -8613,7 +9115,7 @@ CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
   `sortorder` mediumint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_mypage_usepri_ix` (`userid`,`private`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Extra user pages for the My Moodle system' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Extra user pages for the My Moodle system' AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `mdl_my_pages`
@@ -8621,7 +9123,8 @@ CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
 
 INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALUES
 (1, NULL, '__default', 0, 0),
-(2, NULL, '__default', 1, 0);
+(2, NULL, '__default', 1, 0),
+(3, 2, '__default', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -8781,14 +9284,15 @@ CREATE TABLE IF NOT EXISTS `mdl_post` (
   KEY `mdl_post_mod_ix` (`module`),
   KEY `mdl_post_sub_ix` (`subject`),
   KEY `mdl_post_use_ix` (`usermodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `mdl_post`
 --
 
 INSERT INTO `mdl_post` (`id`, `module`, `userid`, `courseid`, `groupid`, `moduleid`, `coursemoduleid`, `subject`, `summary`, `content`, `uniquehash`, `rating`, `format`, `summaryformat`, `attachment`, `publishstate`, `lastmodified`, `created`, `usermodified`) VALUES
-(1, 'blog', 2, 3, 0, 0, 0, 'Test blog', '<p>Blog blog</p>', NULL, '', 0, 1, 1, '', 'site', 1391442682, 1391442682, NULL);
+(1, 'blog', 2, 3, 0, 0, 0, 'Test blog', '<p>Blog blog</p>', NULL, '', 0, 1, 1, '', 'site', 1391442682, 1391442682, NULL),
+(2, 'blog', 3, 2, 0, 0, 0, 'Iwannacompletethiscourse', '<p>Iwannacompletethiscourse</p>', NULL, '', 0, 1, 1, '1', 'site', 1394028463, 1394028463, NULL);
 
 -- --------------------------------------------------------
 
@@ -8853,14 +9357,15 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_match_options` (
   `shownumcorrect` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_qtypmatcopti_que_uix` (`questionid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines fixed matching questions' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines fixed matching questions' AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `mdl_qtype_match_options`
 --
 
 INSERT INTO `mdl_qtype_match_options` (`id`, `questionid`, `shuffleanswers`, `correctfeedback`, `correctfeedbackformat`, `partiallycorrectfeedback`, `partiallycorrectfeedbackformat`, `incorrectfeedback`, `incorrectfeedbackformat`, `shownumcorrect`) VALUES
-(1, 1, 1, '<p>Your answer is correct.</p>', 1, '<p>Your answer is partially correct.</p>', 1, '<p>Your answer is incorrect.</p>', 1, 1);
+(1, 1, 1, '<p>Your answer is correct.</p>', 1, '<p>Your answer is partially correct.</p>', 1, '<p>Your answer is incorrect.</p>', 1, 1),
+(2, 7, 1, '<p>Your answer is correct.</p>', 1, '<p>Your answer is partially correct.</p>', 1, '<p>Your answer is incorrect.</p>', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -8876,7 +9381,7 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_match_subquestions` (
   `answertext` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `mdl_qtypmatcsubq_que_ix` (`questionid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines the subquestions that make up a matching question' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Defines the subquestions that make up a matching question' AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `mdl_qtype_match_subquestions`
@@ -8885,7 +9390,10 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_match_subquestions` (
 INSERT INTO `mdl_qtype_match_subquestions` (`id`, `questionid`, `questiontext`, `questiontextformat`, `answertext`) VALUES
 (1, 1, '<p>Belka</p>', 1, 'Belka'),
 (2, 1, '<p>Strelka</p>', 1, 'Strelka'),
-(3, 1, '<p>Pyhtelka</p>', 1, 'Pyhtelka');
+(3, 1, '<p>Pyhtelka</p>', 1, 'Pyhtelka'),
+(4, 7, '<p>1</p>', 1, '1'),
+(5, 7, '<p>2</p>', 1, '2'),
+(6, 7, '<p>3</p>', 1, '3');
 
 -- --------------------------------------------------------
 
@@ -8956,7 +9464,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question` (
   KEY `mdl_ques_par_ix` (`parent`),
   KEY `mdl_ques_cre_ix` (`createdby`),
   KEY `mdl_ques_mod_ix` (`modifiedby`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The questions themselves' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The questions themselves' AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `mdl_question`
@@ -8967,7 +9475,17 @@ INSERT INTO `mdl_question` (`id`, `category`, `parent`, `name`, `questiontext`, 
 (2, 1, 0, 'Quest one', '<p>lalala</p>', 1, '', 1, '1.0000000', '0.3333333', 'calculated', 1, 'solin.loc+140203160033+0EGZyT', 'solin.loc+140203160033+k5lh8P', 0, 1391443233, 1391443233, 2, 2),
 (3, 2, 3, 'Random (Default for Repeat Courses)', '', 0, '', 0, '1.0000000', '0.0000000', 'random', 1, 'solin.loc+140213122414+aeHQww', 'solin.loc+140213122414+0568tB', 0, 1392294254, 1392294254, 2, 2),
 (4, 5, 4, 'Random (Default for test quiz isW008_2)', '', 0, '', 0, '1.0000000', '0.0000000', 'random', 1, 'solin.loc+140213122426+bMjM3Q', 'solin.loc+140213122426+SF1mcI', 0, 1392294266, 1392294266, 2, 2),
-(5, 5, 0, 'first quest', '<p>First question text</p>', 1, '<p>Okay, choose next</p>', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140213122602+84oAtd', 'solin.loc+140213122602+X0zlrg', 0, 1392294362, 1392294362, 2, 2);
+(5, 5, 0, 'first quest', '<p>First question text</p>', 1, '<p>Okay, choose next</p>', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140213122602+84oAtd', 'solin.loc+140213122602+X0zlrg', 0, 1392294362, 1392294362, 2, 2),
+(6, 7, 0, 'true', '<p>true true</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305114807+5Lfj2k', 'solin.loc+140305114807+oemL7F', 0, 1394020087, 1394020087, 2, 2),
+(7, 7, 0, 'matching', '<p>https://psv4.vk.me/c536503/u63474706/audios/95e405211952.mp3</p>', 1, '', 1, '1.0000000', '0.3333333', 'match', 1, 'solin.loc+140305114843+n4Cyty', 'solin.loc+140305114843+QoAe2D', 0, 1394020123, 1394020123, 2, 2),
+(8, 7, 0, 'tru', '<p>true</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305142016+ec1431', 'solin.loc+140305142017+GtYGhh', 0, 1394029216, 1394029217, 2, 2),
+(9, 7, 9, 'Random (Default for tstcrs)', '', 0, '', 0, '1.0000000', '0.0000000', 'random', 1, 'solin.loc+140305145132+oZpdy6', 'solin.loc+140305145132+OTh1nI', 0, 1394031092, 1394031092, 2, 2),
+(10, 7, 0, '1', '<p>1</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305145211+6tjRQP', 'solin.loc+140305145211+oGf7px', 0, 1394031131, 1394031131, 2, 2),
+(11, 7, 0, '2', '<p>2</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305145232+zZJu4y', 'solin.loc+140305145232+AIEd5G', 0, 1394031152, 1394031152, 2, 2),
+(12, 7, 0, '3', '<p>3</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305145255+6BKzoo', 'solin.loc+140305145255+zmrLsS', 0, 1394031175, 1394031175, 2, 2),
+(13, 7, 0, '4', '<p>4</p>', 1, '', 1, '1.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305145317+mcDL3y', 'solin.loc+140305145317+kLggAc', 0, 1394031197, 1394031197, 2, 2),
+(14, 7, 0, '22', '<p>22</p>', 1, '', 1, '2.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305154052+vFuuQ6', 'solin.loc+140305154052+Hqkg7R', 0, 1394034052, 1394034052, 2, 2),
+(15, 7, 0, '333', '<p>333</p>', 1, '<p>333</p>', 1, '3.0000000', '1.0000000', 'truefalse', 1, 'solin.loc+140305154356+Z4FRt5', 'solin.loc+140305154356+kg1UUa', 0, 1394034236, 1394034236, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -8985,7 +9503,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
   `feedbackformat` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesansw_que_ix` (`question`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=20 ;
 
 --
 -- Дамп данных таблицы `mdl_question_answers`
@@ -8994,7 +9512,23 @@ CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
 INSERT INTO `mdl_question_answers` (`id`, `question`, `answer`, `answerformat`, `fraction`, `feedback`, `feedbackformat`) VALUES
 (1, 2, '{x}+50', 0, '1.0000000', '', 1),
 (2, 5, 'True', 0, '1.0000000', '<p>U r right!</p>', 1),
-(3, 5, 'False', 0, '0.0000000', '<p>u r false:(</p>', 1);
+(3, 5, 'False', 0, '0.0000000', '<p>u r false:(</p>', 1),
+(4, 6, 'True', 0, '1.0000000', '', 1),
+(5, 6, 'False', 0, '0.0000000', '', 1),
+(6, 8, 'True', 0, '1.0000000', '', 1),
+(7, 8, 'False', 0, '0.0000000', '', 1),
+(8, 10, 'True', 0, '1.0000000', '', 1),
+(9, 10, 'False', 0, '0.0000000', '', 1),
+(10, 11, 'True', 0, '1.0000000', '', 1),
+(11, 11, 'False', 0, '0.0000000', '', 1),
+(12, 12, 'True', 0, '1.0000000', '', 1),
+(13, 12, 'False', 0, '0.0000000', '', 1),
+(14, 13, 'True', 0, '1.0000000', '', 1),
+(15, 13, 'False', 0, '0.0000000', '', 1),
+(16, 14, 'True', 0, '1.0000000', '<p>222</p>', 1),
+(17, 14, 'False', 0, '0.0000000', '<p>22</p>', 1),
+(18, 15, 'True', 0, '1.0000000', '<p>3333</p>', 1),
+(19, 15, 'False', 0, '0.0000000', '<p>33</p>', 1);
 
 -- --------------------------------------------------------
 
@@ -9021,7 +9555,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
   UNIQUE KEY `mdl_quesatte_queslo_uix` (`questionusageid`,`slot`),
   KEY `mdl_quesatte_que_ix` (`questionid`),
   KEY `mdl_quesatte_que2_ix` (`questionusageid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=20 ;
 
 --
 -- Дамп данных таблицы `mdl_question_attempts`
@@ -9029,7 +9563,22 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
 
 INSERT INTO `mdl_question_attempts` (`id`, `questionusageid`, `slot`, `behaviour`, `questionid`, `variant`, `maxmark`, `minfraction`, `maxfraction`, `flagged`, `questionsummary`, `rightanswer`, `responsesummary`, `timemodified`) VALUES
 (1, 1, 1, 'deferredfeedback', 2, 1, '1.0000000', '0.0000000', '1.0000000', 0, 'lalala', '100.00', '100', 1391443318),
-(2, 2, 1, 'deferredfeedback', 5, 1, '1.0000000', '0.0000000', '1.0000000', 0, 'First question text', 'True', 'True', 1392299423);
+(2, 2, 1, 'deferredfeedback', 5, 1, '1.0000000', '0.0000000', '1.0000000', 0, 'First question text', 'True', 'True', 1392299423),
+(5, 5, 1, 'deferredfeedback', 10, 1, '1.0000000', '0.0000000', '1.0000000', 0, '1', 'True', 'True', 1394031405),
+(6, 5, 2, 'deferredfeedback', 11, 1, '1.0000000', '0.0000000', '1.0000000', 0, '2', 'True', 'True', 1394031405),
+(7, 5, 3, 'deferredfeedback', 12, 1, '1.0000000', '0.0000000', '1.0000000', 0, '3', 'True', 'True', 1394031405),
+(8, 5, 4, 'deferredfeedback', 13, 1, '1.0000000', '0.0000000', '1.0000000', 0, '4', 'True', 'True', 1394031405),
+(9, 6, 1, 'deferredfeedback', 10, 1, '1.0000000', '0.0000000', '1.0000000', 0, '1', 'True', NULL, 1394033756),
+(10, 6, 2, 'deferredfeedback', 11, 1, '1.0000000', '0.0000000', '1.0000000', 0, '2', 'True', NULL, 1394033756),
+(11, 6, 3, 'deferredfeedback', 12, 1, '1.0000000', '0.0000000', '1.0000000', 0, '3', 'True', NULL, 1394033756),
+(12, 6, 4, 'deferredfeedback', 13, 1, '1.0000000', '0.0000000', '1.0000000', 0, '4', 'True', NULL, 1394033756),
+(13, 7, 1, 'deferredfeedback', 10, 1, '2.0000000', '0.0000000', '1.0000000', 0, '1', 'True', 'True', 1394034356),
+(14, 7, 2, 'deferredfeedback', 11, 1, '2.0000000', '0.0000000', '1.0000000', 0, '2', 'True', 'True', 1394034356),
+(15, 7, 3, 'deferredfeedback', 12, 1, '2.0000000', '0.0000000', '1.0000000', 0, '3', 'True', 'True', 1394034356),
+(16, 7, 4, 'deferredfeedback', 13, 1, '2.0000000', '0.0000000', '1.0000000', 0, '4', 'True', 'True', 1394034356),
+(17, 7, 5, 'deferredfeedback', 14, 1, '2.0000000', '0.0000000', '1.0000000', 0, '22', 'True', 'True', 1394034356),
+(18, 7, 6, 'deferredfeedback', 15, 1, '3.0000000', '0.0000000', '1.0000000', 0, '333', 'True', 'True', 1394034356),
+(19, 8, 1, 'deferredfeedback', 5, 1, '1.0000000', '0.0000000', '1.0000000', 0, 'First question text', 'True', 'True', 1394035799);
 
 -- --------------------------------------------------------
 
@@ -9049,7 +9598,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
   UNIQUE KEY `mdl_quesattestep_queseq_uix` (`questionattemptid`,`sequencenumber`),
   KEY `mdl_quesattestep_que_ix` (`questionattemptid`),
   KEY `mdl_quesattestep_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=50 ;
 
 --
 -- Дамп данных таблицы `mdl_question_attempt_steps`
@@ -9061,7 +9610,44 @@ INSERT INTO `mdl_question_attempt_steps` (`id`, `questionattemptid`, `sequencenu
 (3, 1, 2, 'gradedright', '1.0000000', 1391443317, 6),
 (4, 2, 0, 'todo', NULL, 1392299396, 4),
 (5, 2, 1, 'complete', NULL, 1392299411, 4),
-(6, 2, 2, 'gradedright', '1.0000000', 1392299423, 4);
+(6, 2, 2, 'gradedright', '1.0000000', 1392299423, 4),
+(13, 5, 0, 'todo', NULL, 1394031221, 3),
+(14, 6, 0, 'todo', NULL, 1394031222, 3),
+(15, 7, 0, 'todo', NULL, 1394031222, 3),
+(16, 8, 0, 'todo', NULL, 1394031222, 3),
+(17, 5, 1, 'complete', NULL, 1394031378, 3),
+(18, 6, 1, 'complete', NULL, 1394031378, 3),
+(19, 7, 1, 'complete', NULL, 1394031390, 3),
+(20, 8, 1, 'complete', NULL, 1394031390, 3),
+(21, 5, 2, 'gradedright', '1.0000000', 1394031405, 3),
+(22, 6, 2, 'gradedright', '1.0000000', 1394031405, 3),
+(23, 7, 2, 'gradedright', '1.0000000', 1394031405, 3),
+(24, 8, 2, 'gradedright', '1.0000000', 1394031405, 3),
+(25, 9, 0, 'todo', NULL, 1394033756, 3),
+(26, 10, 0, 'todo', NULL, 1394033756, 3),
+(27, 11, 0, 'todo', NULL, 1394033756, 3),
+(28, 12, 0, 'todo', NULL, 1394033756, 3),
+(29, 13, 0, 'todo', NULL, 1394034301, 3),
+(30, 14, 0, 'todo', NULL, 1394034301, 3),
+(31, 15, 0, 'todo', NULL, 1394034301, 3),
+(32, 16, 0, 'todo', NULL, 1394034301, 3),
+(33, 17, 0, 'todo', NULL, 1394034302, 3),
+(34, 18, 0, 'todo', NULL, 1394034302, 3),
+(35, 13, 1, 'complete', NULL, 1394034316, 3),
+(36, 14, 1, 'complete', NULL, 1394034316, 3),
+(37, 15, 1, 'complete', NULL, 1394034330, 3),
+(38, 16, 1, 'complete', NULL, 1394034330, 3),
+(39, 17, 1, 'complete', NULL, 1394034344, 3),
+(40, 18, 1, 'complete', NULL, 1394034344, 3),
+(41, 13, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(42, 14, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(43, 15, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(44, 16, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(45, 17, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(46, 18, 2, 'gradedright', '1.0000000', 1394034356, 3),
+(47, 19, 0, 'todo', NULL, 1394035772, 3),
+(48, 19, 1, 'complete', NULL, 1394035785, 3),
+(49, 19, 2, 'gradedright', '1.0000000', 1394035799, 3);
 
 -- --------------------------------------------------------
 
@@ -9077,7 +9663,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_quesattestepdata_attna_uix` (`attemptstepid`,`name`),
   KEY `mdl_quesattestepdata_att_ix` (`attemptstepid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=33 ;
 
 --
 -- Дамп данных таблицы `mdl_question_attempt_step_data`
@@ -9089,7 +9675,29 @@ INSERT INTO `mdl_question_attempt_step_data` (`id`, `attemptstepid`, `name`, `va
 (3, 2, 'answer', '100'),
 (4, 3, '-finish', '1'),
 (5, 5, 'answer', '1'),
-(6, 6, '-finish', '1');
+(6, 6, '-finish', '1'),
+(11, 17, 'answer', '1'),
+(12, 18, 'answer', '1'),
+(13, 19, 'answer', '1'),
+(14, 20, 'answer', '1'),
+(15, 21, '-finish', '1'),
+(16, 22, '-finish', '1'),
+(17, 23, '-finish', '1'),
+(18, 24, '-finish', '1'),
+(19, 35, 'answer', '1'),
+(20, 36, 'answer', '1'),
+(21, 37, 'answer', '1'),
+(22, 38, 'answer', '1'),
+(23, 39, 'answer', '1'),
+(24, 40, 'answer', '1'),
+(25, 41, '-finish', '1'),
+(26, 42, '-finish', '1'),
+(27, 43, '-finish', '1'),
+(28, 44, '-finish', '1'),
+(29, 45, '-finish', '1'),
+(30, 46, '-finish', '1'),
+(31, 48, 'answer', '1'),
+(32, 49, '-finish', '1');
 
 -- --------------------------------------------------------
 
@@ -9166,7 +9774,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_quescate_con_ix` (`contextid`),
   KEY `mdl_quescate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Categories are for grouping questions' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Categories are for grouping questions' AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `mdl_question_categories`
@@ -9178,7 +9786,11 @@ INSERT INTO `mdl_question_categories` (`id`, `name`, `contextid`, `info`, `infof
 (3, 'Default for System', 1, 'The default category for questions shared in context ''System''.', 0, 'solin.loc+140129120423+waSSrR', 0, 999),
 (4, 'Default for Test quiz', 36, 'The default category for questions shared in context ''Test quiz''.', 0, 'solin.loc+140203155812+HRUp4v', 0, 999),
 (5, 'Default for test quiz isW008_2', 53, 'The default category for questions shared in context ''test quiz isW008_2''.', 0, 'solin.loc+140213122354+COyWYD', 0, 999),
-(6, 'Default for iswork8', 46, 'The default category for questions shared in context ''iswork8''.', 0, 'solin.loc+140213122354+0jao65', 0, 999);
+(6, 'Default for iswork8', 46, 'The default category for questions shared in context ''iswork8''.', 0, 'solin.loc+140213122354+0jao65', 0, 999),
+(7, 'Default for tstcrs', 15, 'The default category for questions shared in context ''tstcrs''.', 0, 'solin.loc+140305114555+En4NgU', 0, 999),
+(8, 'Default for Miscellaneous', 3, 'The default category for questions shared in context ''Miscellaneous''.', 0, 'solin.loc+140305114555+wcO2Yy', 0, 999),
+(9, 'Default for iwannafinishit', 67, 'The default category for questions shared in context ''iwannafinishit''.', 0, 'solin.loc+140305141943+02v0C8', 0, 999),
+(10, 'Default for 2', 66, 'The default category for questions shared in context ''2''.', 0, 'solin.loc+140305145014+1WYH5y', 0, 999);
 
 -- --------------------------------------------------------
 
@@ -9456,14 +10068,22 @@ CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
   `falseanswer` bigint(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_questrue_que_ix` (`question`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Options for True-False questions' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Options for True-False questions' AUTO_INCREMENT=10 ;
 
 --
 -- Дамп данных таблицы `mdl_question_truefalse`
 --
 
 INSERT INTO `mdl_question_truefalse` (`id`, `question`, `trueanswer`, `falseanswer`) VALUES
-(1, 5, 2, 3);
+(1, 5, 2, 3),
+(2, 6, 4, 5),
+(3, 8, 6, 7),
+(4, 10, 8, 9),
+(5, 11, 10, 11),
+(6, 12, 12, 13),
+(7, 13, 14, 15),
+(8, 14, 16, 17),
+(9, 15, 18, 19);
 
 -- --------------------------------------------------------
 
@@ -9478,7 +10098,7 @@ CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
   `preferredbehaviour` varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `mdl_quesusag_con_ix` (`contextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `mdl_question_usages`
@@ -9486,7 +10106,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
 
 INSERT INTO `mdl_question_usages` (`id`, `contextid`, `component`, `preferredbehaviour`) VALUES
 (1, 36, 'mod_quiz', 'deferredfeedback'),
-(2, 53, 'mod_quiz', 'deferredfeedback');
+(2, 53, 'mod_quiz', 'deferredfeedback'),
+(5, 66, 'mod_quiz', 'deferredfeedback'),
+(6, 66, 'mod_quiz', 'deferredfeedback'),
+(7, 66, 'mod_quiz', 'deferredfeedback'),
+(8, 53, 'mod_quiz', 'deferredfeedback');
 
 -- --------------------------------------------------------
 
@@ -9536,7 +10160,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz` (
   `showblocks` smallint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quiz_cou_ix` (`course`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The settings for each quiz.' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='The settings for each quiz.' AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `mdl_quiz`
@@ -9544,7 +10168,9 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz` (
 
 INSERT INTO `mdl_quiz` (`id`, `course`, `name`, `intro`, `introformat`, `timeopen`, `timeclose`, `timelimit`, `overduehandling`, `graceperiod`, `preferredbehaviour`, `attempts`, `attemptonlast`, `grademethod`, `decimalpoints`, `questiondecimalpoints`, `reviewattempt`, `reviewcorrectness`, `reviewmarks`, `reviewspecificfeedback`, `reviewgeneralfeedback`, `reviewrightanswer`, `reviewoverallfeedback`, `questionsperpage`, `navmethod`, `shufflequestions`, `shuffleanswers`, `questions`, `sumgrades`, `grade`, `timecreated`, `timemodified`, `password`, `subnet`, `browsersecurity`, `delay1`, `delay2`, `showuserpicture`, `showblocks`) VALUES
 (1, 3, 'Test quiz', '<p>Test quiz test</p>', 1, 0, 0, 0, 'autoabandon', 0, 'deferredfeedback', 0, 0, 1, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 'free', 0, 1, '2,0', '1.00000', '10.00000', 0, 1391443071, '', '', '-', 0, 0, 1, 0),
-(2, 6, 'test quiz isW008_2', '<p>test quiz isW008_2</p>', 1, 0, 0, 1800, 'graceperiod', 86400, 'deferredfeedback', 2, 0, 4, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 5, 'free', 0, 1, '5,0', '1.00000', '10.00000', 0, 1392293943, '', '', '-', 0, 0, 0, 0);
+(2, 6, 'test quiz isW008_2', '<p>test quiz isW008_2</p>', 1, 0, 0, 1800, 'graceperiod', 86400, 'deferredfeedback', 2, 0, 4, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 5, 'free', 0, 1, '5,0', '1.00000', '10.00000', 0, 1392293943, '', '', '-', 0, 0, 0, 0),
+(10, 2, '3', '<p>iwannafinishit</p>', 1, 0, 0, 0, 'autoabandon', 0, 'deferredfeedback', 0, 0, 4, 1, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 'free', 0, 1, '', '0.00000', '10.00000', 0, 1394029173, '', '', '-', 0, 0, 1, 1),
+(11, 2, '2', '<p>iwannafinishit</p>', 1, 0, 0, 0, 'autoabandon', 0, 'deferredfeedback', 0, 0, 4, 1, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 'free', 0, 1, '10,11,0,12,13,0,14,15,0,0', '13.00000', '10.00000', 0, 1394029174, '', '', '-', 0, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -9574,7 +10200,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
   KEY `mdl_quizatte_qui_ix` (`quiz`),
   KEY `mdl_quizatte_use_ix` (`userid`),
   KEY `mdl_quizatte_statim_ix` (`state`,`timecheckstate`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores users attempts at quizzes.' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores users attempts at quizzes.' AUTO_INCREMENT=9 ;
 
 --
 -- Дамп данных таблицы `mdl_quiz_attempts`
@@ -9582,7 +10208,9 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
 
 INSERT INTO `mdl_quiz_attempts` (`id`, `quiz`, `userid`, `attempt`, `uniqueid`, `layout`, `currentpage`, `preview`, `state`, `timestart`, `timefinish`, `timemodified`, `timecheckstate`, `sumgrades`, `needsupgradetonewqe`) VALUES
 (1, 1, 6, 1, 1, '1,0', 0, 0, 'finished', 1391443298, 1391443317, 1391443317, NULL, '1.00000', 0),
-(2, 2, 4, 1, 2, '1,0', 0, 0, 'finished', 1392299396, 1392299423, 1392299423, NULL, '1.00000', 0);
+(2, 2, 4, 1, 2, '1,0', 0, 0, 'finished', 1392299396, 1392299423, 1392299423, NULL, '1.00000', 0),
+(7, 11, 3, 1, 7, '1,2,0,3,4,0,5,6,0', 2, 0, 'finished', 1394034301, 1394034356, 1394034356, NULL, '13.00000', 0),
+(8, 2, 3, 1, 8, '1,0', 0, 0, 'finished', 1394035772, 1394035799, 1394035799, NULL, '1.00000', 0);
 
 -- --------------------------------------------------------
 
@@ -9599,7 +10227,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
   `maxgrade` decimal(10,5) NOT NULL DEFAULT '0.00000',
   PRIMARY KEY (`id`),
   KEY `mdl_quizfeed_qui_ix` (`quizid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `mdl_quiz_feedback`
@@ -9610,7 +10238,9 @@ INSERT INTO `mdl_quiz_feedback` (`id`, `quizid`, `feedbacktext`, `feedbacktextfo
 (2, 2, '<p>u really pretty</p>', 1, '8.80000', '11.00000'),
 (3, 2, '<p>u r pretty one</p>', 1, '7.70000', '8.80000'),
 (4, 2, '<p>Not bad</p>', 1, '3.00000', '7.70000'),
-(5, 2, '<p>Who r u at all? X_x</p>', 1, '0.00000', '3.00000');
+(5, 2, '<p>Who r u at all? X_x</p>', 1, '0.00000', '3.00000'),
+(13, 10, '', 1, '0.00000', '11.00000'),
+(14, 11, '', 1, '0.00000', '11.00000');
 
 -- --------------------------------------------------------
 
@@ -9627,7 +10257,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizgrad_use_ix` (`userid`),
   KEY `mdl_quizgrad_qui_ix` (`quiz`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the overall grade for each user on the quiz, based on' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the overall grade for each user on the quiz, based on' AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `mdl_quiz_grades`
@@ -9635,7 +10265,9 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
 
 INSERT INTO `mdl_quiz_grades` (`id`, `quiz`, `userid`, `grade`, `timemodified`) VALUES
 (1, 1, 6, '10.00000', 1391443318),
-(2, 2, 4, '10.00000', 1392299423);
+(2, 2, 4, '10.00000', 1392299423),
+(5, 11, 3, '10.00000', 1394034356),
+(6, 2, 3, '10.00000', 1394035799);
 
 -- --------------------------------------------------------
 
@@ -9690,7 +10322,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizquesinst_qui_ix` (`quiz`),
   KEY `mdl_quizquesinst_que_ix` (`question`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `mdl_quiz_question_instances`
@@ -9698,7 +10330,13 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
 
 INSERT INTO `mdl_quiz_question_instances` (`id`, `quiz`, `question`, `grade`) VALUES
 (1, 1, 2, '1.0000000'),
-(4, 2, 5, '1.0000000');
+(4, 2, 5, '1.0000000'),
+(7, 11, 10, '2.0000000'),
+(8, 11, 11, '2.0000000'),
+(9, 11, 12, '2.0000000'),
+(10, 11, 13, '2.0000000'),
+(11, 11, 14, '2.0000000'),
+(12, 11, 15, '3.0000000');
 
 -- --------------------------------------------------------
 
@@ -9819,7 +10457,6 @@ INSERT INTO `mdl_repeatcourse` (`id`, `course`, `name`, `intro`, `introformat`, 
 (13, 2, 'First Course', NULL, 0, 0),
 (14, 2, 'Example 4 repeatcourse', NULL, 0, 0),
 (15, 6, 'isWorkableActivity008', '<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>', 1, 1392293710),
-(16, 2, 'test test', '<p>test</p>', 1, 0),
 (17, 2, 'Check for non-repcourse-cat course', '', 1, 0);
 
 -- --------------------------------------------------------
@@ -9845,8 +10482,8 @@ CREATE TABLE IF NOT EXISTS `mdl_repeatcourse_records` (
 INSERT INTO `mdl_repeatcourse_records` (`id`, `maincourseid`, `repeatcourse`, `timemodified`, `ordering`, `cinterval`) VALUES
 (74, 1, 3, 1393419836, 1, 5),
 (79, 1, 5, 1393423924, 3, 4),
-(83, 2, 5, 1393502910, 3, 5),
-(86, 2, 6, 1393503717, 1, 6);
+(83, 2, 5, 1393502910, 1, 5),
+(86, 2, 6, 1393503717, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -10125,7 +10762,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='assigning roles in different context' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='assigning roles in different context' AUTO_INCREMENT=12 ;
 
 --
 -- Дамп данных таблицы `mdl_role_assignments`
@@ -10134,13 +10771,14 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
 INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
 (1, 5, 15, 4, 1390572661, 0, '', 0, 0),
 (2, 1, 24, 5, 1391086863, 2, '', 0, 0),
-(3, 1, 24, 3, 1391086868, 2, '', 0, 0),
 (4, 2, 24, 4, 1391086877, 2, '', 0, 0),
 (5, 5, 25, 6, 1391086973, 2, '', 0, 0),
 (6, 5, 25, 5, 1391086974, 2, '', 0, 0),
 (7, 5, 46, 3, 1392293310, 2, 'enrol_cohort', 16, 0),
 (8, 5, 46, 4, 1392293310, 2, 'enrol_cohort', 16, 0),
-(9, 5, 46, 6, 1392293310, 2, 'enrol_cohort', 16, 0);
+(9, 5, 46, 6, 1392293310, 2, 'enrol_cohort', 16, 0),
+(10, 5, 15, 3, 1394020803, 2, '', 0, 0),
+(11, 5, 66, 3, 1394034506, 2, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -11411,13 +12049,6 @@ CREATE TABLE IF NOT EXISTS `mdl_rose` (
   KEY `mdl_rose_cou_ix` (`course`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='each record is one rose resource' AUTO_INCREMENT=2 ;
 
---
--- Дамп данных таблицы `mdl_rose`
---
-
-INSERT INTO `mdl_rose` (`id`, `course`, `name`, `intro`, `introformat`, `timemodified`, `x_left_label`, `x_right_label`, `y_top_label`, `y_bottom_label`) VALUES
-(1, 2, 'testrose', '<p>testrose</p>', 1, 0, 'Hate', 'Love', 'Dominance', 'Submission');
-
 -- --------------------------------------------------------
 
 --
@@ -11804,15 +12435,21 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=963 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=976 ;
 
 --
 -- Дамп данных таблицы `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
-(957, 0, 'v49mvoarjj3egjl8ul85vpfsf5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjozOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6NTg6Imh0dHA6Ly9zb2xpbi5sb2MvYWRtaW4vc2V0dGluZ3MucGhwP3NlY3Rpb249bW9kc2V0dGluZ3F1aXoiO3M6MTM6ImxvZ2luZXJyb3Jtc2ciO3M6NDg6IllvdXIgc2Vzc2lvbiBoYXMgdGltZWQgb3V0LiAgUGxlYXNlIGxvZ2luIGFnYWluLiI7fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Mjp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7fQ==', 1393681948, 1393681948, '127.0.0.1', '127.0.0.1'),
-(962, 0, 'gcr7o4i5pnslia247eihg1o6j6', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjM6e3M6MTY6InVzZXJibG9nb3B0aW9uczIiO2E6Mzp7aTowO2k6MTM5MzkzNDg3MztpOjE7czoxOiIyIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMiI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNjoiY29udGV4dGhhc3JlcG9zNSI7YTozOntpOjA7aToxMzkzOTM0ODczO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO31zOjE3OiJjb250ZXh0aGFzcmVwb3MxNSI7YTozOntpOjA7aToxMzkzOTM0ODc0O2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7aToxO31VU0VSfE86ODoic3RkQ2xhc3MiOjU4OntzOjI6ImlkIjtzOjE6IjIiO3M6NDoiYXV0aCI7czo2OiJtYW51YWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjU6ImFkbWluIjtzOjg6ImlkbnVtYmVyIjtzOjA6IiI7czo5OiJmaXJzdG5hbWUiO3M6NToiQWRtaW4iO3M6ODoibGFzdG5hbWUiO3M6NDoiVXNlciI7czo1OiJlbWFpbCI7czozMToiYWxleGFuZGVyLnpodXJhdmxldkBpbnRvc29mdC5ieSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjU6Ik1pbnNrIjtzOjc6ImNvdW50cnkiO3M6MjoiQlkiO3M6NDoibGFuZyI7czoyOiJlbiI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzkwMzkzMzEzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzOTM5MzU5NzA7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzOTM4NDM0MTEiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzkzOTM0ODcyO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzOTM4NDM0MTEiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTY6Imxhc3RuYW1lcGhvbmV0aWMiO047czoxNzoiZmlyc3RuYW1lcGhvbmV0aWMiO047czoxMDoibWlkZGxlbmFtZSI7TjtzOjEzOiJhbHRlcm5hdGVuYW1lIjtOO3M6MTI6ImNhbGVuZGFydHlwZSI7czo5OiJncmVnb3JpYW4iO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6NDp7aToyO3M6MTA6IjEzOTM4NTk1NzQiO2k6MztzOjEwOiIxMzkzMzM1NTI2IjtpOjU7czoxMDoiMTM5MzQ5ODYzNyI7aTo2O3M6MTA6IjEzOTMyNDQ4NzYiO31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjE6e2k6MjtpOjEzOTM5MzU5NzA7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiQmhyOFRGaHIzNSI7czoxMDoicHJlZmVyZW5jZSI7YToxMDp7czoyOToiY291cnNlX2VkaXRfZm9ybV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MjoiMTAiO3M6MjQ6ImZpbGVwaWNrZXJfcmVjZW50bGljZW5zZSI7czoxNzoiYWxscmlnaHRzcmVzZXJ2ZWQiO3M6Mjc6ImZpbGVwaWNrZXJfcmVjZW50cmVwb3NpdG9yeSI7czoxOiIyIjtzOjEzOiJ1c2Vtb2RjaG9vc2VyIjtzOjE6IjEiO3M6Mjk6InVzZXJzZWxlY3Rvcl9hdXRvc2VsZWN0dW5pcXVlIjtzOjE6IjAiO3M6Mjk6InVzZXJzZWxlY3Rvcl9wcmVzZXJ2ZXNlbGVjdGVkIjtzOjE6IjAiO3M6Mjc6InVzZXJzZWxlY3Rvcl9zZWFyY2hhbnl3aGVyZSI7czoxOiIwIjtzOjExOiJfbGFzdGxvYWRlZCI7aToxMzkzOTM2MDIyO31zOjE3OiJtZXNzYWdlX2xhc3Rwb3B1cCI7aTowO30=', 1393934872, 1393936022, '127.0.0.1', '127.0.0.1');
+(966, 0, 'a0uapa5vm2abe4e5gsv3ahe916', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxMzp7czoxNDoiZnJvbWRpc2N1c3Npb24iO3M6Mzc6Imh0dHA6Ly9zb2xpbi5sb2MvY291cnNlL3ZpZXcucGhwP2lkPTYiO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7aToxO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjM6e3M6NDQ6InUyX18xMjA0MTBlMTIyMjM3OTM3OWYzYjY4YzEwYzk2YzhjNmE5ODkxMjUyIjthOjI6e2k6MDthOjI6e2k6MjthOjI6e3M6NDoibmFtZSI7czoxNDoiUmVwZWF0IENvdXJzZXMiO3M6NDoicGF0aCI7czoyOiIvMiI7fWk6MTthOjI6e3M6NDoibmFtZSI7czoxMzoiTWlzY2VsbGFuZW91cyI7czo0OiJwYXRoIjtzOjI6Ii8xIjt9fWk6MTtpOjEzOTQwMzY2MjM7fXM6MTc6Il9fbGFzdGFjY2Vzc19fdTJfIjthOjI6e2k6MDtpOjEzOTQwMzcxMDI7aToxO2k6MTM5NDAzNzEwMjt9czo0NDoidTJfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NDAzNzEwMjtpOjE7aToxMzk0MDM3MTAyO319fXM6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjk6ImZsZXh0YWJsZSI7YTo0OntzOjI3OiJtb2R1bGVfYWRtaW5pc3RyYXRpb25fdGFibGUiO086ODoic3RkQ2xhc3MiOjY6e3M6ODoidW5pcXVlaWQiO3M6Mjc6Im1vZHVsZV9hZG1pbmlzdHJhdGlvbl90YWJsZSI7czo4OiJjb2xsYXBzZSI7YTowOnt9czo2OiJzb3J0YnkiO2E6MDp7fXM6NzoiaV9maXJzdCI7czowOiIiO3M6NjoiaV9sYXN0IjtzOjA6IiI7czo4OiJ0ZXh0c29ydCI7YTowOnt9fXM6MjU6InVzZXItaW5kZXgtcGFydGljaXBhbnRzLTEiO086ODoic3RkQ2xhc3MiOjY6e3M6ODoidW5pcXVlaWQiO3M6MjU6InVzZXItaW5kZXgtcGFydGljaXBhbnRzLTEiO3M6ODoiY29sbGFwc2UiO2E6MDp7fXM6Njoic29ydGJ5IjthOjE6e3M6MTA6Imxhc3RhY2Nlc3MiO2k6Mzt9czo3OiJpX2ZpcnN0IjtzOjA6IiI7czo2OiJpX2xhc3QiO3M6MDoiIjtzOjg6InRleHRzb3J0IjthOjA6e319czoyNToidXNlci1pbmRleC1wYXJ0aWNpcGFudHMtMiI7Tzo4OiJzdGRDbGFzcyI6Njp7czo4OiJ1bmlxdWVpZCI7czoyNToidXNlci1pbmRleC1wYXJ0aWNpcGFudHMtMiI7czo4OiJjb2xsYXBzZSI7YTowOnt9czo2OiJzb3J0YnkiO2E6MTp7czoxMDoibGFzdGFjY2VzcyI7aTozO31zOjc6ImlfZmlyc3QiO3M6MDoiIjtzOjY6ImlfbGFzdCI7czowOiIiO3M6ODoidGV4dHNvcnQiO2E6MDp7fX1zOjMxOiJtb2QtcXVpei1yZXBvcnQtb3ZlcnZpZXctcmVwb3J0IjtPOjg6InN0ZENsYXNzIjo2OntzOjg6InVuaXF1ZWlkIjtzOjMxOiJtb2QtcXVpei1yZXBvcnQtb3ZlcnZpZXctcmVwb3J0IjtzOjg6ImNvbGxhcHNlIjthOjA6e31zOjY6InNvcnRieSI7YTowOnt9czo3OiJpX2ZpcnN0IjtzOjA6IiI7czo2OiJpX2xhc3QiO3M6MDoiIjtzOjg6InRleHRzb3J0IjthOjA6e319fXM6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e31zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjM6e3M6MTY6InVzZXJibG9nb3B0aW9uczIiO2E6Mzp7aTowO2k6MTM5NDAzNTQwMTtpOjE7czoxOiIyIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMiI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNjoiY29udGV4dGhhc3JlcG9zNSI7YTozOntpOjA7aToxMzk0MDM1NDAxO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO31zOjE3OiJjb250ZXh0aGFzcmVwb3M0NiI7YTozOntpOjA7aToxMzk0MDM1NDAxO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6NzoiZW1haWx0byI7YTowOnt9czoxMToiZW1haWxzZWxlY3QiO2E6MDp7fXM6MTU6ImNvbXBsZXRpb25jYWNoZSI7YToxOntpOjI7YTo4OntpOjE7Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTQ6ImNvdXJzZW1vZHVsZWlkIjtzOjE6IjEiO3M6NjoidXNlcmlkIjtzOjE6IjIiO3M6MTU6ImNvbXBsZXRpb25zdGF0ZSI7aTowO3M6Njoidmlld2VkIjtpOjA7czoxMjoidGltZW1vZGlmaWVkIjtpOjA7fWk6MjtPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxNDoiY291cnNlbW9kdWxlaWQiO3M6MToiMiI7czo2OiJ1c2VyaWQiO3M6MToiMiI7czoxNToiY29tcGxldGlvbnN0YXRlIjtpOjA7czo2OiJ2aWV3ZWQiO2k6MDtzOjEyOiJ0aW1lbW9kaWZpZWQiO2k6MDt9aToxNTtPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxNDoiY291cnNlbW9kdWxlaWQiO3M6MjoiMTUiO3M6NjoidXNlcmlkIjtzOjE6IjIiO3M6MTU6ImNvbXBsZXRpb25zdGF0ZSI7aTowO3M6Njoidmlld2VkIjtpOjA7czoxMjoidGltZW1vZGlmaWVkIjtpOjA7fWk6MTM7Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTQ6ImNvdXJzZW1vZHVsZWlkIjtzOjI6IjEzIjtzOjY6InVzZXJpZCI7czoxOiIyIjtzOjE1OiJjb21wbGV0aW9uc3RhdGUiO2k6MDtzOjY6InZpZXdlZCI7aTowO3M6MTI6InRpbWVtb2RpZmllZCI7aTowO31pOjE0O086ODoic3RkQ2xhc3MiOjY6e3M6MjoiaWQiO2k6MDtzOjE0OiJjb3Vyc2Vtb2R1bGVpZCI7czoyOiIxNCI7czo2OiJ1c2VyaWQiO3M6MToiMiI7czoxNToiY29tcGxldGlvbnN0YXRlIjtpOjA7czo2OiJ2aWV3ZWQiO2k6MDtzOjEyOiJ0aW1lbW9kaWZpZWQiO2k6MDt9aToyMztPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxNDoiY291cnNlbW9kdWxlaWQiO3M6MjoiMjMiO3M6NjoidXNlcmlkIjtzOjE6IjIiO3M6MTU6ImNvbXBsZXRpb25zdGF0ZSI7aTowO3M6Njoidmlld2VkIjtpOjA7czoxMjoidGltZW1vZGlmaWVkIjtpOjA7fWk6MjQ7Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTQ6ImNvdXJzZW1vZHVsZWlkIjtzOjI6IjI0IjtzOjY6InVzZXJpZCI7czoxOiIyIjtzOjE1OiJjb21wbGV0aW9uc3RhdGUiO2k6MDtzOjY6InZpZXdlZCI7aTowO3M6MTI6InRpbWVtb2RpZmllZCI7aTowO31zOjc6InVwZGF0ZWQiO2k6MTM5NDAzNDQ2NTt9fXM6MjE6ImNvbXBsZXRpb25jYWNoZXVzZXJpZCI7czoxOiIyIjtzOjExOiJhY3RpdmVncm91cCI7YToxOntpOjY7YTozOntpOjE7YTowOnt9aToyO2E6MDp7fXM6MzoiYWFnIjthOjE6e2k6MDtpOjA7fX19fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6NjM6e3M6MjoiaWQiO3M6MToiMiI7czo0OiJhdXRoIjtzOjY6Im1hbnVhbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6NToiYWRtaW4iO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJBZG1pbiI7czo4OiJsYXN0bmFtZSI7czo0OiJVc2VyIjtzOjU6ImVtYWlsIjtzOjMxOiJhbGV4YW5kZXIuemh1cmF2bGV2QGludG9zb2Z0LmJ5IjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6NToiTWluc2siO3M6NzoiY291bnRyeSI7czoyOiJCWSI7czo0OiJsYW5nIjtzOjI6ImVuIjtzOjU6InRoZW1lIjtzOjA6IiI7czo4OiJ0aW1lem9uZSI7czoyOiI5OSI7czoxMToiZmlyc3RhY2Nlc3MiO3M6MTA6IjEzOTAzOTMzMTMiO3M6MTA6Imxhc3RhY2Nlc3MiO2k6MTM5NDAzNzA4ODtzOjk6Imxhc3Rsb2dpbiI7czoxMDoiMTM5Mzk0MzgzMiI7czoxMjoiY3VycmVudGxvZ2luIjtpOjEzOTQwMTY1MTI7czo2OiJsYXN0aXAiO3M6OToiMTI3LjAuMC4xIjtzOjY6InNlY3JldCI7czowOiIiO3M6NzoicGljdHVyZSI7czoxOiIwIjtzOjM6InVybCI7czowOiIiO3M6MTc6ImRlc2NyaXB0aW9uZm9ybWF0IjtzOjE6IjAiO3M6MTA6Im1haWxmb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGRpZ2VzdCI7czoxOiIwIjtzOjExOiJtYWlsZGlzcGxheSI7czoxOiIxIjtzOjEzOiJhdXRvc3Vic2NyaWJlIjtzOjE6IjEiO3M6MTE6InRyYWNrZm9ydW1zIjtzOjE6IjAiO3M6MTE6InRpbWVjcmVhdGVkIjtzOjE6IjAiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxMDoiMTM5Mzk0MzgzMiI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO047czoxNjoibGFzdG5hbWVwaG9uZXRpYyI7TjtzOjE3OiJmaXJzdG5hbWVwaG9uZXRpYyI7TjtzOjEwOiJtaWRkbGVuYW1lIjtOO3M6MTM6ImFsdGVybmF0ZW5hbWUiO047czoxMjoiY2FsZW5kYXJ0eXBlIjtzOjk6ImdyZWdvcmlhbiI7czoxNjoibGFzdGNvdXJzZWFjY2VzcyI7YTo0OntpOjI7czoxMDoiMTM5Mzk0Mzg0MCI7aTozO3M6MTA6IjEzOTMzMzU1MjYiO2k6NTtzOjEwOiIxMzkzNDk4NjM3IjtpOjY7czoxMDoiMTM5MzI0NDg3NiI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6Mzp7aToyO2k6MTM5NDAzNDg3NztpOjM7aToxMzk0MDI4MDM1O2k6NjtpOjEzOTQwMzcwODg7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiaFdnb1FxeXAzOSI7czoxMDoicHJlZmVyZW5jZSI7YToxMDp7czoyOToiY291cnNlX2VkaXRfZm9ybV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MjoiMTAiO3M6MjQ6ImZpbGVwaWNrZXJfcmVjZW50bGljZW5zZSI7czoxNzoiYWxscmlnaHRzcmVzZXJ2ZWQiO3M6Mjc6ImZpbGVwaWNrZXJfcmVjZW50cmVwb3NpdG9yeSI7czoxOiIyIjtzOjEzOiJ1c2Vtb2RjaG9vc2VyIjtzOjE6IjEiO3M6Mjk6InVzZXJzZWxlY3Rvcl9hdXRvc2VsZWN0dW5pcXVlIjtzOjE6IjAiO3M6Mjk6InVzZXJzZWxlY3Rvcl9wcmVzZXJ2ZXNlbGVjdGVkIjtzOjE6IjAiO3M6Mjc6InVzZXJzZWxlY3Rvcl9zZWFyY2hhbnl3aGVyZSI7czoxOiIwIjtzOjExOiJfbGFzdGxvYWRlZCI7aToxMzk0MDM3MTAzO31zOjc6ImVkaXRpbmciO2k6MTtzOjE3OiJtZXNzYWdlX2xhc3Rwb3B1cCI7aToxMzk0MDM0MjM3O3M6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NDc6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMTAiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMTEiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMTIiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMTMiO3M6MzoiaW50IjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTNoaWRkZW4iO3M6NDoiYm9vbCI7czoyNzoiZmlsZXBpY2tlcl9yZWNlbnRyZXBvc2l0b3J5IjtzOjM6ImludCI7czoyNDoiZmlsZXBpY2tlcl9yZWNlbnRsaWNlbnNlIjtzOjc6InNhZmVkaXIiO3M6MjU6ImZpbGVwaWNrZXJfcmVjZW50dmlld21vZGUiO3M6MzoiaW50IjtzOjEzOiJ1c2Vtb2RjaG9vc2VyIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV82IjtzOjM6ImludCI7czoxMjoiYmxvY2s2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV83IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzgiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfOSI7czozOiJpbnQiO3M6MTI6ImJsb2NrN2hpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazhoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s5aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7czoyOToidXNlcnNlbGVjdG9yX29wdGlvbnNjb2xsYXBzZWQiO3M6NDoiYm9vbCI7czoyOToidXNlcnNlbGVjdG9yX3ByZXNlcnZlc2VsZWN0ZWQiO3M6NDoiYm9vbCI7czoyOToidXNlcnNlbGVjdG9yX2F1dG9zZWxlY3R1bmlxdWUiO3M6NDoiYm9vbCI7czoyNzoidXNlcnNlbGVjdG9yX3NlYXJjaGFueXdoZXJlIjtzOjQ6ImJvb2wiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yNiI7czozOiJpbnQiO3M6MTM6ImJsb2NrMjZoaWRkZW4iO3M6NDoiYm9vbCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzI3IjtzOjM6ImludCI7czoxMzoiYmxvY2syN2hpZGRlbiI7czo0OiJib29sIjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjIiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjMiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjQiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjUiO3M6MzoiaW50IjtzOjEzOiJibG9jazIyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMjNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syNGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazI1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yOCI7czozOiJpbnQiO3M6MTM6ImJsb2NrMjhoaWRkZW4iO3M6NDoiYm9vbCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzI5IjtzOjM6ImludCI7czoxMzoiYmxvY2syOWhpZGRlbiI7czo0OiJib29sIjt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MTM6InVzZXJzZWxlY3RvcnMiO2E6NDp7czozMjoiYzk0ZmE0MjY3ZDZjMGJiYmVlYzQzNzRlNjI4MTc0NzIiO2E6OTp7czo1OiJjbGFzcyI7czozMToiY29yZV9yb2xlX2V4aXN0aW5nX3JvbGVfaG9sZGVycyI7czo0OiJuYW1lIjtzOjEyOiJyZW1vdmVzZWxlY3QiO3M6NzoiZXhjbHVkZSI7YTowOnt9czoxMToiZXh0cmFmaWVsZHMiO2E6MTp7aTowO3M6NToiZW1haWwiO31zOjExOiJtdWx0aXNlbGVjdCI7YjoxO3M6MTM6ImFjY2Vzc2NvbnRleHQiO086MTc6ImNvbnRleHRfY291cnNlY2F0Ijo1OntzOjY6IgAqAF9pZCI7czoyOiIyNCI7czoxNjoiACoAX2NvbnRleHRsZXZlbCI7aTo0MDtzOjE0OiIAKgBfaW5zdGFuY2VpZCI7czoxOiIyIjtzOjg6IgAqAF9wYXRoIjtzOjU6Ii8xLzI0IjtzOjk6IgAqAF9kZXB0aCI7czoxOiIyIjt9czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aToxO3M6OToiY29udGV4dGlkIjtzOjI6IjI0Ijt9czozMjoiM2Y5ZmVmMjBmZDFlNDRlYTA4NGUyMTNhMzBlMTA5MGEiO2E6OTp7czo1OiJjbGFzcyI7czo0NjoiY29yZV9yb2xlX3BvdGVudGlhbF9hc3NpZ25lZXNfY291cnNlX2FuZF9hYm92ZSI7czo0OiJuYW1lIjtzOjk6ImFkZHNlbGVjdCI7czo3OiJleGNsdWRlIjthOjA6e31zOjExOiJleHRyYWZpZWxkcyI7YToxOntpOjA7czo1OiJlbWFpbCI7fXM6MTE6Im11bHRpc2VsZWN0IjtiOjE7czoxMzoiYWNjZXNzY29udGV4dCI7cjoyNjY7czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aToxO3M6OToiY29udGV4dGlkIjtzOjI6IjI0Ijt9czozMjoiYjA0Yzg3ZTc5ZTU2ZDViNWEwMmIyZDEyY2ZlM2I1MDUiO2E6OTp7czo1OiJjbGFzcyI7czozMToiY29yZV9yb2xlX2V4aXN0aW5nX3JvbGVfaG9sZGVycyI7czo0OiJuYW1lIjtzOjEyOiJyZW1vdmVzZWxlY3QiO3M6NzoiZXhjbHVkZSI7YTowOnt9czoxMToiZXh0cmFmaWVsZHMiO2E6MTp7aTowO3M6NToiZW1haWwiO31zOjExOiJtdWx0aXNlbGVjdCI7YjoxO3M6MTM6ImFjY2Vzc2NvbnRleHQiO086MTQ6ImNvbnRleHRfbW9kdWxlIjo1OntzOjY6IgAqAF9pZCI7czoyOiI2NiI7czoxNjoiACoAX2NvbnRleHRsZXZlbCI7aTo3MDtzOjE0OiIAKgBfaW5zdGFuY2VpZCI7czoyOiIyNCI7czo4OiIAKgBfcGF0aCI7czoxMDoiLzEvMy8xNS82NiI7czo5OiIAKgBfZGVwdGgiO3M6MToiNCI7fXM6NDoiZmlsZSI7czoxOToiYWRtaW4vcm9sZXMvbGliLnBocCI7czo2OiJyb2xlaWQiO2k6NTtzOjk6ImNvbnRleHRpZCI7czoyOiI2NiI7fXM6MzI6ImI3NDQwMzEwMWM3NjA0NzUyMzkzNWM5MzE3ZWQxYjJkIjthOjk6e3M6NToiY2xhc3MiO3M6NDI6ImNvcmVfcm9sZV9wb3RlbnRpYWxfYXNzaWduZWVzX2JlbG93X2NvdXJzZSI7czo0OiJuYW1lIjtzOjk6ImFkZHNlbGVjdCI7czo3OiJleGNsdWRlIjthOjA6e31zOjExOiJleHRyYWZpZWxkcyI7YToxOntpOjA7czo1OiJlbWFpbCI7fXM6MTE6Im11bHRpc2VsZWN0IjtiOjE7czoxMzoiYWNjZXNzY29udGV4dCI7cjoyOTM7czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aTo1O3M6OToiY29udGV4dGlkIjtzOjI6IjY2Ijt9fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6Mjp7czoyOiIvMSI7YToxOntpOjc7aTo3O31zOjQ6Ii8xLzIiO2E6MTp7aTo4O2k6ODt9fXM6NDoicmRlZiI7YToyOntzOjQ6Ii8xOjciO2E6NzY6e3M6MzU6ImJsb2NrL2FkbWluX2Jvb2ttYXJrczpteWFkZGluc3RhbmNlIjtpOjE7czoyNjoiYmxvY2svYmFkZ2VzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjM0OiJibG9jay9jYWxlbmRhcl9tb250aDpteWFkZGluc3RhbmNlIjtpOjE7czozNzoiYmxvY2svY2FsZW5kYXJfdXBjb21pbmc6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjg6ImJsb2NrL2NvbW1lbnRzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI5OiJibG9jay9jb21tdW5pdHk6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzE6ImJsb2NrL2NvdXJzZV9saXN0Om15YWRkaW5zdGFuY2UiO2k6MTtzOjM1OiJibG9jay9jb3Vyc2Vfb3ZlcnZpZXc6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzU6ImJsb2NrL2dsb3NzYXJ5X3JhbmRvbTpteWFkZGluc3RhbmNlIjtpOjE7czoyNDoiYmxvY2svaHRtbDpteWFkZGluc3RhbmNlIjtpOjE7czoyNzoiYmxvY2svbWVudGVlczpteWFkZGluc3RhbmNlIjtpOjE7czoyODoiYmxvY2svbWVzc2FnZXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzA6ImJsb2NrL21uZXRfaG9zdHM6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjk6ImJsb2NrL215cHJvZmlsZTpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svbmF2aWdhdGlvbjpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svbmV3c19pdGVtczpteWFkZGluc3RhbmNlIjtpOjE7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czozMjoiYmxvY2svb25saW5lX3VzZXJzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMzOiJibG9jay9wcml2YXRlX2ZpbGVzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMwOiJibG9jay9yc3NfY2xpZW50Om15YWRkaW5zdGFuY2UiO2k6MTtzOjI4OiJibG9jay9zZXR0aW5nczpteWFkZGluc3RhbmNlIjtpOjE7czoyNDoiYmxvY2svdGFnczpteWFkZGluc3RhbmNlIjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjI0OiJtb29kbGUvYmFkZ2VzOnZpZXdiYWRnZXMiO2k6MTtzOjI5OiJtb29kbGUvYmFkZ2VzOm1hbmFnZW93bmJhZGdlcyI7aToxO3M6Mjk6Im1vb2RsZS9iYWRnZXM6dmlld290aGVyYmFkZ2VzIjtpOjE7czoyMzoibW9vZGxlL2JhZGdlczplYXJuYmFkZ2UiO2k6MTtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7aToxO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpjcmVhdGUiO2k6MTtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7aToxO3M6MzI6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2Vvd25lbnRyaWVzIjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnBvc3QiO2k6MTtzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO2k6MTtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtpOjE7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO2k6MTtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO2k6MTtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO2k6MTtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO2k6MTtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO2k6MTtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7aToxO3M6MTc6Im1vb2RsZS90YWc6Y3JlYXRlIjtpOjE7czoxNToibW9vZGxlL3RhZzpmbGFnIjtpOjE7czoxNToibW9vZGxlL3RhZzplZGl0IjtpOjE7czoyNzoibW9vZGxlL3VzZXI6bWFuYWdlb3duYmxvY2tzIjtpOjE7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO2k6MTtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOjE7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtpOjE7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO2k6MTtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtpOjE7czoyMzoicmVwb3NpdG9yeS95b3V0dWJlOnZpZXciO2k6MTtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L2JveG5ldDp2aWV3IjtpOjE7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO2k6MTtzOjIzOiJyZXBvc2l0b3J5L2VxdWVsbGE6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO2k6MTtzOjI5OiJyZXBvc2l0b3J5L2ZsaWNrcl9wdWJsaWM6dmlldyI7aToxO3M6MjY6InJlcG9zaXRvcnkvZ29vZ2xlZG9jczp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvcGljYXNhOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtpOjE7czoyNToicmVwb3NpdG9yeS9hcmVhZmlsZXM6dmlldyI7aToxO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO2k6MTtzOjI0OiJyZXBvc2l0b3J5L3NreWRyaXZlOnZpZXciO2k6MTtzOjE5OiJyZXBvc2l0b3J5L3VybDp2aWV3IjtpOjE7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO2k6MTt9czo0OiIvMTo4IjthOjc6e3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6Mjk6Im1vZC9mb3J1bTphbGxvd2ZvcmNlc3Vic2NyaWJlIjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtpOjE7fX1zOjEwOiJyZGVmX2NvdW50IjtpOjI7czo4OiJyZGVmX2xjYyI7aToyO3M6NjoibG9hZGVkIjthOjE6e2k6MjtpOjE7fXM6NDoidGltZSI7aToxMzk0MDM0NTI4O3M6MzoicnN3IjthOjA6e319fQ==', 1394016512, 1394037087, '127.0.0.1', '127.0.0.1'),
+(969, 0, '89ov6l583nq4enr23ntv77v420', 3, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxMDp7czoyMToiY2FsZW5kYXJzaG93ZXZlbnR0eXBlIjtpOjE1O3M6MTg6ImNhY2hlc3RvcmVfc2Vzc2lvbiI7YToxOntzOjMwOiJkZWZhdWx0X3Nlc3Npb24tY29yZS9jb3Vyc2VjYXQiO2E6NDp7czoxNzoiX19sYXN0YWNjZXNzX191MF8iO2E6Mjp7aTowO2k6MTM5NDAyMDIwMTtpOjE7aToxMzk0MDIwMjAxO31zOjQ0OiJ1MF9fODZjMTBiYmU4ZWNjZDI3MTQ4YjliNzM4MTZkNTdlYjQ4NjNhNzQ1YyI7YToyOntpOjA7aToxMzk0MDIwMjAxO2k6MTtpOjEzOTQwMjAyMDE7fXM6NDQ6InUwX19hZWU1MDBhMjM3NjY2YmZmYzYzYzE2ZWJmNjU5ZDQ1YzdmYjRmNTk1IjthOjI6e2k6MDthOjQ6e2k6MDtpOjY7aToxO2k6NTtpOjI7aTozO2k6MztpOjI7fWk6MTtpOjEzOTQwMjAyMDE7fXM6NDQ6InUwX185MTdkNjU5NGYwYjk0MmU3OWY1ZmU3ZGIyNGI3MmUxOTFlMWJkMGRiIjthOjI6e2k6MDtpOjQ7aToxO2k6MTM5NDAyMDIwMTt9fX1zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjM6e3M6MTY6InVzZXJibG9nb3B0aW9uczMiO2E6Mzp7aTowO2k6MTM5NDAzNzExNTtpOjE7czoxOiIzIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMyI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMjEiO2E6Mzp7aTowO2k6MTM5NDAzNzExNTtpOjE7czoxOiIzIjtpOjI7czo0OiJiOjA7Ijt9czoxNjoidXNlcmJsb2dvcHRpb25zMiI7YTozOntpOjA7aToxMzk0MDMwMDY0O2k6MTtzOjE6IjMiO2k6MjtzOjM2NDoiYToxOntzOjExOiJ1c2VyZW50cmllcyI7YToyOntzOjY6InN0cmluZyI7czozMDoiVmlldyBhbGwgZW50cmllcyBieSBBZG1pbiBVc2VyIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMiI7fX19fSI7fX19czoyMToibG9hZF9uYXZpZ2F0aW9uX2FkbWluIjtpOjA7czo4OiJ3YW50c3VybCI7czozNzoiaHR0cDovL3NvbGluLmxvYy9jb3Vyc2Uvdmlldy5waHA/aWQ9MiI7czo5OiJmbGV4dGFibGUiO2E6MTp7czoyNToidXNlci1pbmRleC1wYXJ0aWNpcGFudHMtMiI7Tzo4OiJzdGRDbGFzcyI6Njp7czo4OiJ1bmlxdWVpZCI7czoyNToidXNlci1pbmRleC1wYXJ0aWNpcGFudHMtMiI7czo4OiJjb2xsYXBzZSI7YTowOnt9czo2OiJzb3J0YnkiO2E6MTp7czoxMDoibGFzdGFjY2VzcyI7aTozO31zOjc6ImlfZmlyc3QiO3M6MDoiIjtzOjY6ImlfbGFzdCI7czowOiIiO3M6ODoidGV4dHNvcnQiO2E6MDp7fX19czoxNToiY29tcGxldGlvbmNhY2hlIjthOjE6e2k6MjthOjY6e2k6MjQ7Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7czoxOiI5IjtzOjE0OiJjb3Vyc2Vtb2R1bGVpZCI7czoyOiIyNCI7czo2OiJ1c2VyaWQiO3M6MToiMyI7czoxNToiY29tcGxldGlvbnN0YXRlIjtzOjE6IjEiO3M6Njoidmlld2VkIjtzOjE6IjAiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxMDoiMTM5NDAzNDQ0MCI7fXM6NzoidXBkYXRlZCI7aToxMzk0MDM0OTA2O2k6MTtPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxNDoiY291cnNlbW9kdWxlaWQiO3M6MToiMSI7czo2OiJ1c2VyaWQiO3M6MToiMyI7czoxNToiY29tcGxldGlvbnN0YXRlIjtpOjA7czo2OiJ2aWV3ZWQiO2k6MDtzOjEyOiJ0aW1lbW9kaWZpZWQiO2k6MDt9aToyO086ODoic3RkQ2xhc3MiOjY6e3M6MjoiaWQiO2k6MDtzOjE0OiJjb3Vyc2Vtb2R1bGVpZCI7czoxOiIyIjtzOjY6InVzZXJpZCI7czoxOiIzIjtzOjE1OiJjb21wbGV0aW9uc3RhdGUiO2k6MDtzOjY6InZpZXdlZCI7aTowO3M6MTI6InRpbWVtb2RpZmllZCI7aTowO31pOjE0O086ODoic3RkQ2xhc3MiOjY6e3M6MjoiaWQiO2k6MDtzOjE0OiJjb3Vyc2Vtb2R1bGVpZCI7czoyOiIxNCI7czo2OiJ1c2VyaWQiO3M6MToiMyI7czoxNToiY29tcGxldGlvbnN0YXRlIjtpOjA7czo2OiJ2aWV3ZWQiO2k6MDtzOjEyOiJ0aW1lbW9kaWZpZWQiO2k6MDt9aToyMztPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtzOjE6IjgiO3M6MTQ6ImNvdXJzZW1vZHVsZWlkIjtzOjI6IjIzIjtzOjY6InVzZXJpZCI7czoxOiIzIjtzOjE1OiJjb21wbGV0aW9uc3RhdGUiO3M6MToiMCI7czo2OiJ2aWV3ZWQiO3M6MToiMCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjEwOiIxMzk0MDMzODk4Ijt9fX1zOjIxOiJjb21wbGV0aW9uY2FjaGV1c2VyaWQiO3M6MToiMyI7czoxNDoiZnJvbWRpc2N1c3Npb24iO3M6Mzc6Imh0dHA6Ly9zb2xpbi5sb2MvY291cnNlL3ZpZXcucGhwP2lkPTYiO3M6MTE6ImFjdGl2ZWdyb3VwIjthOjE6e2k6NjthOjM6e2k6MTthOjA6e31pOjI7YToxOntpOjA7czoxOiI1Ijt9czozOiJhYWciO2E6MDp7fX19fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6NjM6e3M6MjoiaWQiO3M6MToiMyI7czo0OiJhdXRoIjtzOjY6ImludGFrZSI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6ODoidGVzdHVzZXIiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo0OiJUZXN0IjtzOjg6Imxhc3RuYW1lIjtzOjQ6IlVzZXIiO3M6NToiZW1haWwiO3M6MjQ6InRlc3R1c2VyQG1haWxmb3JzcGFtLmNvbSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjY6Ik1lbmVzayI7czo3OiJjb3VudHJ5IjtzOjI6IkJZIjtzOjQ6ImxhbmciO3M6MjoiZW4iO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7aToxMzk0MDIwMjIyO3M6MTA6Imxhc3RhY2Nlc3MiO2k6MTM5NDAzNzIyMDtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO2k6MTM5NDAyMDIyMjtzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjA6IiI7czo3OiJwaWN0dXJlIjtzOjE6IjAiO3M6MzoidXJsIjtzOjA6IiI7czoxNzoiZGVzY3JpcHRpb25mb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGZvcm1hdCI7czoxOiIxIjtzOjEwOiJtYWlsZGlnZXN0IjtzOjE6IjAiO3M6MTE6Im1haWxkaXNwbGF5IjtzOjE6IjIiO3M6MTM6ImF1dG9zdWJzY3JpYmUiO3M6MToiMSI7czoxMToidHJhY2tmb3J1bXMiO3M6MToiMCI7czoxMToidGltZWNyZWF0ZWQiO3M6MTA6IjEzOTA1NzExNTgiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxMDoiMTM5MDU3MTE1OCI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO3M6MDoiIjtzOjE2OiJsYXN0bmFtZXBob25ldGljIjtOO3M6MTc6ImZpcnN0bmFtZXBob25ldGljIjtOO3M6MTA6Im1pZGRsZW5hbWUiO047czoxMzoiYWx0ZXJuYXRlbmFtZSI7TjtzOjEyOiJjYWxlbmRhcnR5cGUiO3M6OToiZ3JlZ29yaWFuIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjI6e2k6MjtpOjEzOTQwMzUzMTE7aTo2O2k6MTM5NDAzNzIyMDt9czoxMToiZ3JvdXBtZW1iZXIiO2E6Mjp7aToxO2E6MTp7aToxO3M6MToiMSI7fWk6NjthOjE6e2k6NTtzOjE6IjUiO319czo3OiJwcm9maWxlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6Ik1SVmFKMjNISk8iO3M6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YToyOntpOjI7aToyMTQ3NDgzNjQ3O2k6NjtpOjIxNDc0ODM2NDc7fXM6OToidGVtcGd1ZXN0IjthOjA6e319czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MTM5NDAzMDA0MjtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjM4OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV83IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzgiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfOSI7czozOiJpbnQiO3M6MTI6ImJsb2NrN2hpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazhoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s5aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMSI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMiI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMyI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTNoaWRkZW4iO3M6NDoiYm9vbCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzI2IjtzOjM6ImludCI7czoxMzoiYmxvY2syNmhpZGRlbiI7czo0OiJib29sIjtzOjI3OiJmaWxlcGlja2VyX3JlY2VudHJlcG9zaXRvcnkiO3M6MzoiaW50IjtzOjI0OiJmaWxlcGlja2VyX3JlY2VudGxpY2Vuc2UiO3M6Nzoic2FmZWRpciI7czoyNToiZmlsZXBpY2tlcl9yZWNlbnR2aWV3bW9kZSI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yOCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yOSI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yMiI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yMyI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8yNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMjhoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syOWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazIyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMjNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syNGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazI1aGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6ImVkaXRpbmciO2k6MDtzOjE3OiJncmFkZV9sYXN0X3JlcG9ydCI7YToxOntpOjI7czo0OiJ1c2VyIjt9czoxMDoicHJlZmVyZW5jZSI7YTo2OntzOjI0OiJhdXRoX2ZvcmNlcGFzc3dvcmRjaGFuZ2UiO3M6MToiMCI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMyI7czoyNDoiZmlsZXBpY2tlcl9yZWNlbnRsaWNlbnNlIjtzOjE3OiJhbGxyaWdodHNyZXNlcnZlZCI7czoyNzoiZmlsZXBpY2tlcl9yZWNlbnRyZXBvc2l0b3J5IjtzOjE6IjMiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzOTQwMzcyNTY7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6NTp7czoyOiIvMSI7YToxOntpOjc7aTo3O31zOjQ6Ii8xLzIiO2E6MTp7aTo4O2k6ODt9czo3OiIvMS8zLzE1IjthOjE6e2k6NTtpOjU7fXM6ODoiLzEvMjQvNDYiO2E6MTp7aTo1O2k6NTt9czoxMDoiLzEvMy8xNS82NiI7YToxOntpOjU7aTo1O319czo0OiJyZGVmIjthOjM6e3M6NDoiLzE6NyI7YTo3Njp7czozNToiYmxvY2svYWRtaW5fYm9va21hcmtzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI2OiJibG9jay9iYWRnZXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzQ6ImJsb2NrL2NhbGVuZGFyX21vbnRoOm15YWRkaW5zdGFuY2UiO2k6MTtzOjM3OiJibG9jay9jYWxlbmRhcl91cGNvbWluZzpteWFkZGluc3RhbmNlIjtpOjE7czoyODoiYmxvY2svY29tbWVudHM6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjk6ImJsb2NrL2NvbW11bml0eTpteWFkZGluc3RhbmNlIjtpOjE7czozMToiYmxvY2svY291cnNlX2xpc3Q6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzU6ImJsb2NrL2NvdXJzZV9vdmVydmlldzpteWFkZGluc3RhbmNlIjtpOjE7czozNToiYmxvY2svZ2xvc3NhcnlfcmFuZG9tOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI0OiJibG9jay9odG1sOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI3OiJibG9jay9tZW50ZWVzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI4OiJibG9jay9tZXNzYWdlczpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svbW5ldF9ob3N0czpteWFkZGluc3RhbmNlIjtpOjE7czoyOToiYmxvY2svbXlwcm9maWxlOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMwOiJibG9jay9uYXZpZ2F0aW9uOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMwOiJibG9jay9uZXdzX2l0ZW1zOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO2k6MTtzOjMyOiJibG9jay9vbmxpbmVfdXNlcnM6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzM6ImJsb2NrL3ByaXZhdGVfZmlsZXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzA6ImJsb2NrL3Jzc19jbGllbnQ6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjg6ImJsb2NrL3NldHRpbmdzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI0OiJibG9jay90YWdzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7aToxO3M6MTI6Im1vZC91cmw6dmlldyI7aToxO3M6MjQ6Im1vb2RsZS9iYWRnZXM6dmlld2JhZGdlcyI7aToxO3M6Mjk6Im1vb2RsZS9iYWRnZXM6bWFuYWdlb3duYmFkZ2VzIjtpOjE7czoyOToibW9vZGxlL2JhZGdlczp2aWV3b3RoZXJiYWRnZXMiO2k6MTtzOjIzOiJtb29kbGUvYmFkZ2VzOmVhcm5iYWRnZSI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7aToxO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7aToxO3M6MjY6Im1vb2RsZS9ibG9nOm1hbmFnZWV4dGVybmFsIjtpOjE7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtpOjE7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtpOjE7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7aToxO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7aToxO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO2k6MTtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7aToxO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7aToxO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FueSI7aToxO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7aToxO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7aToxO3M6MjM6Im1vb2RsZS9zaXRlOnNlbmRtZXNzYWdlIjtpOjE7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO2k6MTtzOjE1OiJtb29kbGUvdGFnOmZsYWciO2k6MTtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO2k6MTtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO2k6MTtzOjI2OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25maWxlcyI7aToxO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtpOjE7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO2k6MTtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6MTtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7aToxO3M6MjU6InJlcG9zaXRvcnkvd2lraW1lZGlhOnZpZXciO2k6MTtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7aToxO3M6MjQ6InJlcG9zaXRvcnkvYWxmcmVzY286dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO2k6MTtzOjIzOiJyZXBvc2l0b3J5L2Ryb3Bib3g6dmlldyI7aToxO3M6MjM6InJlcG9zaXRvcnkvZXF1ZWxsYTp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7aToxO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtpOjE7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO2k6MTtzOjI1OiJyZXBvc2l0b3J5L2FyZWFmaWxlczp2aWV3IjtpOjE7czoxODoicmVwb3NpdG9yeS9zMzp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7aToxO3M6MjQ6InJlcG9zaXRvcnkvc2t5ZHJpdmU6dmlldyI7aToxO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO2k6MTtzOjIwOiJyZXBvc2l0b3J5L3VzZXI6dmlldyI7aToxO31zOjQ6Ii8xOjUiO2E6NzY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoyMjoiZW5yb2wvc2VsZjp1bmVucm9sc2VsZiI7aToxO3M6MjU6ImdyYWRlcmVwb3J0L292ZXJ2aWV3OnZpZXciO2k6MTtzOjIxOiJncmFkZXJlcG9ydC91c2VyOnZpZXciO2k6MTtzOjMwOiJtb2QvYXNzaWduOmV4cG9ydG93bnN1Ym1pc3Npb24iO2k6MTtzOjE3OiJtb2QvYXNzaWduOnN1Ym1pdCI7aToxO3M6MTU6Im1vZC9hc3NpZ246dmlldyI7aToxO3M6MzQ6Im1vZC9hc3NpZ25tZW50OmV4cG9ydG93bnN1Ym1pc3Npb24iO2k6MTtzOjIxOiJtb2QvYXNzaWdubWVudDpzdWJtaXQiO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MjA6Im1vZC9jZXJ0aWZpY2F0ZTp2aWV3IjtpOjE7czoxMzoibW9kL2NoYXQ6Y2hhdCI7aToxO3M6MTY6Im1vZC9jaGF0OnJlYWRsb2ciO2k6MTtzOjE3OiJtb2QvY2hvaWNlOmNob29zZSI7aToxO3M6MTY6Im1vZC9kYXRhOmNvbW1lbnQiO2k6MTtzOjIzOiJtb2QvZGF0YTpleHBvcnRvd25lbnRyeSI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTk6Im1vZC9kYXRhOndyaXRlZW50cnkiO2k6MTtzOjIxOiJtb2QvZmVlZGJhY2s6Y29tcGxldGUiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6Mjg6Im1vZC9mZWVkYmFjazp2aWV3YW5hbHlzZXBhZ2UiO2k6MTtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtpOjE7czoyNToibW9kL2ZvcnVtOnN0YXJ0ZGlzY3Vzc2lvbiI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MjA6Im1vZC9mb3J1bTp2aWV3cmF0aW5nIjtpOjE7czoyOToibW9kL2ZvcnVtOmFsbG93Zm9yY2VzdWJzY3JpYmUiO2k6MTtzOjI2OiJtb2QvZm9ydW06Y3JlYXRlYXR0YWNobWVudCI7aToxO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtpOjE7czoyMzoibW9kL2ZvcnVtOmV4cG9ydG93bnBvc3QiO2k6MTtzOjIwOiJtb2QvZ2xvc3Nhcnk6Y29tbWVudCI7aToxO3M6Mjc6Im1vZC9nbG9zc2FyeTpleHBvcnRvd25lbnRyeSI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxODoibW9kL2dsb3NzYXJ5OndyaXRlIjtpOjE7czoxMjoibW9kL2x0aTp2aWV3IjtpOjE7czoxNjoibW9kL3F1aXo6YXR0ZW1wdCI7aToxO3M6MjU6Im1vZC9xdWl6OnJldmlld215YXR0ZW1wdHMiO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNToibW9kL3Jvc2U6c3VibWl0IjtpOjE7czoxOToibW9kL3Njb3JtOnNhdmV0cmFjayI7aToxO3M6MTg6Im1vZC9zY29ybTpza2lwdmlldyI7aToxO3M6MjA6Im1vZC9zY29ybTp2aWV3c2NvcmVzIjtpOjE7czoyMjoibW9kL3N1cnZleTpwYXJ0aWNpcGF0ZSI7aToxO3M6MTk6Im1vZC93aWtpOmNyZWF0ZXBhZ2UiO2k6MTtzOjIwOiJtb2Qvd2lraTplZGl0Y29tbWVudCI7aToxO3M6MTc6Im1vZC93aWtpOmVkaXRwYWdlIjtpOjE7czoyMDoibW9kL3dpa2k6dmlld2NvbW1lbnQiO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MjM6Im1vZC93b3Jrc2hvcDpwZWVyYXNzZXNzIjtpOjE7czoxOToibW9kL3dvcmtzaG9wOnN1Ym1pdCI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoyODoibW9kL3dvcmtzaG9wOnZpZXdhdXRob3JuYW1lcyI7aToxO3M6MzI6Im1vZC93b3Jrc2hvcDp2aWV3YXV0aG9ycHVibGlzaGVkIjtpOjE7czozNzoibW9kL3dvcmtzaG9wOnZpZXdwdWJsaXNoZWRzdWJtaXNzaW9ucyI7aToxO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7aToxO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO2k6MTtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7aToxO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7aToxO3M6MjY6Im1vb2RsZS9ibG9nOm1hbmFnZWV4dGVybmFsIjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjM1OiJtb29kbGUvY291cnNlOmlzaW5jb21wbGV0aW9ucmVwb3J0cyI7aToxO3M6MzA6Im1vb2RsZS9jb3Vyc2U6dmlld3BhcnRpY2lwYW50cyI7aToxO3M6MjQ6Im1vb2RsZS9jb3Vyc2U6dmlld3NjYWxlcyI7aToxO3M6MTc6Im1vb2RsZS9ncmFkZTp2aWV3IjtpOjE7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO2k6MTtzOjIwOiJtb29kbGUvcXVlc3Rpb246ZmxhZyI7aToxO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7aToxO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7aToxO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7aToxO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FueSI7aToxO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtpOjE7czoyNToibW9vZGxlL3VzZXI6cmVhZHVzZXJibG9ncyI7aToxO3M6MjU6Im1vb2RsZS91c2VyOnJlYWR1c2VycG9zdHMiO2k6MTt9czo0OiIvMTo4IjthOjc6e3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6Mjk6Im1vZC9mb3J1bTphbGxvd2ZvcmNlc3Vic2NyaWJlIjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtpOjE7fX1zOjEwOiJyZGVmX2NvdW50IjtpOjM7czo4OiJyZGVmX2xjYyI7aTozO3M6NjoibG9hZGVkIjthOjM6e2k6MjtpOjE7aToxO2k6MTtpOjY7aToxO31zOjQ6InRpbWUiO2k6MTM5NDAzNDkwMDtzOjM6InJzdyI7YTowOnt9fX0=', 1394020222, 1394037246, '127.0.0.1', '127.0.0.1'),
+(970, 0, '5i9lfor786439e4g18s1pah716', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6MjoiZW4iO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020332, 1394020332, '127.0.0.1', '127.0.0.1'),
+(971, 0, 'vl6nr76r1diqg7sgrakqr3a7f3', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6NDA6Imh0dHA6Ly9zb2xpbi5sb2MvYWRtaW4vaW5kZXgucGhwP2NhY2hlPTEiO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020336, 1394020336, '127.0.0.1', '127.0.0.1'),
+(972, 0, 'uhojh8ati3bqvh30vu3doali76', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJvVFZrcEV3eUk4IjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MDp7fXM6NDoidGltZSI7aToxMzk0MDIwMzM2O3M6MzoicnN3IjthOjA6e319czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fX0=', 1394020336, 1394020336, '127.0.0.1', '127.0.0.1'),
+(973, 0, '3uc976h8gop3vpvtvtktqm6hj2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6NzY6Imh0dHA6Ly9zb2xpbi5sb2MvYWRtaW4vYXV0aC5waHA/c2Vzc2tleT1zWlJXcndMVm5IJmFjdGlvbj1lbmFibGUmYXV0aD1pbnRha2UiO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020338, 1394020338, '127.0.0.1', '127.0.0.1'),
+(974, 0, 'cnqqim3b2gffc0aj6kds9uiqh5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJHUTh5WmRmYnFlIjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MDp7fXM6NDoidGltZSI7aToxMzk0MDIwMzM5O3M6MzoicnN3IjthOjA6e319czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fX0=', 1394020338, 1394020338, '127.0.0.1', '127.0.0.1'),
+(975, 0, 'qsbnb9h86ebsp0mmqjlbd2l8o4', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTQwMzcxNjg7aToxO2k6MTM5NDAzNzE2ODt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NDAzNzE2ODtpOjE7aToxMzk0MDM3MTY4O31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTo0OntpOjA7aTo2O2k6MTtpOjU7aToyO2k6MztpOjM7aToyO31pOjE7aToxMzk0MDM3MTY4O31zOjQ0OiJ1MF9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aTo0O2k6MTtpOjEzOTQwMzcxNjg7fX19czo4OiJ3YW50c3VybCI7czo3NzoiaHR0cDovL3NvbGluLmxvYy9tb2QvcmVwZWF0Y291cnNlL2luZGV4LnBocD9pZD0xMSZhY3Rpb249b3B0aW4mbWFpbmNvdXJzZWlkPTYiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiSUtMZ1RDZ29rbSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTo0OntpOjE7aToxO2k6NjtpOjE7aTozO2k6MTtpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5NDAzNzE2ODtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1394037167, 1394037172, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -15310,8 +15947,8 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `lastnamephonetic`, `firstnamephonetic`, `middlename`, `alternatename`, `calendartype`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', 'f7ce79d5792ff8274ea845a9084fb4dd', '', 'Guest user', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', 'This user is a special user that allows read-only access to some courses.', 0, 1, 0, 2, 1, 0, 0, 1390393232, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1393935970, 1393843411, 1393934872, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1393934872, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
-(3, 'intake', 1, 0, 0, 0, 1, 'testuser', '289e3d7a0c42af241011446c626d8794', '', 'Test', 'User', 'testuser@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Menesk', 'BY', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1390571158, 1390571158, 0, '', NULL, NULL, NULL, NULL, 'gregorian'),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1394037088, 1393943832, 1394016512, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1394016512, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(3, 'intake', 1, 0, 0, 0, 1, 'testuser', '$2y$10$AXQBTrjvMMklCZaD4MNvdOLVWv.G9XBCArwbUblL5xNtoWfNl6z3G', '', 'Test', 'User', 'testuser@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Menesk', 'BY', 'en', '', '99', 1394020222, 1394037220, 0, 1394020222, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1390571158, 1394020222, 0, '', NULL, NULL, NULL, NULL, 'gregorian'),
 (4, 'intake', 1, 0, 0, 0, 1, 'testuser2', '$2y$10$w3Mk2r.QLkfvR.TlRm..Suafz5rBMIpKjNkDYHUAemloaF7a0voIa', '', 'Testuser2', 'Testuser2', 'testuser2@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Testuser2', 'IQ', 'en', '', '99', 1390572660, 1392305850, 1392291522, 1392293323, '127.0.0.1', '66uOtLZ28RFnKZp', 0, '', NULL, 0, 1, 0, 2, 1, 0, 1390572660, 1392293323, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (5, 'intake', 1, 0, 0, 0, 1, 'teacher', '$2y$10$LqA9yjV6fxmIv6g99An0teyQQGw6y8J93H9riqyDOvRysmIu48Rfy', '', 'teacher', 'teacher', 'teacher@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'BS', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086669, 1391086669, 0, '', '', '', '', '', 'gregorian'),
 (6, 'intake', 1, 0, 0, 0, 1, 'student', '$2y$10$vYChx6x9Dz0PLcdYLZyR4ui.FYyo27TB5N/J1AV/N8tszfCXXnhEa', '', 'student', 'student', 'student@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'AL', 'en', '', '99', 1391442384, 1392041601, 1391442528, 1392041601, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086727, 1392041601, 0, '', '', '', '', '', 'gregorian');
@@ -15361,7 +15998,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `mdl_user_enrolments`
@@ -15373,7 +16010,8 @@ INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timesta
 (3, 0, 4, 5, 1391025600, 0, 2, 1391086974, 1391086974),
 (4, 0, 16, 3, 0, 0, 2, 1392293309, 1392293309),
 (5, 0, 16, 4, 0, 0, 2, 1392293310, 1392293310),
-(6, 0, 16, 6, 0, 0, 2, 1392293310, 1392293310);
+(6, 0, 16, 6, 0, 0, 2, 1392293310, 1392293310),
+(7, 0, 1, 3, 1393966800, 0, 2, 1394020803, 1394020803);
 
 -- --------------------------------------------------------
 
@@ -15456,20 +16094,22 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
   UNIQUE KEY `mdl_userlast_usecou_uix` (`userid`,`courseid`),
   KEY `mdl_userlast_use_ix` (`userid`),
   KEY `mdl_userlast_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=11 ;
 
 --
 -- Дамп данных таблицы `mdl_user_lastaccess`
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
-(1, 2, 2, 1393935970),
+(1, 2, 2, 1394034877),
 (2, 4, 2, 1392291534),
-(3, 2, 3, 1393335526),
+(3, 2, 3, 1394028035),
 (4, 6, 3, 1391443296),
 (6, 2, 5, 1393498637),
-(7, 2, 6, 1393244876),
-(8, 4, 6, 1392305850);
+(7, 2, 6, 1394037088),
+(8, 4, 6, 1392305850),
+(9, 3, 2, 1394035311),
+(10, 3, 6, 1394037220);
 
 -- --------------------------------------------------------
 
@@ -15500,7 +16140,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
   `value` varchar(1333) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_userpref_usenam_uix` (`userid`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=27 ;
 
 --
 -- Дамп данных таблицы `mdl_user_preferences`
@@ -15516,7 +16156,7 @@ INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 (7, 2, 'userselector_searchanywhere', '0'),
 (8, 3, 'auth_forcepasswordchange', '0'),
 (9, 3, 'email_bounce_count', '1'),
-(10, 3, 'email_send_count', '1'),
+(10, 3, 'email_send_count', '3'),
 (11, 4, 'block11hidden', '0'),
 (12, 4, 'docked_block_instance_11', '0'),
 (13, 4, 'docked_block_instance_12', '0'),
@@ -15530,7 +16170,9 @@ INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 (21, 6, 'auth_forcepasswordchange', '0'),
 (22, 6, 'htmleditor', ''),
 (23, 6, 'email_bounce_count', '1'),
-(24, 6, 'email_send_count', '1');
+(24, 6, 'email_send_count', '1'),
+(25, 3, 'filepicker_recentrepository', '3'),
+(26, 3, 'filepicker_recentlicense', 'allrightsreserved');
 
 -- --------------------------------------------------------
 

@@ -4,9 +4,19 @@ include_once("{$CFG->dirroot}/local/soda/class.controller.php");
 class repeatcourse_controller extends controller {
 
     function index() {
-        global $DB ,$PAGE;
+        global $DB, $CFG, $PAGE, $USER;
 
         require_login($this->course);
+        if(!is_siteadmin($USER->id)){ //TODO:change smth in /db/access.php and comment code right here.
+            redirect($CFG->wwwroot.'/login/index.php');
+        }
+        
+        /*$cmid = required_param('id', PARAM_INT);
+        $cm = get_coursemodule_from_id('repeatcourse', $cmid);//, 0, false, MUST_EXIST);
+
+        $context = get_context_instance(CONTEXT_MODULE, $cm->id);
+        
+        require_capability('mod/repeatcourse:read', $context);*/
 
         $curCoursesNames = '';
         $isMCourseExist = array();
@@ -106,7 +116,7 @@ class repeatcourse_controller extends controller {
         $mainCourseName = $this->course->fullname;
         
         $isCurUser = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
-        if($isCurUser->mailing == 1) {$isMailing = 1;} else {$isMailing = 0;} 
+        if(@$isCurUser->mailing == 1) {$isMailing = 1;} else {$isMailing = 0;} 
         $isCurUser = ($isCurUser) ? 1 : 0;
         
         $this->get_view(array(
@@ -281,7 +291,7 @@ class repeatcourse_controller extends controller {
     		asort($orderArr);//assoc array sorted ASC by values: [1]=>1, [3]=>2
     	
     		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));
-    	
+
     		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);
     		$repCourseOrderIdPrev = self::incrementDecrementKey($repCourseOrderIdCur, $orderArr, true);
     	

@@ -180,7 +180,7 @@ class completion_completion extends data_object {
         $mailTo = $DB->get_record('user', array('id' => $USER->id), '*');
         $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
         
-        $subject = 'Dear' . $mailTo->firstname . '! You have successfully completed the course.';
+        $subject = 'Dear ' . $mailTo->firstname . '! You have successfully completed the course.';
         $messagetext = '
         	Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
             To subscribe to the refreshercourses distribution, please click on <a href="http://' . $_SERVER['HTTP_HOST'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $data->course . '">this link</a>.                
