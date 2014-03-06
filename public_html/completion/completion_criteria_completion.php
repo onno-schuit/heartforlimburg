@@ -130,10 +130,12 @@ class completion_criteria_completion extends data_object {
         $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
         
         $subject = 'Dear ' . $mailTo->firstname . '! You have successfully completed the course.';
-        $messagetext = '
-            Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
-            To subscribe to the refreshercourses distribution, please click on <a href="http://' . $_SERVER['HTTP_HOST'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $this->course . '">this link</a>.                
-            Best regards, HeartforLimburg team.';
+        $messagetext = '<table>
+            <tr><td><p><strong> [ <span>Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
+            <br/>To subscribe to the refreshercourses distribution, please click on <strong><a href="http://' . $_SERVER['HTTP_HOST'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $this->course . '">this link</a>.</strong>.
+            <br /><br/><i>Best regards,
+            <br/>HeartforLimburg team.</i>
+            </p></td></tr></table>';
         email_to_user($mailTo, $from, $subject, $messagetext);
 //repcourses
     }
