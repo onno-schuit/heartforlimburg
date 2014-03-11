@@ -27,9 +27,12 @@ function repeatcourse_cron(){
                     $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
 
                     $subject = 'Dear' . $mailTo->firstname . '!';
-                    $messagetext = 'Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
-                            Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin today. <br/>
-                                            Best regards, HeartforLimburg team.';
+                    $messagetext = '<table><tr><td><p>
+                    	<strong> [ <span> Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
+						<br/>Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin today. <br/>
+                        <br /><br/><i>Best regards,
+            			<br/>HeartforLimburg team.</i>
+            		</p></td></tr></table>';
                     email_to_user($mailTo, $from, $subject, $messagetext);
                 }
             }
@@ -44,9 +47,12 @@ function repeatcourse_cron(){
                     $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
 
                     $subject = 'Dear' . $mailTo->firstname . '!';
-                    $messagetext = 'Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
-                            Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin. The course will start on ' . date('d-m-Y', $startDateReminder) . '<br/>
-                                            Best regards, HeartforLimburg team.';
+                    $messagetext = '<table><tr><td><p>
+                    	<strong> [ <span> Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
+            			<br/>Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin. The course will start on ' . date('d-m-Y', $startDateReminder) . '
+            			<br /><br/><i>Best regards,
+            			<br/>HeartforLimburg team.</i>
+            		</p></td></tr></table>';
                     email_to_user($mailTo, $from, $subject, $messagetext);
                 }
             }
