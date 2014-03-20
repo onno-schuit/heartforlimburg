@@ -1,9 +1,8 @@
 <?php
-
 class new_voucher_form extends moodleform {
     function definition() {
         global $USER, $CFG;
-        $mform = $mform =& $this->_form;
+        /*$mform = */$mform =& $this->_form;
         $mform->addElement('hidden', 'action', 'new');
         $mform->addElement('hidden', 'auth', 'intake');
 
@@ -36,7 +35,6 @@ class new_voucher_form extends moodleform {
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', (isset($this->_customdata->courses) ? $this->_customdata->courses : ''), array('id'=>'courses'));
-        $mform->addElement('hidden', 'groups', (isset($this->_customdata->groups) ? $this->_customdata->groups : ''), array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_new_voucher', 'auth_intake'));
     }
@@ -45,7 +43,7 @@ class new_voucher_form extends moodleform {
 class edit_voucher_form extends moodleform {
     function definition() {
         global $USER, $CFG;
-        $mform = $mform =& $this->_form;
+        /*$mform =*/ $mform =& $this->_form;
         $mform->addElement('hidden', 'action', 'edit');
         $mform->addElement('hidden', 'auth', 'intake');
         $mform->addElement('hidden', 'id', $this->_customdata['id']);
@@ -67,7 +65,6 @@ class edit_voucher_form extends moodleform {
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
-        $mform->addElement('hidden', 'groups', $this->_customdata['groups'], array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
     }

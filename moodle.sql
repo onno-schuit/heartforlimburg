@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 11 2014 г., 15:23
+-- Время создания: Мар 20 2014 г., 15:26
 -- Версия сервера: 5.5.35-log
 -- Версия PHP: 5.5.6
 
@@ -358,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `mdl_auth_intake_vouchers` (
   `active_from` bigint(10) NOT NULL,
   `active_till` bigint(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Vouchers storage' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Vouchers storage' AUTO_INCREMENT=5 ;
 
 --
 -- Дамп данных таблицы `mdl_auth_intake_vouchers`
@@ -366,8 +366,9 @@ CREATE TABLE IF NOT EXISTS `mdl_auth_intake_vouchers` (
 
 INSERT INTO `mdl_auth_intake_vouchers` (`id`, `code`, `count`, `used`, `courses`, `groups`, `active_from`, `active_till`) VALUES
 (1, '136347', 5, 1, '2', NULL, 0, 0),
-(2, 'voucher', 8, 0, '', NULL, 1391025600, 1422561600),
-(3, 'lLopJ', 0, 0, '', NULL, 0, 0);
+(2, 'voucher', 8, 5, '', NULL, 1391025600, 1422561600),
+(3, 'lLopJ', 0, 0, '', NULL, 0, 0),
+(4, 'proJ', 8, 5, '2,3', NULL, 1394658000, 1426194000);
 
 -- --------------------------------------------------------
 
@@ -877,16 +878,16 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1394102966, '1', 1394110166),
+(1, 'userpreferenceschanged', '2', 1394709408, '1', 1394716608),
 (2, 'userpreferenceschanged', '3', 1394113088, '1', 1394120288),
-(3, 'accesslib/dirtycontexts', '/1/3/15', 1394028952, '1', 1394036152),
+(3, 'accesslib/dirtycontexts', '/1/3/15', 1395251662, '1', 1395258862),
 (4, 'accesslib/dirtycontexts', '/1/24', 1394022550, '1', 1394029750),
 (5, 'accesslib/dirtycontexts', '/1/3/15/58', 1394030967, '1', 1394038167),
 (6, 'accesslib/dirtycontexts', '/1/3/15/59', 1394030973, '1', 1394038173),
@@ -899,7 +900,9 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (13, 'accesslib/dirtycontexts', '/1/3/15/66', 1394034506, '1', 1394041706),
 (14, 'accesslib/dirtycontexts', '/1/3/15/68', 1394034675, '1', 1394041875),
 (15, 'accesslib/dirtycontexts', '/1/3/15/54', 1394034694, '1', 1394041894),
-(16, 'accesslib/dirtycontexts', '/1/3/15/56', 1394034713, '1', 1394041913);
+(16, 'accesslib/dirtycontexts', '/1/3/15/56', 1394034713, '1', 1394041913),
+(17, 'accesslib/dirtycontexts', '/1/24/25', 1395251662, '1', 1395258862),
+(18, 'userpreferenceschanged', '16', 1395251793, '1', 1395258993);
 
 -- --------------------------------------------------------
 
@@ -915,18 +918,18 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=132 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=133 ;
 
 --
 -- Дамп данных таблицы `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(29, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1394025690),
-(30, 'e24a131bce6e65917187551fbdbeecd2', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>', 1394539358),
-(31, '5349f7eb02bf5a4bd63a01c3bce68a94', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p></div>', 1394539359),
-(32, '22b44ad09dae8876b5f39b4400b6b116', '<div class="no-overflow"><p>Course course</p></div>', 1394539359),
-(33, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1394539359),
+(29, '7088784e04c075cc90016a72cf938cb2', '<p>When players are enabled in these settings, files can be embedded using the media filter (if enabled) or using a File or URL resources with the Embed option. When not enabled, these formats are not embedded and users can manually download or follow links to these resources.</p>\n\n<p>Where two players support the same format, enabling both increases compatibility across different devices such as mobile phones. It is possible to increase compatibility further by providing multiple files in different formats for a single audio or video clip.</p>\n', 1394729518),
+(30, 'e24a131bce6e65917187551fbdbeecd2', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p></div>', 1395310947),
+(31, '5349f7eb02bf5a4bd63a01c3bce68a94', '<div class="no-overflow"><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p></div>', 1395310947),
+(32, '22b44ad09dae8876b5f39b4400b6b116', '<div class="no-overflow"><p>Course course</p></div>', 1395310947),
+(33, '8279c8862959bab81f32cc027e7d67bc', '<div class="no-overflow"><p>Summary desummary</p></div>', 1395310947),
 (34, '504630abd3e91e33777470b379296790', '<p>The assignment activity module enables a teacher to communicate tasks, collect work and provide grades and feedback.</p>\n\n<p>Students can submit any digital content (files), such as word-processed documents, spreadsheets, images, or audio and video clips. Alternatively, or in addition, the assignment may require students to type text directly into the text editor. An assignment can also be used to remind students of ''real-world'' assignments they need to complete offline, such as art work, and thus not require any digital content. Students can submit work individually or as a member of a group.</p>\n\n<p>When reviewing assignments, teachers can leave feedback comments and upload files, such as marked-up student submissions, documents with comments or spoken audio feedback. Assignments can be graded using a numerical or custom scale or an advanced grading method such as a rubric. Final grades are recorded in the gradebook.</p>\n\n<div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/assignment/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
 (35, '32763eea66e8b6be6f7044702d29d624', '<p>There is currently no help associated with this resource or activity</p>\n', 1394034885),
 (36, '4b5a9f9950dfcad82494c5ea18dc850f', '<p>The chat activity module enables participants to have text-based, real-time synchronous discussions.</p>\n\n<p>The chat may be a one-time activity or it may be repeated at the same time each day or each week. Chat sessions are saved and can be made available for everyone to view or restricted to users with the capability to view chat session logs.</p>\n\n<p>Chats are especially useful when the group chatting is not able to meet face-to-face, such as</p>\n\n<ul><li>Regular meetings of students participating in online courses to enable them to share experiences with others in the same course but in a different location</li>\n<li>A student temporarily unable to attend in person chatting with their teacher to catch up with work</li>\n<li>Students out on work experience getting together to discuss their experiences with each other and their teacher</li>\n<li>Younger children using chat at home in the evenings as a controlled (monitored) introduction to the world of social networking</li>\n<li>A question and answer session with an invited speaker in a different location</li>\n<li>Sessions to help students prepare for tests where the teacher, or other students, would pose sample questions</li>\n</ul><div class="helpdoclink"><a href="http://docs.moodle.org/26/en/mod/chat/view" class="helplinkpopup"><img class="iconhelp icon-pre" alt="More help" title="More help" src="http://solin.loc/theme/image.php/standard/core/1392386994/docs" />More help</a></div>\n', 1394034885),
@@ -1025,7 +1028,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (128, '76c1756e6d1a0897bf58d7bf6a267801', '<p>Network connection restored. You may continue safely.</p>\n', 1394035782),
 (129, '5654b221789026a8614a42c260fb01eb', '<p>u really pretty</p>', 1394035799),
 (130, '371bce26f6b26d17aee1ef2227cd5330', '<p>U r right!</p>', 1394035808),
-(131, '7944dd2d8b8efcedd06ae593877b0376', '<p>Okay, choose next</p>', 1394035808);
+(131, '7944dd2d8b8efcedd06ae593877b0376', '<p>Okay, choose next</p>', 1394035808),
+(132, '8f0e23347fc69e4b1c6992ecc5e5d6bb', '<div class="text_to_html"><p>Please enter the voucher code you''ve recieved by e-mail in a field below.</p></div>', 1395251760);
 
 -- --------------------------------------------------------
 
@@ -1854,7 +1858,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config` (
 
 INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (2, 'rolesactive', '1'),
-(3, 'auth', 'intake'),
+(3, 'auth', 'intake,email'),
 (4, 'auth_pop3mailbox', 'INBOX'),
 (5, 'enrol_plugins_enabled', 'manual,guest,self,cohort'),
 (6, 'theme', 'standard'),
@@ -1974,11 +1978,11 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (121, 'locale', ''),
 (122, 'latinexcelexport', '0'),
 (124, 'authpreventaccountcreation', '0'),
-(125, 'loginpageautofocus', '0'),
+(125, 'loginpageautofocus', '1'),
 (126, 'guestloginbutton', '0'),
 (127, 'alternateloginurl', ''),
 (128, 'forgottenpasswordurl', ''),
-(129, 'auth_instructions', ''),
+(129, 'auth_instructions', '<p>Please enter the voucher code you''ve recieved by e-mail in a field below.</p>'),
 (130, 'allowemailaddresses', ''),
 (131, 'denyemailaddresses', ''),
 (132, 'verifychangedemail', '1'),
@@ -2307,7 +2311,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
   PRIMARY KEY (`id`),
   KEY `mdl_conflog_tim_ix` (`timemodified`),
   KEY `mdl_conflog_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=947 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=953 ;
 
 --
 -- Дамп данных таблицы `mdl_config_log`
@@ -3260,7 +3264,13 @@ INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, 
 (943, 2, 1393604769, 'repeatcourse', 'daytoremind', '1488', '5'),
 (944, 2, 1393607149, 'repeatcourse', 'daytoremind', '1', '1488'),
 (945, 2, 1394019775, 'moodlecourse', 'enablecompletion', '1', '0'),
-(946, 2, 1394025247, NULL, 'enablecompletion', '1', '0');
+(946, 2, 1394025247, NULL, 'enablecompletion', '1', '0'),
+(947, 2, 1394709572, NULL, 'loginpageautofocus', '1', '0'),
+(948, 2, 1394711902, NULL, 'registerauth', 'email', 'intake'),
+(949, 2, 1394712813, NULL, 'registerauth', 'intake', 'email'),
+(950, 2, 1394729455, NULL, 'denyemailaddresses', 'mailforspam.com', ''),
+(951, 2, 1394729514, NULL, 'auth_instructions', '<p>Please enter the voucher code you''ve recieved by e-mail in a field below.</p>', ''),
+(952, 2, 1394729514, NULL, 'denyemailaddresses', '', 'mailforspam.com');
 
 -- --------------------------------------------------------
 
@@ -4314,7 +4324,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=71 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='one of these must be set' AUTO_INCREMENT=72 ;
 
 --
 -- Дамп данных таблицы `mdl_context`
@@ -4374,7 +4384,8 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (65, 70, 23, '/1/3/15/65', 4),
 (66, 70, 24, '/1/3/15/66', 4),
 (69, 80, 28, '/1/24/46/69', 4),
-(70, 80, 29, '/1/24/46/70', 4);
+(70, 80, 29, '/1/24/46/70', 4),
+(71, 30, 16, '/1/71', 2);
 
 -- --------------------------------------------------------
 
@@ -5079,7 +5090,7 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
   PRIMARY KEY (`id`),
   KEY `mdl_enro_enr_ix` (`enrol`),
   KEY `mdl_enro_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=18 ;
 
 --
 -- Дамп данных таблицы `mdl_enrol`
@@ -5098,7 +5109,8 @@ INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name
 (13, 'manual', 0, 6, 0, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1392043211),
 (14, 'guest', 1, 6, 1, NULL, 0, 0, 0, 0, 0, 0, '', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1394035400),
 (15, 'self', 1, 6, 2, NULL, 0, 0, 0, 0, 86400, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392043211, 1392043211),
-(16, 'cohort', 0, 6, 3, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392293309, 1392293309);
+(16, 'cohort', 0, 6, 3, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1392293309, 1392293309),
+(17, 'manual', 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1394729577, 1394729577);
 
 -- --------------------------------------------------------
 
@@ -6937,7 +6949,7 @@ CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
   PRIMARY KEY (`id`),
   KEY `mdl_groumemb_gro_ix` (`groupid`),
   KEY `mdl_groumemb_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Link a user to a group.' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Link a user to a group.' AUTO_INCREMENT=32 ;
 
 --
 -- Дамп данных таблицы `mdl_groups_members`
@@ -6949,7 +6961,16 @@ INSERT INTO `mdl_groups_members` (`id`, `groupid`, `userid`, `timeadded`, `compo
 (4, 4, 6, 1391087081, '', 0),
 (5, 5, 6, 1392294010, '', 0),
 (6, 5, 4, 1392294018, '', 0),
-(7, 5, 3, 1392294047, '', 0);
+(7, 5, 3, 1392294047, '', 0),
+(23, 2, 12, 1395250413, '', 0),
+(24, 3, 12, 1395250413, '', 0),
+(25, 4, 12, 1395250413, '', 0),
+(26, 2, 13, 1395250834, '', 0),
+(27, 3, 13, 1395250834, '', 0),
+(28, 4, 13, 1395250834, '', 0),
+(29, 2, 16, 1395251662, '', 0),
+(30, 3, 16, 1395251662, '', 0),
+(31, 4, 16, 1395251662, '', 0);
 
 -- --------------------------------------------------------
 
@@ -7237,7 +7258,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=982 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=1009 ;
 
 --
 -- Дамп данных таблицы `mdl_log`
@@ -8223,7 +8244,34 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (978, 1394105718, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
 (979, 1394113088, 3, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=3', ''),
 (980, 1394113088, 3, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=3&course=1', '3'),
-(981, 1394113089, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6');
+(981, 1394113089, 3, '127.0.0.1', 6, 'course', 0, 'view', 'view.php?id=6', '6'),
+(982, 1394709408, 2, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=2', ''),
+(983, 1394709409, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=2&course=1', '2'),
+(984, 1394709412, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(985, 1395250413, 0, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(986, 1395250413, 0, '127.0.0.1', 3, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=25&roleid=5', 'Student'),
+(987, 1395250834, 0, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(988, 1395250834, 0, '127.0.0.1', 3, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=25&roleid=5', 'Student'),
+(989, 1395251012, 0, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(990, 1395251012, 0, '127.0.0.1', 3, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=25&roleid=5', 'Student'),
+(991, 1395251155, 0, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(992, 1395251155, 0, '127.0.0.1', 3, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=25&roleid=5', 'Student'),
+(993, 1395251662, 0, '127.0.0.1', 2, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=15&roleid=5', 'Student'),
+(994, 1395251662, 0, '127.0.0.1', 3, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=25&roleid=5', 'Student'),
+(995, 1395251700, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(996, 1395251700, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(997, 1395251707, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(998, 1395251707, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(999, 1395251715, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(1000, 1395251715, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(1001, 1395251731, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(1002, 1395251731, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(1003, 1395251760, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'testuser007'),
+(1004, 1395251766, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(1005, 1395251766, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(1006, 1395251793, 16, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=16', ''),
+(1007, 1395251793, 16, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=16&course=1', '16'),
+(1008, 1395251794, 16, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
 
 -- --------------------------------------------------------
 
@@ -10780,7 +10828,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='assigning roles in different context' AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='assigning roles in different context' AUTO_INCREMENT=22 ;
 
 --
 -- Дамп данных таблицы `mdl_role_assignments`
@@ -10796,7 +10844,17 @@ INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `time
 (8, 5, 46, 4, 1392293310, 2, 'enrol_cohort', 16, 0),
 (9, 5, 46, 6, 1392293310, 2, 'enrol_cohort', 16, 0),
 (10, 5, 15, 3, 1394020803, 2, '', 0, 0),
-(11, 5, 66, 3, 1394034506, 2, '', 0, 0);
+(11, 5, 66, 3, 1394034506, 2, '', 0, 0),
+(12, 5, 15, 12, 1395250413, 0, '', 0, 0),
+(13, 5, 25, 12, 1395250413, 0, '', 0, 0),
+(14, 5, 15, 13, 1395250834, 0, '', 0, 0),
+(15, 5, 25, 13, 1395250834, 0, '', 0, 0),
+(16, 5, 15, 14, 1395251012, 0, '', 0, 0),
+(17, 5, 25, 14, 1395251012, 0, '', 0, 0),
+(18, 5, 15, 15, 1395251155, 0, '', 0, 0),
+(19, 5, 25, 15, 1395251155, 0, '', 0, 0),
+(20, 5, 15, 16, 1395251662, 0, '', 0, 0),
+(21, 5, 25, 16, 1395251662, 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -12453,23 +12511,16 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=985 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=1002 ;
 
 --
 -- Дамп данных таблицы `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
-(970, 0, '5i9lfor786439e4g18s1pah716', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6MjoiZW4iO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020332, 1394020332, '127.0.0.1', '127.0.0.1'),
-(971, 0, 'vl6nr76r1diqg7sgrakqr3a7f3', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6NDA6Imh0dHA6Ly9zb2xpbi5sb2MvYWRtaW4vaW5kZXgucGhwP2NhY2hlPTEiO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020336, 1394020336, '127.0.0.1', '127.0.0.1'),
-(972, 0, 'uhojh8ati3bqvh30vu3doali76', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJvVFZrcEV3eUk4IjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MDp7fXM6NDoidGltZSI7aToxMzk0MDIwMzM2O3M6MzoicnN3IjthOjA6e319czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fX0=', 1394020336, 1394020336, '127.0.0.1', '127.0.0.1'),
-(973, 0, '3uc976h8gop3vpvtvtktqm6hj2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6NzY6Imh0dHA6Ly9zb2xpbi5sb2MvYWRtaW4vYXV0aC5waHA/c2Vzc2tleT1zWlJXcndMVm5IJmFjdGlvbj1lbmFibGUmYXV0aD1pbnRha2UiO31VU0VSfE86ODoic3RkQ2xhc3MiOjI6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO30=', 1394020338, 1394020338, '127.0.0.1', '127.0.0.1'),
-(974, 0, 'cnqqim3b2gffc0aj6kds9uiqh5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Njp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJHUTh5WmRmYnFlIjtzOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6MDp7fXM6NDoidGltZSI7aToxMzk0MDIwMzM5O3M6MzoicnN3IjthOjA6e319czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fX0=', 1394020338, 1394020338, '127.0.0.1', '127.0.0.1'),
-(975, 0, 'qsbnb9h86ebsp0mmqjlbd2l8o4', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTQwMzcxNjg7aToxO2k6MTM5NDAzNzE2ODt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NDAzNzE2ODtpOjE7aToxMzk0MDM3MTY4O31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTo0OntpOjA7aTo2O2k6MTtpOjU7aToyO2k6MztpOjM7aToyO31pOjE7aToxMzk0MDM3MTY4O31zOjQ0OiJ1MF9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aTo0O2k6MTtpOjEzOTQwMzcxNjg7fX19czo4OiJ3YW50c3VybCI7czo3NzoiaHR0cDovL3NvbGluLmxvYy9tb2QvcmVwZWF0Y291cnNlL2luZGV4LnBocD9pZD0xMSZhY3Rpb249b3B0aW4mbWFpbmNvdXJzZWlkPTYiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiSUtMZ1RDZ29rbSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTo0OntpOjE7aToxO2k6NjtpOjE7aTozO2k6MTtpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5NDAzNzE2ODtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1394037167, 1394037172, '127.0.0.1', '127.0.0.1'),
-(980, 0, 'vk0r6cv7on3v5l0o1g1pm2u2j5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6ODoid2FudHN1cmwiO3M6Nzc6Imh0dHA6Ly9zb2xpbi5sb2MvbW9kL3JlcGVhdGNvdXJzZS9pbmRleC5waHA/aWQ9MTEmYWN0aW9uPW9wdGluJm1haW5jb3Vyc2VpZD02Ijt9VVNFUnxPOjg6InN0ZENsYXNzIjo2OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6ImtZUFFBYmdjNGEiO3M6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTowOnt9czo0OiJ0aW1lIjtpOjEzOTQxMDU3Mzc7czozOiJyc3ciO2E6MDp7fX1zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MDp7fXM6OToidGVtcGd1ZXN0IjthOjA6e319fQ==', 1394105737, 1394105737, '127.0.0.1', '127.0.0.1'),
-(982, 0, 'tsudl70vgmht9smj0hcubstgj5', 3, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo1OntzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czozNzoiaHR0cDovL3NvbGluLmxvYy9jb3Vyc2Uvdmlldy5waHA/aWQ9NiI7czoxMToiYWN0aXZlZ3JvdXAiO2E6MTp7aTo2O2E6Mzp7aToxO2E6MDp7fWk6MjthOjE6e2k6MDtzOjE6IjUiO31zOjM6ImFhZyI7YTowOnt9fX1zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjI6e3M6MTY6InVzZXJibG9nb3B0aW9uczMiO2E6Mzp7aTowO2k6MTM5NDExMzA4OTtpOjE7czoxOiIzIjtpOjI7czo2ODM6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWaWV3IGFsbCBvZiBteSBlbnRyaWVzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJzb2xpbi5sb2MiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MToiMyI7fX19czozOiJhZGQiO2E6Mjp7czo2OiJzdHJpbmciO3M6MTU6IkFkZCBhIG5ldyBlbnRyeSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToic29saW4ubG9jIjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMjEiO2E6Mzp7aTowO2k6MTM5NDExMzA4OTtpOjE7czoxOiIzIjtpOjI7czo0OiJiOjA7Ijt9fX1zOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2k6MDtzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6NjI6e3M6MjoiaWQiO3M6MToiMyI7czo0OiJhdXRoIjtzOjY6ImludGFrZSI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6ODoidGVzdHVzZXIiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo0OiJUZXN0IjtzOjg6Imxhc3RuYW1lIjtzOjQ6IlVzZXIiO3M6NToiZW1haWwiO3M6MjQ6InRlc3R1c2VyQG1haWxmb3JzcGFtLmNvbSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjY6Ik1lbmVzayI7czo3OiJjb3VudHJ5IjtzOjI6IkJZIjtzOjQ6ImxhbmciO3M6MjoiZW4iO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTM5NDAyMDIyMiI7czoxMDoibGFzdGFjY2VzcyI7aToxMzk0MTEzMDg4O3M6OToibGFzdGxvZ2luIjtzOjEwOiIxMzk0MTA1MjM0IjtzOjEyOiJjdXJyZW50bG9naW4iO2k6MTM5NDExMzA4ODtzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjA6IiI7czo3OiJwaWN0dXJlIjtzOjE6IjAiO3M6MzoidXJsIjtzOjA6IiI7czoxNzoiZGVzY3JpcHRpb25mb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGZvcm1hdCI7czoxOiIxIjtzOjEwOiJtYWlsZGlnZXN0IjtzOjE6IjAiO3M6MTE6Im1haWxkaXNwbGF5IjtzOjE6IjIiO3M6MTM6ImF1dG9zdWJzY3JpYmUiO3M6MToiMSI7czoxMToidHJhY2tmb3J1bXMiO3M6MToiMCI7czoxMToidGltZWNyZWF0ZWQiO3M6MTA6IjEzOTA1NzExNTgiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxMDoiMTM5NDEwNTIzNCI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO3M6MDoiIjtzOjE2OiJsYXN0bmFtZXBob25ldGljIjtOO3M6MTc6ImZpcnN0bmFtZXBob25ldGljIjtOO3M6MTA6Im1pZGRsZW5hbWUiO047czoxMzoiYWx0ZXJuYXRlbmFtZSI7TjtzOjEyOiJjYWxlbmRhcnR5cGUiO3M6OToiZ3JlZ29yaWFuIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjI6e2k6MjtzOjEwOiIxMzk0MDM1MzExIjtpOjY7czoxMDoiMTM5NDEwNTY5MyI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6MTp7aTo2O2k6MTM5NDExMzA4OTt9czoxMToiZ3JvdXBtZW1iZXIiO2E6Mjp7aToxO2E6MTp7aToxO3M6MToiMSI7fWk6NjthOjE6e2k6NTtzOjE6IjUiO319czo3OiJwcm9maWxlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6Ik1iU0ZsRkJ1RnMiO3M6MTA6InByZWZlcmVuY2UiO2E6Njp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjQiO3M6MjQ6ImZpbGVwaWNrZXJfcmVjZW50bGljZW5zZSI7czoxNzoiYWxscmlnaHRzcmVzZXJ2ZWQiO3M6Mjc6ImZpbGVwaWNrZXJfcmVjZW50cmVwb3NpdG9yeSI7czoxOiIzIjtzOjExOiJfbGFzdGxvYWRlZCI7aToxMzk0MTEzMDg5O31zOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjQ6e3M6MjoiLzEiO2E6MTp7aTo3O2k6Nzt9czo0OiIvMS8yIjthOjE6e2k6ODtpOjg7fXM6NzoiLzEvMy8xNSI7YToxOntpOjU7aTo1O31zOjg6Ii8xLzI0LzQ2IjthOjE6e2k6NTtpOjU7fX1zOjQ6InJkZWYiO2E6Mzp7czo0OiIvMTo3IjthOjc2OntzOjM1OiJibG9jay9hZG1pbl9ib29rbWFya3M6bXlhZGRpbnN0YW5jZSI7aToxO3M6MjY6ImJsb2NrL2JhZGdlczpteWFkZGluc3RhbmNlIjtpOjE7czozNDoiYmxvY2svY2FsZW5kYXJfbW9udGg6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mzc6ImJsb2NrL2NhbGVuZGFyX3VwY29taW5nOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI4OiJibG9jay9jb21tZW50czpteWFkZGluc3RhbmNlIjtpOjE7czoyOToiYmxvY2svY29tbXVuaXR5Om15YWRkaW5zdGFuY2UiO2k6MTtzOjMxOiJibG9jay9jb3Vyc2VfbGlzdDpteWFkZGluc3RhbmNlIjtpOjE7czozNToiYmxvY2svY291cnNlX292ZXJ2aWV3Om15YWRkaW5zdGFuY2UiO2k6MTtzOjM1OiJibG9jay9nbG9zc2FyeV9yYW5kb206bXlhZGRpbnN0YW5jZSI7aToxO3M6MjQ6ImJsb2NrL2h0bWw6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjc6ImJsb2NrL21lbnRlZXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjg6ImJsb2NrL21lc3NhZ2VzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjMwOiJibG9jay9tbmV0X2hvc3RzOm15YWRkaW5zdGFuY2UiO2k6MTtzOjI5OiJibG9jay9teXByb2ZpbGU6bXlhZGRpbnN0YW5jZSI7aToxO3M6MzA6ImJsb2NrL25hdmlnYXRpb246bXlhZGRpbnN0YW5jZSI7aToxO3M6MzA6ImJsb2NrL25ld3NfaXRlbXM6bXlhZGRpbnN0YW5jZSI7aToxO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MzI6ImJsb2NrL29ubGluZV91c2VyczpteWFkZGluc3RhbmNlIjtpOjE7czozMzoiYmxvY2svcHJpdmF0ZV9maWxlczpteWFkZGluc3RhbmNlIjtpOjE7czozMDoiYmxvY2svcnNzX2NsaWVudDpteWFkZGluc3RhbmNlIjtpOjE7czoyODoiYmxvY2svc2V0dGluZ3M6bXlhZGRpbnN0YW5jZSI7aToxO3M6MjQ6ImJsb2NrL3RhZ3M6bXlhZGRpbnN0YW5jZSI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtpOjE7czoxMzoibW9kL3BhZ2U6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoyNDoibW9vZGxlL2JhZGdlczp2aWV3YmFkZ2VzIjtpOjE7czoyOToibW9vZGxlL2JhZGdlczptYW5hZ2Vvd25iYWRnZXMiO2k6MTtzOjI5OiJtb29kbGUvYmFkZ2VzOnZpZXdvdGhlcmJhZGdlcyI7aToxO3M6MjM6Im1vb2RsZS9iYWRnZXM6ZWFybmJhZGdlIjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxODoibW9vZGxlL2Jsb2c6Y3JlYXRlIjtpOjE7czoyNjoibW9vZGxlL2Jsb2c6bWFuYWdlZXh0ZXJuYWwiO2k6MTtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVjb3Vyc2UiO2k6MTtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVtb2R1bGUiO2k6MTtzOjMyOiJtb29kbGUvY2FsZW5kYXI6bWFuYWdlb3duZW50cmllcyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtpOjE7czoyMToibW9vZGxlL2NvdXJzZTpyZXF1ZXN0IjtpOjE7czoyMjoibW9vZGxlL215Om1hbmFnZWJsb2NrcyI7aToxO3M6MjM6Im1vb2RsZS9wb3J0Zm9saW86ZXhwb3J0IjtpOjE7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtpOjE7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtpOjE7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YWxsIjtpOjE7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtpOjE7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO2k6MTtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7aToxO3M6MTU6Im1vb2RsZS90YWc6ZmxhZyI7aToxO3M6MTU6Im1vb2RsZS90YWc6ZWRpdCI7aToxO3M6Mjc6Im1vb2RsZS91c2VyOm1hbmFnZW93bmJsb2NrcyI7aToxO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtpOjE7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aToxO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aToxO3M6MzU6Im1vb2RsZS93ZWJzZXJ2aWNlOmNyZWF0ZW1vYmlsZXRva2VuIjtpOjE7czoyNToicmVwb3NpdG9yeS93aWtpbWVkaWE6dmlldyI7aToxO3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtpOjE7czoyNDoicmVwb3NpdG9yeS9hbGZyZXNjbzp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9ib3huZXQ6dmlldyI7aToxO3M6MjM6InJlcG9zaXRvcnkvZHJvcGJveDp2aWV3IjtpOjE7czoyMzoicmVwb3NpdG9yeS9lcXVlbGxhOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtpOjE7czoyOToicmVwb3NpdG9yeS9mbGlja3JfcHVibGljOnZpZXciO2k6MTtzOjI2OiJyZXBvc2l0b3J5L2dvb2dsZWRvY3M6dmlldyI7aToxO3M6MjI6InJlcG9zaXRvcnkvbWVybG90OnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtpOjE7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7aToxO3M6MjU6InJlcG9zaXRvcnkvYXJlYWZpbGVzOnZpZXciO2k6MTtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO2k6MTtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtpOjE7czoyNDoicmVwb3NpdG9yeS9za3lkcml2ZTp2aWV3IjtpOjE7czoxOToicmVwb3NpdG9yeS91cmw6dmlldyI7aToxO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtpOjE7fXM6NDoiLzE6NSI7YTo3Njp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjIyOiJlbnJvbC9zZWxmOnVuZW5yb2xzZWxmIjtpOjE7czoyNToiZ3JhZGVyZXBvcnQvb3ZlcnZpZXc6dmlldyI7aToxO3M6MjE6ImdyYWRlcmVwb3J0L3VzZXI6dmlldyI7aToxO3M6MzA6Im1vZC9hc3NpZ246ZXhwb3J0b3duc3VibWlzc2lvbiI7aToxO3M6MTc6Im1vZC9hc3NpZ246c3VibWl0IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czozNDoibW9kL2Fzc2lnbm1lbnQ6ZXhwb3J0b3duc3VibWlzc2lvbiI7aToxO3M6MjE6Im1vZC9hc3NpZ25tZW50OnN1Ym1pdCI7aToxO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO2k6MTtzOjEzOiJtb2QvYm9vazpyZWFkIjtpOjE7czoyMDoibW9kL2NlcnRpZmljYXRlOnZpZXciO2k6MTtzOjEzOiJtb2QvY2hhdDpjaGF0IjtpOjE7czoxNjoibW9kL2NoYXQ6cmVhZGxvZyI7aToxO3M6MTc6Im1vZC9jaG9pY2U6Y2hvb3NlIjtpOjE7czoxNjoibW9kL2RhdGE6Y29tbWVudCI7aToxO3M6MjM6Im1vZC9kYXRhOmV4cG9ydG93bmVudHJ5IjtpOjE7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtpOjE7czoxOToibW9kL2RhdGE6d3JpdGVlbnRyeSI7aToxO3M6MjE6Im1vZC9mZWVkYmFjazpjb21wbGV0ZSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoyODoibW9kL2ZlZWRiYWNrOnZpZXdhbmFseXNlcGFnZSI7aToxO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO2k6MTtzOjI1OiJtb2QvZm9ydW06c3RhcnRkaXNjdXNzaW9uIjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoyMDoibW9kL2ZvcnVtOnZpZXdyYXRpbmciO2k6MTtzOjI5OiJtb2QvZm9ydW06YWxsb3dmb3JjZXN1YnNjcmliZSI7aToxO3M6MjY6Im1vZC9mb3J1bTpjcmVhdGVhdHRhY2htZW50IjtpOjE7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO2k6MTtzOjIzOiJtb2QvZm9ydW06ZXhwb3J0b3ducG9zdCI7aToxO3M6MjA6Im1vZC9nbG9zc2FyeTpjb21tZW50IjtpOjE7czoyNzoibW9kL2dsb3NzYXJ5OmV4cG9ydG93bmVudHJ5IjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE4OiJtb2QvZ2xvc3Nhcnk6d3JpdGUiO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjE2OiJtb2QvcXVpejphdHRlbXB0IjtpOjE7czoyNToibW9kL3F1aXo6cmV2aWV3bXlhdHRlbXB0cyI7aToxO3M6MTM6Im1vZC9xdWl6OnZpZXciO2k6MTtzOjE1OiJtb2Qvcm9zZTpzdWJtaXQiO2k6MTtzOjE5OiJtb2Qvc2Nvcm06c2F2ZXRyYWNrIjtpOjE7czoxODoibW9kL3Njb3JtOnNraXB2aWV3IjtpOjE7czoyMDoibW9kL3Njb3JtOnZpZXdzY29yZXMiO2k6MTtzOjIyOiJtb2Qvc3VydmV5OnBhcnRpY2lwYXRlIjtpOjE7czoxOToibW9kL3dpa2k6Y3JlYXRlcGFnZSI7aToxO3M6MjA6Im1vZC93aWtpOmVkaXRjb21tZW50IjtpOjE7czoxNzoibW9kL3dpa2k6ZWRpdHBhZ2UiO2k6MTtzOjIwOiJtb2Qvd2lraTp2aWV3Y29tbWVudCI7aToxO3M6MTc6Im1vZC93aWtpOnZpZXdwYWdlIjtpOjE7czoyMzoibW9kL3dvcmtzaG9wOnBlZXJhc3Nlc3MiO2k6MTtzOjE5OiJtb2Qvd29ya3Nob3A6c3VibWl0IjtpOjE7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO2k6MTtzOjI4OiJtb2Qvd29ya3Nob3A6dmlld2F1dGhvcm5hbWVzIjtpOjE7czozMjoibW9kL3dvcmtzaG9wOnZpZXdhdXRob3JwdWJsaXNoZWQiO2k6MTtzOjM3OiJtb2Qvd29ya3Nob3A6dmlld3B1Ymxpc2hlZHN1Ym1pc3Npb25zIjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtpOjE7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtpOjE7czoyNjoibW9vZGxlL2Jsb2c6bWFuYWdlZXh0ZXJuYWwiO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6MzU6Im1vb2RsZS9jb3Vyc2U6aXNpbmNvbXBsZXRpb25yZXBvcnRzIjtpOjE7czozMDoibW9vZGxlL2NvdXJzZTp2aWV3cGFydGljaXBhbnRzIjtpOjE7czoyNDoibW9vZGxlL2NvdXJzZTp2aWV3c2NhbGVzIjtpOjE7czoxNzoibW9vZGxlL2dyYWRlOnZpZXciO2k6MTtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7aToxO3M6MjA6Im1vb2RsZS9xdWVzdGlvbjpmbGFnIjtpOjE7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtpOjE7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtpOjE7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YWxsIjtpOjE7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtpOjE7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTtzOjI1OiJtb29kbGUvdXNlcjpyZWFkdXNlcmJsb2dzIjtpOjE7czoyNToibW9vZGxlL3VzZXI6cmVhZHVzZXJwb3N0cyI7aToxO31zOjQ6Ii8xOjgiO2E6Nzp7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjEzOiJtb2QvYm9vazpyZWFkIjtpOjE7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtpOjE7czoyOToibW9kL2ZvcnVtOmFsbG93Zm9yY2VzdWJzY3JpYmUiO2k6MTtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO2k6MTtzOjE3OiJtb2QvZ2xvc3Nhcnk6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MztzOjg6InJkZWZfbGNjIjtpOjM7czo2OiJsb2FkZWQiO2E6MTp7aTo2O2k6MTt9czo0OiJ0aW1lIjtpOjEzOTQxMTMwODk7czozOiJyc3ciO2E6MDp7fX1zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MTp7aTo2O2k6MjE0NzQ4MzY0Nzt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjc6ImVkaXRpbmciO2k6MDtzOjE3OiJtZXNzYWdlX2xhc3Rwb3B1cCI7aTowO3M6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6MTY6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjgiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjkiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjIiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjMiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjQiO3M6MzoiaW50IjtzOjI0OiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMjUiO3M6MzoiaW50IjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMjhoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syOWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazIyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMjNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2syNGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazI1aGlkZGVuIjtzOjQ6ImJvb2wiO319', 1394113088, 1394113089, '127.0.0.1', '127.0.0.1'),
-(983, 0, 'ufnbhgcr66tl3tv3ku2o9k4r12', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjtzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxODoiY2FjaGVzdG9yZV9zZXNzaW9uIjthOjE6e3M6MzA6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL2NvdXJzZWNhdCI7YTo0OntzOjE3OiJfX2xhc3RhY2Nlc3NfX3UwXyI7YToyOntpOjA7aToxMzk0NTM2Njg3O2k6MTtpOjEzOTQ1MzY2ODc7fXM6NDQ6InUwX184NmMxMGJiZThlY2NkMjcxNDhiOWI3MzgxNmQ1N2ViNDg2M2E3NDVjIjthOjI6e2k6MDtpOjEzOTQ1MzY2ODc7aToxO2k6MTM5NDUzNjY4Nzt9czo0NDoidTBfX2FlZTUwMGEyMzc2NjZiZmZjNjNjMTZlYmY2NTlkNDVjN2ZiNGY1OTUiO2E6Mjp7aTowO2E6NDp7aTowO2k6NjtpOjE7aTo1O2k6MjtpOjM7aTozO2k6Mjt9aToxO2k6MTM5NDUzNjY4Nzt9czo0NDoidTBfXzkxN2Q2NTk0ZjBiOTQyZTc5ZjVmZTdkYjI0YjcyZTE5MWUxYmQwZGIiO2E6Mjp7aTowO2k6NDtpOjE7aToxMzk0NTM2Njg3O319fX1VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiZG9YZmpndWdCcSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTo0OntpOjE7aToxO2k6NjtpOjE7aTozO2k6MTtpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5NDUzNjY4NDtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1394536680, 1394536680, '127.0.0.1', '127.0.0.1'),
-(984, 0, 'adbgg4j9d8unm1sscldgrrf710', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjtzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxODoiY2FjaGVzdG9yZV9zZXNzaW9uIjthOjE6e3M6MzA6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL2NvdXJzZWNhdCI7YTo0OntzOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTo0OntpOjA7aTo2O2k6MTtpOjU7aToyO2k6MztpOjM7aToyO31pOjE7aToxMzk0NTM5MzU4O31zOjQ0OiJ1MF9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aTo0O2k6MTtpOjEzOTQ1MzkzNTg7fXM6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTQ1MzkzNjI7aToxO2k6MTM5NDUzOTM2Mjt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NDUzOTM2MjtpOjE7aToxMzk0NTM5MzYyO319fX1VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiN0g3am45ek9WOSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTo0OntpOjE7aToxO2k6NjtpOjE7aTozO2k6MTtpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5NDUzNjY4NDtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1394536682, 1394539358, '127.0.0.1', '127.0.0.1');
+(986, 0, 'j4fjmm1gtpos12552ms3u5onf2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTQ3OTc0MDI7aToxO2k6MTM5NDc5NzQwMjt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NDc5NzQwMjtpOjE7aToxMzk0Nzk3NDAyO31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTo0OntpOjA7aTo2O2k6MTtpOjU7aToyO2k6MztpOjM7aToyO31pOjE7aToxMzk0Nzk3NDAyO31zOjQ0OiJ1MF9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aTo0O2k6MTtpOjEzOTQ3OTc0MDI7fX19czo4OiJ3YW50c3VybCI7czozNzoiaHR0cDovL3NvbGluLmxvYy9jb3Vyc2Uvdmlldy5waHA/aWQ9NiI7fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Nzp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo3OiJzZXNza2V5IjtzOjEwOiJEeml6alR3MUFmIjtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjY6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8zIjtzOjM6ImludCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjt9czo2OiJhY2Nlc3MiO2E6Nzp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NjtpOjY7fX1zOjQ6InJkZWYiO2E6MTp7czo0OiIvMTo2IjthOjI2OntzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO2k6MTtzOjIwOiJib29rdG9vbC9wcmludDpwcmludCI7aToxO3M6MTU6Im1vZC9hc3NpZ246dmlldyI7aToxO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO2k6MTtzOjEzOiJtb2QvYm9vazpyZWFkIjtpOjE7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtpOjE7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO2k6MTtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO2k6MTtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO2k6MTtzOjE3OiJtb2QvZ2xvc3Nhcnk6dmlldyI7aToxO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtpOjE7czoxMjoibW9kL2x0aTp2aWV3IjtpOjE7czoxMzoibW9kL3BhZ2U6dmlldyI7aToxO3M6MTM6Im1vZC9xdWl6OnZpZXciO2k6MTtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7aToxO3M6MTI6Im1vZC91cmw6dmlldyI7aToxO3M6MTc6Im1vZC93aWtpOnZpZXdwYWdlIjtpOjE7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO2k6MTtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7aToxO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7aToxO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO2k6MTtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtpOjE7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO2k6LTEwMDA7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtpOi0xMDAwO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtpOi0xMDAwO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtpOjE7fX1zOjEwOiJyZGVmX2NvdW50IjtpOjE7czo4OiJyZGVmX2xjYyI7aToxO3M6NjoibG9hZGVkIjthOjQ6e2k6MTtpOjE7aTo2O2k6MTtpOjM7aToxO2k6MjtpOjE7fXM6NDoidGltZSI7aToxMzk0NzEwMjU1O3M6MzoicnN3IjthOjA6e319czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fX0=', 1394710255, 1394815907, '127.0.0.1', '127.0.0.1'),
+(988, 0, 'nov10ihesrc0r8q2idc61ugc02', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjQ6ImxhbmciO3M6MjoiZW4iO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE4OiJjYWNoZXN0b3JlX3Nlc3Npb24iO2E6MTp7czozMDoiZGVmYXVsdF9zZXNzaW9uLWNvcmUvY291cnNlY2F0IjthOjQ6e3M6MTc6Il9fbGFzdGFjY2Vzc19fdTBfIjthOjI6e2k6MDtpOjEzOTUxNDYyOTQ7aToxO2k6MTM5NTE0NjI5NDt9czo0NDoidTBfXzg2YzEwYmJlOGVjY2QyNzE0OGI5YjczODE2ZDU3ZWI0ODYzYTc0NWMiO2E6Mjp7aTowO2k6MTM5NTE0NjI5NDtpOjE7aToxMzk1MTQ2Mjk0O31zOjQ0OiJ1MF9fYWVlNTAwYTIzNzY2NmJmZmM2M2MxNmViZjY1OWQ0NWM3ZmI0ZjU5NSI7YToyOntpOjA7YTo0OntpOjA7aTo2O2k6MTtpOjU7aToyO2k6MztpOjM7aToyO31pOjE7aToxMzk1MTQ2Mjk0O31zOjQ0OiJ1MF9fOTE3ZDY1OTRmMGI5NDJlNzlmNWZlN2RiMjRiNzJlMTkxZTFiZDBkYiI7YToyOntpOjA7aTo0O2k6MTtpOjEzOTUxNDYyOTQ7fX19czo4OiJ3YW50c3VybCI7Tjt9VVNFUnxPOjg6InN0ZENsYXNzIjo3OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjEwOiJwcmVmZXJlbmNlIjthOjA6e31zOjc6InNlc3NrZXkiO3M6MTA6InlXVUIwZXJLYUoiO3M6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6Njp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjY6ImFjY2VzcyI7YTo3OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O2k6Njt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7aToxO3M6MjA6ImJvb2t0b29sL3ByaW50OnByaW50IjtpOjE7czoxNToibW9kL2Fzc2lnbjp2aWV3IjtpOjE7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7aToxO3M6MTM6Im1vZC9ib29rOnJlYWQiO2k6MTtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO2k6MTtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7aToxO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7aToxO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7aToxO3M6MTc6Im1vZC9nbG9zc2FyeTp2aWV3IjtpOjE7czoxNDoibW9kL2ltc2NwOnZpZXciO2k6MTtzOjEyOiJtb2QvbHRpOnZpZXciO2k6MTtzOjEzOiJtb2QvcGFnZTp2aWV3IjtpOjE7czoxMzoibW9kL3F1aXo6dmlldyI7aToxO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtpOjE7czoxMjoibW9kL3VybDp2aWV3IjtpOjE7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO2k6MTtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7aToxO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtpOjE7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtpOjE7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7aToxO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO2k6MTtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7aTotMTAwMDtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO2k6LTEwMDA7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO2k6LTEwMDA7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO2k6MTt9fXM6MTA6InJkZWZfY291bnQiO2k6MTtzOjg6InJkZWZfbGNjIjtpOjE7czo2OiJsb2FkZWQiO2E6NDp7aToxO2k6MTtpOjY7aToxO2k6MztpOjE7aToyO2k6MTt9czo0OiJ0aW1lIjtpOjEzOTUxMzk0MDM7czozOiJyc3ciO2E6MDp7fX1zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MDp7fXM6OToidGVtcGd1ZXN0IjthOjA6e319fQ==', 1395139401, 1395246875, '127.0.0.1', '127.0.0.1'),
+(1001, 0, 'ru6dh73evbq1etorrivrt053h3', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo0OntzOjEzOiJoYXNfdGltZWRfb3V0IjtiOjE7czo0OiJsYW5nIjtzOjI6ImVuIjtzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxODoiY2FjaGVzdG9yZV9zZXNzaW9uIjthOjE6e3M6MzA6ImRlZmF1bHRfc2Vzc2lvbi1jb3JlL2NvdXJzZWNhdCI7YTo0OntzOjE3OiJfX2xhc3RhY2Nlc3NfX3UwXyI7YToyOntpOjA7aToxMzk1MzEwOTQ3O2k6MTtpOjEzOTUzMTA5NDc7fXM6NDQ6InUwX184NmMxMGJiZThlY2NkMjcxNDhiOWI3MzgxNmQ1N2ViNDg2M2E3NDVjIjthOjI6e2k6MDtpOjEzOTUzMTA5NDc7aToxO2k6MTM5NTMxMDk0Nzt9czo0NDoidTBfX2FlZTUwMGEyMzc2NjZiZmZjNjNjMTZlYmY2NTlkNDVjN2ZiNGY1OTUiO2E6Mjp7aTowO2E6NDp7aTowO2k6NjtpOjE7aTo1O2k6MjtpOjM7aTozO2k6Mjt9aToxO2k6MTM5NTMxMDk0Nzt9czo0NDoidTBfXzkxN2Q2NTk0ZjBiOTQyZTc5ZjVmZTdkYjI0YjcyZTE5MWUxYmQwZGIiO2E6Mjp7aTowO2k6NDtpOjE7aToxMzk1MzEwOTQ3O319fX1VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6Nzoic2Vzc2tleSI7czoxMDoiRGk2UXBNZWpmRSI7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo2OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjc6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7aTo2O319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtpOjE7czoyMDoiYm9va3Rvb2wvcHJpbnQ6cHJpbnQiO2k6MTtzOjE1OiJtb2QvYXNzaWduOnZpZXciO2k6MTtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtpOjE7czoxMzoibW9kL2Jvb2s6cmVhZCI7aToxO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7aToxO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtpOjE7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtpOjE7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtpOjE7czoxNzoibW9kL2dsb3NzYXJ5OnZpZXciO2k6MTtzOjE0OiJtb2QvaW1zY3A6dmlldyI7aToxO3M6MTI6Im1vZC9sdGk6dmlldyI7aToxO3M6MTM6Im1vZC9wYWdlOnZpZXciO2k6MTtzOjEzOiJtb2QvcXVpejp2aWV3IjtpOjE7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO2k6MTtzOjEyOiJtb2QvdXJsOnZpZXciO2k6MTtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7aToxO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtpOjE7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO2k6MTtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO2k6MTtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtpOjE7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7aToxO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtpOi0xMDAwO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7aTotMTAwMDtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7aTotMTAwMDtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7aToxO319czoxMDoicmRlZl9jb3VudCI7aToxO3M6ODoicmRlZl9sY2MiO2k6MTtzOjY6ImxvYWRlZCI7YTo0OntpOjE7aToxO2k6NjtpOjE7aTozO2k6MTtpOjI7aToxO31zOjQ6InRpbWUiO2k6MTM5NTMwODM5NjtzOjM6InJzdyI7YTowOnt9fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX19', 1395308396, 1395310947, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -15959,7 +16010,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
   KEY `mdl_user_fir2_ix` (`firstnamephonetic`),
   KEY `mdl_user_mid_ix` (`middlename`),
   KEY `mdl_user_alt_ix` (`alternatename`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='One record for each person' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='One record for each person' AUTO_INCREMENT=17 ;
 
 --
 -- Дамп данных таблицы `mdl_user`
@@ -15967,11 +16018,21 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `lastnamephonetic`, `firstnamephonetic`, `middlename`, `alternatename`, `calendartype`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', 'f7ce79d5792ff8274ea845a9084fb4dd', '', 'Guest user', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', 'This user is a special user that allows read-only access to some courses.', 0, 1, 0, 2, 1, 0, 0, 1390393232, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1394105698, 1394016512, 1394102966, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1394102966, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', '$2y$10$JpHMKSfTVgL8xp4/tlg2/e3kwa6yKzD.snX/I0c9GQ0uMGgBAL24G', '', 'Admin', 'User', 'alexander.zhuravlev@intosoft.by', 0, '', '', '', '', '', '', '', '', '', '', 'Minsk', 'BY', 'en', '', '99', 1390393313, 1394729510, 1394102966, 1394709408, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 0, 0, 1394709408, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (3, 'intake', 1, 0, 0, 0, 1, 'testuser', '$2y$10$AXQBTrjvMMklCZaD4MNvdOLVWv.G9XBCArwbUblL5xNtoWfNl6z3G', '', 'Test', 'User', 'testuser@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Menesk', 'BY', 'en', '', '99', 1394020222, 1394113088, 1394105234, 1394113088, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1390571158, 1394113088, 0, '', NULL, NULL, NULL, NULL, 'gregorian'),
 (4, 'intake', 1, 0, 0, 0, 1, 'testuser2', '$2y$10$w3Mk2r.QLkfvR.TlRm..Suafz5rBMIpKjNkDYHUAemloaF7a0voIa', '', 'Testuser2', 'Testuser2', 'testuser2@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', 'Testuser2', 'IQ', 'en', '', '99', 1390572660, 1392305850, 1392291522, 1392293323, '127.0.0.1', '66uOtLZ28RFnKZp', 0, '', NULL, 0, 1, 0, 2, 1, 0, 1390572660, 1392293323, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
 (5, 'intake', 1, 0, 0, 0, 1, 'teacher', '$2y$10$LqA9yjV6fxmIv6g99An0teyQQGw6y8J93H9riqyDOvRysmIu48Rfy', '', 'teacher', 'teacher', 'teacher@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'BS', 'en', '', '99', 0, 0, 0, 0, '', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086669, 1391086669, 0, '', '', '', '', '', 'gregorian'),
-(6, 'intake', 1, 0, 0, 0, 1, 'student', '$2y$10$vYChx6x9Dz0PLcdYLZyR4ui.FYyo27TB5N/J1AV/N8tszfCXXnhEa', '', 'student', 'student', 'student@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'AL', 'en', '', '99', 1391442384, 1392041601, 1391442528, 1392041601, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086727, 1392041601, 0, '', '', '', '', '', 'gregorian');
+(6, 'intake', 1, 0, 0, 0, 1, 'student', '$2y$10$vYChx6x9Dz0PLcdYLZyR4ui.FYyo27TB5N/J1AV/N8tszfCXXnhEa', '', 'student', 'student', 'student@mailforspam.com', 0, '', '', '', '', '', '', '', '', '', '', '', 'AL', 'en', '', '99', 1391442384, 1392041601, 1391442528, 1392041601, '127.0.0.1', '', 0, '', '', 1, 1, 0, 2, 1, 0, 1391086727, 1392041601, 0, '', '', '', '', '', 'gregorian'),
+(7, 'intake', 0, 0, 0, 0, 1, 'voucher001', '$2y$10$IUGDjcAr.qdkfKhumGUa.uWCwYuoFtvGgd574xxjWKbTAwVBJyY3q', '', 'voucher001', 'voucher001', 'voucher001@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'voucher001', 'VN', 'en', '', '99', 1394729576, 0, 0, 0, '', 'nsQGi8kYpeUcGI8', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1394729576, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(8, 'intake', 0, 0, 0, 0, 1, 'voucher002', '$2y$10$HkJ.kq7L.rok0BR6rb5XjekR1Iy6cUUATY8ZCN/.ETXUTHrVEI/1W', '', 'voucher002', 'voucher002', 'voucher002@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'voucher002', 'VN', 'en', '', '99', 1394729761, 0, 0, 0, '', 'yFZN1iv8vgRe58T', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1394729761, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(9, 'intake', 0, 0, 0, 0, 1, 'voucher003', '$2y$10$/aGO48eod5fgATFVoNUYp.RXyl7kxQ3.6S9VDkaU1SWpL9WPEg8F6', '', 'voucher003', 'voucher003', 'voucher003@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'voucher003', 'VN', 'en', '', '99', 1394729821, 0, 0, 0, '', 'NixGN7CjcMuMdL8', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1394729821, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(10, 'intake', 0, 0, 0, 0, 1, 'voucher004', '$2y$10$rG21Os9C5JJu5uEfms86t.SUN9grrnY4VlnRRz7GfzL95JbUs0TuC', '', 'voucher004', 'voucher004', 'voucher004@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'voucher004', 'VN', 'en', '', '99', 1394730068, 0, 0, 0, '', 'RaunMyJ3DG35xZ9', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1394730068, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(11, 'intake', 0, 0, 0, 0, 1, 'voucher005', '$2y$10$ZDIpq6zL9Yq6ucsHjZ08JeebsMk/uvUgP49OVPJvT.KsPDf23YJXG', '', 'voucher005', 'voucher005', 'voucher005@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'voucher005', 'VN', 'en', '', '99', 1394730466, 0, 0, 0, '', 'yUsnNL6ppLnvU8H', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1394730466, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(12, 'intake', 0, 0, 0, 0, 1, 'testuser003', '$2y$10$aAID/Mie0W9CaXdTsM8YWOMwWVXRObYaI9nlKc7BsyU/PDZu0QCTe', '', 'testuser003', 'testuser003', 'testuser003@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'testuser003', 'BS', 'en', '', '99', 1395250412, 0, 0, 0, '', 'MXrJSKzXLfabNbn', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1395250412, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(13, 'intake', 0, 0, 0, 0, 1, 'testuser004', '$2y$10$N4nwZY3irkxgy/usIskJteK.SWwYD5wIrokkpq8l2S3rfdZ0gWKjq', '', 'testuser004', 'testuser004', 'testuser004@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'testuser004', 'BS', 'en', '', '99', 1395250834, 0, 0, 0, '', '2u23CI2OXIWVuIP', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1395250834, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(14, 'intake', 0, 0, 0, 0, 1, 'testuser005', '$2y$10$cFzr5Hib4HgXhweHRjIkDeZ6.HA7drWbA4PsQ1H5ygx2eHcMABOTK', '', 'testuser005', 'testuser005', 'testuser005@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'testuser005', 'BS', 'en', '', '99', 1395251012, 0, 0, 0, '', 'obE31bpYCmV3YAw', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1395251012, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(15, 'intake', 0, 0, 0, 0, 1, 'testuser006', '$2y$10$.Zt19MikgGdFYx6J7EpCUeWCmBH4XWqokth3BGsQVNIQktYXMUMqi', '', 'testuser006', 'testuser006', 'testuser006@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'testuser006q', 'BS', 'en', '', '99', 1395251155, 0, 0, 0, '', '2l9n9hiQqgWUQIi', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1395251155, 0, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian'),
+(16, 'intake', 1, 0, 0, 0, 1, 'testuser007', '$2y$10$Uf2C1E1zNMwmYE2kaE851.nu9JLynBGdbjj5vFOFIPNZmhfnHDeQa', '', 'testuser007', 'testuser007', 'testuser007@mail.com', 0, '', '', '', '', '', '', '', '', '', '', 'testuser007', 'AL', 'en', '', '99', 1395251661, 1395251793, 1395251766, 1395251793, '127.0.0.1', 'RJPEQ3J31Kv7Mza', 0, '', NULL, 1, 1, 0, 2, 1, 0, 1395251661, 1395251793, 0, NULL, NULL, NULL, NULL, NULL, 'gregorian');
 
 -- --------------------------------------------------------
 
@@ -16018,7 +16079,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=18 ;
 
 --
 -- Дамп данных таблицы `mdl_user_enrolments`
@@ -16031,7 +16092,17 @@ INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timesta
 (4, 0, 16, 3, 0, 0, 2, 1392293309, 1392293309),
 (5, 0, 16, 4, 0, 0, 2, 1392293310, 1392293310),
 (6, 0, 16, 6, 0, 0, 2, 1392293310, 1392293310),
-(7, 0, 1, 3, 1393966800, 0, 2, 1394020803, 1394020803);
+(7, 0, 1, 3, 1393966800, 0, 2, 1394020803, 1394020803),
+(8, 0, 1, 12, 1395250413, 0, 0, 1395250413, 1395250413),
+(9, 0, 4, 12, 1395250413, 0, 0, 1395250413, 1395250413),
+(10, 0, 1, 13, 1395250834, 0, 0, 1395250834, 1395250834),
+(11, 0, 4, 13, 1395250834, 0, 0, 1395250834, 1395250834),
+(12, 0, 1, 14, 1395251012, 0, 0, 1395251012, 1395251012),
+(13, 0, 4, 14, 1395251012, 0, 0, 1395251012, 1395251012),
+(14, 0, 1, 15, 1395251155, 0, 0, 1395251155, 1395251155),
+(15, 0, 4, 15, 1395251155, 0, 0, 1395251155, 1395251155),
+(16, 0, 1, 16, 1395251661, 0, 0, 1395251661, 1395251661),
+(17, 0, 4, 16, 1395251662, 0, 0, 1395251662, 1395251662);
 
 -- --------------------------------------------------------
 

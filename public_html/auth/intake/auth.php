@@ -1,35 +1,28 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Authentication Plugin: intake Authentication
- *
  * @author Martin Dougiamas
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
- * @package auth_intake
+ * @package moodle multiauth
+ *
+ * Authentication Plugin: Email Authentication
+ *
+ * Standard authentication function.
+ *
+ * 2006-08-28  File created.
  */
 
-defined('MOODLE_INTERNAL') || die();
+if (!defined('MOODLE_INTERNAL')) {
+    die('Direct access to this script is forbidden.');    ///  It must be included from a Moodle page
+}
 
 require_once($CFG->libdir.'/authlib.php');
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->dirroot."/enrol/locallib.php");
 require_once('forms.php');
+
 /**
- * intake authentication plugin.
+ * Intake authentication plugin.
  */
 class auth_plugin_intake extends auth_plugin_base {
 
@@ -39,6 +32,7 @@ class auth_plugin_intake extends auth_plugin_base {
     function auth_plugin_intake() {
         $this->authtype = 'intake';
         $this->config = get_config('auth/intake');
+
         $this->table_name = 'auth_intake_vouchers';
     }
 
@@ -70,10 +64,11 @@ class auth_plugin_intake extends auth_plugin_base {
      */
     function user_update_password($user, $newpassword) {
         $user = get_complete_user_data('id', $user->id);
-        // This will also update the stored hash to the latest algorithm
-        // if the existing hash is using an out-of-date algorithm (or the
-        // legacy md5 algorithm).
         return update_internal_user_password($user, $newpassword);
+    }
+
+    function can_signup() {
+        return true;
     }
 
     /**
@@ -105,12 +100,10 @@ class auth_plugin_intake extends auth_plugin_base {
         if (!$enrol = enrol_get_plugin('manual')) {
             return false;
         }
+error_log('user');error_log(var_export($user, true));
+error_log('instance');error_log(var_export($instance, true));
         $enrol->enrol_user($instance, $user->id, $instance->roleid, time(), 0);
 
-        return true;
-    }
-
-    function can_signup() {
         return true;
     }
 
@@ -124,7 +117,6 @@ class auth_plugin_intake extends auth_plugin_base {
     function user_signup($user, $notify=true) {
         global $CFG, $DB;
         require_once($CFG->dirroot.'/user/profile/lib.php');
-        require_once($CFG->dirroot.'/user/lib.php');
 
         $user->password = hash_internal_user_password($user->password);
 
@@ -133,7 +125,7 @@ class auth_plugin_intake extends auth_plugin_base {
         if (!$this->validate_voucher($voucher)) {
             print_error('auth_intake_invalid_vouchercode', 'auth_intake');
         }
-
+        
         // All goes well, increase voucher used info
         $voucher->used++;
         $DB->update_record($this->table_name, $voucher);
@@ -145,14 +137,31 @@ class auth_plugin_intake extends auth_plugin_base {
             $this->actually_enroll_user($user, $id);
         }
 
-        // Save any custom profile field information.
+        /// Save any custom profile field information
         profile_save_data($user);
 
-		$user = $DB->get_record('user', array('id'=>$user->id));
+        $user = $DB->get_record('user', array('id'=>$user->id));
         events_trigger('user_created', $user);
 
-        if (! send_confirmation_intake($user)) {
-            //print_error('auth_intakenointake','auth_intake');
+        $voucherCode = required_param('vouchercode', PARAM_RAW);
+        $courses = $DB->get_record_sql('SELECT courses FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode));
+        if(sizeof($courses) > 0) {
+            $myGroups = $DB->get_records_sql('SELECT id FROM {groups} WHERE courseid IN( ' . $courses->courses . ')');
+            if(sizeof($myGroups) > 0) {
+                foreach($myGroups as $c){
+                    $usa = new stdClass();
+                    $usa->groupid      = $c->id;
+                    $usa->userid       = $user->id;
+                    $usa->timeadded    = time();
+                    $usa->component    = '';
+                    $usa->itemid       = 0;
+                    $DB->insert_record('groups_members', $usa);
+                }
+            }
+        }
+
+        if (! send_confirmation_email($user)) {
+            //print_error('auth_emailnoemail','auth_email');
         }
 
         if ($notify) {
@@ -249,15 +258,6 @@ class auth_plugin_intake extends auth_plugin_base {
     }
 
     /**
-     * Returns true if plugin can be manually set.
-     *
-     * @return bool
-     */
-    function can_be_manually_set() {
-        return true;
-    }
-
-    /**
      * Prints a form for configuring this authentication plugin.
      *
      * This function is called from admin/auth.php, and outputs a full page with
@@ -270,18 +270,19 @@ class auth_plugin_intake extends auth_plugin_base {
 
         $result = false;
         $mode = false;
+        $voucher = new stdClass();//TODO:rollback if buggy
         if (isset($this->result)) {
             $result = $this->result;
             $mode = $this->mode;
         }
 
         $vouchers = $DB->get_records($this->table_name);
-
+error_log('vouchers'); error_log(var_export($vouchers, true));
         $_cache_courses = array();
-        foreach ($vouchers as $voucher) {
+        foreach ($vouchers as $vouch) {//TODO: rollback in buggy case
             $_courses = array();
-            if (!empty($voucher->courses)) {
-                foreach (explode(',', $voucher->courses) as $id) {
+            if (!empty($vouch->courses)) {
+                foreach (explode(',', $vouch->courses) as $id) {
                     if (empty($_cache_courses[$id])) {
                         $_cache_courses[$id] = $DB->get_record('course', array('id'=>$id));
                     }
@@ -303,29 +304,29 @@ class auth_plugin_intake extends auth_plugin_base {
                 $form = new new_voucher_form(null, $config);
                 $view = 'new.html';
             }
-
+            
             if ($this->_is_update()) {
                 $voucher = $DB->get_record($this->table_name,
-                    array('code' => $_REQUEST['code']));
-
+                                           array('code' => $_REQUEST['code']));
+                
                 $data = array('code'      => $voucher->code,
-                    'id'        => $voucher->id,
-                    'used'      => isset($config->used) ? $config->used : $voucher->used,
-                    'count'     => isset($config->count) ? $config->count : $voucher->count,
-                    'courses'   => isset($config->courses) ? $config->courses : $voucher->courses,
-                    'use_dates' => (!is_null($voucher->active_from) && $voucher->active_from !== 0),
-                    'date_from' => isset($config->active_from) ? $config->active_from : $voucher->active_from,
-                    'date_to'   => isset($config->active_till) ? $config->active_till : $voucher->active_till);
-
+                              'id'        => $voucher->id,
+                              'used'      => isset($config->used) ? $config->used : $voucher->used,
+                              'count'     => isset($config->count) ? $config->count : $voucher->count,
+                              'courses'   => isset($config->courses) ? $config->courses : $voucher->courses,
+                              'use_dates' => (!is_null($voucher->active_from) && $voucher->active_from !== 0),
+                              'date_from' => isset($config->active_from) ? $config->active_from : $voucher->active_from,
+                              'date_to'   => isset($config->active_till) ? $config->active_till : $voucher->active_till);
+                
                 $data['date_from'] = array('year'  => date('Y', $data['date_from']),
-                    'month' => date('m', $data['date_from']),
-                    'day'   => date('d', $data['date_from']));
-
+                                           'month' => date('m', $data['date_from']),
+                                           'day'   => date('d', $data['date_from']));
+                
                 $data['date_to'] = array('year'  => date('Y', $data['date_to']),
-                    'month' => date('m', $data['date_to']),
-                    'day'   => date('d', $data['date_to']));
-
-
+                                         'month' => date('m', $data['date_to']),
+                                         'day'   => date('d', $data['date_to']));
+                
+                
                 $form = new edit_voucher_form(null, $data);
                 $view = 'edit.html';
             }
@@ -458,12 +459,11 @@ class auth_plugin_intake extends auth_plugin_base {
         $config = $this->validate_dates($config);
 
         $new_voucher = (object)array('code' => $config->code,
-            'count' => $config->count,
-            'courses' => $config->courses,
-			'groups' => $config->groups,
-            'active_from' => $config->date_from,
-            'active_till' => $config->date_to,
-            'used' => 0);
+                                     'count' => $config->count,
+                                     'courses' => $config->courses,
+                                     'active_from' => $config->date_from,
+                                     'active_till' => $config->date_to,
+                                     'used' => 0);
         $DB->insert_record($this->table_name, $new_voucher, false);
 
         return array(true, 'created');
@@ -512,7 +512,7 @@ class auth_plugin_intake extends auth_plugin_base {
                 $status = false;
             }
         }
-
+        
         if ($status && $voucher->active_till && $voucher->active_till > 0) {
             if ($now > $voucher->active_till) {
                 $status = false;
@@ -531,14 +531,14 @@ class auth_plugin_intake extends auth_plugin_base {
         if (isset($config->use_dates) && $config->use_dates) {
             // Normalize dates
             $config->date_from = mktime(0, 0, 0,
-                $config->date_from['month'],
-                $config->date_from['day'],
-                $config->date_from['year']);
+                                        $config->date_from['month'],
+                                        $config->date_from['day'],
+                                        $config->date_from['year']);
 
             $config->date_to = mktime(0, 0, 0,
-                $config->date_to['month'],
-                $config->date_to['day'],
-                $config->date_to['year']);
+                                      $config->date_to['month'],
+                                      $config->date_to['day'],
+                                      $config->date_to['year']);
 
         } else {
             $config->date_from = 0;
@@ -547,79 +547,76 @@ class auth_plugin_intake extends auth_plugin_base {
 
         return $config;
     }
+}
 
 
 function enrol_user ($username, $course_id, $roleid = 5)
 {
-    global $CFG, $DB, $PAGE;
+	global $CFG, $DB, $PAGE;
 
-    $username = utf8_decode ($username);
-    /* Create the user before if it is not created yet */
-    $conditions = array ('username' => $username);
-    $user = $DB->get_record('user',$conditions);
-    if (!$user)
-        $this->create_joomdle_user ($username);
+	$username = utf8_decode ($username);
+	/* Create the user before if it is not created yet */
+	$conditions = array ('username' => $username);
+	$user = $DB->get_record('user',$conditions);
+	if (!$user)
+		$this->create_joomdle_user ($username);
 
-    $user = $DB->get_record('user',$conditions);
-    $conditions = array ('id' => $course_id);
-    $course = $DB->get_record('course', $conditions);
-
-
-    // First, check if user is already enroled but suspended, so we just need to enable it
-
-    $conditions = array ('courseid' => $course_id, 'enrol' => 'manual');
-    $enrol = $DB->get_record('enrol', $conditions);
-
-    $conditions = array ('username' => $username);
-    $user = $DB->get_record('user', $conditions);
-
-    $conditions = array ('enrolid' => $enrol->id, 'userid' => $user->id);
-    $ue = $DB->get_record('user_enrolments', $conditions);
-
-    if ($ue)
-    {
-        // User already enroled but suspended. Just activate enrolment and return
-        $ue->status = 0; //active
-        $DB->update_record('user_enrolments', $ue);
-        return 1;
-    }
+	$user = $DB->get_record('user',$conditions);
+	$conditions = array ('id' => $course_id);
+	$course = $DB->get_record('course', $conditions);
 
 
-    if ($CFG->version >= 2011061700)
-        $manager = new course_enrolment_manager($PAGE, $course);
-    else
-        $manager = new course_enrolment_manager($course);
+	// First, check if user is already enroled but suspended, so we just need to enable it
 
-    $instances = $manager->get_enrolment_instances();
-    $plugins = $manager->get_enrolment_plugins();
-    $enrolid = 1; //manual
+	$conditions = array ('courseid' => $course_id, 'enrol' => 'manual');
+	$enrol = $DB->get_record('enrol', $conditions);
+
+	$conditions = array ('username' => $username);
+	$user = $DB->get_record('user', $conditions);
+
+	$conditions = array ('enrolid' => $enrol->id, 'userid' => $user->id);
+	$ue = $DB->get_record('user_enrolments', $conditions);
+
+	if ($ue)
+	{
+		// User already enroled but suspended. Just activate enrolment and return
+		$ue->status = 0; //active
+		$DB->update_record('user_enrolments', $ue);
+		return 1;
+	}
+
+
+	if ($CFG->version >= 2011061700)
+		$manager = new course_enrolment_manager($PAGE, $course);
+	else
+		$manager = new course_enrolment_manager($course);
+
+	$instances = $manager->get_enrolment_instances();
+	$plugins = $manager->get_enrolment_plugins();
+	$enrolid = 1; //manual
 //	$roleid = 5; //student
 
-    $today = time();
-    $today = make_timestamp(date('Y', $today), date('m', $today), date('d', $today), 0, 0, 0);
-    $timestart = $today;
-    $timeend = 0;
+	$today = time();
+	$today = make_timestamp(date('Y', $today), date('m', $today), date('d', $today), 0, 0, 0);
+	$timestart = $today;
+	$timeend = 0;
 
-    $instance = $instances[$enrolid];
+	$instance = $instances[$enrolid];
 
-    foreach ($instances as $instance)
-    {
-        if ($instance->enrol == 'manual')
-            break;
-    }
+	foreach ($instances as $instance)
+	{
+		if ($instance->enrol == 'manual')
+			break;
+	}
 
 //	return $instance->enrol;
 //	$plugin = $plugins[$instance->enrol];
-    $plugin = $plugins['manual'];
+	$plugin = $plugins['manual'];
     var_dump($instances);
 
-    if ( $instance->enrolperiod)
-        $timeend   = $timestart + $instance->enrolperiod;
-    $plugin->enrol_user($instance, $user->id, $roleid, $timestart, $timeend);
+        if ( $instance->enrolperiod)
+		$timeend   = $timestart + $instance->enrolperiod;
+	$plugin->enrol_user($instance, $user->id, $roleid, $timestart, $timeend);
 
-    return 1;
+	return 1;
 }
-
-}
-
-

@@ -49,7 +49,6 @@ $string['auth_intake_vouchers_count'] = 'Max gebruikers';
 $string['auth_intake_vouchers_count_explanation'] = '(0 betekent geen limiet)';
 $string['auth_intake_vouchers_used'] = 'In gebruik';
 $string['auth_intake_voucher_courses'] = 'Cursussen';
-$string['auth_intake_voucher_groups'] = 'Gruupen';
 $string['auth_intake_voucher_date_from'] = 'Actief van';
 $string['auth_intake_voucher_date_to'] = 'Actief tot';
 $string['auth_intake_voucher_use_courses'] = 'Maak gebruikers lid van';
