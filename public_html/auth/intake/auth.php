@@ -266,6 +266,10 @@ error_log('instance');error_log(var_export($instance, true));
      * @param array $page An object containing all the data for this page.
      */
     function config_form($config, $err, $user_fields) {
+        /*
+        echo "<h2>This is my form</h2>";
+        return;
+         */
         global $DB;
 
         $result = false;

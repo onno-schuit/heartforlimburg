@@ -77,7 +77,6 @@ echo $OUTPUT->box_end();
 echo '<p style="text-align: center"><input type="submit" value="' . get_string("savechanges") . "\" /></p>\n";
 echo "</div>\n";
 echo "</form>\n";
-
 $PAGE->requires->string_for_js('unmaskpassword', 'core_form');
 $PAGE->requires->yui_module('moodle-auth-passwordunmask', 'M.auth.passwordunmask');
 

@@ -9,7 +9,7 @@ Version: 0.01 - 30.10.2012
 Module is almost stand-alone, and can be easily ported to any moodle 2.3.2+
 
 Main module logic is laying in [auth.php][auth_php] file inside [intake module directory][module_dir].
-  [auth_php]: /onno-schuit/topsdemo/tree/master/public_html/auth/intakeauth.php
+  [auth_php]: /onno-schuit/topsdemo/tree/master/public_html/auth/intake/auth.php
   [module_dir]: /onno-schuit/topsdemo/tree/master/public_html/auth/intake
 
 Main configuration screen
@@ -52,4 +52,5 @@ User registration screen modifications are located inside following files:
 - /login/index_form.html lines [95:113]
 
 User registration process is finished inside /public_html/auth/intake/auth.php by 'user_signup' method of plugin class.
-Please see lines 87:103 for futher details. During registration process 'validate_voucher' method will be called in order to validate voucher and check if it is not overused and still valid.
+Please see lines 87:103 for futher details. During registration process 'validate_voucher' method will be called in order 
+to validate voucher and check if it is not overused and still valid.
