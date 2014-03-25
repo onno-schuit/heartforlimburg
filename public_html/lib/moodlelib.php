@@ -6831,6 +6831,7 @@ function get_string($identifier, $component = '', $a = null, $lazyload = false) 
     if (isset($CFG->debugstringids) && $CFG->debugstringids && optional_param('strings', 0, PARAM_INT)) {
         $result .= ' {' . $identifier . '/' . $component . '}';
     }
+    error_log($result);
     return $result;
 }
 

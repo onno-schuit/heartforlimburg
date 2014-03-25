@@ -18,10 +18,9 @@ foreach ($courses as $course) {
     $i++;
 }
 ?>};
-var selected_courses, selected_groups, ds;
+var selected_courses, ds;
 YUI().use('node', function (Y) {
   selected_courses = document.getElementById('courses').value.split(',');
-  selected_groups = document.getElementById('groups').value.split(',');
 
   var nodes = YAHOO.util.Selector.query('input[type^=submit]');
   for (i=0; i<nodes.length; i++) {
@@ -41,16 +40,6 @@ YUI().use('node', function (Y) {
 
   sd.left = document.createElement('div');
   sd.left.className = 'left panel_wide';
-
-  // Groups selector header
-  sd.header = document.createElement('div');
-  sd.header.className = 'fitemtitle';
-  sd.header.innerHTML = '<label for="groups"><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></label>';
-  sd.appendChild(sd.header);
-
-  sd.left = document.createElement('div');
-  sd.left.className = 'left panel_wide';
-
   // Left header
   sd.left.header = document.createElement('b');
   sd.left.header.innerHTML = '<?php print_string('auth_intake_voucher_use_courses', 'auth_intake'); ?>';

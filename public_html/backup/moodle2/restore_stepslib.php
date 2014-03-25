@@ -2425,6 +2425,19 @@ class restore_course_completion_structure_step extends restore_structure_step {
             );
             $DB->insert_record('course_completions', $params);
         }
+        
+        $modId = $DB->get_record('modules', array('name' => 'repeatcourse'), 'id');
+        $courseModId = $DB->get_record('course_modules', array('course' => $data->course, 'module' => $modId->id), 'id');
+
+        $mailTo = $DB->get_record('user', array('id' => $data->userid), '*');
+        $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
+        
+        $subject = 'Dear' . $mailTo->firstname . '! You have successfully completed the course.';
+        $messagetext = '
+        	Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.',<br/>
+            To subscribe to the refreshercourses distribution, please click <a href="' . $_SERVER['SERVER_NAME'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $data->course . '&userid=' . $data->userid . '">this link</a>.                
+			Best regards, HeartforLimburg team.';
+        email_to_user($mailTo, $from, $subject, $messagetext);
     }
 
     /**

@@ -174,6 +174,21 @@ class completion_completion extends data_object {
             $event->trigger();
         }
 
+        $modId = $DB->get_record('modules', array('name' => 'repeatcourse'), 'id');
+        $courseModId = $DB->get_record('course_modules', array('course' => $data->course, 'module' => $modId->id), 'id');
+
+        $mailTo = $DB->get_record('user', array('id' => $USER->id), '*');
+        $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
+        
+        $subject = 'Dear ' . $mailTo->firstname . '! You have successfully completed the course.';
+        $messagetext = '<table>
+            <tr><td><p><strong> [ <span>Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
+            <br/>To subscribe to the refreshercourses distribution, please click on <strong><a href="http://' . $_SERVER['HTTP_HOST'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $data->course . '">this link</a>.</strong>.
+            <br /><br/><i>Best regards,
+            <br/>HeartforLimburg team.</i>
+            </p></td></tr></table>';
+        email_to_user($mailTo, $from, $subject, $messagetext);
+
         return $result;
     }
 

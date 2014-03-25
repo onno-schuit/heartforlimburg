@@ -130,7 +130,7 @@ class soda {
      *
      * @return void
      */
-    function display($no_layout = false, $activity_id = false, $overriding_controller = false, $overriding_action = false) {            
+    function display($no_layout = false, $activity_id = false, $overriding_controller = false, $overriding_action = false) {
         $this->overriding_no_layout = $no_layout;
         $mod_name = get_called_class();
         global ${$mod_name}, $CFG, $cm, $course, $soda_module_name, $DB, $id;
@@ -138,7 +138,7 @@ class soda {
         $soda_module_name = $mod_name;
         switch($this->plugin_type) {
             case 'mod':
-                ${$mod_name} = static::get_module_instance($activity_id);
+            	${$mod_name} = static::get_module_instance($activity_id);
                 static::set_variables($mod_name);
                 break;
             case 'local':
@@ -245,7 +245,6 @@ class soda {
     function add_layout_and_dispatch($action, $overriding_controller) {
         $mod_name = get_called_class();
         global $CFG, $cm, $PAGE, $soda_module_name, ${$mod_name}, $course;
-
         $this->set_page_variables($cm, $course);
 
         ob_start(); // Start output buffering
@@ -498,7 +497,7 @@ class soda {
     } // function get_navigation
 
 
-    static function get_module_instance($activity_id = false) { 
+    static function get_module_instance($activity_id = false) {
         global $course, $cm, $id, $DB;
         
         if ($activity_id) {
@@ -539,7 +538,7 @@ class soda {
             error("Course is misconfigured");
         } 
          */
-        
+
         if (isset($context)) return;
         if (!$context = context_module::instance($cm->id)) {
             print_error('badcontext');

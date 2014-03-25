@@ -1,51 +1,101 @@
-<? include( $this->get_partial_path('flash') ); ?>
-<h1>Configuring a repeatcourse "<?php echo $this->course->fullname;?>"</h1>
-<p><?php //echo "<pre>"; print_r($this);?></p>
+<?php include( $this->get_partial_path('flash') ); ?>
+<h1>Configuring a course "<?php echo $mainCourseName;?>"</h1>
 <div id="coursetable_div">
+<?php if(isset($curCourses) && !isset($mainCourses)) { ?>
     <table id="coursetable">
         <tr>
-            <th style="width: 5%;">ID</th>
+            <th style="width: 5%;">#</th>
             <th style="width: 40%;">Course</th>
-            <th style="width: 20%;">Ordering</th>
             <th style="width: 20%;">Interval</th>
             <th style="width: 15%;"></th>
+            <th style="width: 20%;">Ordering</th>
         </tr>
         <?php
+        $orderArr = array();
+        foreach ($curCourses as $course) {
+			$orderArr[] = $course->ordering;
+		}
+        $i = 1;
         foreach($curCourses as $val){
+			$order_up = ($val->ordering == min($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 1);"><img src="./media/images/triangle_up.gif" alt="Priority up" title="Priority up"/></a>';
+        	$order_down = ($val->ordering == max($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 0);"><img src="./media/images/triangle_down.gif" alt="Priority down" title="Priority down"/></a>';
+            $intervalStr = $val->cinterval . ' ';
+            $intervalStr .= ($val->cinterval == 1) ? 'day' : 'days';
+
             echo '<tr id="repcourse_'.$val->id.'">
-                <td>'.$val->id.'</td>
+                <td>'.$i.'</td>
                 <td>'.$val->name.'</td>
-                <td>
-                    '.$val->ordering.'
-                    <a href="" class="priority_up"><img src="./media/images/triangle_up.gif" alt="Priority up" class="triangle_up"/></a>
-                    <a href="" class="priority_down"><img src="./media/images/triangle_down.gif" alt="Priority down" class="triangle_down"/></a>
-                </td>
-                <td>'.$val->cinterval.'</td>
+                <td>'.$intervalStr.' </td>
                 <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
+                <td>
+                    '.$order_up.$order_down.'</td>
             </tr>';
+            $i++;
         } ?>
-    </table>
-    <div id="available_courses">
-        <?php if(sizeof($repeatCourses)){ ?>
-        <span>
-            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
-            <select id="course_selector">
-            <?php
-                foreach($repeatCourses as $course){
+    <tr><td colspan="5"></td></tr>
+    <tr class="available_courses">
+	   <td></td>
+	   <td>
+		        <?php if(sizeof($repeatCourses)){ ?>
+		        <span>
+		            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
+		            <select id="course_selector">
+		            <?php
+		                foreach($repeatCourses as $course){
                     echo '<option value="'.$course->id.'">'.$course->fullname.'</option>';
                 }
             ?>
-            </select>
-        </span><span>
-            <label for="repcourse_interval">Interval (in days)</label>
-            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
-        </span><span>
-            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
-        </span>
-        <?php } else {
+		            </select>
+		        </span>
+	   </td><td>
+               <span>
+		            <label for="repcourse_interval">Interval (in days)</label>
+		            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
+		        </span>
+        </td><td>
+		        <span>
+		            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
+		        </span>
+		        <?php } else {
                 echo print_string('no_available_courses', 'repeatcourse');
         } ?>
-    </div>
+	    </td><td></td>
+    </tr>
+</table>
+<?php } else { ?>
+<table id="coursetable">
+        <tr>
+            <th style="width: 40%;">Main Course</th>
+            <th style="width: 40%;">Refreshing Courses</th>
+            <th style="width: 20%;"></th>
+        </tr>
+        <?php
+        foreach($resultArray as $ra){
+                echo '<tr id="maincourse_' . $ra->mid . '">
+                    <td>' . $ra->fullname . '</td>
+                    <td>' . rtrim($resArr[$ra->mid], ', ') . '</td>
+                    <td>
+                        <a href="#" onclick="main_course_remova(' . $ra->mid . ')">Remove all</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="main_course_selecta(' . $ra->mid . ')">Edit</a>
+                    </td>
+                </tr>';
+        }
+        ?>
+    <tr>
+        <td>
+            <select id="main_courses" onchange="main_course_selecta(0)">
+                <option value="0">-- Select Main Course --</option>
+                <?php
+                    foreach($mainCourses as $mc){
+                        echo '<option value="'.$mc->id.'">'.$mc->fullname.'</option>';
+                    }
+                ?>
+            </select>
+        </td>
+        <td colspan="2"></td>
+    </tr>
+</table>
+<?php } ?>
     <div id="result_msg"></div>
     <div id="rep_course_buttons">
         

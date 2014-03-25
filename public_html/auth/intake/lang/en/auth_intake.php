@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -22,17 +23,17 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['auth_intakedescription'] = '<p>Voucher-based self-registration enables a user to create their own account via a
+$string['auth_intakedescription'] = '<p>Voucher-based self-registration enables a user to create their own account via a 
 \'Create new account\' button on the login page, if they have a voucher code. The user then receives an email
-containing a secure link to a page where they can confirm their account.
+containing a secure link to a page where they can confirm their account. 
 Future logins just check the username and password against the stored values in the Moodle database.</p>
-<p>The Moodle administrator can also select courses for a specific voucher. Users who self-register with this voucher
+<p>The Moodle administrator can also select courses for a specific voucher. Users who self-register with this voucher 
 will be automatically enrolled to the associated courses.</p>
-<p>Note: In addition to enabling the plugin, voucher-based self-registration must also be selected from the self
+<p>Note: In addition to enabling the plugin, voucher-based self-registration must also be selected from the self 
 registration drop-down menu on the \'Manage authentication\' page.</p>';
 $string['auth_intakenoemail'] = 'Tried to send you an email but failed!';
-$string['auth_intakerecaptcha'] = 'Adds a visual/audio confirmation form element to the signup page for email
-    self-registering users. This protects your site against spammers and contributes to a worthwhile cause.
+$string['auth_intakerecaptcha'] = 'Adds a visual/audio confirmation form element to the signup page for email 
+    self-registering users. This protects your site against spammers and contributes to a worthwhile cause. 
     See http://www.google.com/recaptcha/learnmore for more details. <br /><em>PHP cURL extension is required.</em>';
 $string['auth_intakerecaptcha_key'] = 'Enable reCAPTCHA element';
 $string['auth_intakesettings'] = 'Settings';
@@ -45,7 +46,6 @@ $string['auth_intake_vouchers_count'] = 'Max Users';
 $string['auth_intake_vouchers_count_explanation'] = '(0 means no limit)';
 $string['auth_intake_vouchers_used'] = 'In Use';
 $string['auth_intake_voucher_courses'] = 'Courses';
-$string['auth_intake_voucher_groups'] = 'Groups';
 $string['auth_intake_voucher_date_from'] = 'Active From';
 $string['auth_intake_voucher_date_to'] = 'Active Till';
 $string['auth_intake_voucher_use_courses'] = 'Enroll users into';
@@ -81,4 +81,4 @@ $string['auth_intake_delete_voucher_submit'] = 'Yes, delete the voucher';
 $string['auth_intake_delete_voucher_confirmation'] = 'Do you really want to delete the voucher?';
 
 // Create voucher
-$string['auth_intake_created'] = 'New voucher has been created';
+$string['auth_intake_created'] = 'New voucher has been created'; 

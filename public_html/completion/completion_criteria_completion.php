@@ -104,6 +104,7 @@ class completion_criteria_completion extends data_object {
      * This method creates a course_completion_crit_compl record
      */
     public function mark_complete() {
+        global $DB, $USER; //delete if no completion_repcourses here
         // Create record
         $this->timecompleted = time();
 
@@ -121,6 +122,22 @@ class completion_criteria_completion extends data_object {
         );
         $ccompletion = new completion_completion($cc);
         $ccompletion->mark_inprogress($this->timecompleted);
+//repcourses
+        $modId = $DB->get_record('modules', array('name' => 'repeatcourse'), 'id');
+        $courseModId = $DB->get_record('course_modules', array('course' => $this->course, 'module' => $modId->id), 'id');
+
+        $mailTo = $DB->get_record('user', array('id' => $USER->id), '*');
+        $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
+        
+        $subject = 'Dear ' . $mailTo->firstname . '! You have successfully completed the course.';
+        $messagetext = '<table>
+            <tr><td><p><strong> [ <span>Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
+            <br/>To subscribe to the refreshercourses distribution, please click on <strong><a href="http://' . $_SERVER['HTTP_HOST'] . '/mod/repeatcourse/index.php?id=' . $courseModId->id . '&action=optin&maincourseid=' . $this->course . '">this link</a>.</strong>.
+            <br /><br/><i>Best regards,
+            <br/>HeartforLimburg team.</i>
+            </p></td></tr></table>';
+        email_to_user($mailTo, $from, $subject, $messagetext);
+//repcourses
     }
 
     /**
