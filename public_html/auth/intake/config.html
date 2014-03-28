@@ -34,6 +34,7 @@ if ($result) {
     <th>&nbsp;</th>
   </tr>
 <?php
+file_put_contents('filename.txt', print_r($vouchers, true));
    foreach ($vouchers as $voucher) {
 ?>
   <tr>
@@ -41,12 +42,14 @@ if ($result) {
     <td class="auth_intake_voucher_count" id="<?php p($voucher->code); ?>_count"><?php p($voucher->count); ?></td>
     <td class="auth_intake_voucher_used"> <?php p($voucher->used); ?></td>
     <td class="auth_intake_voucher_courses"><?php
-      for ($i=0; $i<count($voucher->courses); $i++) {
+    if(isset($voucher->courses)){
+      for ($i=1; $i<count($voucher->courses); $i++) {
         print $voucher->courses[$i]->fullname;
         if ($i+1 < count($voucher->courses)) {
           print ', ';
         }
       }
+    }
       ?></td>
     <td class="auth_intake_voucher_actions"><a href="/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
       <a href="javascript:void(0);" onclick="delete_voucher_form('<?php p($voucher->code); ?>');"><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></a>

@@ -35,14 +35,27 @@ class new_voucher_form extends moodleform {
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', (isset($this->_customdata->courses) ? $this->_customdata->courses : ''), array('id'=>'courses'));
+//        $mform->addElement('hidden', 'groups', (isset($this->_customdata->groups) ? $this->_customdata->groups : ''), array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_new_voucher', 'auth_intake'));
+
+        $mform->setType('action', PARAM_TEXT);
+        $mform->setType('auth', PARAM_TEXT);
+        $mform->setType('code', PARAM_TEXT);
+        $mform->setType('count', PARAM_TEXT);
+        $mform->setType('used', PARAM_TEXT);
+        $mform->setType('date_from', PARAM_TEXT);
+        $mform->setType('date_to', PARAM_TEXT);
+        $mform->setType('use_dates', PARAM_BOOL);
+        $mform->setType('courses', PARAM_TEXT);
+//        $mform->setType('groups', PARAM_TEXT);
+        $mform->setType('submitbutton', PARAM_TEXT);
     }
 } 
 
 class edit_voucher_form extends moodleform {
     function definition() {
-        global $USER, $CFG;
+        global $USER, $CFG, $DB;
         /*$mform =*/ $mform =& $this->_form;
         $mform->addElement('hidden', 'action', 'edit');
         $mform->addElement('hidden', 'auth', 'intake');
@@ -64,8 +77,37 @@ class edit_voucher_form extends moodleform {
         $mform->setDefault('use_dates', $this->_customdata['use_dates']);
 
         // Courses data added using javascript
+//        $mform->addElement('select', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
+//file_put_contents('text.txt', print_r($this->_customdata['courses'], true));
+        //$courses = $DB->get_records_sql('SELECT id, name FROM {auth_intake_vouchers} WHERE id = :cus_id', array('cus_id' => $this->_customdata['courses']));
+
+        /*$bindedCrs = $DB->get_record('auth_intake_vouchers', array('code' => required_param('code', PARAM_TEXT)));
+        $courses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE 1');
+        //$courses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE id NOT IN ('.$notAvCrs->courses.')');
+file_put_contents('error_log', print_r($courses, true));
+        $availCourses = array();
+        foreach($courses as $crs){
+            $availCourses[$crs->id] = $crs->fullname;
+        }
+        $mform->addElement('select', 'courses', get_string('auth_intake_voucher_courses', 'auth_intake'), $availCourses, array('multiple'=>'true', 'size'=>'6'));*/
+
+        // Courses data added using javascript
         $mform->addElement('hidden', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
+        //$mform->addElement('hidden', 'groups', $this->_customdata['groups'], array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
+
+        $mform->setType('action', PARAM_TEXT);
+        $mform->setType('auth', PARAM_TEXT);
+        $mform->setType('id', PARAM_INT);
+        $mform->setType('code', PARAM_TEXT);
+        $mform->setType('count', PARAM_TEXT);
+        $mform->setType('used', PARAM_TEXT);
+        $mform->setType('date_from', PARAM_TEXT);
+        $mform->setType('date_to', PARAM_TEXT);
+        $mform->setType('use_dates', PARAM_BOOL);
+        $mform->setType('courses', PARAM_TEXT);
+//        $mform->setType('groups', PARAM_TEXT);
+        $mform->setType('submitbutton', PARAM_TEXT);
     }
 } 
