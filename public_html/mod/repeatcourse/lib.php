@@ -26,13 +26,8 @@ function repeatcourse_cron(){
                     $mailTo = $DB->get_record('user', array('id' => $ccu->userid), '*');
                     $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
 
-                    $subject = 'Dear' . $mailTo->firstname . '!';
-                    $messagetext = '<table><tr><td><p>
-                    	<strong> [ <span> Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
-						<br/>Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin today. <br/>
-                        <br /><br/><i>Best regards,
-            			<br/>HeartforLimburg team.</i>
-            		</p></td></tr></table>';
+                    $subject = sprintf(get_string('email_repeatcourses_today_subject', 'repeatcourse'), $mailTo->firstname);
+                    $messagetext = sprintf(get_string('email_repeatcourses_today_text', 'repeatcourse'), $mailTo->firstname, $mailTo->lastname, $mailTo->fullname);
                     email_to_user($mailTo, $from, $subject, $messagetext);
                 }
             }
@@ -45,14 +40,9 @@ function repeatcourse_cron(){
                 foreach($curCourseUsers as $ccu){
                     $mailTo = $DB->get_record('user', array('id' => $ccu->userid), '*');
                     $from = 'info@'.ltrim($_SERVER['SERVER_NAME'], 'www.');
-
-                    $subject = 'Dear' . $mailTo->firstname . '!';
-                    $messagetext = '<table><tr><td><p>
-                    	<strong> [ <span> Dear '.$mailTo->firstname . ' ' . $mailTo->lastname.'</span> ],</strong>
-            			<br/>Your refresher course <strong>' . $repcourse->fullname . '</strong> is about to begin. The course will start on ' . date('d-m-Y', $startDateReminder) . '
-            			<br /><br/><i>Best regards,
-            			<br/>HeartforLimburg team.</i>
-            		</p></td></tr></table>';
+                    
+                    $subject = sprintf(get_string('email_repeatcourses_reminder_subject', 'repeatcourse'), $mailTo->firstname);
+                    $messagetext = sprintf(get_string('email_repeatcourses_reminder_text', 'repeatcourse'), $mailTo->firstname, $mailTo->lastname, $mailTo->fullname, date('d-m-Y', $startDateReminder));
                     email_to_user($mailTo, $from, $subject, $messagetext);
                 }
             }
