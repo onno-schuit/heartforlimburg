@@ -35,7 +35,7 @@ class new_voucher_form extends moodleform {
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', (isset($this->_customdata->courses) ? $this->_customdata->courses : ''), array('id'=>'courses'));
-//        $mform->addElement('hidden', 'groups', (isset($this->_customdata->groups) ? $this->_customdata->groups : ''), array('id'=>'groups'));
+        $mform->addElement('hidden', 'groups', (isset($this->_customdata->groups) ? $this->_customdata->groups : ''), array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_new_voucher', 'auth_intake'));
 
@@ -48,7 +48,7 @@ class new_voucher_form extends moodleform {
         $mform->setType('date_to', PARAM_TEXT);
         $mform->setType('use_dates', PARAM_BOOL);
         $mform->setType('courses', PARAM_TEXT);
-//        $mform->setType('groups', PARAM_TEXT);
+        $mform->setType('groups', PARAM_TEXT);
         $mform->setType('submitbutton', PARAM_TEXT);
     }
 } 
@@ -93,7 +93,7 @@ file_put_contents('error_log', print_r($courses, true));
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
-        //$mform->addElement('hidden', 'groups', $this->_customdata['groups'], array('id'=>'groups'));
+        $mform->addElement('hidden', 'groups', $this->_customdata['groups'], array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
 
@@ -107,7 +107,7 @@ file_put_contents('error_log', print_r($courses, true));
         $mform->setType('date_to', PARAM_TEXT);
         $mform->setType('use_dates', PARAM_BOOL);
         $mform->setType('courses', PARAM_TEXT);
-//        $mform->setType('groups', PARAM_TEXT);
+        $mform->setType('groups', PARAM_TEXT);
         $mform->setType('submitbutton', PARAM_TEXT);
     }
 } 

@@ -157,7 +157,7 @@ abstract class moodleform {
      * @param bool $editable
      */
     function moodleform($action=null, $customdata=null, $method='post', $target='', $attributes=null, $editable=true) {
-        global $CFG, $FULLME;
+        global $CFG, $FULLME, $DB;
         // no standard mform in moodle should allow autocomplete with the exception of user signup
         if (empty($attributes)) {
             $attributes = array('autocomplete'=>'off');
@@ -178,6 +178,17 @@ abstract class moodleform {
             }
             //TODO: use following instead of FULLME - see MDL-33015
             //$action = strip_querystring(qualified_me());
+        }
+        //Select vouchers groups
+        $code = optional_param('code', '', PARAM_TEXT);
+        if($code != ''){
+            $groupRec = $DB->get_record('auth_intake_vouchers', array('code' => $code));
+            $customdata['groups'] = $groupRec->groups;
+        } else {
+            if(!is_object($customdata)){
+                $customdata = new stdClass();
+            }
+            $customdata->groups = '';
         }
         // Assign custom data first, so that get_form_identifier can use it.
         $this->_customdata = $customdata;

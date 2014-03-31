@@ -51,6 +51,10 @@ $string['auth_intake_voucher_date_to'] = 'Active Till';
 $string['auth_intake_voucher_use_courses'] = 'Enroll users into';
 $string['auth_intake_voucher_other_courses'] = 'Do not enroll users into';
 
+$string['auth_intake_voucher_groups'] = 'Groups';
+$string['auth_intake_voucher_use_groups'] = 'Also enroll users into groups';
+$string['auth_intake_voucher_other_groups'] = 'Do not enroll users into groups';
+
 $string['auth_intake_loginsteps'] = 'Please fill in your voucher code here.';
 $string['auth_intake_my_vouchercode'] = 'My voucher code';
 

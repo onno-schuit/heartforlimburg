@@ -100,8 +100,6 @@ class auth_plugin_intake extends auth_plugin_base {
         if (!$enrol = enrol_get_plugin('manual')) {
             return false;
         }
-error_log('user');error_log(var_export($user, true));
-error_log('instance');error_log(var_export($instance, true));
         $enrol->enrol_user($instance, $user->id, $instance->roleid, time(), 0);
 
         return true;
@@ -144,9 +142,10 @@ error_log('instance');error_log(var_export($instance, true));
         events_trigger('user_created', $user);
 
         $voucherCode = required_param('vouchercode', PARAM_RAW);
-        $courses = $DB->get_record_sql('SELECT courses FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode));
+        $courses = $DB->get_record_sql('SELECT courses FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->courses;
+        $groups = $DB->get_record_sql('SELECT groups FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->groups;
         if(sizeof($courses) > 0) {
-            $myGroups = $DB->get_records_sql('SELECT id FROM {groups} WHERE courseid IN( ' . $courses->courses . ')');
+            $myGroups = $DB->get_records_sql('SELECT id FROM {groups} WHERE courseid IN( ' . $courses . ')');
             if(sizeof($myGroups) > 0) {
                 foreach($myGroups as $c){
                     $usa = new stdClass();
@@ -157,6 +156,19 @@ error_log('instance');error_log(var_export($instance, true));
                     $usa->itemid       = 0;
                     $DB->insert_record('groups_members', $usa);
                 }
+            }
+        }
+        if(sizeof($groups) > 0) {
+echo "<pre>"; print_r($groups); die;
+            $myGroups = explode(',', $groups);
+            foreach($myGroups as $c){
+                $usa = new stdClass();
+                $usa->groupid      = $c;
+                $usa->userid       = $user->id;
+                $usa->timeadded    = time();
+                $usa->component    = '';
+                $usa->itemid       = 0;
+                $DB->insert_record('groups_members', $usa);
             }
         }
 
@@ -277,7 +289,7 @@ error_log('instance');error_log(var_export($instance, true));
         }
 
         $vouchers = $DB->get_records($this->table_name);
-error_log('vouchers'); error_log(var_export($vouchers, true));
+
         $_cache_courses = array();
         foreach ($vouchers as $vouch) {//TODO: rollback in buggy case
             $_courses = array();
@@ -295,6 +307,12 @@ error_log('vouchers'); error_log(var_export($vouchers, true));
         $form = Null;
         $view = 'config.html';
         $courses = $DB->get_records('course');
+        $avCourses = '';
+        foreach($voucher->courses as $v){
+            $avCourses .= $v->id . ',';
+        }
+        $avCourses .= rtrim($avCourses, ',');
+        $groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE courseid IN (' . $avCourses . ')');
 
         // Skip this forms if main display should be shown
         if (!is_array($result) || !$result[0]) {
@@ -411,9 +429,10 @@ error_log('vouchers'); error_log(var_export($vouchers, true));
         $voucher->code = $config->code;
         $voucher->count = $config->count;
         $voucher->courses = $config->courses;
+        $voucher->groups = $config->groups;
         $voucher->active_from = $config->date_from;
         $voucher->active_till = $config->date_to;
-
+        
         $DB->update_record($this->table_name, $voucher);
 
         return array(true, 'done');
@@ -461,6 +480,7 @@ error_log('vouchers'); error_log(var_export($vouchers, true));
         $new_voucher = (object)array('code' => $config->code,
                                      'count' => $config->count,
                                      'courses' => $config->courses,
+                                     'groups' => $config->groups,
                                      'active_from' => $config->date_from,
                                      'active_till' => $config->date_to,
                                      'used' => 0);
