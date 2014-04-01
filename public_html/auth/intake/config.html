@@ -6,7 +6,8 @@
     }
 
     $yesno = array( get_string('no'), get_string('yes') );
-
+?>
+<?php
 // Proccess messages
 if ($result) {
    if ($result[0]) {
@@ -17,59 +18,65 @@ if ($result) {
        $class = 'red';
    }
    ?>
-<div class="<?php echo $class; ?>"><?php print_string('auth_intake_' . $result[1], 'auth_intake'); ?></div>
-<?php
+   <div class="<?php echo $class; ?>"><?php print_string('auth_intake_' . $result[1], 'auth_intake'); ?></div>
+   <?php
 }
 // EOF process messages
 ?>
 <a href="/admin/auth_config.php?auth=intake&action=new" class="new_voucher_a"><?php print_string('auth_intake_new_voucher', 'auth_intake'); ?></a>
 <h3 class="main"><?php print_string('auth_intake_vouchers_label', 'auth_intake'); ?></h3>
-<table class="auth_intake_voucher" cellspacing="0" cellpadding="0" border="1" width="100%">
-    <tr>
-        <th><?php print_string('auth_intake_vouchercode', 'auth_intake'); ?></th>
-        <th><?php print_string('auth_intake_vouchers_count', 'auth_intake'); ?></th>
-        <th><?php print_string('auth_intake_vouchers_used', 'auth_intake'); ?></th>
-        <th><?php print_string('auth_intake_voucher_courses', 'auth_intake'); ?></th>
-        <th><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php
+<table class="auth_intake_voucher" cellspacing="0" cellpadding="0" border="1" width="100%" style="text-align: center;">
+  <tr>
+    <th><?php print_string('auth_intake_vouchercode', 'auth_intake'); ?></th>
+    <th><?php print_string('auth_intake_vouchers_count', 'auth_intake'); ?></th>
+    <th><?php print_string('auth_intake_vouchers_used', 'auth_intake'); ?></th>
+    <th><?php print_string('auth_intake_voucher_courses', 'auth_intake'); ?></th>
+    <th><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></th>
+    <th>&nbsp;</th>
+  </tr>
+<?php //echo "<pre>"; print_r($vouchers); die;
    foreach ($vouchers as $voucher) {
 ?>
-    <tr>
-        <td class="auth_intake_voucher_code"><?php p($voucher->code); ?></td>
-        <td class="auth_intake_voucher_count" id="<?php p($voucher->code); ?>_count"><?php p($voucher->count); ?></td>
-        <td class="auth_intake_voucher_used"> <?php p($voucher->used); ?></td>
-        <td class="auth_intake_voucher_courses"><?php
-      for ($i=0; $i<count($voucher->courses); $i++) {
-            print $voucher->courses[$i]->fullname;
-            if ($i+1 < count($voucher->courses)) {
-            print ', ';
-            }
-            }
-            ?></td>
-        <td class="auth_intake_voucher_groups"><?php
-      for ($i=0; $i<count($voucher->groups); $i++) {
-            print $voucher->groups[$i]->fullname;
-            if ($i+1 < count($voucher->groups)) {
-            print ', ';
-            }
-            }
-            ?></td>
-        <td class="auth_intake_voucher_actions"><a href="/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
-            <a href="javascript:void(0);" onclick="delete_voucher_form('<?php p($voucher->code); ?>');"><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></a>
-        </td>
-    </tr>
-    <?php
+  <tr>
+    <td class="auth_intake_voucher_code"><?php p($voucher->code); ?></td>
+    <td class="auth_intake_voucher_count" id="<?php p($voucher->code); ?>_count"><?php p($voucher->count); ?></td>
+    <td class="auth_intake_voucher_used"> <?php p($voucher->used); ?></td>
+    <td class="auth_intake_voucher_courses"><?php
+    if($voucher->courses != '' && $voucher->courses != null){
+        $filenames = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE id IN ('.$voucher->courses.')');
+        $filenameStr = '';
+        foreach($filenames as $fn){
+            $filenameStr .= $fn->fullname.', ';
+        }
+        $filenameStr = rtrim($filenameStr, ', ');
+        print_r($filenameStr);
+    }
+      ?></td>
+      <td class="auth_intake_voucher_groups"><?php
+    if($voucher->groups != '' && $voucher->groups != null){
+        $filenames = $DB->get_records_sql('SELECT id, name FROM {groups} WHERE id IN ('.$voucher->groups.')');
+        $filenameStr = '';
+        foreach($filenames as $fn){
+            $filenameStr .= $fn->name.', ';
+        }
+        $filenameStr = rtrim($filenameStr, ', ');
+        print_r($filenameStr);
+    }
+      ?></td>
+    <td class="auth_intake_voucher_actions"><a href="/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
+      <a href="javascript:void(0);" onclick="delete_voucher_form('<?php p($voucher->code); ?>');"><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></a>
+    </td>
+  </tr>
+<?php
    }
 ?>
 </table>
 <div id="delete_voucher">
-    <b><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></b><br />
-    <p><?php print_string('auth_intake_delete_voucher_confirmation', 'auth_intake'); ?></p>
-    <input type="hidden" name="delete_voucher" value="0" id="delete_voucher_switch" />
-    <input type="button" onclick="submit_form();" value="<?php print_string('auth_intake_delete_voucher_submit', 'auth_intake'); ?>" />
-    <a href="javascript:void(0);" onclick="cancel_delete_voucher();"><?php print_string('auth_intake_cancel', 'auth_intake'); ?></a>
+  <b><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></b><br />
+  <p><?php print_string('auth_intake_delete_voucher_confirmation', 'auth_intake'); ?></p>
+  <input type="hidden" name="delete_voucher" value="0" id="delete_voucher_switch" />
+  <input type="button" onclick="submit_form();" value="<?php print_string('auth_intake_delete_voucher_submit', 'auth_intake'); ?>" />
+  <a href="javascript:void(0);" onclick="cancel_delete_voucher();"><?php print_string('auth_intake_cancel', 'auth_intake'); ?></a>
 
 </div>
 
@@ -82,7 +89,6 @@ if ($result) {
 <tr>
     <td align="right"><label for="menurecaptcha"><?php print_string('auth_intakerecaptcha_key', 'auth_intake') ?></label></td>
     <td><?php
-        //global $OUTPUT;
         echo html_writer::select($yesno, 'recaptcha', $config->recaptcha, false);
         ?></td>
     <td><?php print_string('auth_intakerecaptcha', 'auth_intake') ?></td>
@@ -94,61 +100,61 @@ print_auth_lock_options($this->authtype, $user_fields, get_string('auth_fieldloc
 ?>
 </table>
 <style>
-    .new_voucher_a {
-        float: right;
-        font-weight: bold;
-    }
-    #new_voucher, #edit_voucher, #delete_voucher {
-        display: none;
-    }
-    #delete_voucher {
-        position: fixed;
-        top: 200px;
-        left: 50%;
-        width: 300px;
-        background: #FFF;
-        margin-left: -150px;
-        padding: 10px;
-        border: 1px solid grey;
+.new_voucher_a {
+    float: right;
+    font-weight: bold;
+}
+#new_voucher, #edit_voucher, #delete_voucher {
+    display: none;
+}
+#delete_voucher {
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    width: 300px;
+    background: #FFF;
+    margin-left: -150px;
+    padding: 10px;
+    border: 1px solid grey;
 
 
-        -moz-box-shadow: 4px 4px 5px #888;
-        -webkit-box-shadow: 4px 4px 5px #888;
-        box-shadow: 4px 4px 5px #888;
+-moz-box-shadow: 4px 4px 5px #888;
+-webkit-box-shadow: 4px 4px 5px #888;
+box-shadow: 4px 4px 5px #888;
 
-        -moz-border-radius: 15px;
-        border-radius: 15px;
-    }
-    #delete_voucher_id {
-        font-weight: bold;
-    }
+-moz-border-radius: 15px;
+border-radius: 15px;
+}
+#delete_voucher_id {
+    font-weight: bold;
+}
 </style>
 <script type="text/javascript">
-    function show_block(id) {
-        document.getElementById(id).style.display = 'block';
-        document.getElementById(id + '_switch').value = '1';
-    }
-    function hide_block(id) {
-        document.getElementById(id + '_switch').value = '0';
-        document.getElementById(id).style.display = 'none';
-    }
-    function hide_all_forms() {
-        hide_block('delete_voucher');
-    }
+function show_block(id) {
+    document.getElementById(id).style.display = 'block';
+    document.getElementById(id + '_switch').value = '1';
+}
+function hide_block(id) {
+    document.getElementById(id + '_switch').value = '0';
+    document.getElementById(id).style.display = 'none';
+}
+function hide_all_forms() {
+    hide_block('delete_voucher');
+}
 
-    function submit_form() {
-        document.getElementById('authmenu').submit();
-    }
+function submit_form() {
+    document.getElementById('authmenu').submit();
+}
 
-    function delete_voucher_form(code) {
-        hide_all_forms();
-        show_block('delete_voucher');
+function delete_voucher_form(code) {
+    hide_all_forms();
+    show_block('delete_voucher');
 
-        document.getElementById('delete_voucher_id').innerHTML = code;
-        document.getElementById('delete_voucher_switch').value = code;
-    }
-    function cancel_delete_voucher() {
-        hide_block('delete_voucher');
-    }
+    document.getElementById('delete_voucher_id').innerHTML = code;
+    document.getElementById('delete_voucher_switch').value = code;
+}
+function cancel_delete_voucher() {
+    hide_block('delete_voucher');
+}
 
 </script>

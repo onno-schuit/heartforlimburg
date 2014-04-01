@@ -1,3 +1,5 @@
+<script src="http://yui.yahooapis.com/2.9.0/build/utilities/utilities.js" ></script>
+<script src="http://yui.yahooapis.com/2.9.0/build/slider/slider-min.js" ></script>
 <script src="http://yui.yahooapis.com/2.9.0/build/selector/selector-min.js"></script>
 <script type="text/javascript">
 if (!Array.prototype.indexOf) { 
@@ -13,6 +15,16 @@ $i = 0;
 foreach ($courses as $course) {
     echo "'" . $course->id . "': '" . $course->fullname . "'";
     if ($i+1 !== count($courses)) {
+        echo ',';
+    }
+    $i++;
+}
+?>};
+var groups = {<?php
+$i = 0;
+foreach ($groups as $group) {
+    echo "'" . $group->id . "': '" . $group->name . "'";
+    if ($i+1 !== count($groups)) {
         echo ',';
     }
     $i++;
@@ -41,16 +53,6 @@ YUI().use('node', function (Y) {
 
   sd.left = document.createElement('div');
   sd.left.className = 'left panel_wide';
-
-  // Groups selector header
-  sd.header = document.createElement('div');
-  sd.header.className = 'fitemtitle';
-  sd.header.innerHTML = '<label for="groups"><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></label>';
-  sd.appendChild(sd.header);
-
-  sd.left = document.createElement('div');
-  sd.left.className = 'left panel_wide';
-
   // Left header
   sd.left.header = document.createElement('b');
   sd.left.header.innerHTML = '<?php print_string('auth_intake_voucher_use_courses', 'auth_intake'); ?>';
@@ -128,9 +130,147 @@ YUI().use('node', function (Y) {
   sd.br = document.createElement('br');
   sd.br.clear = 'all';
   sd.appendChild(sd.br);
-
+  
   document.getElementById('fitem_id_use_dates').appendChild(sd);
+  
+  /************************************************ Groups selectors *********************************************/
+  //Left side
+  // Courses selector header
+  gsd = document.createElement('div');
+  gsd.className = 'group_selector';
+  
+  gsd.header = document.createElement('div');
+  gsd.header.className = 'fitemtitle';
+  gsd.header.innerHTML = '<label for="groups"><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></label>';
+  gsd.appendChild(gsd.header);
+
+  gsd.left = document.createElement('div');
+  gsd.left.className = 'left panel_wide';
+  // Left header
+  gsd.left.header = document.createElement('b');
+  gsd.left.header.innerHTML = '<?php print_string('auth_intake_voucher_use_groups', 'auth_intake'); ?>';
+  gsd.left.appendChild(gsd.left.header);
+
+  // Left Selector
+  gsd.left.selector = document.createElement('select');
+  gsd.left.selector.opts = {};
+  gsd.left.selector.multiple = 'multiple';
+  gsd.left.appendChild(gsd.left.selector);;
+  buildGroups(gsd.left.selector, true);
+
+  // Controls
+  gsd.mid  = document.createElement('div');
+  gsd.mid.className = 'left panel_mid';
+  gsd.mid.to = document.createElement('a');
+  gsd.mid.to.href = 'javascript:void(0);';
+  gsd.mid.to.innerHTML = '<?php print_string('auth_intake_add', 'auth_intake'); ?>';
+  gsd.mid.to.onclick = function() {
+    //debugger;
+    var _selected = getGroupSelection(gsd.left.selector, true);
+    var _newly_selected = getGroupSelection(gsd.right.selector);
+    selected_groups = _selected.concat(_newly_selected);
+
+    redrawGroups();
+  }
+
+  gsd.mid.divider = document.createElement('span');
+  gsd.mid.divider.innerHTML = ' | ';
+
+
+  gsd.mid.from = document.createElement('a');
+  gsd.mid.from.href = 'javascript:void(0);';
+  gsd.mid.from.innerHTML = '<?php print_string('auth_intake_remove', 'auth_intake'); ?>';
+  gsd.mid.from.onclick = function() {
+    var _selected = getGroupSelection(gsd.left.selector);
+    for(i in _selected) {
+        if (_selected[i] !== '') {
+           var _value = _selected[i];
+           while(_selected.indexOf(_value) !== -1) {
+               _selected.splice(_selected.indexOf(_value));
+           }
+        }
+    }
+    selected_groups = _selected;
+
+    redrawGroups();
+  }
+  gsd.mid.appendChild(gsd.mid.to);
+  gsd.mid.appendChild(gsd.mid.divider);
+  gsd.mid.appendChild(gsd.mid.from);
+
+
+  // Right side
+  gsd.right = document.createElement('div');
+  gsd.right.className = 'left panel_wide';
+
+  // Right header
+  gsd.right.header = document.createElement('b');
+  gsd.right.header.innerHTML = '<?php print_string('auth_intake_voucher_other_groups', 'auth_intake'); ?>';
+  gsd.right.appendChild(gsd.right.header);
+
+  // Right Selector
+  gsd.right.selector = document.createElement('select');
+  gsd.right.selector.opts = {};
+  gsd.right.selector.multiple = 'multiple';
+  gsd.right.appendChild(gsd.right.selector);
+  buildGroups(gsd.right.selector, false);
+
+  gsd.appendChild(gsd.left);
+  gsd.appendChild(gsd.mid);
+  gsd.appendChild(gsd.right);
+
+  // Clear
+  gsd.br = document.createElement('br');
+  gsd.br.clear = 'all';
+  gsd.appendChild(gsd.br);
+  
+
+  document.getElementById('fitem_id_use_dates').appendChild(gsd);
 });
+
+function buildGroups(selector, condition) {
+  for (id in groups) {
+    if ((selected_groups.indexOf(id) !== -1) == condition) {
+      selector.opts[id] = document.createElement('option');
+      selector.opts[id].value = id;
+      selector.opts[id].innerHTML = groups[id];
+      selector.appendChild(selector.opts[id]);
+    }
+  }
+}
+
+function cleanGroupSelect(select) {
+  var _nodes = select.childNodes.length;
+  for (i=0; i<_nodes; i++) {
+    select.removeChild(select.lastChild);
+  }
+}
+
+function getGroupSelection(o, skip_check){
+	if (o.options.length == 0) return [];
+
+	var selectedGroups = [];
+	for (var i = 0; i < o.options.length; i++) {
+	   if(skip_check || o.options[i].selected){
+	       selectedGroups.push(o.options[i].value);
+       }
+    }
+	return selectedGroups;
+}
+
+function redrawGroups() {
+    cleanGroupSelect(gsd.left.selector);
+    cleanGroupSelect(gsd.right.selector);
+    buildGroups(gsd.left.selector, true);
+    buildGroups(gsd.right.selector, false);
+
+    while (selected_groups.indexOf('') !== -1) {
+      selected_groups.splice(selected_groups.indexOf(''), 1);
+    }
+    document.getElementById('groups').value = selected_groups.join(',');
+}
+
+/************************************************ End of groups *********************************************/
 
 function buildOptions(selector, condition) {
   // Add one empty option
@@ -175,11 +315,13 @@ function redrawOptions() {
 
 </script>
 <style>
-.course_selector {
+.course_selector,
+.group_selector {
     width: 600px;
     clear: both;
 }
-.course_selector br {
+.course_selector br,
+.group_selector br {
     clear: both;
 }
 .left {
