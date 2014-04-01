@@ -20,12 +20,12 @@
 
 /********************************* E-mails beginning ****************************/
 	$string['email_repeatcourses_today_subject'] = 'Dear %s!';
-	$string['email_repeatcourses_today_text'] = ''<table><tr><td><p>
+	$string['email_repeatcourses_today_text'] = '<table><tr><td><p>
                     	<strong> [ <span> Dear %s %s</span> ],</strong>
 						<br/>Your refresher course <strong>%s</strong> is about to begin today. <br/>
                         <br /><br/><i>Best regards,
             			<br/>HeartforLimburg team.</i>
-            		</p></td></tr></table>'';
+            		</p></td></tr></table>';
 	$string['email_repeatcourses_reminder_subject'] = 'Dear %s!';
 	$string['email_repeatcourses_reminder_text'] = '<table><tr><td><p>
                     	<strong> [ <span> Dear %s %s</span> ],</strong>
