@@ -1278,7 +1278,6 @@ abstract class enrol_plugin {
      */
     public function enrol_user(stdClass $instance, $userid, $roleid = null, $timestart = 0, $timeend = 0, $status = null, $recovergrades = null) {
         global $DB, $USER, $CFG; // CFG necessary!!!
-
         if ($instance->courseid == SITEID) {
             throw new coding_exception('invalid attempt to enrol into frontpage course!');
         }

@@ -2,7 +2,6 @@ YUI.add('moodle-core-notification-alert', function (Y, NAME) {
 
 var DIALOGUE_PREFIX,
     BASE,
-    COUNT,
     CONFIRMYES,
     CONFIRMNO,
     TITLE,
@@ -11,7 +10,6 @@ var DIALOGUE_PREFIX,
 
 DIALOGUE_PREFIX = 'moodle-dialogue',
 BASE = 'notificationBase',
-COUNT = 0,
 CONFIRMYES = 'yesLabel',
 CONFIRMNO = 'noLabel',
 TITLE = 'title',
@@ -52,7 +50,7 @@ ALERT = function(config) {
     ALERT.superclass.constructor.apply(this, [config]);
 };
 Y.extend(ALERT, M.core.dialogue, {
-    _enterKeypress : null,
+    closeEvents: [],
     initializer : function() {
         this.publish('complete');
         var yes = Y.Node.create('<input type="button" id="id_yuialertconfirm-' + this.get('COUNT') + '" value="'+this.get(CONFIRMYES)+'" />'),
@@ -65,11 +63,21 @@ Y.extend(ALERT, M.core.dialogue, {
         this.setStdModContent(Y.WidgetStdMod.HEADER,
                 '<h1 id="moodle-dialogue-'+this.get('COUNT')+'-header-text">' + this.get(TITLE) + '</h1>', Y.WidgetStdMod.REPLACE);
         this.after('destroyedChange', function(){this.get(BASE).remove();}, this);
-        this._enterKeypress = Y.on('key', this.submit, window, 'down:13', this);
-        yes.on('click', this.submit, this);
+        this.closeEvents.push(
+            Y.on('key', this.submit, window, 'down:13', this),
+            yes.on('click', this.submit, this)
+        );
+
+        var closeButton = this.get('boundingBox').one('.closebutton');
+        if (closeButton) {
+            // The close button should act exactly like the 'No' button.
+            this.closeEvents.push(
+                closeButton.on('click', this.submit, this)
+            );
+        }
     },
     submit : function() {
-        this._enterKeypress.detach();
+        new Y.EventHandle(this.closeEvents).detach();
         this.fire('complete');
         this.hide();
         this.destroy();

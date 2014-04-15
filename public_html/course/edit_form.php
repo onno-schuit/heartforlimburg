@@ -23,10 +23,13 @@ class course_edit_form extends moodleform {
         $PAGE->requires->yui_module('moodle-course-formatchooser', 'M.course.init_formatchooser',
                 array(array('formid' => $mform->getAttribute('id'))));
 
-        $course        = $this->_customdata['course']; // this contains the data of this form
-        $category      = $this->_customdata['category'];
-        $editoroptions = $this->_customdata['editoroptions'];
-        $returnto = $this->_customdata['returnto'];
+		$_customdata = (array)$this->_customdata;
+			
+		$course        = $_customdata['course']; // this contains the data of this form
+		$category      = $_customdata['category'];
+		$editoroptions = $_customdata['editoroptions'];
+		$returnto = $_customdata['returnto'];
+        
 
         $systemcontext   = context_system::instance();
         $categorycontext = context_coursecat::instance($category->id);
@@ -321,6 +324,7 @@ class course_edit_form extends moodleform {
                     $options[$grouping->id] = format_string($grouping->name);
                 }
             }
+            core_collator::asort($options);
             $gr_el =& $mform->getElement('defaultgroupingid');
             $gr_el->load($options);
         }

@@ -110,7 +110,6 @@ if ($editform->is_cancelled()) {
             if ($missing > $userpergrp * (1-AUTOGROUP_MIN_RATIO)) {
                 // spread the users from the last small group
                 $numgrps--;
-                if($numgrps == 0) { $numgrps = 1; }
                 $userpergrp = floor($usercnt/$numgrps);
             }
         }

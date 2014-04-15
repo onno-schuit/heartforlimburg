@@ -93,7 +93,7 @@ file_put_contents('error_log', print_r($courses, true));
 
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
-        $mform->addElement('hidden', 'groups', $this->_customdata['groups'], array('id'=>'groups'));
+        $mform->addElement('hidden', 'groups', @$this->_customdata['groups'], array('id'=>'groups'));
 
         $mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
 

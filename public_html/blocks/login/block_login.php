@@ -25,7 +25,7 @@ class block_login extends block_base {
             // in unencrypted connection...
             $wwwroot = str_replace("http://", "https://", $CFG->wwwroot);
         }
-error_log($authplugin);
+
         if (!empty($CFG->registerauth)) {
             $authplugin = get_auth_plugin($CFG->registerauth);
             if ($authplugin->can_signup()) {

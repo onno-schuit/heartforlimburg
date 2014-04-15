@@ -25,6 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir.'/authlib.php');
+
 /**
  * Email authentication plugin.
  */
@@ -89,6 +90,9 @@ class auth_plugin_email extends auth_plugin_base {
         require_once($CFG->dirroot.'/user/lib.php');
 
         $user->password = hash_internal_user_password($user->password);
+        if (empty($user->calendartype)) {
+            $user->calendartype = $CFG->calendartype;
+        }
 
         $user->id = user_create_user($user, false);
 

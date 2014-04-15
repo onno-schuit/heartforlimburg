@@ -53,7 +53,7 @@ if ($result) {
     }
       ?></td>
       <td class="auth_intake_voucher_groups"><?php
-    if($voucher->groups != '' && $voucher->groups != null){
+    if(@$voucher->groups != '' && @$voucher->groups != null){
         $filenames = $DB->get_records_sql('SELECT id, name FROM {groups} WHERE id IN ('.$voucher->groups.')');
         $filenameStr = '';
         foreach($filenames as $fn){

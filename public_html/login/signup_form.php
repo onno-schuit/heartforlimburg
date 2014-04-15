@@ -38,6 +38,7 @@ class login_signup_form extends moodleform {
         // Intake related
         if ($CFG->registerauth == 'intake' && isset($_POST['vouchercode'])) {
             $mform->addElement('hidden', 'vouchercode', $_POST['vouchercode']);
+			$mform->setType('vouchercode', PARAM_TEXT);
         }
 
         $mform->addElement('header', '', get_string('createuserandpass'), '');

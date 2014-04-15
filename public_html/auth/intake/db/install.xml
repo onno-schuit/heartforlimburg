@@ -6,12 +6,13 @@
 <TABLES>
 <TABLE NAME="auth_intake_vouchers" COMMENT="Vouchers storage">
 <FIELDS>
-  <FIELD NAME="id" TYPE="int" LENGTH="6" NOTNULL="true" SEQUENCE="true" UNSIGNED="true" ENUM="false" NEXT="code"/>
-  <FIELD NAME="code" TYPE="char" LENGTH="25" NOTNULL="true" PREVIOUS="id" NEXT="count"/>
-  <FIELD NAME="count" TYPE="int" LENGTH="6" PREVIOUS="code" NEXT="used"/>
-  <FIELD NAME="used" TYPE="int" LENGTH="6" PREVIOUS="count" NEXT="courses"/>
-  <FIELD NAME="courses" TYPE="char" LENGTH="255" PREVIOUS="used" NEXT="active_from"/>
-  <FIELD NAME="active_from" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="courses" NEXT="active_till"/>
+  <FIELD NAME="id" TYPE="int" LENGTH="6" NOTNULL="true" SEQUENCE="true" UNSIGNED="true" NEXT="code"/>
+  <FIELD NAME="code" TYPE="char" LENGTH="25" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="count"/>
+  <FIELD NAME="count" TYPE="int" LENGTH="6" NOTNULL="false" SEQUENCE="false" PREVIOUS="code" NEXT="used"/>
+  <FIELD NAME="used" TYPE="int" LENGTH="6" NOTNULL="false" SEQUENCE="false" PREVIOUS="count" NEXT="courses"/>
+  <FIELD NAME="courses" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="used" NEXT="groups"/>
+  <FIELD NAME="groups" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="courses" NEXT="active_from"/>
+  <FIELD NAME="active_from" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="groups" NEXT="active_till"/>
   <FIELD NAME="active_till" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="active_from" />
 </FIELDS>
 <KEYS>

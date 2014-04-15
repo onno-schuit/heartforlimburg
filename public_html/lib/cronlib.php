@@ -75,7 +75,7 @@ function cron_run() {
         if (!empty($CFG->deleteunconfirmed)) {
             $cuttime = $timenow - ($CFG->deleteunconfirmed * 3600);
             $rs = $DB->get_recordset_sql ("SELECT *
-                                            FROM {user}
+                                             FROM {user}
                                             WHERE confirmed = 0 AND firstaccess > 0
                                                   AND firstaccess < ?", array($cuttime));
             foreach ($rs as $user) {

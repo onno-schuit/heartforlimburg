@@ -94,12 +94,13 @@ class auth_plugin_intake extends auth_plugin_base {
             $instance->timecreated    = $instance->timemodified;
             $instance->sortorder      = $DB->get_field('enrol', 'COALESCE(MAX(sortorder), -1) + 1', array('courseid'=>$course_id));
 
-            $instance = $DB->insert_record('enrol', $instance);
+            $instanceId = $DB->insert_record('enrol', $instance);
         }
 
         if (!$enrol = enrol_get_plugin('manual')) {
             return false;
         }
+//$deleter = $DB->execute('DELETE FROM {config_plugins} WHERE plugin LIKE "%auth_intake%"');
         $enrol->enrol_user($instance, $user->id, $instance->roleid, time(), 0);
 
         return true;
@@ -159,7 +160,6 @@ class auth_plugin_intake extends auth_plugin_base {
             }
         }
         if(sizeof($groups) > 0) {
-echo "<pre>"; print_r($groups); die;
             $myGroups = explode(',', $groups);
             foreach($myGroups as $c){
                 $usa = new stdClass();
@@ -306,14 +306,15 @@ echo "<pre>"; print_r($groups); die;
 
         $form = Null;
         $view = 'config.html';
-        $courses = $DB->get_records('course');
-        $avCourses = '';
+        //$courses = $DB->get_records('course');
+		$courses = $DB->get_records_sql('SELECT * FROM {course} WHERE category <> 0');
+        /*$avCourses = '';
         foreach($voucher->courses as $v){
             $avCourses .= $v->id . ',';
         }
         $avCourses .= rtrim($avCourses, ',');
-        $groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE courseid IN (' . $avCourses . ')');
-
+        //$groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE courseid IN (' . $avCourses . ')');*/
+		$groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE 1');
         // Skip this forms if main display should be shown
         if (!is_array($result) || !$result[0]) {
             if ($this->_is_new()) {

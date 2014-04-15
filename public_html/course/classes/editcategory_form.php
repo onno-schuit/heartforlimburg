@@ -42,8 +42,10 @@ class core_course_editcategory_form extends moodleform {
     public function definition() {
         global $CFG, $DB;
         $mform = $this->_form;
-        $categoryid = $this->_customdata['categoryid'];
-        $parent = $this->_customdata['parent'];
+		$_customdata = (array)$this->_customdata;
+
+		$categoryid = $_customdata['categoryid'];
+		$parent = $_customdata['parent'];
 
         // Get list of categories to use as parents, with site as the first one.
         $options = array();
@@ -100,9 +102,10 @@ class core_course_editcategory_form extends moodleform {
      * @return array
      */
     public function get_description_editor_options() {
-        global $CFG;
-        $context = $this->_customdata['context'];
-        $itemid = $this->_customdata['itemid'];
+        global $CFG;		
+		$_customdata = (array)$this->_customdata;
+		$context = $_customdata['context'];
+		$itemid = $_customdata['itemid']; 
         return array(
             'maxfiles'  => EDITOR_UNLIMITED_FILES,
             'maxbytes'  => $CFG->maxbytes,

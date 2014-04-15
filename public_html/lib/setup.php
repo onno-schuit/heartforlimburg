@@ -67,7 +67,6 @@ if (!isset($CFG->dataroot)) {
     echo('Fatal error: $CFG->dataroot is not specified in config.php! Exiting.'."\n");
     exit(1);
 }
-//echo "<pre>"; print_r($CFG->dataroot); die;
 $CFG->dataroot = realpath($CFG->dataroot);
 if ($CFG->dataroot === false) {
     if (isset($_SERVER['REMOTE_ADDR'])) {

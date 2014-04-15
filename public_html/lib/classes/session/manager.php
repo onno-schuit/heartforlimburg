@@ -445,6 +445,7 @@ class manager {
 
         // Regenerate session id and delete old session,
         // this helps prevent session fixation attacks from the same domain.
+
         $sid = session_id();
         session_regenerate_id(true);
         $DB->delete_records('sessions', array('sid'=>$sid));
