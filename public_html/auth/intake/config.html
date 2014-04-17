@@ -1,6 +1,7 @@
 <!-- No config needed -->
 <?php
-    // set to defaults if undefined
+global $CFG;
+	// set to defaults if undefined
     if (!isset($config->recaptcha)) {
         $config->recaptcha = false;
     }
@@ -23,7 +24,7 @@ if ($result) {
 }
 // EOF process messages
 ?>
-<a href="/admin/auth_config.php?auth=intake&action=new" class="new_voucher_a"><?php print_string('auth_intake_new_voucher', 'auth_intake'); ?></a>
+<a href="<?= $CFG->wwwroot?>/admin/auth_config.php?auth=intake&action=new" class="new_voucher_a"><?php print_string('auth_intake_new_voucher', 'auth_intake'); ?></a>
 <h3 class="main"><?php print_string('auth_intake_vouchers_label', 'auth_intake'); ?></h3>
 <table class="auth_intake_voucher" cellspacing="0" cellpadding="0" border="1" width="100%" style="text-align: center;">
   <tr>
@@ -63,7 +64,7 @@ if ($result) {
         print_r($filenameStr);
     }
       ?></td>
-    <td class="auth_intake_voucher_actions"><a href="/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
+    <td class="auth_intake_voucher_actions"><a href="<?= $CFG->wwwroot ?>/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
       <a href="javascript:void(0);" onclick="delete_voucher_form('<?php p($voucher->code); ?>');"><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></a>
     </td>
   </tr>
