@@ -90,6 +90,8 @@ if ($hassiteconfig) {
     $temp = new admin_externalpage('authtestsettings', get_string('testsettings', 'core_auth'), new moodle_url("/auth/test_settings.php"), 'moodle/site:config', true);
     $ADMIN->add('authsettings', $temp);
 
+	$ADMIN->add("authsettings", new admin_externalpage('authsettingintake', get_string('pluginname', 'auth_intake'), "$CFG->wwwroot/admin/auth_config.php?auth=intake"));
+
     foreach (core_plugin_manager::instance()->get_plugins_of_type('auth') as $plugin) {
         /** @var \core\plugininfo\auth $plugin */
         $plugin->load_settings($ADMIN, 'authsettings', $hassiteconfig);
