@@ -7,7 +7,8 @@ document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
 
     _GET[decode(arguments[1])] = decode(arguments[2]);
 });
- 
+
+/*
 function add_rep_course() {
     var id = _GET['id'];
     var maincourseid = _GET['maincourseid'];
@@ -42,7 +43,9 @@ function add_rep_course() {
         }
     });
 };
+*/
 
+/*
 function repcourse_remove(rep_id){
 	var id = _GET['id'];
 	var maincourseid = _GET['maincourseid'];
@@ -64,7 +67,9 @@ function repcourse_remove(rep_id){
         }
     });
 }
+*/
 
+/*
 function priority_change(course_id, direction){
 	var id = _GET['id'];
 	direction = (direction == 1) ? 'up' : 'down';
@@ -85,6 +90,7 @@ function priority_change(course_id, direction){
 		}
 	});
 }
+*/
 
 function main_course_selecta(mcourseid){
 	var id = _GET['id'];
@@ -109,6 +115,7 @@ function main_course_selecta(mcourseid){
 	});*/
 }
 
+/*
 function main_course_remova(mcid){
 	var id = _GET['id'];
 	$.ajax({
@@ -128,3 +135,4 @@ function main_course_remova(mcid){
 		}
 	});
 }
+*/

@@ -1,14 +1,26 @@
-<?php include( $this->get_partial_path('flash') ); ?>
-<h1>Configuring a course "<?php echo $mainCourseName;?>"</h1>
+<h1><?= get_string('configure_course', 'repeatcourse') . " \"" . $mainCourseName . "\"" ?></h1>
 <div id="coursetable_div">
-<?php if(isset($curCourses) && !isset($mainCourses)) { ?>
-    <table id="coursetable">
+<?php include( $this->get_partial_path('flash') ); ?>
+<?php 
+//----------------------------------------------------------------------------------------------------------------------------------------------
+// Edit courses screen
+//----------------------------------------------------------------------------------------------------------------------------------------------
+if(isset($curCourses) && !isset($mainCourses)) { ?>
+	<form name="form_repeatcourse" action="<?= $CFG->wwwroot ?>/mod/repeatcourse/index.php?action=add_repcourse" method="post">
+	<input type="hidden" name="id" value="<?= $_REQUEST["id"] ?>" />
+	<input type="hidden" name="maincourseid" value="<?= $_REQUEST["maincourseid"] ?>" />
+	<table id="coursetable">
+		<tr>
+			<td colspan="5">
+				<p align="left"><a href="<?= $CFG->wwwroot ?>/mod/repeatcourse/index.php?id=<?= $_REQUEST["id"] ?>"><?= get_string('back_to_main', 'repeatcourse') ?></a></p>
+			</td>
+		</tr>
         <tr>
             <th style="width: 5%;">#</th>
-            <th style="width: 40%;">Course</th>
-            <th style="width: 20%;">Interval</th>
-            <th style="width: 15%;"></th>
-            <th style="width: 20%;">Ordering</th>
+            <th style="width: 40%;"><?= get_string('course', 'repeatcourse') ?></th>
+            <th style="width: 20%;"><?= get_string('interval', 'repeatcourse') ?></th>
+            <th style="width: 15%;">&nbsp;</th>
+            <th style="width: 20%;"><?= get_string('ordering', 'repeatcourse') ?></th>
         </tr>
         <?php
         $orderArr = array();
@@ -17,16 +29,16 @@
 		}
         $i = 1;
         foreach($curCourses as $val){
-			$order_up = ($val->ordering == min($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 1);"><img src="./media/images/triangle_up.gif" alt="Priority up" title="Priority up"/></a>';
-        	$order_down = ($val->ordering == max($orderArr)) ? '' : '<a href="javascript:void();" onclick="priority_change('.$val->id.', 0);"><img src="./media/images/triangle_down.gif" alt="Priority down" title="Priority down"/></a>';
+			$order_up = ($val->ordering == min($orderArr)) ? '' : '<a href="' . $CFG->wwwroot . '/mod/repeatcourse/index.php?action=ordering_up&id=' . $_REQUEST["id"] . '&maincourseid=' . $_REQUEST["maincourseid"] . '&rep_course_id=' . $val->id . '"><img src="' . $CFG->wwwroot . '/mod/repeatcourse/media/images/triangle_up.gif" alt="' . get_string('priorityup', 'repeatcourse') . '" title="' . get_string('priorityup', 'repeatcourse') . '"/></a>';
+        	$order_down = ($val->ordering == max($orderArr)) ? '' : '<a href="' . $CFG->wwwroot . '/mod/repeatcourse/index.php?action=ordering_down&id=' . $_REQUEST["id"] . '&maincourseid=' . $_REQUEST["maincourseid"] . '&rep_course_id=' . $val->id . '"><img src="' . $CFG->wwwroot . '/mod/repeatcourse/media/images/triangle_down.gif" alt="' . get_string('prioritydown', 'repeatcourse') . '" title="' . get_string('prioritydown', 'repeatcourse') . '"/></a>';
             $intervalStr = $val->cinterval . ' ';
-            $intervalStr .= ($val->cinterval == 1) ? 'day' : 'days';
+            $intervalStr .= ($val->cinterval == 1) ? get_string('day', 'repeatcourse') : get_string('days', 'repeatcourse');
 
             echo '<tr id="repcourse_'.$val->id.'">
                 <td>'.$i.'</td>
                 <td>'.$val->name.'</td>
                 <td>'.$intervalStr.' </td>
-                <td><a href="javascript:void();" onclick="repcourse_remove('.$val->id.')" id="course_'.$val->id.'">Remove</a></td>
+                <td><a href="' . $CFG->wwwroot . '/mod/repeatcourse/index.php?action=delete_repcourse&id=' . $_REQUEST["id"] . '&maincourseid=' . $_REQUEST["maincourseid"] . '&rep_id=' . $val->id . '" id="course_'.$val->id.'">' . get_string('remove', 'repeatcourse') . '</a></td>
                 <td>
                     '.$order_up.$order_down.'</td>
             </tr>';
@@ -34,12 +46,12 @@
         } ?>
     <tr><td colspan="5"></td></tr>
     <tr class="available_courses">
-	   <td></td>
+	   <td>&nbsp;</td>
 	   <td>
 		        <?php if(sizeof($repeatCourses)){ ?>
 		        <span>
-		            <label for="course_selector"><?php print_string('add_course', 'repeatcourse') ?></label>
-		            <select id="course_selector">
+		            <label for="course_selector"><?= get_string('add_course_text', 'repeatcourse') ?></label>
+		            <select name="selected_course_id" id="course_selector">
 		            <?php
 		                foreach($repeatCourses as $course){
                     echo '<option value="'.$course->id.'">'.$course->fullname.'</option>';
@@ -49,25 +61,35 @@
 		        </span>
 	   </td><td>
                <span>
-		            <label for="repcourse_interval">Interval (in days)</label>
-		            <input id="repcourse_interval" type="number" min="1" max="365" placeholder="Enter interval (in days)" value="1"/>
+		            <label for="repcourse_interval"><?= get_string('interval', 'repeatcourse') . " " . get_string('indays', 'repeatcourse')?></label>
+		            <input name="interval" id="repcourse_interval" type="number" min="1" max="365" placeholder="<?= get_string('intervaldays', 'repeatcourse') ?>" value="1"/>
 		        </span>
         </td><td>
 		        <span>
-		            <a id="add_rep_course" href="javascript:void();" onclick="add_rep_course()" class="button">Add course</a>
+		            <?php 
+					/*
+					<a id="add_rep_course" href="javascript:void();" onclick="add_rep_course('<?= $CFG->wwwroot ?>')" class="button"><?= get_string('addcourse', 'repeatcourse') ?></a>
+					*/
+					?>
+					<input type="submit" class="button" value="<?= get_string('addcourse', 'repeatcourse') ?>" />
 		        </span>
 		        <?php } else {
-                echo print_string('no_available_courses', 'repeatcourse');
+                echo get_string('no_available_courses', 'repeatcourse');
         } ?>
-	    </td><td></td>
+	    </td><td>&nbsp;</td>
     </tr>
 </table>
-<?php } else { ?>
+</form>
+<?php } 
+//----------------------------------------------------------------------------------------------------------------------------------------------
+// Index screen
+//----------------------------------------------------------------------------------------------------------------------------------------------
+else { ?>
 <table id="coursetable">
         <tr>
-            <th style="width: 40%;">Main Course</th>
-            <th style="width: 40%;">Refreshing Courses</th>
-            <th style="width: 20%;"></th>
+            <th style="width: 40%;"><?= get_string('maincourse', 'repeatcourse'); ?></th>
+            <th style="width: 40%;"><?= get_string('refreshingcourse', 'repeatcourse'); ?></th>
+            <th style="width: 20%;">&nbsp;</th>
         </tr>
         <?php
         foreach($resultArray as $ra){
@@ -75,8 +97,8 @@
                     <td>' . $ra->fullname . '</td>
                     <td>' . rtrim($resArr[$ra->mid], ', ') . '</td>
                     <td>
-                        <a href="#" onclick="main_course_remova(' . $ra->mid . ')">Remove all</a>&nbsp;|&nbsp;
-                        <a href="#" onclick="main_course_selecta(' . $ra->mid . ')">Edit</a>
+                        <a href="' . $CFG->wwwroot . '/mod/repeatcourse/index.php?action=main_course_remova&id=' . $_REQUEST["id"] . '&mcid=' . $ra->mid . '">' . get_string('removeall', 'repeatcourse') . '</a>&nbsp;|&nbsp;
+                        <a href="#" onclick="main_course_selecta(' . $ra->mid . ')">' . get_string('edit', 'repeatcourse') . '</a>
                     </td>
                 </tr>';
         }
@@ -84,7 +106,7 @@
     <tr>
         <td>
             <select id="main_courses" onchange="main_course_selecta(0)">
-                <option value="0">-- Select Main Course --</option>
+                <option value="0"><?= get_string('select_course', 'repeatcourse') ?></option>
                 <?php
                     foreach($mainCourses as $mc){
                         echo '<option value="'.$mc->id.'">'.$mc->fullname.'</option>';

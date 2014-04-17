@@ -24,8 +24,9 @@ class repeatcourse_controller extends controller {
         $PAGE->requires->js("/lib/jquery/jquery-1.10.2.min.js");
         $PAGE->requires->js("/mod/repeatcourse/media/js/functions.js");
         
-        $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE name = "'.get_string('repcoursecategoryname', 'repeatcourse').'"');
-        
+        $repCourseCat = $DB->get_record_sql('SELECT id FROM {course_categories} WHERE idnumber = "repeatcourse"');
+
+		
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         
         $mainCourseName = $this->course->fullname;
@@ -35,6 +36,9 @@ class repeatcourse_controller extends controller {
         }*/
 
         //if(sizeof($isMCourseExist) > 0 || $mainCourseId > 0){
+		//----------------------------------------------------------------------------------------------------------------------------------
+		// Edit courses screen
+		//----------------------------------------------------------------------------------------------------------------------------------
         if($mainCourseId > 0){
             $mainCourseNameObj = $DB->get_record('course', array('id' => $mainCourseId), 'fullname');
             $mainCourseName = $mainCourseNameObj->fullname;
@@ -54,15 +58,19 @@ class repeatcourse_controller extends controller {
         		$curCoursesNames .= ')';
         	}
         	$repeatCourses = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category = "'.$repCourseCat->id.'" '.$curCoursesNames . ' AND lang IN ("", "'.current_language().'")');
-        	//TODO:change structure {repeatcorse}. maybe add a field with associated course id or to exclude other courses..
+        	//TODO:change structure {repeatcourse}. maybe add a field with associated course id or to exclude other courses..
         	
         	$this->get_view(array(
         			'repeatCourses' => $repeatCourses,
         			'curCourses'    => $curCourses,
                     'mainCourseName' => $mainCourseName,
         	));
-        } else {
-        	$mainCourseArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'"');
+        } 
+		//----------------------------------------------------------------------------------------------------------------------------------
+		// Index screen
+		//----------------------------------------------------------------------------------------------------------------------------------
+		else {
+        	$mainCourseArr = $DB->get_records_sql('SELECT id, fullname FROM {course} WHERE category <> "'.$repCourseCat->id.'" AND id != 1');
         	$mainCourseStr = '';
         	foreach($mainCourseArr as $mc){
         		$mainCourseStr .= $mc->id . ',';
@@ -186,13 +194,18 @@ class repeatcourse_controller extends controller {
 
     function add_repcourse(){
         global $DB;
-        $this->no_layout = true;
+		//$this->no_layout = true;
 
         require_login($this->course);
 
+        $main_id = optional_param('id', 0, PARAM_INT);
         $mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         $repeatCourseId = optional_param('selected_course_id', 0, PARAM_INT);
-        if($mainCourseId == 0 || $repeatCourseId == 0){ return false; }
+
+		if($mainCourseId == 0 || $repeatCourseId == 0)
+		{ 
+			$this->redirect_to('index', array(), array('error' => get_string('standard_error', 'repeatcourse')));
+		}
 
         $lastOrderObj = $DB->get_record_sql('SELECT MAX(ordering) as maxord FROM {repeatcourse_records} WHERE maincourseid = "'. $mainCourseId . '"');
         $lastOrder = ($lastOrderObj->maxord === NULL) ? 0 : $lastOrderObj->maxord;
@@ -203,10 +216,15 @@ class repeatcourse_controller extends controller {
         $record->timemodified = time();
         $record->ordering = $lastOrder+1;
         $record->cinterval = optional_param('interval', 0, PARAM_INT);
+		
+		$DB->insert_record('repeatcourse_records', $record);
 
+		$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('notification' => get_string('course_added', 'repeatcourse')));
+
+		/*
         try {
 			$transaction = $DB->start_delegated_transaction();
-//            $DB->insert_record('repeatcourse_records', $record);
+			//$DB->insert_record('repeatcourse_records', $record);
             $DB->execute("INSERT INTO {repeatcourse_records} (maincourseid, repeatcourse,timemodified,ordering,cinterval) VALUES('" . $record->maincourseid . "', '" . $record->repeatcourse . "','" . $record->timemodified . "','" . $record->ordering . "','" . $record->cinterval . "')");
 			$transaction->allow_commit();
 		} catch (Exception $e) {
@@ -216,32 +234,41 @@ class repeatcourse_controller extends controller {
 			return false;
 		}
         return true;
+		*/
     }
 
     function delete_repcourse(){
         global $DB;
-        $this->no_layout = true;
+        //$this->no_layout = true;
 
         require_login($this->course);
 
+		$mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
         $repCourseId = optional_param('rep_id', 0, PARAM_INT);
-        if($repCourseId > 0){
-            return $DB->delete_records('repeatcourse_records', array('id' => $repCourseId));
-        } else{
-            return false;
+        if($repCourseId > 0)
+		{
+            $DB->delete_records('repeatcourse_records', array('id' => $repCourseId));
+		
+			$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('notification' => get_string('course_deleted', 'repeatcourse')));
+        } 
+		else
+		{
+			$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('error' => get_string('standard_error', 'repeatcourse')));
         }
     }
     
     function ordering_up(){
     	global $DB;
     	$orderArr = array();
-    	$this->no_layout = true;
+    	//$this->no_layout = true;
 
-        //require_login($this->course);
+        require_login($this->course);
+
+		$mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
 
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
-    		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
+    		$orderings = $DB->get_records('repeatcourse_records', array('maincourseid' => $mainCourseId), 'ordering', 'id, ordering');
     		foreach($orderings as $order){
     			$orderArr[$order->id] = $order->ordering;
     		}
@@ -260,7 +287,13 @@ class repeatcourse_controller extends controller {
     		$prevObject->id = $repCourseOrderIdPrev;//1
     		$prevObject->ordering = $repCourseOrderCur->ordering;//2
 
-    		try {
+   			$DB->update_record('repeatcourse_records', $curObject);
+   			$DB->update_record('repeatcourse_records', $prevObject);
+
+			$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('notification' => get_string('ordening_changed', 'repeatcourse')));
+
+    		/*
+			try {
     			$transaction = $DB->start_delegated_transaction();
     			$DB->update_record('repeatcourse_records', $curObject);
     			$DB->update_record('repeatcourse_records', $prevObject);
@@ -271,25 +304,32 @@ class repeatcourse_controller extends controller {
     			$transaction->rollback($e); // rethrows exception
     		}
     		return true;
+			*/
     	}
-    	return false;
+    	
+		$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('error' => get_string('standard_error', 'repeatcourse')));
+		//return false;
     }
     
     function ordering_down(){
     	global $DB;
     	$orderArr = array();
-    	$this->no_layout = true;
+    	//$this->no_layout = true;
 
-        //require_login($this->course);
+        require_login($this->course);
+
+		$mainCourseId = optional_param('maincourseid', 0, PARAM_INT);
 
     	$repCourseId = optional_param('rep_course_id', 0, PARAM_INT);
     	if($repCourseId > 0){
-    		$orderings = $DB->get_records('repeatcourse_records', array(), 'ordering', 'id, ordering');
+    		$orderings = $DB->get_records('repeatcourse_records', array('maincourseid' => $mainCourseId), 'ordering', 'id, ordering');
     		foreach($orderings as $order){
     			$orderArr[$order->id] = $order->ordering;
     		}
     		asort($orderArr);//assoc array sorted ASC by values: [1]=>1, [3]=>2
-    	
+
+					print_object($orderArr);
+
     		$repCourseOrderCur = $DB->get_record_sql('SELECT ordering FROM {repeatcourse_records} WHERE id = :id', array('id' => $repCourseId));
 
     		$repCourseOrderIdCur = array_search($repCourseOrderCur->ordering, $orderArr);
@@ -302,8 +342,14 @@ class repeatcourse_controller extends controller {
     		$prevObject = new stdClass();
     		$prevObject->id = $repCourseOrderIdPrev;
     		$prevObject->ordering = $repCourseOrderCur->ordering;
-    	
-    		try {
+
+			$DB->update_record('repeatcourse_records', $curObject);
+   			$DB->update_record('repeatcourse_records', $prevObject);
+
+			$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('notification' => get_string('ordening_changed', 'repeatcourse')));
+
+			/*
+			try {
     			$transaction = $DB->start_delegated_transaction();
     			$DB->update_record('repeatcourse_records', $curObject);
     			$DB->update_record('repeatcourse_records', $prevObject);
@@ -314,8 +360,11 @@ class repeatcourse_controller extends controller {
     			$transaction->rollback($e); // rethrows exception
     		}
     		return true;
+			*/
     	}
-    	return false;
+
+		$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('error' => get_string('standard_error', 'repeatcourse')));
+		//return false;
     }
     
     function incrementDecrementKey($key, $array, $isInc){
@@ -332,12 +381,19 @@ class repeatcourse_controller extends controller {
         require_login($this->course);
 
     	$mcid = optional_param('mcid', 0, PARAM_INT);
-    	if($mcid == 0){ return false; }
+    	if($mcid == 0)
+		{ 
+			$this->redirect_to('index', array(), array('error' => get_string('standard_error', 'repeatcourse')));
+		}
 
     	global $DB;
-    	$this->no_layout = true;
+    	//$this->no_layout = true;
 
-    	try {
+   		$DB->delete_records_select('repeatcourse_records', 'maincourseid = :mcid', array('mcid' => $mcid));
+		$this->redirect_to('index', array(), array('notification' => get_string('all_courses_deleted', 'repeatcourse')));
+
+    	/*
+		try {
     		$transaction = $DB->start_delegated_transaction();
     		$DB->delete_records_select('repeatcourse_records', 'maincourseid = :mcid', array('mcid' => $mcid));
     		$transaction->allow_commit();
@@ -347,6 +403,8 @@ class repeatcourse_controller extends controller {
     		return false;
     	}
     	return true;
+		*/
+
     }
 
 } // class repeatcourse_controller 
