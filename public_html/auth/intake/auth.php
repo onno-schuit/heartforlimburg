@@ -329,26 +329,29 @@ class auth_plugin_intake extends auth_plugin_base {
             if ($this->_is_update()) {
                 $voucher = $DB->get_record($this->table_name,
                                            array('code' => $_REQUEST['code']));
-                
+              
                 $data = array('code'      => $voucher->code,
                               'id'        => $voucher->id,
                               'used'      => isset($config->used) ? $config->used : $voucher->used,
                               'count'     => isset($config->count) ? $config->count : $voucher->count,
                               'courses'   => isset($config->courses) ? $config->courses : $voucher->courses,
-                              'use_dates' => (!is_null($voucher->active_from) && $voucher->active_from !== 0),
+                              'use_dates' => (!is_null($voucher->active_from) && $voucher->active_from != 0),
                               'date_from' => isset($config->active_from) ? $config->active_from : $voucher->active_from,
                               'date_to'   => isset($config->active_till) ? $config->active_till : $voucher->active_till);
-                
-                $data['date_from'] = array('year'  => date('Y', $data['date_from']),
+
+				// If the dates are not set and used, fill in the current date
+                if ($data['date_from'] == 0)	$data['date_from'] = time();
+                if ($data['date_to'] == 0)		$data['date_to'] = time();
+
+				$data['date_from'] = array('year'  => date('Y', $data['date_from']),
                                            'month' => date('m', $data['date_from']),
                                            'day'   => date('d', $data['date_from']));
                 
                 $data['date_to'] = array('year'  => date('Y', $data['date_to']),
                                          'month' => date('m', $data['date_to']),
                                          'day'   => date('d', $data['date_to']));
-                
-                
-                $form = new edit_voucher_form(null, $data);
+                              
+				$form = new edit_voucher_form(null, $data);
                 $view = 'edit.html';
             }
         }
