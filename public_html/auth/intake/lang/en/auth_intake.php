@@ -74,6 +74,7 @@ $string['auth_intake_voucher_too_long'] = 'The voucher code is too long. 25 Char
 $string['auth_intake_new_voucher'] = 'New voucher';
 $string['auth_intake_new_voucher_submit'] = 'Create new voucher';
 $string['auth_intake_new_voucher_exists'] = 'Voucher with this code already exists';
+$string['auth_intake_new_date_wrong'] = 'Start date has to be before the end date';
 
 // Edit voucher form
 $string['auth_intake_edit_voucher'] = 'Update';

@@ -30,6 +30,19 @@ foreach ($groups as $group) {
     $i++;
 }
 ?>};
+var groups_coursenames = {<?php
+$i = 0;
+foreach ($groups as $group) {
+	// fixme
+	if ($group->courseid == 1) echo "'" . $group->id . "': 'site wide group'"; 
+    else						echo "'" . $group->id . "': '" . $courses[$group->courseid]->fullname . "'";
+    if ($i+1 !== count($groups)) {
+        echo ',';
+    }
+    $i++;
+}
+?>};
+
 var selected_courses, selected_groups, ds;
 YUI().use('node', function (Y) {
   selected_courses = document.getElementById('courses').value.split(',');
@@ -233,7 +246,7 @@ function buildGroups(selector, condition) {
     if ((selected_groups.indexOf(id) !== -1) == condition) {
       selector.opts[id] = document.createElement('option');
       selector.opts[id].value = id;
-      selector.opts[id].innerHTML = groups[id];
+      selector.opts[id].innerHTML = groups_coursenames[id] + " - " + groups[id];
       selector.appendChild(selector.opts[id]);
     }
   }

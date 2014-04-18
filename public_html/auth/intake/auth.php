@@ -143,8 +143,8 @@ class auth_plugin_intake extends auth_plugin_base {
         events_trigger('user_created', $user);
 
         $voucherCode = required_param('vouchercode', PARAM_RAW);
-        $courses = $DB->get_record_sql('SELECT courses FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->courses;
-        $groups = $DB->get_record_sql('SELECT groups FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->groups;
+        /*
+		$courses = $DB->get_record_sql('SELECT courses FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->courses;
         if(sizeof($courses) > 0) {
             $myGroups = $DB->get_records_sql('SELECT id FROM {groups} WHERE courseid IN( ' . $courses . ')');
             if(sizeof($myGroups) > 0) {
@@ -159,6 +159,8 @@ class auth_plugin_intake extends auth_plugin_base {
                 }
             }
         }
+        */
+		$groups = $DB->get_record_sql('SELECT groups FROM {auth_intake_vouchers} WHERE code = :vouchercode', array('vouchercode' => $voucherCode))->groups;
         if(sizeof($groups) > 0) {
             $myGroups = explode(',', $groups);
             foreach($myGroups as $c){
@@ -425,6 +427,11 @@ class auth_plugin_intake extends auth_plugin_base {
         // Validate dates
         $config = $this->validate_dates($config);
 
+		if (!$config) 
+		{
+            return array(false, 'date_wrong');
+		}
+
         // Check if vouchercode is unique
         $voucher = $DB->get_record($this->table_name, array('code'=>$config->code));
         $voucher->code = $config->code;
@@ -549,7 +556,10 @@ class auth_plugin_intake extends auth_plugin_base {
      */
     function validate_dates($config) {
         // Check if date range should be used
-        if (isset($config->use_dates) && $config->use_dates) {
+
+		//print_object($config);
+        
+		if (isset($config->use_dates) && $config->use_dates) {
             // Normalize dates
             $config->date_from = mktime(0, 0, 0,
                                         $config->date_from['month'],
@@ -561,10 +571,18 @@ class auth_plugin_intake extends auth_plugin_base {
                                       $config->date_to['day'],
                                       $config->date_to['year']);
 
+			if ($config->date_from > $config->date_to)
+			{
+				return false;
+			}
+
         } else {
             $config->date_from = 0;
             $config->date_to = 0;
         }
+
+		//print_object($config);
+		//exit('hier');
 
         return $config;
     }

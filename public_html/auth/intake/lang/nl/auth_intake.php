@@ -78,6 +78,7 @@ $string['auth_intake_voucher_too_long'] = 'De voucher code is te lang. 25 Tekens
 $string['auth_intake_new_voucher'] = 'Nieuw voucher';
 $string['auth_intake_new_voucher_submit'] = 'Nieuw voucher aanmaken';
 $string['auth_intake_new_voucher_exists'] = 'Voucher met die code bestaat al';
+$string['auth_intake_new_date_wrong'] = 'Start datum moet voor de eind datum liggen';
 
 // Edit voucher form
 $string['auth_intake_edit_voucher'] = 'Bijwerken';

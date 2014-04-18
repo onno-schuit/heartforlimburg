@@ -151,7 +151,8 @@ function delete_voucher_form(code) {
     hide_all_forms();
     show_block('delete_voucher');
 
-    document.getElementById('delete_voucher_id').innerHTML = code;
+    // Fixme -> helemaal niet nodig?
+	//document.getElementById('delete_voucher_id').innerHTML = code;
     document.getElementById('delete_voucher_switch').value = code;
 }
 function cancel_delete_voucher() {
