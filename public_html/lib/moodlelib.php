@@ -6020,6 +6020,7 @@ function send_confirmation_email($user) {
     $data->admin     = generate_email_signoff();
 	
 	// Fixme -> which languages? And standard language?
+	// Fixme -> core aanpassing, niet hier of toch wel? Of in nieuwe functie
 	$arbitrary_language_code = "en";
 	if ($user->lang == "nl" || $user->lang == "en")	$arbitrary_language_code = $user->lang;
 

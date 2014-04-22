@@ -33,9 +33,7 @@ foreach ($groups as $group) {
 var groups_coursenames = {<?php
 $i = 0;
 foreach ($groups as $group) {
-	// fixme
-	if ($group->courseid == 1) echo "'" . $group->id . "': 'site wide group'"; 
-    else						echo "'" . $group->id . "': '" . $courses[$group->courseid]->fullname . "'";
+    echo "'" . $group->id . "': '" . $courses[$group->courseid]->fullname . "'";
     if ($i+1 !== count($groups)) {
         echo ',';
     }

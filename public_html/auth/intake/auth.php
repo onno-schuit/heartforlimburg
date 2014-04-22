@@ -316,7 +316,7 @@ class auth_plugin_intake extends auth_plugin_base {
         }
         $avCourses .= rtrim($avCourses, ',');
         //$groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE courseid IN (' . $avCourses . ')');*/
-		$groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE 1');
+		$groups = $DB->get_records_sql('SELECT id, courseid, name FROM {groups} WHERE courseid != 1');
         // Skip this forms if main display should be shown
         if (!is_array($result) || !$result[0]) {
             if ($this->_is_new()) {
