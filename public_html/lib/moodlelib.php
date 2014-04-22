@@ -6018,23 +6018,17 @@ function send_confirmation_email($user) {
     $data->firstname = fullname($user);
     $data->sitename  = format_string($site->fullname);
     $data->admin     = generate_email_signoff();
-	
-	// Fixme -> which languages? And standard language?
-	// Fixme -> core aanpassing, niet hier of toch wel? Of in nieuwe functie
-	$arbitrary_language_code = "en";
-	if ($user->lang == "nl" || $user->lang == "en")	$arbitrary_language_code = $user->lang;
 
-    $subject = get_string_manager()->get_string('emailconfirmationsubject', '', format_string($site->fullname), $arbitrary_language_code);
+    $subject = get_string('emailconfirmationsubject', '', format_string($site->fullname));
 
     $username = urlencode($user->username);
     $username = str_replace('.', '%2E', $username); // Prevent problems with trailing dots.
     $data->link  = $CFG->wwwroot .'/login/confirm.php?data='. $user->secret .'/'. $username;
-    $message     = get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code);
-    $messagehtml = text_to_html(get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code), false, false, true);
+    $message     = get_string('emailconfirmation', '', $data);
+    $messagehtml = text_to_html(get_string('emailconfirmation', '', $data), false, false, true);
 
-    // Fixme -> always? Or not with voucherplugin type?
-	$user->mailformat = 1;  // Always send HTML version as well.
-	
+    $user->mailformat = 1;  // Always send HTML version as well.
+
     // Directly email rather than using the messaging system to ensure its not routed to a popup or jabber.
     return email_to_user($user, $supportuser, $subject, $message, $messagehtml);
 }
