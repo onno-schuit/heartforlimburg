@@ -53,11 +53,11 @@ $string['auth_intake_voucher_date_from'] = 'Actief van';
 $string['auth_intake_voucher_date_to'] = 'Actief tot';
 $string['auth_intake_voucher_use_courses'] = 'Maak gebruikers lid van';
 $string['auth_intake_voucher_other_courses'] = 'Maak gebruikers geen lid van';
-/*Need in translate*/
-$string['auth_intake_voucher_courses'] = 'Groups';
-$string['auth_intake_voucher_use_groups'] = 'Also enroll users into groups';
-$string['auth_intake_voucher_other_groups'] = 'Do not enroll users into groups';
-/*  */
+
+$string['auth_intake_voucher_groups'] = 'Groepen';
+$string['auth_intake_voucher_use_groups'] = 'Gebruikers inschrijven in groepen';
+$string['auth_intake_voucher_other_groups'] = 'Gebruikers niet inschrijven in groepen';
+
 
 $string['auth_intake_loginsteps'] = 'Vul a.u.b. hier de voucher code in';
 $string['auth_intake_my_vouchercode'] = 'Voucher code';
