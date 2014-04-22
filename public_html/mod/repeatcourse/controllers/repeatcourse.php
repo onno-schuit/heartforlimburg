@@ -255,7 +255,9 @@ class repeatcourse_controller extends controller {
         if($repCourseId > 0)
 		{
             $DB->delete_records('repeatcourse_records', array('id' => $repCourseId));
-		
+			
+			self::renumber_order_for_courses($mainCourseId);
+
 			$this->redirect_to('index', array('maincourseid' => $mainCourseId), array('notification' => get_string('course_deleted', 'repeatcourse')));
         } 
 		else
@@ -413,5 +415,22 @@ class repeatcourse_controller extends controller {
 		*/
 
     }
+
+	static function renumber_order_for_courses($maincourseid)
+	{
+		global $DB;
+
+		$repeat_courses = $DB->get_records('repeatcourse_records', array('maincourseid' => $maincourseid), 'ordering ASC');
+		
+		$i = 1;
+		foreach ($repeat_courses as $repeat_course)
+		{
+			$record = new stdClass();
+			$record->id = $repeat_course->id;
+			$record->ordering = $i++;
+
+			$DB->update_record('repeatcourse_records', $record);
+		}
+	}
 
 } // class repeatcourse_controller 
