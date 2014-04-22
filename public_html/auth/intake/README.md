@@ -53,3 +53,10 @@ User registration screen modifications are located inside following files:
 
 User registration process is finished inside /public_html/auth/intake/auth.php by 'user_signup' method of plugin class.
 Please see lines 87:103 for futher details. During registration process 'validate_voucher' method will be called in order to validate voucher and check if it is not overused and still valid.
+
+
+Link for admin in plugins menu
+------------------------------
+
+In different Moodle versions the link to doesn't work. To add the link manually, the following code is inserted in "admin/settings/plugins.php"
+#93: 	$ADMIN->add("authsettings", new admin_externalpage('authsettingintake', get_string('pluginname', 'auth_intake'), "$CFG->wwwroot/admin/auth_config.php?auth=intake"));

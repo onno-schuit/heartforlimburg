@@ -24,7 +24,7 @@ In order to manage main settings and vouchers please goto:
   [admin_plugins]: /admin/plugins.php
   [admin_voucher_main]: /admin/auth_config.php?auth=intake
 
-Main configuration page will show you base plugin settings (reCAPTCHA and user fields locker) and vouchers block.
+Main configuration page will show you the vouchers block.
 Within vouchers block admin is able to do main CRUD(Create Read Update Delete) actions.
 
 Creating new voucher:
