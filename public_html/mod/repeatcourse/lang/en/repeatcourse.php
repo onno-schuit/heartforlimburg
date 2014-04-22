@@ -49,21 +49,28 @@
 
 
 /********************************* E-mails beginning ****************************/
-	// Fixme subject
-	$string['email_repeatcourses_today_subject'] = 'Dear %s!';
+	$string['email_repeatcourses_today_subject'] = 'Refresher course "{$a}" starts today!';
 	$string['email_repeatcourses_today_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Dear %s %s</span> ],</strong>
-						<br/>Your refresher course <strong>%s</strong> is about to begin today. <br/>
+                    	<strong> [ <span> Dear {$a->name}</span> ],</strong>
+						<br/>Your refresher course <strong>"{$a->coursename}"</strong> is about to begin today. <br/>
                         <br /><br/><i>Best regards,
-            			<br/>HeartforLimburg team.</i>
+            			<br/>Heart for Limburg team.</i>
             		</p></td></tr></table>';
 
-	// Fixme subject
-	$string['email_repeatcourses_reminder_subject'] = 'Dear %s!';
+	$string['email_repeatcourses_reminder_subject'] = 'Refresher course "{$a}" will start shortly!';
 	$string['email_repeatcourses_reminder_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Dear %s %s</span> ],</strong>
-            			<br/>Your refresher course <strong>%s</strong> is about to begin. The course will start on %s.
+                    	<strong> [ <span> Dear {$a->name}</span> ],</strong>
+            			<br/>Your refresher course <strong>"{$a->coursename}"</strong> is about to begin. The course will start on {$a->startdate}.
             			<br /><br/><i>Best regards,
             			<br/>Heart for Limburg team.</i>
             		</p></td></tr></table>';
+
+	$string['email_course_completion_subject'] = 'Course "{$a}" completed succesfully';
+	$string['email_course_completion_text'] = '<table>
+				<tr><td><p><strong> [ <span>Dear {$a->name}</span> ],</strong>
+				<br/>To subscribe to the refresher courses distribution, please click on <strong><a href="{$a->link}">this link</a>.</strong>.
+				<br /><br/><i>Best regards,
+				<br/>Heart for Limburg team.</i>
+				</p></td></tr></table>';
+
 /************************************ E-mails end ***************************/

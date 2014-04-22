@@ -121,7 +121,8 @@ class repeatcourse_controller extends controller {
         $curId          = optional_param('id', 0, PARAM_INT);
         $mainCourseId   = optional_param('maincourseid', 0, PARAM_INT);
         $userId         = $USER->id;
-        $mainCourseName = $this->course->fullname;
+        //$mainCourseName = $this->course->fullname;
+        $mainCourseName = $DB->get_field('course', 'fullname', array('id' => $mainCourseId));
         
         $isCurUser = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
         if(@$isCurUser->mailing == 1) {$isMailing = 1;} else {$isMailing = 0;} 
@@ -148,21 +149,27 @@ class repeatcourse_controller extends controller {
         $mainCourseId   = optional_param('maincourseid', 0, PARAM_INT);
         $isMailing      = optional_param('ismailing', 0, PARAM_INT);
         $userId         = $USER->id;
-        $mainCourseName = $this->course->fullname;
-        
-        $params = array(
-            'ismailing' => $isMailing,
-            'userid' => $userId,
-            'maincourseid' => $mainCourseId
-        );
-        
-        $isCurUser = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
+        //$mainCourseName = $this->course->fullname;
+        $mainCourseName = $DB->get_field('course', 'fullname', array('id' => $mainCourseId));
+              
+        $curUserCompletion = $DB->get_record('course_completions_repcourse', array('userid' => $userId, 'maincourseid' => $mainCourseId));
 
-        $isCurUser = ($isCurUser !== null) ? 1 : 0;
-        if($isCurUser){
-            $DB->execute('UPDATE {course_completions_repcourse} SET `mailing`=:ismailing WHERE userid=:userid AND maincourseid=:maincourseid', $params);
-        } else {
-            $DB->execute('INSERT INTO {course_completions_repcourse} (userid, maincourseid, mailing) VALUES (:userid, :maincourseid, :ismailing)', $params);
+		$record = new stdClass();
+		$record->userid         = $userId;
+		$record->maincourseid = $mainCourseId;
+		$record->mailing = $isMailing;
+
+        $isCurUser = ($curUserCompletion != null) ? 1 : 0;
+        if($isCurUser)
+		{
+ 			$record->id = $curUserCompletion->id;
+			//$DB->execute('UPDATE {course_completions_repcourse} SET `mailing`=:ismailing WHERE userid=:userid AND maincourseid=:maincourseid', $params);
+			$DB->update_record('course_completions_repcourse', $record, false);        
+		} 
+		else 
+		{
+			$DB->insert_record('course_completions_repcourse', $record, false);        
+            //$DB->execute('INSERT INTO {course_completions_repcourse} (userid, maincourseid, mailing) VALUES (:userid, :maincourseid, :ismailing)', $params);
         }
         
         $this->get_view(array(

@@ -49,21 +49,29 @@
 
 
 /********************************* E-mails beginning ****************************/
-	// Fixme subject
-	$string['email_repeatcourses_today_subject'] = 'Beste %s!';
+	$string['email_repeatcourses_today_subject'] = 'Opfris cursus "{$a}" begint vandaag!';
 	$string['email_repeatcourses_today_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Beste %s %s</span> ],</strong>
-						<br/>De opfris cursus <strong>%s</strong> gaat vandaag beginnen. <br/>
+                    	<strong> [ <span> Beste {$a->name}</span> ],</strong>
+						<br/>De opfris cursus <strong>"{$a->coursename}"</strong> gaat vandaag beginnen. <br/>
                         <br /><br/><i>Met vriendelijke groet,
             			<br/>Het Heart for Limburg team.</i>
             		</p></td></tr></table>';
 
-	// Fixme subject
-	$string['email_repeatcourses_reminder_subject'] = 'Beste %s!';
+	$string['email_repeatcourses_reminder_subject'] = 'Opfris cursus "{$a}" begint binnenkort!';
 	$string['email_repeatcourses_reminder_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Beste %s %s</span> ],</strong>
-            			<br/>De opfris cursus <strong>%s</strong> gaat bijna beginnen. De cursus zal starten op %s.
+                    	<strong> [ <span> Beste {$a->name}</span> ],</strong>
+            			<br/>De opfris cursus <strong>"{$a->coursename}"</strong> gaat bijna beginnen. De cursus zal starten op {$a->startdate}.
             			<br /><br/><i>Met vriendelijke groet,
             			<br/>Het Heart for Limburg team.</i>
             		</p></td></tr></table>';
+
+	$string['email_course_completion_subject'] = 'Cursus "{$a}" succesvol afgerond';
+	$string['email_course_completion_text'] = '<table>
+				<tr><td><p><strong> [ <span>Beste {$a->name}</span> ],</strong>
+				<br/>Om u in te schrijven voor de opfris cursus meldingen, klik op <strong><a href="{$a->link}">deze link</a>.</strong>.
+				<br /><br/><i>Met vriendelijke groet,
+				<br/>Het Heart for Limburg team.</i>
+				</p></td></tr></table>';
+
+
 /************************************ E-mails end ***************************/

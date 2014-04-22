@@ -6020,7 +6020,7 @@ function send_confirmation_email($user) {
     $data->admin     = generate_email_signoff();
 	
 	// Fixme -> which languages? And standard language?
-	$arbitrary_language_code = "nl";
+	$arbitrary_language_code = "en";
 	if ($user->lang == "nl" || $user->lang == "en")	$arbitrary_language_code = $user->lang;
 
     $subject = get_string_manager()->get_string('emailconfirmationsubject', '', format_string($site->fullname), $arbitrary_language_code);
