@@ -25,7 +25,7 @@
 
 $string['auth_intakedescription'] = '<p>Met voucher-gebaseerde zelfregistratie kan een gebruiker zelf zijn account maken op de moodle site: 
 op het moment dat de gebruiker zich aanmeldt en daarbij een nieuwe gebruikersnaam en wachtwoord kiest, wordt
-er een bevestigingse-mail gestuurd naar het e-mailadres van de gebruiker. In deze e-mail staat een
+er een bevestigings e-mail gestuurd naar het e-mailadres van de gebruiker. In deze e-mail staat een
 veilige link naar een pagina waar de gebruiker zijn account kan bevestigen. 
 Tijdens alle latere aanmeldingen worden de gebruikersnaam en het wachtwoord alleen maar vergeleken met de
 bewaarde gebruikersgegevens in de Moodle database.</p>
@@ -75,8 +75,8 @@ $string['auth_intake_voucher_exists'] = 'Er bestaat al een voucher met die code'
 $string['auth_intake_voucher_too_long'] = 'De voucher code is te lang. 25 Tekens is het maximum.';
 
 // New voucher form
-$string['auth_intake_new_voucher'] = 'Nieuw voucher';
-$string['auth_intake_new_voucher_submit'] = 'Nieuw voucher aanmaken';
+$string['auth_intake_new_voucher'] = 'Nieuwe voucher';
+$string['auth_intake_new_voucher_submit'] = 'Nieuwe voucher aanmaken';
 $string['auth_intake_new_voucher_exists'] = 'Voucher met die code bestaat al';
 $string['auth_intake_new_date_wrong'] = 'Start datum moet voor de eind datum liggen';
 

@@ -47,31 +47,40 @@
 	$string['configure_course'] = 'Configureer opfris cursussen voor';
 	$string['back_to_main'] = '<< Terug';
 
+	$string['optin_error'] = 'Verkeerde gegevens ingestuurd!';
+	$string['optin_title'] = 'E-mail instellingen voor "{$a}" cursus';
+	$string['optin_text'] = 'Ik wil graag e-mail notificaties ontvangen over de opfris cursussen van de cursus <strong>{$a}</strong>.';
+	$string['save'] = 'Opslaan';
+
 
 /********************************* E-mails beginning ****************************/
-	$string['email_repeatcourses_today_subject'] = 'Opfris cursus "{$a}" begint vandaag!';
-	$string['email_repeatcourses_today_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Beste {$a->name}</span> ],</strong>
-						<br/>De opfris cursus <strong>"{$a->coursename}"</strong> gaat vandaag beginnen. <br/>
-                        <br /><br/><i>Met vriendelijke groet,
-            			<br/>Het Heart for Limburg team.</i>
-            		</p></td></tr></table>';
+$string['email_repeatcourses_today_subject'] = 'Opfris cursus "{$a}" begint vandaag!';
+$string['email_repeatcourses_today_text'] = 
+'Beste {$a->name},
 
-	$string['email_repeatcourses_reminder_subject'] = 'Opfris cursus "{$a}" begint binnenkort!';
-	$string['email_repeatcourses_reminder_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Beste {$a->name}</span> ],</strong>
-            			<br/>De opfris cursus <strong>"{$a->coursename}"</strong> gaat bijna beginnen. De cursus zal starten op {$a->startdate}.
-            			<br /><br/><i>Met vriendelijke groet,
-            			<br/>Het Heart for Limburg team.</i>
-            		</p></td></tr></table>';
+De opfris cursus "{$a->coursename}" gaat vandaag beginnen.
 
-	$string['email_course_completion_subject'] = 'Cursus "{$a}" succesvol afgerond';
-	$string['email_course_completion_text'] = '<table>
-				<tr><td><p><strong> [ <span>Beste {$a->name}</span> ],</strong>
-				<br/>Om u in te schrijven voor de opfris cursus meldingen, klik op <strong><a href="{$a->link}">deze link</a>.</strong>.
-				<br /><br/><i>Met vriendelijke groet,
-				<br/>Het Heart for Limburg team.</i>
-				</p></td></tr></table>';
+Met vriendelijke groet,
+Het Heart for Limburg team';
 
+
+$string['email_repeatcourses_reminder_subject'] = 'Opfris cursus "{$a}" begint binnenkort!';
+$string['email_repeatcourses_reminder_text'] = 
+'Beste {$a->name},
+
+De opfris cursus "{$a->coursename}" gaat bijna beginnen. De cursus zal starten op {$a->startdate}.
+
+Met vriendelijke groet,
+Het Heart for Limburg team';
+
+
+$string['email_course_completion_subject'] = 'Cursus "{$a}" succesvol afgerond';
+$string['email_course_completion_text'] = 
+'Beste {$a->name},
+
+Om u in te schrijven voor de opfris cursus meldingen, klik op de volgende link: {$a->link}
+
+Met vriendelijke groet,
+Het Heart for Limburg team';
 
 /************************************ E-mails end ***************************/

@@ -1,23 +1,28 @@
 <?php include( $this->get_partial_path('flash') );
 if($mainCourseId == 0 || $userId == 0){
-    echo "<h1>Wrong input data!</h1>"; die();
-} else {
+    echo "<h1>" . get_string('optin_error', 'repeatcourse') . "</h1>"; 
+	die();
+} 
+else 
+{
     $isChecked = ($isCurUser && $isMailing) ? 'checked="checked"' : '';
-?>
-<h1>Mailing settings for "<?php echo $mainCourseName;?>" course</h1>
-<form action="index.php" method="POST" id="optin_screen">
-    <div class="center">
-        <input type="checkbox" id="mailing" name="mailing" <?php echo $isChecked; ?> /><label for="mailing">I want to receive notification emails about the refresher course for that specific main course <strong><?php echo $mainCourseName;?></strong>.</label>
-        <div class="buttons">
-            <input type="hidden" name="id" value="<?php echo $curId ?>"/>
-            <input type="hidden" name="action" value="optin_save"/>
-            <input type="hidden" name="ismailing" value="0" id="ismailing"/>
-            <input type="hidden" name="maincourseid" value="<?php echo $mainCourseId ?>"/>
-            <input type="hidden" name="userid" value="<?php echo $userId ?>"/>
-            <input type="submit" value="Save"/>
-        </div>
-    </div>
-</form>
+	?>
+
+	<h1><?= get_string('optin_title', 'repeatcourse', $mainCourseName); ?></h1>
+	<form action="index.php" method="POST" id="optin_screen">
+		<div class="center">
+			<input type="checkbox" id="mailing" name="mailing" <?php echo $isChecked; ?> /><label for="mailing"><?= get_string('optin_text', 'repeatcourse', $mainCourseName); ?></label>
+			<div class="buttons">
+				<input type="hidden" name="id" value="<?php echo $curId ?>"/>
+				<input type="hidden" name="action" value="optin_save"/>
+				<input type="hidden" name="ismailing" value="0" id="ismailing"/>
+				<input type="hidden" name="maincourseid" value="<?php echo $mainCourseId ?>"/>
+				<input type="hidden" name="userid" value="<?php echo $userId ?>"/>
+				<input type="submit" value="<?= get_string('save', 'repeatcourse'); ?>"/>
+			</div>
+		</div>
+	</form>
+
 <?php
 }
 ?>

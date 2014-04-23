@@ -589,6 +589,36 @@ class auth_plugin_intake extends auth_plugin_base {
 
         return $config;
     }
+
+	static function send_confirmation_email($user) {
+		global $CFG;
+
+		$site = get_site();
+		$supportuser = core_user::get_support_user();
+
+		$data = new stdClass();
+		$data->firstname = fullname($user);
+		$data->sitename  = format_string($site->fullname);
+		$data->admin     = generate_email_signoff();
+		
+		// Fixme -> which languages? And standard language?
+		$arbitrary_language_code = "en";
+		if ($user->lang == "nl" || $user->lang == "en")	$arbitrary_language_code = $user->lang;
+
+		$subject = get_string_manager()->get_string('emailconfirmationsubject', '', format_string($site->fullname), $arbitrary_language_code);
+
+		$username = urlencode($user->username);
+		$username = str_replace('.', '%2E', $username); // Prevent problems with trailing dots.
+		$data->link  = $CFG->wwwroot .'/login/confirm.php?data='. $user->secret .'/'. $username;
+		$message     = get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code);
+		$messagehtml = text_to_html(get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code), false, false, true);
+
+		// Fixme -> always? Or not with voucherplugin type?
+		$user->mailformat = 1;  // Always send HTML version as well.
+		
+		// Directly email rather than using the messaging system to ensure its not routed to a popup or jabber.
+		return email_to_user($user, $supportuser, $subject, $message, $messagehtml);
+	}
 }
 
 
@@ -661,35 +691,4 @@ function enrol_user ($username, $course_id, $roleid = 5)
 	$plugin->enrol_user($instance, $user->id, $roleid, $timestart, $timeend);
 
 	return 1;
-}
-
-
-static function send_confirmation_email($user) {
-    global $CFG;
-
-    $site = get_site();
-    $supportuser = core_user::get_support_user();
-
-    $data = new stdClass();
-    $data->firstname = fullname($user);
-    $data->sitename  = format_string($site->fullname);
-    $data->admin     = generate_email_signoff();
-	
-	// Fixme -> which languages? And standard language?
-	$arbitrary_language_code = "en";
-	if ($user->lang == "nl" || $user->lang == "en")	$arbitrary_language_code = $user->lang;
-
-    $subject = get_string_manager()->get_string('emailconfirmationsubject', '', format_string($site->fullname), $arbitrary_language_code);
-
-    $username = urlencode($user->username);
-    $username = str_replace('.', '%2E', $username); // Prevent problems with trailing dots.
-    $data->link  = $CFG->wwwroot .'/login/confirm.php?data='. $user->secret .'/'. $username;
-    $message     = get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code);
-    $messagehtml = text_to_html(get_string_manager()->get_string('emailconfirmation', '', $data, $arbitrary_language_code), false, false, true);
-
-    // Fixme -> always? Or not with voucherplugin type?
-	$user->mailformat = 1;  // Always send HTML version as well.
-	
-    // Directly email rather than using the messaging system to ensure its not routed to a popup or jabber.
-    return email_to_user($user, $supportuser, $subject, $message, $messagehtml);
 }

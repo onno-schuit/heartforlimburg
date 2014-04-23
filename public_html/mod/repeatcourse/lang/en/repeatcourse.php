@@ -47,30 +47,40 @@
 	$string['configure_course'] = 'Configure repeatcourses for';
 	$string['back_to_main'] = '<< Back';
 
+	$string['optin_error'] = 'Wrong input data!';
+	$string['optin_title'] = 'Mailing settings for "{$a}" course';
+	$string['optin_text'] = 'I want to receive notification emails about the refresher course for the specific main course <strong>{$a}</strong>.';
+	$string['save'] = 'Save';
+
 
 /********************************* E-mails beginning ****************************/
-	$string['email_repeatcourses_today_subject'] = 'Refresher course "{$a}" starts today!';
-	$string['email_repeatcourses_today_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Dear {$a->name}</span> ],</strong>
-						<br/>Your refresher course <strong>"{$a->coursename}"</strong> is about to begin today. <br/>
-                        <br /><br/><i>Best regards,
-            			<br/>Heart for Limburg team.</i>
-            		</p></td></tr></table>';
+$string['email_repeatcourses_today_subject'] = 'Refresher course "{$a}" starts today!';
+$string['email_repeatcourses_today_text'] = 
+'Dear {$a->name},
 
-	$string['email_repeatcourses_reminder_subject'] = 'Refresher course "{$a}" will start shortly!';
-	$string['email_repeatcourses_reminder_text'] = '<table><tr><td><p>
-                    	<strong> [ <span> Dear {$a->name}</span> ],</strong>
-            			<br/>Your refresher course <strong>"{$a->coursename}"</strong> is about to begin. The course will start on {$a->startdate}.
-            			<br /><br/><i>Best regards,
-            			<br/>Heart for Limburg team.</i>
-            		</p></td></tr></table>';
+Your refresher course "{$a->coursename}" is about to begin today.
 
-	$string['email_course_completion_subject'] = 'Course "{$a}" completed succesfully';
-	$string['email_course_completion_text'] = '<table>
-				<tr><td><p><strong> [ <span>Dear {$a->name}</span> ],</strong>
-				<br/>To subscribe to the refresher courses distribution, please click on <strong><a href="{$a->link}">this link</a>.</strong>.
-				<br /><br/><i>Best regards,
-				<br/>Heart for Limburg team.</i>
-				</p></td></tr></table>';
+Best regards,
+Heart for Limburg team';
+
+
+$string['email_repeatcourses_reminder_subject'] = 'Refresher course "{$a}" will start shortly!';
+$string['email_repeatcourses_reminder_text'] = 
+'Dear {$a->name},
+
+Your refresher course "{$a->coursename}" is about to begin. The course will start on {$a->startdate}.
+
+Best regards,
+Heart for Limburg team';
+
+
+$string['email_course_completion_subject'] = 'Course "{$a}" completed succesfully';
+$string['email_course_completion_text'] = 
+'Dear {$a->name},
+
+To subscribe to the refresher courses distribution, please click on the following link: {$a->link}
+
+Best regards,
+Heart for Limburg team';
 
 /************************************ E-mails end ***************************/
