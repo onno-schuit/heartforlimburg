@@ -1,17 +1,19 @@
 <?php
 class new_voucher_form extends moodleform {
     function definition() {
-        global $USER, $CFG;
+        global $USER, $CFG, $DB;
         /*$mform = */$mform =& $this->_form;
         $mform->addElement('hidden', 'action', 'new');
         $mform->addElement('hidden', 'auth', 'intake');
 
         $mform->addElement('text', 'code', get_string('auth_intake_vouchercode', 'auth_intake'));
-        if (isset($this->_customdata->code)) {
+        $mform->addHelpButton('code', 'auth_intake_vouchercode', 'auth_intake');
+		if (isset($this->_customdata->code)) {
             $mform->setDefault('code', $this->_customdata->code);
         }
 
         $mform->addElement('text', 'count', get_string('auth_intake_vouchers_count', 'auth_intake'));
+        $mform->addHelpButton('count', 'auth_intake_vouchers_count', 'auth_intake');
         if (isset($this->_customdata->count)) {
             $mform->setDefault('count', $this->_customdata->count);
         }
@@ -36,8 +38,19 @@ class new_voucher_form extends moodleform {
         // Courses data added using javascript
         $mform->addElement('hidden', 'courses', (isset($this->_customdata->courses) ? $this->_customdata->courses : ''), array('id'=>'courses'));
         $mform->addElement('hidden', 'groups', (isset($this->_customdata->groups) ? $this->_customdata->groups : ''), array('id'=>'groups'));
+		
+		// Roles
+		$roles_db = $DB->get_records('role', null, null, 'id, shortname');
+		foreach ($roles_db as $role)
+		{
+			$roles[$role->id] = $role->shortname;
+		}
+		$select = $mform->addElement('select', 'role_id', get_string('auth_intake_role', 'auth_intake'), $roles);
+        if (isset($this->_customdata['role_id']))	$mform->setDefault('role_id', $this->_customdata['role_id']);
+		else										$mform->setDefault('role_id', $DB->get_field('role', 'id', array('shortname' => 'student')));
+        $mform->setType('role_id', PARAM_RAW);
 
-        $mform->addElement('submit', 'submitbutton', get_string('auth_intake_new_voucher', 'auth_intake'));
+		//$mform->addElement('submit', 'submitbutton', get_string('auth_intake_new_voucher', 'auth_intake'));
 
         $mform->setType('action', PARAM_TEXT);
         $mform->setType('auth', PARAM_TEXT);
@@ -62,7 +75,8 @@ class edit_voucher_form extends moodleform {
         $mform->addElement('hidden', 'id', $this->_customdata['id']);
         $mform->addElement('text', 'code', get_string('auth_intake_vouchercode', 'auth_intake'));
         $mform->setDefault('code', $this->_customdata['code']);
-        $mform->addElement('text', 'count', get_string('auth_intake_vouchers_count', 'auth_intake') . ' ' .get_string('auth_intake_vouchers_count_explanation', 'auth_intake'));
+        $mform->addElement('text', 'count', get_string('auth_intake_vouchers_count', 'auth_intake'));
+        $mform->addHelpButton('count', 'auth_intake_vouchers_count', 'auth_intake');
         $mform->setDefault('count', $this->_customdata['count']);
         $mform->addElement('text', 'used', get_string('auth_intake_vouchers_used', 'auth_intake'));
         $mform->setDefault('used', $this->_customdata['used']);
@@ -95,7 +109,18 @@ file_put_contents('error_log', print_r($courses, true));
         $mform->addElement('hidden', 'courses', $this->_customdata['courses'], array('id'=>'courses'));
         $mform->addElement('hidden', 'groups', @$this->_customdata['groups'], array('id'=>'groups'));
 
-        $mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
+		// Roles
+		$roles_db = $DB->get_records('role', null, null, 'id, shortname');
+		foreach ($roles_db as $role)
+		{
+			$roles[$role->id] = $role->shortname;
+		}
+		$select = $mform->addElement('select', 'role_id', get_string('auth_intake_role', 'auth_intake'), $roles);
+        if (isset($this->_customdata['role_id']))	$mform->setDefault('role_id', $this->_customdata['role_id']);
+		else										$mform->setDefault('role_id', $DB->get_field('role', 'id', array('shortname' => 'student')));
+        $mform->setType('role_id', PARAM_RAW);
+
+		//$mform->addElement('submit', 'submitbutton', get_string('auth_intake_edit_voucher_submit', 'auth_intake'));
 
         $mform->setType('action', PARAM_TEXT);
         $mform->setType('auth', PARAM_TEXT);

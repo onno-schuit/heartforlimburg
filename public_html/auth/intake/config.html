@@ -29,6 +29,10 @@ if ($result) {
 ?>
 <a href="<?= $CFG->wwwroot?>/admin/auth_config.php?auth=intake&action=new" class="new_voucher_a"><?php print_string('auth_intake_new_voucher', 'auth_intake'); ?></a>
 <h3 class="main"><?php print_string('auth_intake_vouchers_label', 'auth_intake'); ?></h3>
+<?php
+if (count($vouchers))
+{
+?>
 <table class="auth_intake_voucher" cellspacing="0" cellpadding="0" border="1" width="100%" style="text-align: center;">
   <tr>
     <th><?php print_string('auth_intake_vouchercode', 'auth_intake'); ?></th>
@@ -36,6 +40,7 @@ if ($result) {
     <th><?php print_string('auth_intake_vouchers_used', 'auth_intake'); ?></th>
     <th><?php print_string('auth_intake_voucher_courses', 'auth_intake'); ?></th>
     <th><?php print_string('auth_intake_voucher_groups', 'auth_intake'); ?></th>
+    <th><?php print_string('auth_intake_voucher_role', 'auth_intake'); ?></th>
     <th>&nbsp;</th>
   </tr>
 <?php //echo "<pre>"; print_r($vouchers); die;
@@ -67,6 +72,7 @@ if ($result) {
         print_r($filenameStr);
     }
       ?></td>
+	  <td class="auth_intake_voucher_role"><?= ((trim($voucher->role_id) != "")?$DB->get_field('role', 'shortname', array('id' => $voucher->role_id)):"student") ?></td>
     <td class="auth_intake_voucher_actions"><a href="<?= $CFG->wwwroot ?>/admin/auth_config.php?auth=intake&action=edit&code=<?php p($voucher->code); ?>"><?php print_string('auth_intake_edit_voucher', 'auth_intake'); ?></a> |
       <a href="javascript:void(0);" onclick="delete_voucher_form('<?php p($voucher->code); ?>');"><?php print_string('auth_intake_delete_voucher', 'auth_intake'); ?></a>
     </td>
@@ -81,10 +87,14 @@ if ($result) {
   <input type="hidden" name="delete_voucher" value="0" id="delete_voucher_switch" />
   <input type="button" onclick="submit_form();" value="<?php print_string('auth_intake_delete_voucher_submit', 'auth_intake'); ?>" />
   <a href="javascript:void(0);" onclick="cancel_delete_voucher();"><?php print_string('auth_intake_cancel', 'auth_intake'); ?></a>
-
 </div>
-
+<p>&nbsp;</p>
 <?php
+}
+else
+{
+	echo "<p>" . get_string('auth_intake_no_vouchers', 'auth_intake') . "</p>\n";
+}
 /*
 <table cellspacing="0" cellpadding="5" border="0">
 <tr>
@@ -165,5 +175,4 @@ function delete_voucher_form(code) {
 function cancel_delete_voucher() {
     hide_block('delete_voucher');
 }
-
 </script>

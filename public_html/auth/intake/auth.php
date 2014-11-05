@@ -78,7 +78,7 @@ class auth_plugin_intake extends auth_plugin_base {
      * @param  int     $course_id   Course_id to enrol user in
      * @return boolean result
      */
-    function actually_enroll_user($user, $course_id) {
+    function actually_enroll_user($user, $course_id, $role_id) {
         global $DB;
 
         $instance = $DB->get_record('enrol', array('enrol'=>'manual', 'courseid'=>$course_id));
@@ -90,7 +90,7 @@ class auth_plugin_intake extends auth_plugin_base {
             $instance->enrolstartdate = 0;
             $instance->enrolenddate   = 0;
             $instance->timemodified   = time();
-            $instance->roleid         = 5; // STUDENT
+            $instance->roleid         = $role_id;
             $instance->timecreated    = $instance->timemodified;
             $instance->sortorder      = $DB->get_field('enrol', 'COALESCE(MAX(sortorder), -1) + 1', array('courseid'=>$course_id));
 
@@ -101,7 +101,7 @@ class auth_plugin_intake extends auth_plugin_base {
             return false;
         }
 //$deleter = $DB->execute('DELETE FROM {config_plugins} WHERE plugin LIKE "%auth_intake%"');
-        $enrol->enrol_user($instance, $user->id, $instance->roleid, time(), 0);
+		$enrol->enrol_user($instance, $user->id, $role_id, time(), 0);
 
         return true;
     }
@@ -130,10 +130,14 @@ class auth_plugin_intake extends auth_plugin_base {
         $DB->update_record($this->table_name, $voucher);
 
         $user->id = $DB->insert_record('user', $user);
+		
+		// Standard role id -> 5 = Student
+		$role_id = 5;
+		if (isset($voucher->role_id) && trim($voucher->role_id) != "") $role_id = $voucher->role_id;
 
         // Automatically enroll user to all courses
         foreach (explode(',', $voucher->courses) as $id) {
-            $this->actually_enroll_user($user, $id);
+            $this->actually_enroll_user($user, $id, $role_id);
         }
 
         /// Save any custom profile field information
@@ -335,9 +339,11 @@ class auth_plugin_intake extends auth_plugin_base {
                               'used'      => isset($config->used) ? $config->used : $voucher->used,
                               'count'     => isset($config->count) ? $config->count : $voucher->count,
                               'courses'   => isset($config->courses) ? $config->courses : $voucher->courses,
+                              'groups'   => isset($config->groups) ? $config->groups : $voucher->groups,
                               'use_dates' => (!is_null($voucher->active_from) && $voucher->active_from != 0),
                               'date_from' => isset($config->active_from) ? $config->active_from : $voucher->active_from,
-                              'date_to'   => isset($config->active_till) ? $config->active_till : $voucher->active_till);
+                              'date_to'   => isset($config->active_till) ? $config->active_till : $voucher->active_till,
+                              'role_id'   => isset($config->role_id) ? $config->role_id : $voucher->role_id);
 
 				// If the dates are not set and used, fill in the current date
                 if ($data['date_from'] == 0)	$data['date_from'] = time();
@@ -443,6 +449,7 @@ class auth_plugin_intake extends auth_plugin_base {
         $voucher->groups = $config->groups;
         $voucher->active_from = $config->date_from;
         $voucher->active_till = $config->date_to;
+        $voucher->role_id = $config->role_id;
         
         $DB->update_record($this->table_name, $voucher);
 
@@ -494,7 +501,8 @@ class auth_plugin_intake extends auth_plugin_base {
                                      'groups' => $config->groups,
                                      'active_from' => $config->date_from,
                                      'active_till' => $config->date_to,
-                                     'used' => 0);
+                                     'used' => 0,
+									 'role_id' => $config->role_id);
         $DB->insert_record($this->table_name, $new_voucher, false);
 
         return array(true, 'created');
@@ -621,13 +629,13 @@ class auth_plugin_intake extends auth_plugin_base {
 	}
 }
 
-
+/*
 function enrol_user ($username, $course_id, $roleid = 5)
 {
 	global $CFG, $DB, $PAGE;
 
 	$username = utf8_decode ($username);
-	/* Create the user before if it is not created yet */
+	// Create the user before if it is not created yet
 	$conditions = array ('username' => $username);
 	$user = $DB->get_record('user',$conditions);
 	if (!$user)
@@ -692,3 +700,4 @@ function enrol_user ($username, $course_id, $roleid = 5)
 
 	return 1;
 }
+*/

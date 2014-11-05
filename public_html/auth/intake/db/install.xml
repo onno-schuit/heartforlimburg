@@ -13,10 +13,12 @@
   <FIELD NAME="courses" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="used" NEXT="groups"/>
   <FIELD NAME="groups" TYPE="char" LENGTH="255" NOTNULL="false" SEQUENCE="false" PREVIOUS="courses" NEXT="active_from"/>
   <FIELD NAME="active_from" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="groups" NEXT="active_till"/>
-  <FIELD NAME="active_till" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="active_from" />
+  <FIELD NAME="active_till" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="active_from" NEXT="role_id"/>
+  <FIELD NAME="role_id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="active_till"/>
 </FIELDS>
 <KEYS>
   <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+  <KEY NAME="role_id" TYPE="foreign" FIELDS="role_id" REFTABLE="role" REFFIELDS="id"/>
 </KEYS>
 </TABLE>
 </TABLES>

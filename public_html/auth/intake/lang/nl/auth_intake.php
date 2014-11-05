@@ -44,8 +44,10 @@ $string['pluginname'] = 'Voucher-gebaseerde zelf-registratie';
 
 $string['auth_intake_vouchercode_label'] = 'Voucher code';
 $string['auth_intake_vouchercode'] = 'Voucher code';
+$string['auth_intake_vouchercode_help'] = 'Vul een voucher code in. Als u dit veld leeg laat genereert het systeem een willekeurige voucher code.';
 $string['auth_intake_vouchers_label'] = 'Vouchers';
 $string['auth_intake_vouchers_count'] = 'Max gebruikers';
+$string['auth_intake_vouchers_count_help'] = '(0 betekent geen limiet)';
 $string['auth_intake_vouchers_count_explanation'] = '(0 betekent geen limiet)';
 $string['auth_intake_vouchers_used'] = 'In gebruik';
 $string['auth_intake_voucher_courses'] = 'Cursussen';
@@ -53,6 +55,7 @@ $string['auth_intake_voucher_date_from'] = 'Actief van';
 $string['auth_intake_voucher_date_to'] = 'Actief tot';
 $string['auth_intake_voucher_use_courses'] = 'Maak gebruikers lid van';
 $string['auth_intake_voucher_other_courses'] = 'Maak gebruikers geen lid van';
+$string['auth_intake_voucher_role'] = 'Rol';
 
 $string['auth_intake_voucher_groups'] = 'Groepen';
 $string['auth_intake_voucher_use_groups'] = 'Gebruikers inschrijven in groepen';
@@ -68,6 +71,7 @@ $string['auth_intake_save'] = 'Bewaren';
 $string['auth_intake_done'] = 'Klaar';
 $string['auth_intake_cancel'] = 'Annuleren';
 $string['auth_intake_use_dates'] = 'Gebruik data';
+$string['auth_intake_no_vouchers'] = 'Er zijn op dit moment geen actieve vouchers.';
 
 // Error messages
 $string['auth_intake_invalid_vouchercode'] = 'Sorry, de voucher is niet geldig.';
@@ -79,6 +83,7 @@ $string['auth_intake_new_voucher'] = 'Nieuwe voucher';
 $string['auth_intake_new_voucher_submit'] = 'Nieuwe voucher aanmaken';
 $string['auth_intake_new_voucher_exists'] = 'Voucher met die code bestaat al';
 $string['auth_intake_new_date_wrong'] = 'Start datum moet voor de eind datum liggen';
+$string['auth_intake_role'] = 'Rol voor de nieuwe gebruiker';
 
 // Edit voucher form
 $string['auth_intake_edit_voucher'] = 'Bijwerken';

@@ -41,8 +41,10 @@ $string['pluginname'] = 'Voucher-based self-registration';
 
 $string['auth_intake_vouchercode_label'] = 'Voucher Code';
 $string['auth_intake_vouchercode'] = 'Voucher Code';
+$string['auth_intake_vouchercode_help'] = 'Fill in a voucher code. If you leave it blank, the system will generate a random voucher code.';
 $string['auth_intake_vouchers_label'] = 'Vouchers';
 $string['auth_intake_vouchers_count'] = 'Max Users';
+$string['auth_intake_vouchers_count_help'] = '(0 means no limit)';
 $string['auth_intake_vouchers_count_explanation'] = '(0 means no limit)';
 $string['auth_intake_vouchers_used'] = 'In Use';
 $string['auth_intake_voucher_courses'] = 'Courses';
@@ -50,6 +52,7 @@ $string['auth_intake_voucher_date_from'] = 'Active From';
 $string['auth_intake_voucher_date_to'] = 'Active Till';
 $string['auth_intake_voucher_use_courses'] = 'Enroll users into';
 $string['auth_intake_voucher_other_courses'] = 'Do not enroll users into';
+$string['auth_intake_voucher_role'] = 'Role';
 
 $string['auth_intake_voucher_groups'] = 'Groups';
 $string['auth_intake_voucher_use_groups'] = 'Also enroll users into groups';
@@ -64,6 +67,7 @@ $string['auth_intake_save'] = 'Save';
 $string['auth_intake_done'] = 'Done';
 $string['auth_intake_cancel'] = 'Cancel';
 $string['auth_intake_use_dates'] = 'Use dates';
+$string['auth_intake_no_vouchers'] = 'There are currently no active vouchers.';
 
 // Error messages
 $string['auth_intake_invalid_vouchercode'] = 'Sorry, your voucher is not valid.';
@@ -75,6 +79,7 @@ $string['auth_intake_new_voucher'] = 'New voucher';
 $string['auth_intake_new_voucher_submit'] = 'Create new voucher';
 $string['auth_intake_new_voucher_exists'] = 'Voucher with this code already exists';
 $string['auth_intake_new_date_wrong'] = 'Start date has to be before the end date';
+$string['auth_intake_role'] = 'Role for new user';
 
 // Edit voucher form
 $string['auth_intake_edit_voucher'] = 'Update';
